@@ -1,0 +1,990 @@
+{
+  "meta": {
+    "description": "Skill trees for all 6 character classes. 1 skill point earned per level up. Skills unlock at specified levels.",
+    "tiers": {
+      "1": "Beginner (Levels 2-3)",
+      "2": "Intermediate (Levels 4-5)",
+      "3": "Advanced (Levels 6-7)",
+      "4": "Ultimate (Level 8+)"
+    },
+    "types": {
+      "passive": "Always active once unlocked",
+      "active": "Triggered by specific actions or commands",
+      "ultimate": "Powerful capstone ability, one per class"
+    }
+  },
+  "classes": {
+    "gigachad_builder": {
+      "name": "Gigachad Builder",
+      "description": "The supreme builder. Ships features, designs systems, creates products.",
+      "primary_stats": ["creativity", "aura"],
+      "evolution": ["Chad", "Gigachad", "Godmode Developer"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "💪",
+      "aura_color": "gold",
+      "bonus": "+1 Creativity per lesson, +20% XP for shipping features",
+      "skills": [
+        {
+          "id": "gb_01",
+          "name": "Blueprint Vision",
+          "description": "See the structure of any project before building it. +1 Creativity on plan mode lessons.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "gb_02",
+          "name": "Quick Scaffold",
+          "description": "Create project structures faster. +5 XP when creating new files.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "gb_03",
+          "name": "Feature Factory",
+          "description": "Building features earns double Aura.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 2},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "gb_04",
+          "name": "Architect's Eye",
+          "description": "Understand complex file structures at a glance. +2 Accuracy on file navigation tasks.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["gb_01"]
+        },
+        {
+          "id": "gb_05",
+          "name": "Ship It",
+          "description": "Completing product-building lessons gives +25 bonus XP.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["gb_02"]
+        },
+        {
+          "id": "gb_06",
+          "name": "MVP Mindset",
+          "description": "Focus on what matters. Skip optional sub-tasks without penalty.",
+          "tier": 2,
+          "type": "active",
+          "stat_bonus": {"efficiency": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["gb_03"]
+        },
+        {
+          "id": "gb_07",
+          "name": "Full Stack Vision",
+          "description": "See how frontend and backend connect. +2 to all stats on web project lessons.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 2, "accuracy": 1},
+          "unlock_level": 5,
+          "prerequisite_skills": ["gb_04"]
+        },
+        {
+          "id": "gb_08",
+          "name": "Production Ready",
+          "description": "Deployment lessons give triple Aura.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["gb_05"]
+        },
+        {
+          "id": "gb_09",
+          "name": "Code Review Master",
+          "description": "Understand code quality patterns. +3 Accuracy permanently.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["gb_06"]
+        },
+        {
+          "id": "gb_10",
+          "name": "System Designer",
+          "description": "Design multi-file systems. +50 XP on architecture lessons.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"creativity": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["gb_07"]
+        },
+        {
+          "id": "gb_11",
+          "name": "Open Source Chad",
+          "description": "GitHub operations give double XP.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 2},
+          "unlock_level": 7,
+          "prerequisite_skills": ["gb_08"]
+        },
+        {
+          "id": "gb_12",
+          "name": "Iteration King",
+          "description": "Refactoring lessons give +3 to all stats.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 1, "accuracy": 1, "creativity": 1},
+          "unlock_level": 7,
+          "prerequisite_skills": ["gb_09"]
+        },
+        {
+          "id": "gb_13",
+          "name": "Tech Lead",
+          "description": "Multi-agent workflow lessons give +5 Efficiency.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 5},
+          "unlock_level": 7,
+          "prerequisite_skills": ["gb_10"]
+        },
+        {
+          "id": "gb_14",
+          "name": "Startup Mode",
+          "description": "Shipping a complete product gives +100 bonus XP and +50 Aura.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"creativity": 5, "aura": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["gb_11", "gb_12"]
+        },
+        {
+          "id": "gb_15",
+          "name": "Godmode: Builder's Paradise",
+          "description": "ULTIMATE - All building tasks give double XP, double Aura, and +2 to all stats.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"speed": 2, "accuracy": 2, "creativity": 2, "efficiency": 2, "aura": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["gb_13", "gb_14"]
+        }
+      ]
+    },
+    "sigma_grinder": {
+      "name": "Sigma Grinder",
+      "description": "The relentless optimizer. Speed, efficiency, and grinding streaks.",
+      "primary_stats": ["speed", "efficiency"],
+      "evolution": ["NPC", "Sigma", "Lone Wolf Legend"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "🐺",
+      "aura_color": "blue",
+      "bonus": "+1 Speed per lesson, +50% streak bonuses",
+      "skills": [
+        {
+          "id": "sg_01",
+          "name": "Quick Fingers",
+          "description": "Terminal commands feel faster. +1 Speed on all terminal tasks.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "sg_02",
+          "name": "Streak Shield",
+          "description": "Gain an extra streak freeze per week.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "sg_03",
+          "name": "Early Bird",
+          "description": "First lesson of the day gives +5 bonus XP.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "sg_04",
+          "name": "Shortcut Master",
+          "description": "Keyboard shortcut lessons give +2 Speed.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"speed": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["sg_01"]
+        },
+        {
+          "id": "sg_05",
+          "name": "Automation Instinct",
+          "description": "Automation lessons give double XP.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["sg_02"]
+        },
+        {
+          "id": "sg_06",
+          "name": "Streak Multiplier",
+          "description": "Every 3-day streak gives +10 bonus XP on next lesson.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"speed": 1, "aura": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["sg_03"]
+        },
+        {
+          "id": "sg_07",
+          "name": "Pipeline Pro",
+          "description": "Git workflow lessons give +3 Efficiency.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 3},
+          "unlock_level": 5,
+          "prerequisite_skills": ["sg_04"]
+        },
+        {
+          "id": "sg_08",
+          "name": "Zero Downtime",
+          "description": "Never lose progress from errors. Mistakes give +1 Speed instead of nothing.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["sg_05"]
+        },
+        {
+          "id": "sg_09",
+          "name": "Batch Processing",
+          "description": "Complete 2+ tasks in rapid succession for combo XP (+5 per combo).",
+          "tier": 3,
+          "type": "active",
+          "stat_bonus": {"speed": 2, "efficiency": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["sg_06"]
+        },
+        {
+          "id": "sg_10",
+          "name": "Terminal Warrior",
+          "description": "All terminal tasks give +15 bonus XP.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["sg_07"]
+        },
+        {
+          "id": "sg_11",
+          "name": "Infinite Grind",
+          "description": "Daily cap raised to 5 lessons before easter egg triggers.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 2},
+          "unlock_level": 7,
+          "prerequisite_skills": ["sg_08"]
+        },
+        {
+          "id": "sg_12",
+          "name": "Muscle Memory",
+          "description": "Repeated command patterns give +2 Speed permanently.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 2},
+          "unlock_level": 7,
+          "prerequisite_skills": ["sg_09"]
+        },
+        {
+          "id": "sg_13",
+          "name": "Flow State",
+          "description": "3+ lessons in a session gives +20% XP for remaining lessons.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["sg_10"]
+        },
+        {
+          "id": "sg_14",
+          "name": "Streak Legend",
+          "description": "30-day streak gives permanent +5 to Speed and Efficiency.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"speed": 5, "efficiency": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["sg_11", "sg_12"]
+        },
+        {
+          "id": "sg_15",
+          "name": "Lone Wolf: Terminal Domination",
+          "description": "ULTIMATE - All Speed and Efficiency gains are doubled permanently.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"speed": 5, "efficiency": 5, "aura": 3},
+          "unlock_level": 8,
+          "prerequisite_skills": ["sg_13", "sg_14"]
+        }
+      ]
+    },
+    "aura_farmer": {
+      "name": "Aura Farmer",
+      "description": "The flex master. Maximum Aura generation, cosmetics collector, social status king.",
+      "primary_stats": ["aura", "speed"],
+      "evolution": ["Lurker", "Aura Farmer", "Influencer Maximus"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "👑",
+      "aura_color": "rainbow",
+      "bonus": "+2 Aura per lesson, +25% Aura from all sources",
+      "skills": [
+        {
+          "id": "af_01",
+          "name": "Aura Magnet",
+          "description": "All sources of Aura give +1 extra.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 2},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "af_02",
+          "name": "Cosmetic Sense",
+          "description": "Unlock 2 free cosmetic items from the shop.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "af_03",
+          "name": "First Impression",
+          "description": "Status display looks extra flashy. +1 Aura per session start.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 1, "speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "af_04",
+          "name": "Glow Up",
+          "description": "Aura glow level advances 25% faster.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"aura": 3},
+          "unlock_level": 4,
+          "prerequisite_skills": ["af_01"]
+        },
+        {
+          "id": "af_05",
+          "name": "Discount Hunter",
+          "description": "All cosmetic shop items cost 20% less Aura.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["af_02"]
+        },
+        {
+          "id": "af_06",
+          "name": "Streak Flex",
+          "description": "Streaks give double Aura rewards.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"aura": 2, "speed": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["af_03"]
+        },
+        {
+          "id": "af_07",
+          "name": "Collection Bonus",
+          "description": "Every 5 cosmetics owned gives +10 Aura bonus.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"aura": 2},
+          "unlock_level": 5,
+          "prerequisite_skills": ["af_04"]
+        },
+        {
+          "id": "af_08",
+          "name": "Reputation Builder",
+          "description": "Reputation rank advances 50% faster.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 4},
+          "unlock_level": 6,
+          "prerequisite_skills": ["af_05"]
+        },
+        {
+          "id": "af_09",
+          "name": "Golden Touch",
+          "description": "Every task completion gives +3 Aura in addition to normal rewards.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["af_06"]
+        },
+        {
+          "id": "af_10",
+          "name": "Flex Master",
+          "description": "Unlock exclusive Aura Farmer cosmetics not available to other classes.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 3, "creativity": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["af_07"]
+        },
+        {
+          "id": "af_11",
+          "name": "Aura Overflow",
+          "description": "When Aura exceeds 500, earn +5 XP per lesson passively.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["af_08"]
+        },
+        {
+          "id": "af_12",
+          "name": "VIP Status",
+          "description": "Unlock the VIP terminal theme and aura color.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 4},
+          "unlock_level": 7,
+          "prerequisite_skills": ["af_09"]
+        },
+        {
+          "id": "af_13",
+          "name": "Social Proof",
+          "description": "Leaderboard features give bonus visibility (Coming Soon).",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 5},
+          "unlock_level": 7,
+          "prerequisite_skills": ["af_10"]
+        },
+        {
+          "id": "af_14",
+          "name": "Aura Millionaire",
+          "description": "All Aura earnings permanently doubled.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"aura": 10},
+          "unlock_level": 8,
+          "prerequisite_skills": ["af_11", "af_12"]
+        },
+        {
+          "id": "af_15",
+          "name": "Influencer Maximus: Infinite Drip",
+          "description": "ULTIMATE - Aura generation triples. Exclusive legendary cosmetics unlock. Status display becomes animated.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"aura": 15, "speed": 3, "creativity": 3},
+          "unlock_level": 8,
+          "prerequisite_skills": ["af_13", "af_14"]
+        }
+      ]
+    },
+    "chaos_agent": {
+      "name": "NPC Destroyer / Chaos Agent",
+      "description": "The wild card. Easter eggs, creative exploits, breaking expectations.",
+      "primary_stats": ["creativity", "speed"],
+      "evolution": ["Noob", "Chaos Agent", "System Breaker"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "🔥",
+      "aura_color": "red",
+      "bonus": "+1 Creativity and +1 Speed per lesson, 2x easter egg rewards",
+      "skills": [
+        {
+          "id": "ca_01",
+          "name": "Curiosity Killed Nothing",
+          "description": "Exploring unexpected paths gives +2 XP.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ca_02",
+          "name": "Error Whisperer",
+          "description": "Making mistakes gives +1 Speed instead of nothing.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ca_03",
+          "name": "Easter Egg Radar",
+          "description": "Easter eggs are easier to trigger (3 lessons instead of 4).",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1, "aura": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ca_04",
+          "name": "Unconventional Methods",
+          "description": "Solving tasks in unexpected ways gives +10 bonus XP.",
+          "tier": 2,
+          "type": "active",
+          "stat_bonus": {"creativity": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ca_01"]
+        },
+        {
+          "id": "ca_05",
+          "name": "Glitch Hunter",
+          "description": "Finding bugs or unexpected behaviors earns +5 Aura.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"speed": 2, "aura": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ca_02"]
+        },
+        {
+          "id": "ca_06",
+          "name": "Chaos Multiplier",
+          "description": "Easter egg rewards are tripled (stacks with class bonus).",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1, "aura": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ca_03"]
+        },
+        {
+          "id": "ca_07",
+          "name": "Rule Bender",
+          "description": "Unlock hidden alternative solutions to standard tasks.",
+          "tier": 2,
+          "type": "active",
+          "stat_bonus": {"creativity": 2, "speed": 1},
+          "unlock_level": 5,
+          "prerequisite_skills": ["ca_04"]
+        },
+        {
+          "id": "ca_08",
+          "name": "Controlled Demolition",
+          "description": "Breaking things intentionally teaches +3 Accuracy.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ca_05"]
+        },
+        {
+          "id": "ca_09",
+          "name": "Secret Paths",
+          "description": "Discover hidden lessons not on the main curriculum (+25 XP each).",
+          "tier": 3,
+          "type": "active",
+          "stat_bonus": {"creativity": 3, "aura": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ca_06"]
+        },
+        {
+          "id": "ca_10",
+          "name": "Exploit Developer",
+          "description": "Debugging lessons give +20 XP and +3 Speed.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ca_07"]
+        },
+        {
+          "id": "ca_11",
+          "name": "Chaos Theory",
+          "description": "Random +5-20 bonus XP on any lesson (unpredictable).",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"creativity": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ca_08"]
+        },
+        {
+          "id": "ca_12",
+          "name": "System Exploit",
+          "description": "Find ways to earn Aura from non-standard sources.",
+          "tier": 3,
+          "type": "active",
+          "stat_bonus": {"aura": 5},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ca_09"]
+        },
+        {
+          "id": "ca_13",
+          "name": "Reality Hacker",
+          "description": "Unlock the ability to modify your own progress.json (with guidance).",
+          "tier": 3,
+          "type": "active",
+          "stat_bonus": {"creativity": 4, "speed": 2},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ca_10"]
+        },
+        {
+          "id": "ca_14",
+          "name": "Agent of Chaos",
+          "description": "All unconventional approaches give triple rewards.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"creativity": 5, "speed": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["ca_11", "ca_12"]
+        },
+        {
+          "id": "ca_15",
+          "name": "System Breaker: Reality Collapse",
+          "description": "ULTIMATE - Easter eggs can appear anywhere. All chaos bonuses stack infinitely. Unlock the secret Module 0.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"creativity": 5, "speed": 5, "aura": 10},
+          "unlock_level": 8,
+          "prerequisite_skills": ["ca_13", "ca_14"]
+        }
+      ]
+    },
+    "meme_lord": {
+      "name": "Meme Lord / Shitposter",
+      "description": "The entertainer. Fun content, humor, casual vibes, creative expression.",
+      "primary_stats": ["creativity", "aura"],
+      "evolution": ["Normie", "Meme Lord", "Based Deity"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "😎",
+      "aura_color": "purple",
+      "bonus": "+1 Creativity per lesson, unlocks humor content",
+      "skills": [
+        {
+          "id": "ml_01",
+          "name": "Comedic Timing",
+          "description": "Status displays include random jokes. +1 Creativity.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"creativity": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ml_02",
+          "name": "Meme Knowledge",
+          "description": "References and jokes in celebrations. +1 Aura.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"aura": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ml_03",
+          "name": "Casual Mode",
+          "description": "Relaxed learning pace feels natural. +1 Speed on easy tasks.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "ml_04",
+          "name": "Shitpost Mastery",
+          "description": "Creative file names and commit messages earn +5 Aura.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 2, "aura": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ml_01"]
+        },
+        {
+          "id": "ml_05",
+          "name": "Based Takes",
+          "description": "Original approaches to problems earn +10 bonus XP.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ml_02"]
+        },
+        {
+          "id": "ml_06",
+          "name": "Vibe Check",
+          "description": "Session starts include a random vibe check. Pass it for +3 Aura.",
+          "tier": 2,
+          "type": "active",
+          "stat_bonus": {"aura": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["ml_03"]
+        },
+        {
+          "id": "ml_07",
+          "name": "Content Creator",
+          "description": "README and documentation tasks give double XP (because funny docs are rare).",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"creativity": 2, "aura": 1},
+          "unlock_level": 5,
+          "prerequisite_skills": ["ml_04"]
+        },
+        {
+          "id": "ml_08",
+          "name": "Viral Potential",
+          "description": "Shipping features gives +10 Aura for 'content potential'.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 3},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ml_05"]
+        },
+        {
+          "id": "ml_09",
+          "name": "Inside Jokes",
+          "description": "Unlock hidden meme-themed cosmetics and achievements.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"creativity": 3, "aura": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ml_06"]
+        },
+        {
+          "id": "ml_10",
+          "name": "Main Character Energy",
+          "description": "Level-up animations are extra dramatic and funny.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 4},
+          "unlock_level": 6,
+          "prerequisite_skills": ["ml_07"]
+        },
+        {
+          "id": "ml_11",
+          "name": "Touch Grass Immunity",
+          "description": "Long sessions (4+ lessons) give bonus rewards instead of burnout warnings.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 2, "creativity": 2},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ml_08"]
+        },
+        {
+          "id": "ml_12",
+          "name": "Legendary Commit Messages",
+          "description": "Git lessons give +15 Aura for creative commit messages.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"creativity": 3, "aura": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ml_09"]
+        },
+        {
+          "id": "ml_13",
+          "name": "Ratio Master",
+          "description": "Completing challenges earns triple Aura (the ultimate flex).",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"aura": 5},
+          "unlock_level": 7,
+          "prerequisite_skills": ["ml_10"]
+        },
+        {
+          "id": "ml_14",
+          "name": "Based Economy",
+          "description": "All Aura earnings +50%. Shop prices reduced 30%.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"creativity": 5, "aura": 8},
+          "unlock_level": 8,
+          "prerequisite_skills": ["ml_11", "ml_12"]
+        },
+        {
+          "id": "ml_15",
+          "name": "Based Deity: Transcendence",
+          "description": "ULTIMATE - All celebrations become legendary memes. +5 all stats. Unlock the Meme Lord exclusive soundtrack.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"speed": 5, "accuracy": 3, "creativity": 5, "efficiency": 3, "aura": 10},
+          "unlock_level": 8,
+          "prerequisite_skills": ["ml_13", "ml_14"]
+        }
+      ]
+    },
+    "hackerman": {
+      "name": "Hackerman / Code Wizard",
+      "description": "The technical master. Advanced features, automation, deep understanding.",
+      "primary_stats": ["efficiency", "accuracy"],
+      "evolution": ["Script Kiddie", "Hackerman", "Code Wizard"],
+      "evolution_levels": [1, 4, 7],
+      "emoji": "🧙",
+      "aura_color": "green",
+      "bonus": "+1 Efficiency per lesson, unlock advanced features earlier",
+      "skills": [
+        {
+          "id": "hm_01",
+          "name": "Config Whisperer",
+          "description": "JSON and config file tasks give +2 Efficiency.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "hm_02",
+          "name": "Debug Mode",
+          "description": "Error messages become learning opportunities. +1 Accuracy per error encountered.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "hm_03",
+          "name": "Script Starter",
+          "description": "Automation concepts come naturally. +1 Efficiency.",
+          "tier": 1,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 1, "speed": 1},
+          "unlock_level": 2,
+          "prerequisite_skills": []
+        },
+        {
+          "id": "hm_04",
+          "name": "Pattern Recognition",
+          "description": "Recognize code patterns faster. +2 Accuracy on code reading tasks.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["hm_01"]
+        },
+        {
+          "id": "hm_05",
+          "name": "Power User",
+          "description": "Advanced CLI features unlock 1 module earlier than normal.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 2},
+          "unlock_level": 4,
+          "prerequisite_skills": ["hm_02"]
+        },
+        {
+          "id": "hm_06",
+          "name": "API Intuition",
+          "description": "API and tool integration lessons give +15 XP.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 2, "accuracy": 1},
+          "unlock_level": 4,
+          "prerequisite_skills": ["hm_03"]
+        },
+        {
+          "id": "hm_07",
+          "name": "Code Archaeology",
+          "description": "Reading and understanding existing code gives +3 Accuracy.",
+          "tier": 2,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 3},
+          "unlock_level": 5,
+          "prerequisite_skills": ["hm_04"]
+        },
+        {
+          "id": "hm_08",
+          "name": "Automation Master",
+          "description": "Automated workflows give triple XP.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 4},
+          "unlock_level": 6,
+          "prerequisite_skills": ["hm_05"]
+        },
+        {
+          "id": "hm_09",
+          "name": "MCP Specialist",
+          "description": "MCP lessons give double XP and +5 Efficiency.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 5},
+          "unlock_level": 6,
+          "prerequisite_skills": ["hm_06"]
+        },
+        {
+          "id": "hm_10",
+          "name": "Deep Dive",
+          "description": "Understanding advanced concepts gives permanent stat boosts.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"accuracy": 3, "efficiency": 2},
+          "unlock_level": 6,
+          "prerequisite_skills": ["hm_07"]
+        },
+        {
+          "id": "hm_11",
+          "name": "Wizard's Library",
+          "description": "Unlock reference materials and cheat sheets for all modules.",
+          "tier": 3,
+          "type": "active",
+          "stat_bonus": {"accuracy": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["hm_08"]
+        },
+        {
+          "id": "hm_12",
+          "name": "Multi-Agent Commander",
+          "description": "Agent workflow lessons give +25 XP and +5 Efficiency.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 5},
+          "unlock_level": 7,
+          "prerequisite_skills": ["hm_09"]
+        },
+        {
+          "id": "hm_13",
+          "name": "Zero Bug Tolerance",
+          "description": "Debugging and testing lessons give +3 to all stats.",
+          "tier": 3,
+          "type": "passive",
+          "stat_bonus": {"speed": 3, "accuracy": 3, "efficiency": 3},
+          "unlock_level": 7,
+          "prerequisite_skills": ["hm_10"]
+        },
+        {
+          "id": "hm_14",
+          "name": "Full Automation",
+          "description": "Autonomous mode lessons give +50 XP and permanent +5 Efficiency.",
+          "tier": 4,
+          "type": "passive",
+          "stat_bonus": {"efficiency": 5, "accuracy": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["hm_11", "hm_12"]
+        },
+        {
+          "id": "hm_15",
+          "name": "Code Wizard: Matrix Mastery",
+          "description": "ULTIMATE - All technical lessons give triple XP. Unlock exclusive advanced curriculum. Terminal theme becomes animated Matrix style.",
+          "tier": 4,
+          "type": "ultimate",
+          "stat_bonus": {"efficiency": 5, "accuracy": 5, "speed": 5, "aura": 5},
+          "unlock_level": 8,
+          "prerequisite_skills": ["hm_13", "hm_14"]
+        }
+      ]
+    }
+  }
+}

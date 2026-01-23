@@ -1,0 +1,138 @@
+{
+  "settings": {
+    "enabled": true,
+    "platform_priority": ["spotify", "local_audio", "silent"],
+    "volume": 75,
+    "auto_pause": true,
+    "pause_after_seconds": 30,
+    "fade_out": true
+  },
+  "events": {
+    "session_start": {
+      "description": "Plays when student starts a lesson session",
+      "spotify_uri": "spotify:track:05od2qm2MTSKCHxy1GBp5W",
+      "genre": "focus",
+      "duration": null,
+      "auto_pause": false,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:05od2qm2MTSKCHxy1GBp5W\"'"
+    },
+    "task_complete": {
+      "description": "Brief sound on task completion",
+      "spotify_uri": null,
+      "genre": "sfx",
+      "duration": 3,
+      "auto_pause": true,
+      "command": null,
+      "note": "Use ASCII celebration only - no music interrupt for tasks"
+    },
+    "lesson_complete": {
+      "description": "Celebratory track when a full lesson is completed",
+      "spotify_uri": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "genre": "hype",
+      "duration": 30,
+      "auto_pause": true,
+      "start_at_ms": 0,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:5Z01UMMf7V1o0MzF86s6WJ\"'"
+    },
+    "module_complete": {
+      "description": "Epic track when an entire module is completed + badge earned",
+      "spotify_uri": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "genre": "epic",
+      "duration": 45,
+      "auto_pause": true,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:5Z01UMMf7V1o0MzF86s6WJ\"'"
+    },
+    "level_up": {
+      "description": "Triumphant track when player levels up",
+      "spotify_uri": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "genre": "orchestral",
+      "duration": 30,
+      "auto_pause": true,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:5Z01UMMf7V1o0MzF86s6WJ\"'"
+    },
+    "class_selection": {
+      "description": "Dramatic reveal when choosing character class",
+      "spotify_uri": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "genre": "dramatic",
+      "duration": 20,
+      "auto_pause": true,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:5Z01UMMf7V1o0MzF86s6WJ\"'"
+    },
+    "easter_egg": {
+      "description": "Surprise track when easter egg is discovered",
+      "spotify_uri": null,
+      "genre": "surprise",
+      "duration": 15,
+      "auto_pause": true,
+      "command": null,
+      "note": "Easter egg music varies - Claude picks contextually appropriate track"
+    },
+    "badge_earned": {
+      "description": "Achievement unlocked fanfare",
+      "spotify_uri": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "genre": "achievement",
+      "duration": 20,
+      "auto_pause": true,
+      "command": "osascript -e 'tell application \"Spotify\" to play track \"spotify:track:5Z01UMMf7V1o0MzF86s6WJ\"'"
+    },
+    "streak_milestone": {
+      "description": "Plays on streak milestones (7, 14, 30 days)",
+      "spotify_uri": null,
+      "genre": "triumph",
+      "duration": 15,
+      "auto_pause": true,
+      "command": null,
+      "note": "Uses session_start track with extra celebration ASCII"
+    }
+  },
+  "sound_packs": {
+    "default": {
+      "name": "Classic",
+      "description": "The original Claude Code 101 soundtrack",
+      "price": 0,
+      "tracks": "Uses event defaults above"
+    },
+    "synthwave": {
+      "name": "Synthwave",
+      "description": "Retro electronic vibes for coding sessions",
+      "price": 150,
+      "session_start": "spotify:track:3MrRks4AOpW9zTkaa1E1lA",
+      "lesson_complete": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "level_up": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ"
+    },
+    "lofi": {
+      "name": "Lo-Fi Beats",
+      "description": "Chill beats for focused learning",
+      "price": 150,
+      "session_start": "spotify:track:05od2qm2MTSKCHxy1GBp5W",
+      "lesson_complete": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "level_up": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ"
+    },
+    "epic_orchestral": {
+      "name": "Epic Orchestral",
+      "description": "Cinematic scores for maximum epicness",
+      "price": 150,
+      "session_start": "spotify:track:05od2qm2MTSKCHxy1GBp5W",
+      "lesson_complete": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ",
+      "level_up": "spotify:track:5Z01UMMf7V1o0MzF86s6WJ"
+    }
+  },
+  "dj_system": {
+    "description": "Claude acts as DJ, selecting contextually appropriate music",
+    "rules": [
+      "Session start always plays the focus track",
+      "Lesson complete plays hype track, auto-pauses after 30s",
+      "Module complete plays epic track, auto-pauses after 45s",
+      "Level up interrupts current track with level-up fanfare",
+      "Easter eggs use surprise/contextual tracks",
+      "Never play music during active teaching (only on events)",
+      "Respect the pause_after_seconds setting",
+      "If Spotify is not running, skip music silently",
+      "All music commands MUST use Bash tool with run_in_background: true parameter",
+      "Music playback must never block the main teaching flow",
+      "Implementation: Background execution prevents latency"
+    ],
+    "pause_command": "osascript -e 'tell application \"Spotify\" to pause'",
+    "resume_command": "osascript -e 'tell application \"Spotify\" to play'"
+  }
+}

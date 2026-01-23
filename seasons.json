@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "status": "coming_soon",
+    "description": "Seasonal events with themed challenges and exclusive rewards. Monthly rotation.",
+    "note": "This feature is designed but not yet active. Data structures are ready for future implementation."
+  },
+  "season_schema": {
+    "id": "string",
+    "name": "string",
+    "theme": "string",
+    "start_date": "ISO 8601 date",
+    "end_date": "ISO 8601 date",
+    "status": "coming_soon | active | completed",
+    "challenges": [
+      {
+        "id": "string",
+        "name": "string",
+        "description": "string",
+        "type": "daily | weekly | season_long",
+        "target": "number",
+        "reward_xp": "number",
+        "reward_aura": "number",
+        "reward_cosmetic": "string | null"
+      }
+    ],
+    "rewards": {
+      "participation": "cosmetic unlocked for any progress",
+      "bronze": "25% completion reward",
+      "silver": "50% completion reward",
+      "gold": "75% completion reward",
+      "diamond": "100% completion reward"
+    },
+    "leaderboard_multiplier": "number (bonus XP for season activities)"
+  },
+  "seasons": [
+    {
+      "id": "season_001",
+      "name": "Speed Demon January",
+      "theme": "velocity",
+      "start_date": "2025-02-01",
+      "end_date": "2025-02-28",
+      "status": "coming_soon",
+      "challenges": [
+        {
+          "id": "sd_001",
+          "name": "Terminal Speedrun",
+          "description": "Complete 5 terminal lessons in one session",
+          "type": "daily",
+          "target": 5,
+          "reward_xp": 100,
+          "reward_aura": 25,
+          "reward_cosmetic": null
+        },
+        {
+          "id": "sd_002",
+          "name": "Streak Master",
+          "description": "Maintain a 7-day streak during the season",
+          "type": "weekly",
+          "target": 7,
+          "reward_xp": 200,
+          "reward_aura": 50,
+          "reward_cosmetic": "speed_trail_effect"
+        },
+        {
+          "id": "sd_003",
+          "name": "Speed Demon",
+          "description": "Complete 3 full modules during the season",
+          "type": "season_long",
+          "target": 3,
+          "reward_xp": 500,
+          "reward_aura": 200,
+          "reward_cosmetic": "speed_demon_skin"
+        }
+      ],
+      "rewards": {
+        "participation": "speed_badge",
+        "bronze": "blue_lightning_aura",
+        "silver": "speed_terminal_theme",
+        "gold": "velocity_sound_pack",
+        "diamond": "speed_demon_title"
+      },
+      "leaderboard_multiplier": 1.5
+    }
+  ]
+}

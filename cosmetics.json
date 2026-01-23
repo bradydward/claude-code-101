@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "currency": "Aura",
+    "description": "All purchasable cosmetic items. Prices in Aura points.",
+    "how_to_earn_aura": "Every lesson gives +1 Aura. Class bonuses, achievements, and streaks give more."
+  },
+  "character_skins": {
+    "description": "Visual representation shown in status display and celebrations",
+    "items": [
+      {"id": "skin_default", "name": "Default", "price": 0, "rarity": "common", "description": "The classic look"},
+      {"id": "skin_hoodie", "name": "Hoodie Coder", "price": 50, "rarity": "common", "description": "Cozy coding vibes"},
+      {"id": "skin_suit", "name": "Business Mode", "price": 75, "rarity": "common", "description": "Professional developer look"},
+      {"id": "skin_ninja", "name": "Code Ninja", "price": 100, "rarity": "common", "description": "Silent and deadly coder"},
+      {"id": "skin_astronaut", "name": "Space Coder", "price": 100, "rarity": "common", "description": "Coding among the stars"},
+      {"id": "skin_pirate", "name": "Terminal Pirate", "price": 100, "rarity": "common", "description": "Yarr, command the terminal"},
+      {"id": "skin_wizard_robe", "name": "Wizard Robe", "price": 125, "rarity": "uncommon", "description": "Mystical developer energy"},
+      {"id": "skin_cyberpunk", "name": "Cyberpunk", "price": 150, "rarity": "uncommon", "description": "Neon-lit future coder"},
+      {"id": "skin_samurai", "name": "Code Samurai", "price": 150, "rarity": "uncommon", "description": "Disciplined warrior of code"},
+      {"id": "skin_viking", "name": "Viking Dev", "price": 150, "rarity": "uncommon", "description": "Conquer codebases"},
+      {"id": "skin_robot", "name": "Android", "price": 175, "rarity": "uncommon", "description": "Part human, part machine"},
+      {"id": "skin_ghost", "name": "Ghost in the Shell", "price": 200, "rarity": "uncommon", "description": "Invisible but powerful"},
+      {"id": "skin_superhero", "name": "Super Dev", "price": 200, "rarity": "uncommon", "description": "Cape and all"},
+      {"id": "skin_dragon", "name": "Dragon Rider", "price": 250, "rarity": "rare", "description": "Commanding presence"},
+      {"id": "skin_phoenix", "name": "Phoenix", "price": 250, "rarity": "rare", "description": "Rise from debugging ashes"},
+      {"id": "skin_matrix", "name": "The One", "price": 300, "rarity": "rare", "description": "See the code behind reality"},
+      {"id": "skin_golden", "name": "Golden God", "price": 350, "rarity": "rare", "description": "Pure flex energy"},
+      {"id": "skin_glitch", "name": "Glitch Entity", "price": 400, "rarity": "epic", "description": "Reality-breaking aesthetic"},
+      {"id": "skin_void", "name": "Void Walker", "price": 400, "rarity": "epic", "description": "From the depths of /dev/null"},
+      {"id": "skin_celestial", "name": "Celestial Being", "price": 500, "rarity": "epic", "description": "Transcendent developer"},
+      {"id": "skin_gigachad", "name": "Ultimate Gigachad", "price": 500, "rarity": "legendary", "class_locked": "gigachad_builder", "description": "Peak physical and coding form"},
+      {"id": "skin_sigma_wolf", "name": "Lone Wolf", "price": 500, "rarity": "legendary", "class_locked": "sigma_grinder", "description": "The grindset personified"},
+      {"id": "skin_influencer", "name": "Influencer Supreme", "price": 500, "rarity": "legendary", "class_locked": "aura_farmer", "description": "Maximum clout achieved"},
+      {"id": "skin_chaos_lord", "name": "Chaos Incarnate", "price": 500, "rarity": "legendary", "class_locked": "chaos_agent", "description": "Pure entropy in human form"},
+      {"id": "skin_based_god", "name": "Based God", "price": 500, "rarity": "legendary", "class_locked": "meme_lord", "description": "Achieved meme transcendence"},
+      {"id": "skin_arch_wizard", "name": "Archmage", "price": 500, "rarity": "legendary", "class_locked": "hackerman", "description": "Supreme master of all code"}
+    ]
+  },
+  "aura_colors": {
+    "description": "The color of your aura glow in status display",
+    "items": [
+      {"id": "aura_white", "name": "White", "price": 0, "rarity": "common", "hex": "#FFFFFF"},
+      {"id": "aura_blue", "name": "Blue", "price": 0, "rarity": "common", "hex": "#4A90D9"},
+      {"id": "aura_green", "name": "Green", "price": 0, "rarity": "common", "hex": "#4CAF50"},
+      {"id": "aura_yellow", "name": "Yellow", "price": 0, "rarity": "common", "hex": "#FFC107"},
+      {"id": "aura_red", "name": "Red", "price": 0, "rarity": "common", "hex": "#F44336"},
+      {"id": "aura_purple", "name": "Purple", "price": 100, "rarity": "rare", "hex": "#9C27B0"},
+      {"id": "aura_gold", "name": "Gold", "price": 200, "rarity": "rare", "hex": "#FFD700"},
+      {"id": "aura_cyan", "name": "Neon Cyan", "price": 300, "rarity": "rare", "hex": "#00FFFF"},
+      {"id": "aura_rainbow", "name": "Rainbow", "price": 500, "rarity": "legendary", "hex": "animated"}
+    ]
+  },
+  "terminal_themes": {
+    "description": "ANSI color palette used in ASCII art responses",
+    "items": [
+      {"id": "theme_classic", "name": "Classic", "price": 0, "description": "Standard terminal colors"},
+      {"id": "theme_ocean", "name": "Ocean Blue", "price": 100, "description": "Deep sea blue palette"},
+      {"id": "theme_forest", "name": "Forest", "price": 100, "description": "Natural green tones"},
+      {"id": "theme_sunset", "name": "Sunset", "price": 100, "description": "Warm orange and purple"},
+      {"id": "theme_neon", "name": "Neon City", "price": 100, "description": "Bright cyberpunk colors"},
+      {"id": "theme_mono", "name": "Monochrome", "price": 100, "description": "Elegant black and white"},
+      {"id": "theme_retro", "name": "Retro Terminal", "price": 100, "description": "Green-on-black CRT style"},
+      {"id": "theme_matrix", "name": "Matrix", "price": 100, "description": "Falling green code aesthetic"},
+      {"id": "theme_vaporwave", "name": "Vaporwave", "price": 150, "description": "A E S T H E T I C pink and blue"},
+      {"id": "theme_nord", "name": "Nord", "price": 150, "description": "Cool arctic tones"},
+      {"id": "theme_dracula", "name": "Dracula", "price": 150, "description": "Dark purple theme"},
+      {"id": "theme_fire", "name": "Inferno", "price": 200, "description": "Red and orange flames"},
+      {"id": "theme_galaxy", "name": "Galaxy", "price": 250, "description": "Cosmic purple and starlight"},
+      {"id": "theme_gold", "name": "Gold Rush", "price": 300, "description": "Luxurious gold accents"},
+      {"id": "theme_legendary", "name": "Legendary", "price": 500, "description": "Animated gradient (class-colored)"}
+    ]
+  },
+  "sound_packs": {
+    "description": "Music packs that change event triggers (references music_config.json)",
+    "items": [
+      {"id": "sound_default", "name": "Classic", "price": 0, "description": "The original soundtrack"},
+      {"id": "sound_synthwave", "name": "Synthwave", "price": 150, "description": "Retro electronic vibes"},
+      {"id": "sound_lofi", "name": "Lo-Fi Beats", "price": 150, "description": "Chill study beats"},
+      {"id": "sound_orchestral", "name": "Epic Orchestral", "price": 150, "description": "Cinematic scores"}
+    ]
+  },
+  "accessories": {
+    "description": "Extra flair added to your character display",
+    "items": [
+      {"id": "acc_sunglasses", "name": "Deal With It Shades", "price": 75, "rarity": "common", "description": "😎 vibes"},
+      {"id": "acc_headphones", "name": "Dev Headphones", "price": 75, "rarity": "common", "description": "In the zone"},
+      {"id": "acc_coffee", "name": "Coffee Mug", "price": 50, "rarity": "common", "description": "Fuel for coding"},
+      {"id": "acc_cat", "name": "Coding Cat", "price": 100, "rarity": "uncommon", "description": "Feline pair programmer"},
+      {"id": "acc_crown", "name": "Crown", "price": 200, "rarity": "rare", "description": "Royalty energy"},
+      {"id": "acc_halo", "name": "Halo", "price": 200, "rarity": "rare", "description": "Angelic coder"},
+      {"id": "acc_horns", "name": "Devil Horns", "price": 200, "rarity": "rare", "description": "Debugging with fury"},
+      {"id": "acc_wings", "name": "Angel Wings", "price": 300, "rarity": "epic", "description": "Elevated coding"},
+      {"id": "acc_lightning", "name": "Lightning Bolt", "price": 300, "rarity": "epic", "description": "Speed incarnate"},
+      {"id": "acc_fire_trail", "name": "Fire Trail", "price": 350, "rarity": "epic", "description": "Leave flames in your wake"},
+      {"id": "acc_galaxy_cloak", "name": "Galaxy Cloak", "price": 400, "rarity": "epic", "description": "Wrapped in the cosmos"},
+      {"id": "acc_diamond", "name": "Diamond Badge", "price": 500, "rarity": "legendary", "description": "Ultimate flex item"}
+    ]
+  },
+  "titles": {
+    "description": "Custom titles displayed in status (some earned, some purchased)",
+    "items": [
+      {"id": "title_explorer", "name": "Curious Explorer", "price": 0, "source": "default", "description": "Starting title"},
+      {"id": "title_speedster", "name": "Speed Demon", "price": 150, "source": "shop", "description": "For the fast learners"},
+      {"id": "title_perfectionist", "name": "The Perfectionist", "price": 150, "source": "shop", "description": "Zero errors tolerance"},
+      {"id": "title_creative", "name": "Creative Genius", "price": 150, "source": "shop", "description": "Unconventional solutions"},
+      {"id": "title_grinder", "name": "The Grinder", "price": 200, "source": "shop", "description": "Never stops learning"},
+      {"id": "title_legend", "name": "Living Legend", "price": 500, "source": "shop", "description": "Maximum respect"},
+      {"id": "title_graduate", "name": "Claude Code Graduate", "price": 0, "source": "earned", "requirement": "Complete Module 15", "description": "Finished the curriculum"},
+      {"id": "title_streak_master", "name": "Streak Master", "price": 0, "source": "earned", "requirement": "30-day streak", "description": "Consistency king"},
+      {"id": "title_collector", "name": "Collector", "price": 0, "source": "earned", "requirement": "Own 20 cosmetics", "description": "Gotta catch em all"},
+      {"id": "title_easter_hunter", "name": "Easter Egg Hunter", "price": 0, "source": "earned", "requirement": "Find 5 easter eggs", "description": "Discovers the hidden"}
+    ]
+  },
+  "glow_levels": {
+    "description": "Aura glow intensity based on total Aura earned (not spent)",
+    "levels": [
+      {"level": "none", "min_aura": 0, "display": "No glow", "emoji": ""},
+      {"level": "faint", "min_aura": 25, "display": "Faint shimmer", "emoji": "✨"},
+      {"level": "soft", "min_aura": 75, "display": "Soft glow", "emoji": "💫"},
+      {"level": "bright", "min_aura": 150, "display": "Bright aura", "emoji": "🌟"},
+      {"level": "radiant", "min_aura": 300, "display": "Radiant presence", "emoji": "⭐"},
+      {"level": "blinding", "min_aura": 500, "display": "Blinding light", "emoji": "🌞"},
+      {"level": "transcendent", "min_aura": 1000, "display": "Transcendent being", "emoji": "👑"}
+    ]
+  },
+  "reputation_ranks": {
+    "description": "Social reputation based on total Aura earned",
+    "ranks": [
+      {"rank": "Newcomer", "min_aura": 0},
+      {"rank": "Known", "min_aura": 50},
+      {"rank": "Respected", "min_aura": 150},
+      {"rank": "Famous", "min_aura": 300},
+      {"rank": "Legendary", "min_aura": 600},
+      {"rank": "Mythical", "min_aura": 1000},
+      {"rank": "Transcendent", "min_aura": 2000}
+    ]
+  }
+}
