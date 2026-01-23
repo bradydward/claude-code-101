@@ -213,8 +213,16 @@ class TerminalSimulator {
     this.promptDisplay = document.getElementById('prompt-display');
     this.instructionText = document.querySelector('.instruction-text');
     this.questTitle = document.querySelector('.quest-name');
+    this.questStepInfo = document.querySelector('.quest-step-info');
     this.questBar = document.querySelector('.quest-bar-fill');
     this.questXP = document.querySelector('.quest-xp');
+    this.hintBtn = document.getElementById('hint-btn');
+    this.skipBtn = document.getElementById('skip-btn');
+    this.welcomeOverlay = document.getElementById('welcome-overlay');
+    this.welcomeStartBtn = document.getElementById('welcome-start-btn');
+
+    this.wrongAttempts = 0;
+    this.autoContinueTimer = null;
 
     this.loadProgress();
     this.init();
@@ -222,15 +230,39 @@ class TerminalSimulator {
 
   init() {
     this.inputField.addEventListener('keydown', (e) => this.handleKeydown(e));
+    this.inputField.addEventListener('input', () => {
+      this.inputLine.classList.add('typing');
+    });
+
     this.terminalBody.addEventListener('click', () => this.inputField.focus());
     document.addEventListener('click', () => {
       if (!document.querySelector('.celebration-overlay.active') &&
-          !document.querySelector('.completion-screen.active')) {
+          !document.querySelector('.completion-screen.active') &&
+          !this.welcomeOverlay.classList.contains('active')) {
         this.inputField.focus();
       }
     });
 
-    this.showWelcome();
+    // Hint button
+    this.hintBtn.addEventListener('click', () => this.showHint());
+
+    // Skip button
+    this.skipBtn.addEventListener('click', () => this.skipStep());
+
+    // Welcome overlay
+    this.welcomeStartBtn.addEventListener('click', () => {
+      this.welcomeOverlay.classList.remove('active');
+      this.showWelcome();
+    });
+
+    // Check if first visit
+    const hasVisited = localStorage.getItem('cc101_terminal_visited');
+    if (hasVisited) {
+      this.welcomeOverlay.classList.remove('active');
+      this.showWelcome();
+    } else {
+      localStorage.setItem('cc101_terminal_visited', 'true');
+    }
   }
 
   loadProgress() {
@@ -326,6 +358,10 @@ class TerminalSimulator {
     const quest = QUESTS[this.currentQuest];
     const step = quest.steps[this.currentStep];
 
+    // Reset wrong attempts
+    this.wrongAttempts = 0;
+    this.hintBtn.disabled = true;
+
     // Update quest progress UI
     this.updateQuestUI(quest);
 
@@ -339,6 +375,7 @@ class TerminalSimulator {
     // Enable input
     this.isWaitingForInput = true;
     this.inputField.value = '';
+    this.inputLine.classList.remove('typing');
     this.inputField.focus();
 
     this.saveProgress();
@@ -348,6 +385,7 @@ class TerminalSimulator {
     const questProgress = document.querySelector('.quest-title');
     questProgress.textContent = `QUEST ${quest.id}/5`;
     this.questTitle.textContent = quest.name;
+    this.questStepInfo.textContent = `Step ${this.currentStep + 1} of ${quest.steps.length}`;
 
     const stepProgress = this.currentStep / quest.steps.length;
     this.questBar.style.width = (stepProgress * 100) + '%';
@@ -399,12 +437,24 @@ class TerminalSimulator {
     const quest = QUESTS[this.currentQuest];
     const step = quest.steps[this.currentStep];
 
-    // Check if input matches expected
-    const normalizedInput = input.toLowerCase().trim();
-    const normalizedExpected = step.expected.toLowerCase().trim();
-    const altMatches = step.altExpected.map(a => a.toLowerCase().trim());
+    // Check if input matches expected (very forgiving)
+    const normalizedInput = input.toLowerCase().trim().replace(/\s+/g, ' ');
+    const normalizedExpected = step.expected.toLowerCase().trim().replace(/\s+/g, ' ');
+    const altMatches = step.altExpected.map(a => a.toLowerCase().trim().replace(/\s+/g, ' '));
 
-    if (normalizedInput === normalizedExpected || altMatches.includes(normalizedInput)) {
+    // Also check without quotes for flexibility
+    const inputNoQuotes = normalizedInput.replace(/["']/g, '');
+    const expectedNoQuotes = normalizedExpected.replace(/["']/g, '');
+
+    if (normalizedInput === normalizedExpected ||
+        altMatches.includes(normalizedInput) ||
+        inputNoQuotes === expectedNoQuotes) {
+      // Mark the input line as correct
+      const allUserInputs = this.terminalBody.querySelectorAll('.user-input');
+      const lastLine = allUserInputs[allUserInputs.length - 1];
+      if (lastLine) {
+        lastLine.classList.add('correct');
+      }
       this.handleCorrectCommand(step);
     } else {
       this.handleWrongCommand(input, step);
@@ -448,13 +498,22 @@ class TerminalSimulator {
   }
 
   handleWrongCommand(input, step) {
-    // Friendly hint
-    const hints = [
-      `Hmm, not quite. Try typing: ${step.expected}`,
-      `Close! The command is: ${step.expected}`,
-      `Nice try! For this quest, type exactly: ${step.expected}`
-    ];
-    const hint = hints[Math.floor(Math.random() * hints.length)];
+    this.wrongAttempts++;
+
+    // Enable hint button after 1 wrong attempt
+    if (this.wrongAttempts >= 1) {
+      this.hintBtn.disabled = false;
+    }
+
+    // Friendly hint - more encouraging on multiple attempts
+    let hint;
+    if (this.wrongAttempts === 1) {
+      hint = `Not quite! Try typing: ${step.expected}`;
+    } else if (this.wrongAttempts === 2) {
+      hint = `Almost there! Copy this exactly: ${step.expected}`;
+    } else {
+      hint = `No worries! Just type: ${step.expected} (or click "Hint" for help)`;
+    }
 
     setTimeout(() => {
       this.addOutputLine(hint, 'explanation');
@@ -463,6 +522,42 @@ class TerminalSimulator {
       this.inputField.focus();
       this.scrollToBottom();
     }, 200);
+  }
+
+  showHint() {
+    if (this.currentQuest >= QUESTS.length) return;
+
+    const quest = QUESTS[this.currentQuest];
+    const step = quest.steps[this.currentStep];
+
+    // Show a helpful hint overlay
+    this.addOutputLine('', 'output');
+    this.addOutputLine(`💡 HINT: Type exactly as shown: ${step.expected}`, 'success');
+    this.addOutputLine('Then press Enter!', 'explanation');
+    this.addOutputLine('', 'output');
+    this.scrollToBottom();
+  }
+
+  skipStep() {
+    if (!confirm('Skip this step? You\'ll still learn it, just won\'t get the practice.')) {
+      return;
+    }
+
+    this.addOutputLine('', 'output');
+    this.addOutputLine('⏭️  Skipped! Moving on...', 'success');
+    this.addOutputLine('', 'output');
+
+    // Advance step
+    this.currentStep++;
+
+    const quest = QUESTS[this.currentQuest];
+    if (this.currentStep >= quest.steps.length) {
+      // Quest complete!
+      this.completeQuest(quest);
+    } else {
+      // Next step
+      setTimeout(() => this.startCurrentStep(), 800);
+    }
   }
 
   completeQuest(quest) {
@@ -490,6 +585,7 @@ class TerminalSimulator {
     const message = overlay.querySelector('.celebration-message');
     const xp = overlay.querySelector('.celebration-xp');
     const btn = overlay.querySelector('.celebration-btn');
+    const autoTimer = document.getElementById('auto-timer');
 
     title.textContent = `QUEST ${quest.id} COMPLETE!`;
     message.textContent = quest.name;
@@ -497,7 +593,21 @@ class TerminalSimulator {
 
     overlay.classList.add('active');
 
+    // Auto-continue countdown
+    let countdown = 5;
+    autoTimer.textContent = countdown;
+
+    this.autoContinueTimer = setInterval(() => {
+      countdown--;
+      autoTimer.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(this.autoContinueTimer);
+        handleContinue();
+      }
+    }, 1000);
+
     const handleContinue = () => {
+      clearInterval(this.autoContinueTimer);
       overlay.classList.remove('active');
       btn.removeEventListener('click', handleContinue);
 

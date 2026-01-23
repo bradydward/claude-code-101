@@ -13,13 +13,21 @@
 
   <!-- INSTRUCTION BANNER -->
   <div class="instruction-banner">
-    <span class="instruction-text">Loading...</span>
+    <div class="instruction-content">
+      <span class="instruction-icon">👉</span>
+      <span class="instruction-text">Loading...</span>
+    </div>
+    <div class="instruction-actions">
+      <button class="hint-btn" id="hint-btn" disabled>💡 Hint</button>
+      <button class="skip-btn" id="skip-btn">Skip ⏭️</button>
+    </div>
   </div>
 
   <!-- QUEST PROGRESS -->
   <div class="quest-progress">
     <div class="quest-title">QUEST 1/5</div>
     <div class="quest-name">The Blinking Cursor</div>
+    <div class="quest-step-info">Step 1 of 2</div>
     <div class="quest-bar-container">
       <div class="quest-bar-fill" style="width: 0%"></div>
     </div>
@@ -57,6 +65,24 @@
       <div class="celebration-message">-</div>
       <div class="celebration-xp">+0 XP</div>
       <button class="celebration-btn">Continue</button>
+      <div class="celebration-auto-continue">Auto-continuing in <span id="auto-timer">5</span>s...</div>
+    </div>
+  </div>
+
+  <!-- WELCOME OVERLAY -->
+  <div class="welcome-overlay active" id="welcome-overlay">
+    <div class="welcome-box">
+      <h2>Welcome to Terminal Training!</h2>
+      <p>This is a <strong>safe practice space</strong>. Nothing you type here can hurt your computer. It's all simulated!</p>
+      <ul class="welcome-tips">
+        <li>✅ Follow the instructions at the top</li>
+        <li>💡 Click "Hint" if you get stuck</li>
+        <li>⏭️ Click "Skip" if you want to move on</li>
+        <li>📊 Watch your progress in the top-right</li>
+        <li>⌨️ Just type and press Enter - it's that simple!</li>
+      </ul>
+      <p style="color: var(--accent); font-weight: 600;">Ready to conquer the terminal?</p>
+      <button class="welcome-start-btn" id="welcome-start-btn">Let's Go! 🚀</button>
     </div>
   </div>
 
