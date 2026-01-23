@@ -113,9 +113,17 @@ Each class has unique stat bonuses, a skill tree with 15 abilities, and 3 evolut
 - 12 accessories
 - Custom titles
 
+### Living Cheat Sheet
+- **MY_CHEAT_SHEET.md** - Auto-updates as you learn
+- Grows with every lesson you complete
+- Only shows what you've actually learned (no spoilers!)
+- Searchable reference for commands, shortcuts, and concepts
+- Copy-paste ready examples
+- **MY_CHEAT_SHEET.html** - Beautiful browser version with search
+
 ### Music/DJ System
-- Spotify integration for session focus
-- Event-triggered celebration tracks
+- Sound effects and celebration sequences
+- Event-triggered celebration sounds
 - Customizable sound packs
 
 ### Streaks
@@ -141,6 +149,7 @@ Each class has unique stat bonuses, a skill tree with 15 abilities, and 3 evolut
 | `/shop` | Buy cosmetics |
 | `/aura` | Aura details |
 | `/streak` | Streak progress |
+| `/cheat` | Open your living cheat sheet |
 | `/sandbox` | Free mode (Level 5+) |
 | `help` | All commands |
 | `I'm stuck` | Get simpler instructions |
@@ -159,7 +168,9 @@ Each class has unique stat bonuses, a skill tree with 15 abilities, and 3 evolut
 | `cosmetics.json` | Shop items and prices |
 | `music_config.json` | Music event triggers |
 | `seasons.json` | Seasonal events (Coming Soon) |
-| `quick-reference.md` | Cheat sheet for commands and concepts |
+| `MY_CHEAT_SHEET.md` | Your personal cheat sheet (auto-updates as you learn!) |
+| `MY_CHEAT_SHEET.html` | Beautiful browser version with search |
+| `quick-reference.md` | Static quick reference for commands |
 | `README.md` | This file |
 
 ---

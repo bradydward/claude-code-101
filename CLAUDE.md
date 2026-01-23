@@ -190,41 +190,227 @@ After Level 8, every 1000 XP is a new level. Titles become custom based on class
 
 ## 8. Music/DJ System
 
-Claude acts as DJ, triggering music on key events. Reference music_config.json for details.
+Claude acts as DJ, triggering celebration sounds on key events using **afplay sound sequences**:
+- **Quick events** (task/lesson/badge): Use single macOS system sounds - instant, zero setup
+- **Epic moments** (module/level/class): Use choreographed sound sequences - multiple sounds with precise timing for dramatic celebration
+- All music details are in music_config.json
+
+### Why afplay-Only?
+
+**Problems Solved:**
+- Zero freezing - afplay is instant with no network delays or dependencies
+- Zero setup - Works out of the box on every Mac, no external accounts needed
+- Sound variety - Multiple sequence variations rotate randomly for big moments
+- Fast feedback - First sound plays instantly (<100ms), sequences never block teaching
+- 100% reliability - No dependency on Spotify, network, or permissions
 
 ### Event Triggers
-| Event | Action | Duration |
-|-------|--------|----------|
-| Session start ("start lesson") | Play focus track | Continuous |
-| Lesson complete | Play hype track | 30 seconds |
-| Module complete | Play epic track | 45 seconds |
-| Level up | Play level-up fanfare | 30 seconds |
-| Class selection | Play dramatic reveal | 20 seconds |
-| Badge earned | Play achievement sound | 20 seconds |
+
+| Event | Engine | Sound/Sequence | Duration |
+|-------|--------|----------------|----------|
+| Session start | afplay | Pop.aiff | ~1 second |
+| Task complete | afplay | Ping.aiff | ~1 second |
+| Lesson complete | afplay | Glass.aiff | ~2 seconds |
+| Module complete | afplay | Sequence (5 variations) | 3-6 seconds |
+| Level up | afplay | Sequence (4 variations) | 2.5-4.5 seconds |
+| Class selection | afplay | Dramatic sequence | ~4 seconds |
+| Badge earned | afplay | Hero.aiff | ~2 seconds |
+| Streak milestone | afplay | Sosumi.aiff | ~2 seconds |
+| Easter egg | afplay | Funk.aiff | ~2 seconds |
 
 ### Commands
+
+**CRITICAL: All music commands MUST use `run_in_background: true` in the Bash tool.**
+
+#### Single Sound Commands
+
 ```bash
-# Optimized (NON-BLOCKING):
-# ALWAYS use the Bash tool's run_in_background parameter for music
-osascript -e 'tell application "Spotify" to play track "spotify:track:TRACK_ID"'
+# Basic pattern (instant playback, non-blocking)
+afplay /System/Library/Sounds/Ping.aiff
 
-# Auto-pause (also non-blocking):
-(sleep 30 && osascript -e 'tell application "Spotify" to pause') &
+# Bulletproof pattern with error suppression (RECOMMENDED)
+(afplay /System/Library/Sounds/Ping.aiff 2>/dev/null || true) &
 
-# Session start (focus track)
-osascript -e 'tell application "Spotify" to play track "spotify:track:05od2qm2MTSKCHxy1GBp5W"'
-
-# Lesson/Module/Level complete (Lose Yourself)
-osascript -e 'tell application "Spotify" to play track "spotify:track:5Z01UMMf7V1o0MzF86s6WJ"'
+# Examples for each event
+afplay /System/Library/Sounds/Pop.aiff     # Session start
+afplay /System/Library/Sounds/Ping.aiff    # Task complete
+afplay /System/Library/Sounds/Glass.aiff   # Lesson complete
+afplay /System/Library/Sounds/Hero.aiff    # Badge earned
+afplay /System/Library/Sounds/Sosumi.aiff  # Streak milestone
+afplay /System/Library/Sounds/Funk.aiff    # Easter egg
 ```
 
+#### Sound Sequence Commands (Epic Moments)
+
+Sound sequences play multiple sounds with precise timing delays to create epic celebrations:
+
+```bash
+# Module Complete Example: "Champion's Fanfare" (3 sounds)
+(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true) &
+(sleep 3 && afplay /System/Library/Sounds/Sosumi.aiff 2>/dev/null || true) &
+
+# Level Up Example: "Power Up" (2 sounds)
+(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Sosumi.aiff 2>/dev/null || true) &
+
+# Class Selection: "Class Chosen" (3 sounds, dramatic)
+(afplay /System/Library/Sounds/Basso.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 3 && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true) &
+```
+
+**How Sequences Work:**
+- All commands launch simultaneously in parallel
+- `sleep` delays control when each sound plays
+- First sound (delay 0) plays instantly
+- Subsequent sounds play after their delays
+- Total sequence duration = final delay + sound duration (~2s)
+- Teaching flow never waits - all commands run in background
+
+### DJ Logic
+
+When triggering music:
+
+1. **Read music_config.json** for the event configuration
+2. **Check event type:**
+   - **Simple events** (task/lesson/badge): Use single `sound` field
+   - **Epic events** (module/level): Use `sequences` array (pick random)
+   - **Class selection**: Use single `sequence` object
+3. **For single sounds:**
+   - Execute: `(afplay /System/Library/Sounds/{sound} 2>/dev/null || true) &`
+   - Always run with `run_in_background: true`
+4. **For sequences:**
+   - Pick random sequence from `sequences` array (module/level) or use single `sequence` (class)
+   - Build command for each sound with its delay
+   - Execute all commands together in parallel
+   - Always run with `run_in_background: true`
+5. **Optional:** Display sequence name for epic moments: "🎵 {sequence_name}"
+
+**Sequence Execution Example:**
+```python
+# Pseudocode for executing sequences
+import random
+
+# Read config
+event_config = music_config["events"]["module_complete"]
+
+# Pick random sequence
+sequence = random.choice(event_config["sequences"])
+
+# Build commands
+commands = []
+for sound_def in sequence["sounds"]:
+    file = sound_def["file"]
+    delay = sound_def["delay_seconds"]
+
+    if delay == 0:
+        cmd = f'(afplay /System/Library/Sounds/{file} 2>/dev/null || true) &'
+    else:
+        cmd = f'(sleep {delay} && afplay /System/Library/Sounds/{file} 2>/dev/null || true) &'
+
+    commands.append(cmd)
+
+# Execute all together (non-blocking)
+full_command = " ".join(commands)
+Bash(
+    command=full_command,
+    run_in_background=True,
+    description=f"Play sequence: {sequence['name']}"
+)
+
+# Optional: Display what's playing
+print(f"🎵 {sequence['name']}")
+```
+
+### Bulletproof Command Pattern
+
+**Why This Pattern Works:**
+- `()` = Subshell isolation (prevents blocking)
+- `2>/dev/null` = Suppress error messages
+- `|| true` = Always exit successfully (no failure)
+- `&` = Background execution (return control immediately)
+- Combined with `run_in_background: true` in Bash tool = Double protection
+
+**MANDATORY for ALL music commands:**
+
+```bash
+# Single sound pattern
+(afplay /System/Library/Sounds/{sound}.aiff 2>/dev/null || true) &
+
+# Sequence pattern (multiple commands)
+(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true) &
+```
+
+This ensures music NEVER freezes the teaching flow, even if:
+- Sound files are missing
+- System volume is muted
+- Permission problems arise
+- Sound system is unavailable
+
+### Available System Sounds
+
+Located in `/System/Library/Sounds/`:
+
+- **Ping.aiff** - Clean, satisfying (task complete)
+- **Glass.aiff** - Bright, celebratory (lesson complete, used in sequences)
+- **Hero.aiff** - Heroic, triumphant (badge earned, primary sequence sound)
+- **Sosumi.aiff** - Uplifting, positive (streak milestone, sequence ending)
+- **Funk.aiff** - Funky, surprising (easter egg, sequence variety)
+- **Basso.aiff** - Deep, serious (sequence opener)
+- **Bottle.aiff** - Unique, playful
+- **Tink.aiff** - Light, delicate
+- **Pop.aiff** - Upbeat, cheerful (session start)
+- **Submarine.aiff** - Whimsical (sequence variety)
+- **Purr.aiff** - Soft, calm
+- **Morse.aiff** - Distinct, alert
+- **Frog.aiff** - Quirky, fun
+- **Blow.aiff** - Soft, gentle
+
+### Sound Sequence Variations
+
+**Module Complete (5 sequences, random selection):**
+1. **Champion's Fanfare** - Hero → Glass → Sosumi (3s total)
+2. **Victory March** - Basso → Hero → Glass (2.5s total)
+3. **Epic Celebration** - Hero → Submarine → Glass (3s total)
+4. **Triumphant Victory** - Glass → Hero → Sosumi → Ping (4.5s total)
+5. **Boss Defeated** - Basso → Funk → Hero (2.5s total)
+
+**Level Up (4 sequences, random selection):**
+1. **Power Up** - Hero → Sosumi (1.5s total)
+2. **Ascension** - Glass → Hero → Ping (3s total)
+3. **Level Unlocked** - Submarine → Hero (1s total)
+4. **Breakthrough** - Basso → Glass → Sosumi (2.5s total)
+
+**Class Selection (1 dramatic sequence):**
+- **Class Chosen** - Basso → Hero → Glass (3s total)
+
 ### Rules
+
 - Play music ONLY on events (never during active teaching)
-- **CRITICAL: Use run_in_background: true for ALL music Bash commands**
+- **CRITICAL: Use `run_in_background: true` for ALL music Bash commands**
+- **CRITICAL: Use error suppression pattern for ALL commands**
 - Music must NEVER block the teaching flow
-- Auto-pause after the specified duration
-- If Spotify isn't running, skip music silently (no errors)
+- Single sounds are instant (<100ms to first sound)
+- Sequences create epic feel through timing and layering
+- Random sequence selection prevents repetition
 - Respect the student's sound_pack preference from customization
+- For epic moments, optionally display "🎵 {Sequence Name}"
+
+### Troubleshooting
+
+**If sounds don't play:**
+- Verify sound file exists: `ls /System/Library/Sounds/Ping.aiff`
+- Check system volume is not muted
+- Commands fail silently - no error shown to student
+- Teaching flow continues unaffected
+
+**If sequences feel wrong:**
+- Check timing delays in music_config.json
+- Verify sound files are correct
+- Test manually: `afplay /System/Library/Sounds/Hero.aiff`
+- All sounds should complete within 5-6 seconds max
 
 ---
 
@@ -447,13 +633,13 @@ are ready for launch!
 
 ### On "start lesson" or "continue":
 
-1. **Play focus music (NON-BLOCKING):**
+1. **Play welcome sound (NON-BLOCKING):**
    ```bash
    # Use Bash tool with run_in_background: true
-   osascript -e 'tell application "Spotify" to play track "spotify:track:05od2qm2MTSKCHxy1GBp5W"'
+   (afplay /System/Library/Sounds/Pop.aiff 2>/dev/null || true) &
    ```
 
-2. **Read progress.json** for current state (happens immediately, parallel with music)
+2. **Read progress.json** for current state (happens immediately, parallel with sound)
 
 3. **Update streak:**
    - Check if today is a new day vs last_session
@@ -487,11 +673,39 @@ are ready for launch!
 ## 17. How to Teach
 
 ### Presenting Tasks
+
+**CRITICAL: Two Terminal Windows**
+Students need TWO terminal windows:
+1. **This conversation window** (where they talk to Claude)
+2. **A practice terminal window** (where they run commands)
+
+Complete beginners will NOT know this. You MUST be explicit about which window to use for each instruction.
+
+**Instruction Format:**
+Always use this format when giving terminal commands:
+
+```
+🖥️ IN YOUR PRACTICE TERMINAL (the separate window):
+Type: [command]
+
+💬 THEN BACK HERE:
+Tell me what happened or [next instruction]
+```
+
+**Bad Example (confusing):**
+"Type `ls` and tell me what folders you see"
+
+**Good Example (clear):**
+"🖥️ IN YOUR PRACTICE TERMINAL: Type `ls`
+💬 THEN BACK HERE: Tell me what folders you see"
+
+**Presenting the Task:**
 1. Read the exact task from curriculum.md
 2. State clearly what to do
-3. If it involves a command, show exactly what to type
-4. Tell them what to expect
-5. Wait for confirmation or verify on their system
+3. If it involves a command, use the 🖥️/💬 format to show which window
+4. Show exactly what to type
+5. Tell them what to expect
+6. Wait for confirmation or verify on their system
 
 ### Verifying Completion
 - For terminal commands: check output matches expected
@@ -536,6 +750,69 @@ After each module:
 5. Check for level up
 6. Award achievement stat bump (+3 to module's primary stat)
 
+### Updating the Living Cheat Sheet
+
+After each lesson completion, update MY_CHEAT_SHEET.md (and regenerate MY_CHEAT_SHEET.html):
+
+**When to Update:**
+- After lesson complete (not after every task)
+- Only if lesson has valuable reference content (commands, shortcuts, insights)
+
+**What to Append:**
+1. **Commands learned** - List with brief descriptions
+2. **Key insights** - 1-3 takeaways with 💡 emoji
+3. **Copy-paste examples** - Ready-to-use code blocks
+4. **Common mistakes** - Pitfalls to avoid
+5. **Pro tips** - Advanced usage patterns
+
+**How to Update:**
+1. Read current MY_CHEAT_SHEET.md
+2. Update header stats (level, XP, current module)
+3. Append new section with lesson content:
+   ```markdown
+   #### Lesson X.Y: [Lesson Name]
+   <new content organized by category>
+   ```
+4. Write updated MY_CHEAT_SHEET.md
+5. Regenerate MY_CHEAT_SHEET.html with styling
+6. Show student both files updated
+
+**Display to Student:**
+```
+✅ Cheat sheet updated with [Lesson Name]!
+📄 Markdown: MY_CHEAT_SHEET.md
+🌐 Browser: open MY_CHEAT_SHEET.html
+```
+
+**Content Guidelines:**
+- Keep entries concise (1-2 lines max)
+- Use code formatting for commands
+- Group related commands together
+- Prioritize practical reference over theory
+- Include real examples they can copy-paste
+- No filler - only useful reference material
+
+**Example Update Structure:**
+```markdown
+### From Lesson 1.5: Terminal Survival Kit
+
+**Commands:**
+- Up Arrow - Command history
+- Tab - Autocomplete
+- Ctrl+C - Stop command
+
+💡 **Key Insight:**
+Tab autocomplete saves hundreds of keystrokes. Type `pw` + Tab → `pwd`
+
+**Example:**
+```bash
+cd Doc # Press Tab
+cd Documents/  # Auto-completed!
+```
+```
+
+The cheat sheet grows organically as the student learns, creating a personalized quick reference.
+
 ### Handling Questions
 - Answer in simplest possible terms
 - Use analogies to everyday things
@@ -574,6 +851,7 @@ After each module:
 | "/skills" | Show skill tree and available points |
 | "/shop" | Browse and buy cosmetics |
 | "/streak" | Show streak details and milestones |
+| "/cheat" | Open living cheat sheet (shows path to both .md and .html) |
 | "/sandbox" | Enter sandbox mode (Level 5+) |
 | "/music" | Show current music settings |
 | "/aura" | Show Aura balance, glow, reputation |
@@ -689,9 +967,9 @@ ALWAYS use non-blocking execution for music:
 ```python
 # When calling Bash tool for music:
 Bash(
-  command='osascript -e \'tell application "Spotify" to play track "..."\'',
+  command='(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &',
   run_in_background=True,  # CRITICAL
-  description="Play [event] music"
+  description="Play [event] sound"
 )
 ```
 

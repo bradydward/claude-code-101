@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Claude Code 101 Cheat Sheet</title>
+    <style>
+        :root {
+            --bg-dark: #1e1e1e;
+            --bg-code: #2d2d2d;
+            --bg-highlight: #3a3a3a;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --accent: #4fc3f7;
+            --success: #81c784;
+            --warning: #ffb74d;
+            --error: #e57373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: var(--success);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 4px solid var(--success);
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: var(--warning);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: var(--text-main);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        code {
+            background: var(--bg-code);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--bg-code);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--bg-code);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--bg-highlight);
+        }
+
+        th {
+            background: var(--bg-highlight);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--bg-highlight);
+        }
+
+        .header-stats {
+            background: var(--bg-code);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .search-box {
+            position: sticky;
+            top: 0;
+            background: var(--bg-dark);
+            padding: 20px 0;
+            margin-bottom: 20px;
+            z-index: 100;
+            border-bottom: 2px solid var(--bg-highlight);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-code);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--success);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-dim);
+        }
+
+        mark {
+            background: var(--warning);
+            color: var(--bg-dark);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .insight {
+            background: var(--bg-code);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--bg-highlight);
+            margin: 30px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--success);
+            color: var(--bg-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .progress-item {
+            padding: 10px;
+            margin: 10px 0;
+            background: var(--bg-code);
+            border-radius: 5px;
+            border-left: 3px solid var(--success);
+        }
+
+        .progress-item.current {
+            border-left-color: var(--warning);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .scroll-to-top:hover {
+            background: var(--success);
+            transform: translateY(-5px);
+        }
+
+        .scroll-to-top.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <input type="text" id="search" placeholder="🔍 Search commands, shortcuts, or concepts..." onkeyup="searchCheatSheet()">
+    </div>
+
+    <div id="content">
+        <h1>My Claude Code 101 Cheat Sheet</h1>
+
+        <div class="header-stats">
+            <strong>Last Updated:</strong> 2026-01-23 | <strong>Level:</strong> 4 (Code Companion) | <strong>Current Module:</strong> 2<br>
+            <strong>XP:</strong> 620 / 1000 | <strong>Aura:</strong> 35 ✨ (faint glow) | <strong>Streak:</strong> 1 day 🔥
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Quick Commands I've Learned</h2>
+
+            <h3>Terminal Navigation</h3>
+            <ul>
+                <li><code>pwd</code> - Show current directory ("where am I?")</li>
+                <li><code>ls</code> - List files and folders in current directory</li>
+                <li><code>cd &lt;folder&gt;</code> - Go to folder (change directory)</li>
+                <li><code>cd ..</code> - Go up one level (to parent folder)</li>
+                <li><code>cd ~</code> - Go to home directory</li>
+                <li><code>cd ~/path/to/folder</code> - Go directly to specific path from anywhere</li>
+            </ul>
+
+            <h3>Terminal Shortcuts</h3>
+            <ul>
+                <li>⬆️ Up Arrow - Scroll through command history</li>
+                <li>Tab - Autocomplete commands and filenames</li>
+                <li>Ctrl+C - STOP running command (NOT copy!)</li>
+                <li>Ctrl+L or <code>clear</code> - Clean terminal screen</li>
+                <li>Cmd+C / Cmd+V - Copy/paste in terminal (Mac)</li>
+            </ul>
+
+            <h3>File & Folder Management</h3>
+            <ul>
+                <li><code>mkdir &lt;name&gt;</code> - Create new folder</li>
+                <li><code>mkdir "name with spaces"</code> - Create folder with spaces in name (needs quotes!)</li>
+                <li><code>touch &lt;file&gt;</code> - Create empty file</li>
+                <li><code>echo "text"</code> - Print text to terminal (test command)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Key Insights from Module 1</h2>
+
+            <h3>Module 1: Getting Into the Terminal</h3>
+            <p><strong>Completed: 2026-01-23</strong> | <span class="badge">Terminal Explorer 🏆</span></p>
+
+            <h4>Lesson 1.1: Opening Your Terminal</h4>
+            <div class="insight">
+                💡 <strong>The Terminal is Just a Way to Talk to Your Computer</strong><br>
+                Terminal = typing interface to control your computer. Every button you click could be a command you type. <code>echo "hello"</code> - your first command that makes computer respond.
+            </div>
+
+            <h4>Lesson 1.2: Understanding Where You Are</h4>
+            <div class="insight">
+                💡 <strong>You're Always "In" a Folder</strong><br>
+                <code>pwd</code> shows your current location (path). Path looks like <code>/Users/brady/Desktop</code> - a trail of folders. <code>ls</code> shows what's in your current location. Terminal has a "working directory" - where you are right now.
+            </div>
+
+            <h4>Lesson 1.3: Moving Around</h4>
+            <div class="insight">
+                💡 <strong><code>cd</code> is Like Clicking Folders, But With Typing</strong><br>
+                <code>cd Desktop</code> = double-click Desktop folder. <code>cd ..</code> = click "back" button (up one level). The <code>..</code> means "parent folder" in every OS. Always use <code>pwd</code> after <code>cd</code> to confirm where you ended up.
+            </div>
+
+            <h4>Lesson 1.4: Creating Your Project Folder</h4>
+            <div class="insight">
+                💡 <strong>Spaces in Names Need Quotes</strong><br>
+                <code>mkdir projects</code> - no spaces, no quotes needed. <code>mkdir "Claude Code 101"</code> - has spaces, MUST use quotes. Same rule applies to <code>cd</code> - if folder name has spaces, wrap in quotes. Your project home base: <code>~/Developer/projects/"Claude Code 101"</code>
+            </div>
+
+            <h4>Lesson 1.5: Terminal Survival Kit</h4>
+            <div class="insight">
+                💡 <strong>These Shortcuts Will Save You Hours</strong><br>
+                Up Arrow = don't retype, just scroll through history. Tab = autocomplete saves typing (type <code>pw</code> + Tab → <code>pwd</code>). Ctrl+C = emergency stop button (not copy!). <code>clear</code> or Ctrl+L = clean screen when messy.
+            </div>
+
+            <div class="insight">
+                💡 <strong>Terminal History Only Works in THAT Terminal Window</strong><br>
+                New terminal = new session = no history yet. Each terminal window has its own command history. Up Arrow won't show anything until you run commands first.
+            </div>
+
+            <div class="insight">
+                💡 <strong>Biggest Beginner Mistake: Ctrl+C vs Cmd+C</strong><br>
+                In terminal: Ctrl+C = STOP command (kill process). Everywhere else on Mac: Cmd+C = copy. This trips EVERYONE up at first!
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Copy-Paste Examples</h2>
+
+            <h3>Navigate to Project Folder</h3>
+            <pre><code>cd ~/Developer/projects/"Claude Code 101"
+pwd  # Confirm you're there</code></pre>
+
+            <h3>Create and Navigate Folders</h3>
+            <pre><code>mkdir new-project
+cd new-project
+pwd  # Should show new-project in path</code></pre>
+
+            <h3>Create Nested Folders</h3>
+            <pre><code>mkdir parent
+cd parent
+mkdir child
+cd child
+pwd  # Shows full path to child folder</code></pre>
+
+            <h3>Go Back to Home</h3>
+            <pre><code>cd ~
+pwd  # Should show /Users/brady (your home)</code></pre>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Terminal Survival Quick Reference</h2>
+            <p>From Lesson 1.5 - The shortcuts that matter most:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shortcut</th>
+                        <th>What It Does</th>
+                        <th>When to Use It</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>⬆️ Up Arrow</td>
+                        <td>Show previous command</td>
+                        <td>Rerun same command without retyping</td>
+                    </tr>
+                    <tr>
+                        <td>⬇️ Down Arrow</td>
+                        <td>Scroll forward in history</td>
+                        <td>After going up, go back down</td>
+                    </tr>
+                    <tr>
+                        <td>Tab</td>
+                        <td>Autocomplete</td>
+                        <td>Type first few letters, let terminal finish</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl+C</td>
+                        <td>Stop running command</td>
+                        <td>When something's stuck or you changed your mind</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl+L</td>
+                        <td>Quick clear</td>
+                        <td>Clean screen fast (same as <code>clear</code> command)</td>
+                    </tr>
+                    <tr>
+                        <td>Cmd+C</td>
+                        <td>Copy text</td>
+                        <td>Select text in terminal, then Cmd+C</td>
+                    </tr>
+                    <tr>
+                        <td>Cmd+V</td>
+                        <td>Paste text</td>
+                        <td>Paste into terminal (also Right-click → Paste)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Pro Tip:</strong> Tab autocomplete works on commands AND filenames. Start typing <code>cd Doc</code> then Tab → <code>cd Documents/</code></p>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Common Mistakes I've Made</h2>
+            <ol>
+                <li><strong>Pressing Ctrl+C to copy</strong> - Stopped my command instead! Use Cmd+C in terminal.</li>
+                <li><strong>Forgetting quotes for folder names with spaces</strong> - <code>cd Claude Code 101</code> fails, need <code>cd "Claude Code 101"</code></li>
+                <li><strong>Pressing Up Arrow in new terminal</strong> - No history yet! Need to run commands first in that window.</li>
+                <li><strong>Getting lost after multiple <code>cd</code> commands</strong> - Solution: use <code>pwd</code> frequently to check location</li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>My Progress Tracker</h2>
+
+            <div class="progress-item">
+                ✅ Module 1: Getting Into the Terminal <span class="badge">Terminal Explorer 🏆</span> - Completed 2026-01-23
+            </div>
+            <div class="progress-item current">
+                ⏳ Module 2: Installing Claude Code (in progress...)
+            </div>
+
+            <h3>Current Stats</h3>
+            <ul>
+                <li>Level: 4 (Code Companion)</li>
+                <li>Total XP: 620 / 1000 to Level 5</li>
+                <li>Aura: 35 ✨ (faint glow)</li>
+                <li>Streak: 1 day 🔥</li>
+            </ul>
+
+            <h3>Stats Growth</h3>
+            <ul>
+                <li>⚡ Speed: 31 (grew from Module 1!)</li>
+                <li>🎯 Accuracy: 5</li>
+                <li>💡 Creativity: 5</li>
+                <li>⚙️ Efficiency: 5</li>
+                <li>✨ Aura: 35</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Questions I Had (And Their Answers)</h2>
+
+            <p><strong>Q: What's the difference between terminal and Finder?</strong><br>
+            A: Finder = visual interface (click folders), Terminal = typing interface (type commands). Same computer, different ways to control it.</p>
+
+            <p><strong>Q: Can I break my computer with terminal commands?</strong><br>
+            A: Not easily! Most commands just move files or show info. Dangerous commands (like <code>rm -rf</code>) require special syntax you won't type by accident.</p>
+
+            <p><strong>Q: Why use terminal instead of clicking?</strong><br>
+            A: Some things (like Claude Code!) only work in terminal. Plus it's faster once you learn it - no hunting for buttons.</p>
+
+            <p><strong>Q: What if I get stuck in a weird screen?</strong><br>
+            A: Press <code>q</code> to quit most views, or Ctrl+C to stop most commands. When in doubt, close terminal and open fresh one.</p>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Next Up</h2>
+            <p>📚 Module 2: Installing Claude Code</p>
+            <ul>
+                <li>Getting API key from Anthropic</li>
+                <li>Installing <code>claude</code> command with npm</li>
+                <li>First launch and configuration</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <p style="text-align: center; color: var(--text-dim); margin-top: 40px;">
+            <em>This cheat sheet grows with you as you complete lessons. Keep it open for quick reference!</em><br>
+            <em>Use Cmd+F (or the search box above) to find any command or concept.</em>
+        </p>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Search functionality
+        function searchCheatSheet() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const content = document.getElementById('content');
+            const originalHTML = content.getAttribute('data-original') || content.innerHTML;
+
+            if (!content.getAttribute('data-original')) {
+                content.setAttribute('data-original', originalHTML);
+            }
+
+            if (!searchTerm) {
+                content.innerHTML = originalHTML;
+                return;
+            }
+
+            // Remove existing highlights
+            let html = originalHTML.replace(/<mark>/g, '').replace(/<\/mark>/g, '');
+
+            // Highlight search terms (avoid highlighting in tags)
+            const regex = new RegExp(`(>[^<]*)(${searchTerm})([^<]*<)`, 'gi');
+            html = html.replace(regex, (match, before, term, after) => {
+                return before + '<mark>' + term + '</mark>' + after;
+            });
+
+            content.innerHTML = html;
+        }
+
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
