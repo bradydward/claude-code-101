@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 101 - Terminal Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+
+  <!-- INSTRUCTION BANNER -->
+  <div class="instruction-banner">
+    <span class="instruction-text">Loading...</span>
+  </div>
+
+  <!-- QUEST PROGRESS -->
+  <div class="quest-progress">
+    <div class="quest-title">QUEST 1/5</div>
+    <div class="quest-name">The Blinking Cursor</div>
+    <div class="quest-bar-container">
+      <div class="quest-bar-fill" style="width: 0%"></div>
+    </div>
+    <div class="quest-xp">0 XP</div>
+  </div>
+
+  <!-- TERMINAL WINDOW -->
+  <div class="terminal-container">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <div class="titlebar-buttons">
+          <span class="titlebar-btn red"></span>
+          <span class="titlebar-btn yellow"></span>
+          <span class="titlebar-btn green"></span>
+        </div>
+        <span class="titlebar-text">Terminal &mdash; bash</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <!-- Output lines rendered here -->
+        <div class="input-line">
+          <span class="prompt-text" id="prompt-display">user@mac ~ % </span>
+          <input type="text" class="input-field" id="terminal-input" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+          <span class="cursor-blink"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELEBRATION OVERLAY -->
+  <div class="celebration-overlay" id="celebration-overlay">
+    <div class="celebration-backdrop"></div>
+    <div class="celebration-content">
+      <div class="celebration-emoji">&#127881;</div>
+      <div class="celebration-title">QUEST COMPLETE!</div>
+      <div class="celebration-message">-</div>
+      <div class="celebration-xp">+0 XP</div>
+      <button class="celebration-btn">Continue</button>
+    </div>
+  </div>
+
+  <!-- COMPLETION SCREEN -->
+  <div class="completion-screen" id="completion-screen">
+    <div class="completion-box">
+      <div class="celebration-emoji" style="font-size: 3rem; margin-bottom: 1rem;">&#127942;</div>
+      <h2 class="completion-title">YOU COMPLETED THE PORTAL!</h2>
+
+      <div class="completion-stats">
+        <div class="completion-stat">
+          <div class="completion-stat-label">Total XP</div>
+          <div class="completion-stat-value">120</div>
+        </div>
+        <div class="completion-stat">
+          <div class="completion-stat-label">Quests</div>
+          <div class="completion-stat-value">5/5</div>
+        </div>
+      </div>
+
+      <div class="completion-skills">
+        <h3>You now know:</h3>
+        <ul>
+          <li><strong>echo</strong> &mdash; talk to the computer</li>
+          <li><strong>pwd</strong> &mdash; where am I?</li>
+          <li><strong>ls</strong> &mdash; what's here?</li>
+          <li><strong>cd</strong> &mdash; move around</li>
+          <li><strong>mkdir</strong> &mdash; create folders</li>
+          <li><strong>claude</strong> &mdash; launch your AI companion</li>
+        </ul>
+      </div>
+
+      <div class="completion-next">
+        <h3>Ready to do it for real?</h3>
+        <p style="color: #9e9e9e; margin-bottom: 1.5rem; font-size: 0.9rem;">Follow these steps to set up Claude Code on your computer:</p>
+
+        <div class="setup-steps">
+          <div class="setup-step">
+            <div class="setup-step-num">1</div>
+            <div class="setup-step-content">
+              <p>Install Homebrew (Mac package manager):</p>
+              <div class="code-block">
+                <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-step">
+            <div class="setup-step-num">2</div>
+            <div class="setup-step-content">
+              <p>Install Node.js:</p>
+              <div class="code-block">
+                <code>brew install node</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-step">
+            <div class="setup-step-num">3</div>
+            <div class="setup-step-content">
+              <p>Install Claude Code:</p>
+              <div class="code-block">
+                <code>npm install -g @anthropic-ai/claude-code</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="setup-step">
+            <div class="setup-step-num">4</div>
+            <div class="setup-step-content">
+              <p>Get your API key from <a href="https://console.anthropic.com" target="_blank" style="color: #4fc3f7;">console.anthropic.com</a></p>
+            </div>
+          </div>
+
+          <div class="setup-step">
+            <div class="setup-step-num">5</div>
+            <div class="setup-step-content">
+              <p>Clone the project and start your adventure:</p>
+              <div class="code-block">
+                <code>git clone https://github.com/your-repo/claude-code-101.git && cd claude-code-101 && claude</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #616161;">Then type "start lesson" to begin!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-options">
+          <a href="#" class="download-btn" onclick="alert('Repository URL coming soon!'); return false;">
+            &#128229; Clone with Git
+          </a>
+          <a href="#" class="download-btn secondary" onclick="alert('ZIP download coming soon!'); return false;">
+            &#128230; Download ZIP
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/terminal-sim.js"></script>
+</body>
+</html>

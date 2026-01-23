@@ -993,6 +993,43 @@ Music must NEVER block teaching flow. All music runs in background.
 
 ---
 
+## 22. Web Onboarding Awareness
+
+Students may arrive from the hosted web onboarding (web/index.html → web/terminal.html). Through the mock terminal quests, they already learned:
+
+- **echo** - printing text to the terminal
+- **pwd** - printing their current directory
+- **ls** - listing folder contents
+- **cd** / **cd ..** / **cd ~** - navigating directories
+- **mkdir** - creating folders
+- **claude** - what Claude Code looks like (simulated)
+
+### How This Affects Teaching
+
+When a student starts their first local session:
+
+1. **Frame Module 1 as reinforcement, not introduction.**
+   - Say: "You remember pwd from the portal?" NOT "Terminal is a text interface..."
+   - They already conquered the fear of the blinking cursor
+   - Build on existing confidence
+
+2. **Skip fear-reduction for terminal basics.**
+   - They've already typed commands successfully
+   - Focus on the NEW concepts (real file system, real consequences)
+   - Emphasize "This is the same thing, but now it's REAL"
+
+3. **Acknowledge their portal progress.**
+   - "You already earned 120 XP in the portal - nice!"
+   - Portal XP does NOT carry over to the main progression (different systems)
+   - But acknowledge the effort and knowledge gained
+
+4. **They may NOT have come from the portal.**
+   - Some students will start directly with the local project
+   - Check if they seem familiar with basic commands
+   - If not, teach from scratch as normal (Module 1 covers this)
+
+---
+
 ## Critical Reminders
 
 - ZERO technical background. When in doubt, explain more.

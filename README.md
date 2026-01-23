@@ -24,23 +24,26 @@ The twist: it's a game. You earn XP, level up, unlock skills, buy cosmetics, and
 
 ## How to Start
 
-### Step 1: Open Terminal
-Press `Cmd + Space`, type "Terminal", press Enter.
+### Option A: Web Onboarding (Recommended for Beginners)
 
-### Step 2: Navigate to This Folder
-```bash
-cd ~/Developer/projects/"Claude Code 101"
-```
+Visit the website and complete the mock terminal quests first. No installation needed - practice basic commands right in your browser, then follow the download instructions to set up locally.
 
-### Step 3: Start Claude Code
-```bash
-claude
-```
+### Option B: Jump Straight In
 
-### Step 4: Begin Your Journey
-Type `start lesson` and follow along.
+Already comfortable with a terminal? Go direct:
 
-> Don't have Claude Code installed yet? No problem - Module 1 teaches you the terminal, Module 2 walks you through installation step by step.
+1. Open Terminal (`Cmd + Space`, type "Terminal", press Enter)
+2. Navigate here:
+   ```bash
+   cd ~/Developer/projects/"Claude Code 101"
+   ```
+3. Launch Claude Code:
+   ```bash
+   claude
+   ```
+4. Type `start lesson` and follow along.
+
+> Don't have Claude Code installed yet? No problem - Module 2 walks you through installation step by step.
 
 ---
 
@@ -171,6 +174,7 @@ Each class has unique stat bonuses, a skill tree with 15 abilities, and 3 evolut
 | `MY_CHEAT_SHEET.md` | Your personal cheat sheet (auto-updates as you learn!) |
 | `MY_CHEAT_SHEET.html` | Beautiful browser version with search |
 | `quick-reference.md` | Static quick reference for commands |
+| `web/` | Landing page + mock terminal onboarding site |
 | `README.md` | This file |
 
 ---

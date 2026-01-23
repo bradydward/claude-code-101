@@ -1,0 +1,11 @@
+{
+  "name": "claude-code-101-web",
+  "version": "1.0.0",
+  "description": "Landing page and mock terminal onboarding for Claude Code 101",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": ["claude-code", "learning", "rpg", "terminal"],
+  "license": "MIT"
+}
