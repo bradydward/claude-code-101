@@ -65,9 +65,9 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — One-click idempotent installer (Xcode CLT, Homebrew, Node, Claude CLI)
-- [ ] 02-02-PLAN.md — First-session flow (name XP, orientation, first-win tutorial)
-- [ ] 02-03-PLAN.md — Progressive disclosure and web portal acknowledgment
+- [x] 02-01-PLAN.md — One-click idempotent installer (Xcode CLT, Homebrew, Node, Claude CLI)
+- [x] 02-02-PLAN.md — First-session flow (name XP, orientation, first-win tutorial)
+- [x] 02-03-PLAN.md — Progressive disclosure and web portal acknowledgment
 
 **Requirements:**
 - ONBD-01: One-click installer reduces manual steps
@@ -160,13 +160,13 @@ Plans:
 | Phase | Status | Start Date | End Date | Requirements Completed |
 |-------|--------|------------|----------|------------------------|
 | 1 - Core Experience Polish | Complete | 2026-01-23 | 2026-01-23 | 18/18 |
-| 2 - Onboarding & Flow | Planned | -- | -- | 0/5 |
+| 2 - Onboarding & Flow | Complete | 2026-01-24 | 2026-01-24 | 5/5 |
 | 3 - Music System Upgrade | Pending | -- | -- | 0/6 |
 | 4 - Test-Out System | Pending | -- | -- | 0/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
 
-**Overall Progress:** 18/42 requirements complete (43%)
+**Overall Progress:** 23/42 requirements complete (55%)
 
 ---
 
-*Last updated: 2026-01-23*
+*Last updated: 2026-01-24*

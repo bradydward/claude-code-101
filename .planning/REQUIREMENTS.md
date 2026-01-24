@@ -25,11 +25,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Onboarding Flow
 
-- [ ] **ONBD-01**: One-click installer reduces manual steps (brew, node, npm, claude check/install)
-- [ ] **ONBD-02**: First real Claude conversation happens within 5 minutes of install
-- [ ] **ONBD-03**: Web portal progress acknowledged verbally on first local session
-- [ ] **ONBD-04**: Progressive disclosure - skill tree unlocks at Module 3, shop at Module 6
-- [ ] **ONBD-05**: First win tutorial ("You just did your first real task!") after completing Module 1, Lesson 1, Task 1
+- [x] **ONBD-01**: One-click installer reduces manual steps (brew, node, npm, claude check/install)
+- [x] **ONBD-02**: First real Claude conversation happens within 5 minutes of install
+- [x] **ONBD-03**: Web portal progress acknowledged verbally on first local session
+- [x] **ONBD-04**: Progressive disclosure - skill tree unlocks at Module 3, shop at Module 6
+- [x] **ONBD-05**: First win tutorial ("You just did your first real task!") after completing Module 1, Lesson 1, Task 1
 
 ### Test-Out Mechanics
 
