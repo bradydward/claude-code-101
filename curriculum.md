@@ -29,11 +29,13 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Type `pwd` to confirm you're back home
 
 ### Lesson 1.4: Creating Your Project Folder
-- Task 1: Type `cd ~/Developer` to go to your Developer folder (or `mkdir ~/Developer && cd ~/Developer` if it doesn't exist)
-- Task 2: Type `mkdir projects` to create a "projects" folder
-- Task 3: Type `cd projects` to go inside it
-- Task 4: Type `mkdir "Claude Code 101"` to create your project folder
-- Task 5: Type `cd "Claude Code 101"` - this is your home base for the entire course
+- Task 1: Type `cd ~/Developer` to go to your Developer folder (if you get an error "No such file or directory", that's okay - the folder doesn't exist yet)
+- Task 2: If you got an error, type `mkdir ~/Developer && cd ~/Developer` to create it and go there (mkdir = "make directory" = "create folder")
+- Task 3: Type `pwd` to confirm you're in Developer - organizing projects in folders prevents chaos later
+- Task 4: Type `mkdir projects` to create a "projects" folder (this will hold all your coding projects)
+- Task 5: Type `cd projects` to go inside it
+- Task 6: Type `mkdir "Claude Code 101"` to create your course folder (quotes needed because of the spaces)
+- Task 7: Type `cd "Claude Code 101"` - this is your home base for the entire course, you'll return here often
 
 ### Lesson 1.5: Terminal Survival Kit
 - Task 1: Press the Up Arrow key - your last command reappears (you can scroll through history)
@@ -58,18 +60,19 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: This key is like a password that lets Claude Code connect to Claude's brain
 
 ### Lesson 2.2: Installing Claude Code
-- Task 1: Go back to your terminal (should be in your Claude Code 101 folder - check with `pwd`)
-- Task 2: Type `npm install -g @anthropic-ai/claude-code` and press Enter
-- Task 3: Wait for it to finish (you'll see text scrolling - that's normal)
-- Task 4: If you see an error about "npm not found", type `brew install node` first, then retry step 2
-- Task 5: When done, type `claude --version` - if you see a version number, it worked!
+- Task 1: Go back to your terminal (should be in your Claude Code 101 folder - check with `pwd` to verify)
+- Task 2: Type `npm install -g @anthropic-ai/claude-code` and press Enter (npm = package manager that installs software, -g = install globally so it works from any folder)
+- Task 3: Wait for it to finish - you'll see text scrolling as it downloads and installs (this is normal, takes 30-60 seconds)
+- Task 4: If you see an error about "npm not found", you need Node.js first: type `brew install node`, wait for that to finish, then retry Task 2
+- Task 5: When done, type `claude --version` - if you see a version number like "1.2.3", it worked! If you see an error, the installation failed (ask for help)
 
 ### Lesson 2.3: First Launch
-- Task 1: Make sure you're in your project folder: `cd ~/Developer/projects/"Claude Code 101"`
-- Task 2: Type `claude` and press Enter
-- Task 3: It will ask for your API key - paste it in (Cmd+V)
-- Task 4: You're in Claude Code! Type "hello" and see it respond
-- Task 5: You just launched an AI that can control your computer. You're officially in.
+- Task 1: Make sure you're in your project folder: type `cd ~/Developer/projects/"Claude Code 101"` (or `pwd` to check if you're already there)
+- Task 2: Type `claude` and press Enter - this starts Claude Code (the first launch is special, it needs setup)
+- Task 3: It will ask for your API key - paste it in using Cmd+V, then press Enter (you won't see the key as you paste for security, that's normal)
+- Task 4: You should see Claude Code start and greet you - type "hello" and wait for a response (this proves it's working)
+- Task 5: Type "What folder am I in?" - Claude Code responds with your current directory because it can see your computer
+- Task 6: You just launched an AI that can read files, run commands, and write code on your computer. This is the power you'll learn to wield.
 
 **Module 2 Complete: Setup Champion 🏆 | +200 XP | +3 Efficiency | +10 Aura**
 
@@ -79,17 +82,19 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Creativity** | **Badge: First Contact 🏆**
 
 ### Lesson 3.1: Talking to Claude Code
-- Task 1: In Claude Code, type "What folder are we in right now?" - Claude can see your system
-- Task 2: Type "What files are in this folder?" - Claude checks for you
-- Task 3: Type "What is the weather like?" - notice Claude Code is about YOUR COMPUTER, not general chat
-- Task 4: The difference from ChatGPT/Claude.ai: Claude Code can actually DO things on your computer
+- Task 1: Start Claude Code (`claude` command if not already running), then type "What folder are we in right now?" - Claude can see your file system and will tell you the path
+- Task 2: Type "What files are in this folder?" - Claude checks using the same `ls` command you learned, shows you the results
+- Task 3: Type "What is the weather like?" - notice Claude says it can't check weather (Claude Code is about YOUR COMPUTER, not internet data or general chat)
+- Task 4: The key difference from ChatGPT/Claude.ai: Claude Code can actually DO things on your computer (read files, create files, run commands) instead of just talking about them
 
 ### Lesson 3.2: Creating Files Through Conversation
-- Task 1: Type "Create a file called hello.txt with the text 'My first file created by AI' inside"
-- Task 2: Claude will ask permission to create the file - type 'y' to approve
-- Task 3: Type "Show me what's in hello.txt" to verify it worked
-- Task 4: Exit Claude Code (type `/exit` or press Ctrl+C twice), then type `ls` to see the file exists
-- Task 5: You just created a real file through conversation. This is the power of Claude Code.
+- Task 1: Type "Create a file called hello.txt with the text 'My first file created by AI' inside" - this is asking Claude to write a file for you
+- Task 2: Claude will ask permission to create the file (showing you exactly what it will do) - type 'y' to approve (this safety check prevents accidents)
+- Task 3: Type "Show me what's in hello.txt" to verify it worked - Claude reads the file and displays the contents
+- Task 4: Exit Claude Code by typing `/exit` or pressing Ctrl+C twice - you're back to your regular terminal
+- Task 5: Type `ls` to see the file exists in your folder - hello.txt is right there, a real file you created through conversation
+- Task 6: Type `cat hello.txt` to read it yourself without Claude - the text is exactly what you specified
+- Task 7: You just created a real file through conversation instead of using a text editor. This is the power of Claude Code.
 
 ### Lesson 3.3: Specific vs. Vague Prompts
 - Task 1: Start Claude Code again (`claude`) and type "Make a webpage" - notice the generic result
@@ -118,24 +123,24 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 4: The three main models: Haiku (fast/cheap), Sonnet (balanced), Opus (powerful/expensive)
 
 ### Lesson 4.2: Haiku - The Speed Demon
-- Task 1: Type `/model haiku` to switch to Haiku (or the equivalent command for your version)
-- Task 2: Ask it "What is a terminal?" and notice how fast the response comes
-- Task 3: Ask it "Create a simple Python hello world script" - quick and simple tasks are Haiku's strength
-- Task 4: Haiku = fast answers, simple tasks, costs less. Like asking a quick question to a friend.
+- Task 1: Type `/model haiku` to switch to Haiku (the fastest model - prioritizes speed over depth)
+- Task 2: Ask it "What is a terminal?" and notice how fast the response comes - usually under 2 seconds
+- Task 3: Ask it "Create a simple Python hello world script" - quick and simple tasks are Haiku's strength (fast execution, good enough quality)
+- Task 4: Haiku = fast answers, simple tasks, costs less API credits. Like asking a quick question to a friend who gives you the essentials without elaborating.
 
 ### Lesson 4.3: Sonnet - The All-Rounder
-- Task 1: Type `/model sonnet` to switch to Sonnet
-- Task 2: Ask it "Explain what an API key is and why it matters, in simple terms"
-- Task 3: Notice the response is more detailed and thoughtful than Haiku
-- Task 4: Ask it "Create an HTML page with CSS styling for a personal portfolio" - Sonnet handles medium complexity well
-- Task 5: Sonnet = the default choice. Good at most things. Your daily driver.
+- Task 1: Type `/model sonnet` to switch to Sonnet (the balanced model - good quality without being slow or expensive)
+- Task 2: Ask it "Explain what an API key is and why it matters, in simple terms" - notice Sonnet gives more context and examples
+- Task 3: Compare this response to what Haiku would have said - Sonnet is more detailed and thoughtful (better explanations, more nuance)
+- Task 4: Ask it "Create an HTML page with CSS styling for a personal portfolio" - Sonnet handles medium complexity well (structured code, good practices)
+- Task 5: Sonnet = the default choice for most work. Good at most things without being overkill. This is your daily driver.
 
 ### Lesson 4.4: Opus - The Powerhouse
-- Task 1: Type `/model opus` to switch to Opus (this is the most powerful and expensive)
-- Task 2: Ask it "Design a complete file structure for a blog website with categories, posts, and user accounts"
-- Task 3: Notice the depth and architecture-level thinking
-- Task 4: Opus = complex problems, architecture, big-picture thinking. Use when quality matters most.
-- Task 5: Switch back to Sonnet (`/model sonnet`) for normal use - it's the best balance
+- Task 1: Type `/model opus` to switch to Opus (the most powerful and expensive model - deepest reasoning)
+- Task 2: Ask it "Design a complete file structure for a blog website with categories, posts, and user accounts" - this is a complex architecture question
+- Task 3: Notice the depth and architecture-level thinking - Opus considers edge cases, scalability, best practices (things Haiku/Sonnet might skip)
+- Task 4: Opus = complex problems, architecture decisions, big-picture thinking. Use when quality matters more than speed or cost.
+- Task 5: Switch back to Sonnet with `/model sonnet` for normal use - Opus is overkill for everyday tasks, save it for when you really need the horsepower
 
 **Module 4 Complete: Model Master 🏆 | +200 XP | +3 Efficiency | +10 Aura**
 
@@ -145,25 +150,25 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Creativity** | **Badge: Prompt Engineer 🏆**
 
 ### Lesson 5.1: Context Is King
-- Task 1: Type "Fix the bug" - Claude can't help because it has no context
-- Task 2: Now type "Look at hello.txt and tell me if there are any spelling mistakes"
-- Task 3: The difference: Claude needs to know WHAT you're talking about
-- Task 4: Rule #1: Always give Claude context - what file, what project, what you're trying to do
-- Task 5: Practice: Ask Claude to "look at the files in this folder and describe what this project is"
+- Task 1: Type "Fix the bug" - Claude will say it needs more information because it has no context (which bug? which file? what project?)
+- Task 2: Now type "Look at hello.txt and tell me if there are any spelling mistakes" - Claude reads the file and checks (context provided = Claude can act)
+- Task 3: The difference: "Fix the bug" is vague, "Look at hello.txt and check spelling" is specific (Claude needs to know WHAT and WHERE)
+- Task 4: Rule #1: Always give Claude context - mention the file name, describe what you're trying to do, explain what's wrong (more context = better help)
+- Task 5: Practice: Ask Claude to "look at the files in this folder and describe what this project is" - watch how it explores and summarizes
 
 ### Lesson 5.2: Multi-Step Instructions
-- Task 1: Type "Create a folder called 'practice', put a file called 'notes.md' inside it with a heading 'My Notes' and three bullet points about what I've learned so far"
-- Task 2: Watch Claude handle all three steps in order
-- Task 3: Verify: type `ls practice` and `cat practice/notes.md` (or ask Claude to show you)
-- Task 4: You can give Claude complex multi-step tasks and it figures out the order
-- Task 5: Clean up: ask Claude to "delete the practice folder and everything in it"
+- Task 1: Type "Create a folder called 'practice', put a file called 'notes.md' inside it with a heading 'My Notes' and three bullet points about what I've learned so far" - this is asking Claude to do three things at once
+- Task 2: Watch Claude handle all three steps in order - it creates the folder, creates the file inside, and writes the content (you don't have to break it down)
+- Task 3: Verify it worked: type `ls practice` to see the notes.md file, then `cat practice/notes.md` to read the contents (or ask Claude to show you)
+- Task 4: You can give Claude complex multi-step tasks and it figures out the order and dependencies (this saves you from typing multiple commands)
+- Task 5: Clean up: ask Claude to "delete the practice folder and everything in it" - approve the deletion when asked
 
 ### Lesson 5.3: Iterating on Responses
-- Task 1: Ask Claude "Create a README.md for a project called 'My First App'"
-- Task 2: Read the result - find something you'd change (too long? wrong tone? missing info?)
-- Task 3: Tell Claude what to fix: "Make the description shorter" or "Add a section about installation"
-- Task 4: You don't need to start over - just tell Claude what to adjust
-- Task 5: Delete the test README when done: ask Claude to "remove README.md" (say no if it asks about YOUR project's readme)
+- Task 1: Ask Claude "Create a README.md for a project called 'My First App'" - Claude generates a complete README file
+- Task 2: Read the result - find something you'd change (maybe too long? wrong tone? missing installation instructions? too technical?)
+- Task 3: Tell Claude what to fix: "Make the description shorter" or "Add a section about installation" or "Use simpler language" - Claude updates the file
+- Task 4: You don't need to start over from scratch - just tell Claude what to adjust and it modifies the existing file (iteration is faster than recreation)
+- Task 5: Delete the test README when done: ask Claude to "remove README.md" - if it asks about YOUR project's README, say no (this is just a test file)
 
 ### Lesson 5.4: Prompt Templates
 - Task 1: Learn this pattern: "I want to [goal]. The context is [situation]. Please [specific action]."
@@ -187,28 +192,28 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Accuracy** | **Badge: Plan Mode Pro 🏆**
 
 ### Lesson 6.1: What Is Plan Mode?
-- Task 1: Type `/plan` to enter plan mode (Claude Code won't make changes - only shows what it WOULD do)
-- Task 2: Type "Reorganize all files in this folder into subfolders by type"
-- Task 3: Read Claude's plan - it shows what it would do WITHOUT doing it
-- Task 4: This is like a "preview" button - see the plan before executing it
+- Task 1: Type `/plan` to enter plan mode (a special mode where Claude Code won't make changes - it only shows what it WOULD do)
+- Task 2: Type "Reorganize all files in this folder into subfolders by type" - normally this would move your files, but in plan mode it just describes the changes
+- Task 3: Read Claude's plan - it shows what files would move where, what folders would be created, all WITHOUT actually doing it (safe exploration)
+- Task 4: This is like a "preview" button before hitting save - you see the plan before executing it, which prevents mistakes on big changes
 
 ### Lesson 6.2: Using Plan Mode for Big Changes
-- Task 1: While in plan mode, type "If I wanted to add a website to this project, what files would I need?"
-- Task 2: Read the plan - Claude outlines the files, structure, and steps
-- Task 3: Type "What about adding a game to this project instead?" - compare the two plans
-- Task 4: Plan mode lets you explore ideas without risk. Like sketching before painting.
+- Task 1: While still in plan mode, type "If I wanted to add a website to this project, what files would I need?" - Claude thinks through the requirements
+- Task 2: Read the plan - Claude outlines what files to create (HTML, CSS, JS), what structure to use, and why each file matters (exploring ideas safely)
+- Task 3: Type "What about adding a game to this project instead?" - Claude gives a different plan with game-specific files and logic
+- Task 4: Compare the two plans side-by-side - plan mode lets you explore multiple approaches without committing to any (like sketching before painting, or trying on clothes before buying)
 
 ### Lesson 6.3: Exiting Plan Mode and Executing
-- Task 1: Type `/plan` again to exit plan mode (or the toggle command for your version)
-- Task 2: Now you're back in normal mode - Claude CAN make changes again
-- Task 3: Take one small idea from your plan and ask Claude to do just that one thing
-- Task 4: Verify it worked, then undo if you want (`rm [filename]` or ask Claude to remove it)
+- Task 1: Type `/plan` again to exit plan mode (it toggles - on/off with the same command, or use your version's toggle command)
+- Task 2: Now you're back in normal mode - Claude CAN make real changes again (you'll see the mode indicator change)
+- Task 3: Take one small idea from your plan and ask Claude to do just that one thing - for example "Create index.html from the website plan" (start small, verify it works)
+- Task 4: Verify it worked by asking Claude "Show me index.html" - if you don't like it, ask Claude to remove the file or delete it yourself with `rm index.html`
 
 ### Lesson 6.4: When to Use Plan Mode
-- Task 1: Use plan mode when: you're about to change many files, you're unsure about an approach, or you want to compare options
-- Task 2: Don't use plan mode when: the task is simple, you're confident, or you're just creating one file
-- Task 3: Practice: enter plan mode, ask "What would it take to add a dark mode to test.html?", read the plan, exit plan mode
-- Task 4: Plan mode is your safety net. Use it whenever something feels "big" or uncertain.
+- Task 1: Use plan mode when: you're about to change many files (risky), you're unsure about the best approach (exploring), or you want to compare multiple options (decision-making)
+- Task 2: Don't use plan mode when: the task is simple (like creating one file), you're confident in the approach (you know what you want), or you're just experimenting with throwaway code
+- Task 3: Practice: type `/plan` to enter, ask "What would it take to add a dark mode to test.html?", read the plan (CSS changes, color schemes, toggle logic), then `/plan` to exit
+- Task 4: Plan mode is your safety net and thinking space. Use it whenever something feels "big" or uncertain - better to preview than to regret.
 
 **Module 6 Complete: Plan Mode Pro 🏆 | +200 XP | +3 Accuracy | +10 Aura**
 
@@ -218,11 +223,12 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Speed** | **Badge: Tech Foundation 🏆**
 
 ### Lesson 7.1: Understanding JSON
-- Task 1: Ask Claude "Show me progress.json and explain what each field means"
-- Task 2: JSON = a way to store organized data. Like a form with fields and values.
-- Task 3: The rules: curly braces `{}` for objects, square brackets `[]` for lists, quotes around text, commas between items
-- Task 4: Ask Claude to "Add a field called 'favorite_color' with value 'blue' to progress.json" (then remove it after)
-- Task 5: You just read and modified real JSON. This is how most apps store data.
+- Task 1: Ask Claude "Show me progress.json and explain what each field means" - you'll see your RPG progress stored as structured data
+- Task 2: JSON = a way to store organized data, like a form with labeled fields and their values (not random text, but structured information)
+- Task 3: The rules: curly braces `{}` contain objects (collections of fields), square brackets `[]` contain lists (ordered items), text needs quotes, commas separate items (strict format, no mistakes allowed)
+- Task 4: Ask Claude to "Add a field called 'favorite_color' with value 'blue' to progress.json" - Claude modifies the JSON structure for you
+- Task 5: Ask Claude to "Remove the favorite_color field from progress.json" to clean up - you just read and modified real JSON data
+- Task 6: This is how most apps store settings, user data, game saves - JSON is everywhere in software development
 
 ### Lesson 7.2: File Types You'll See
 - Task 1: Ask Claude "What are the file types in this project and what does each extension mean?"
@@ -232,18 +238,21 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Clean up: "Delete example.html, example.css, and example.js"
 
 ### Lesson 7.3: File Management
-- Task 1: Type `touch testfile.txt` to create an empty file
-- Task 2: Type `cp testfile.txt testcopy.txt` to copy it (cp = copy)
-- Task 3: Type `mv testcopy.txt renamed.txt` to rename it (mv = move/rename)
-- Task 4: Type `rm renamed.txt` to delete it (rm = remove - be careful, no undo!)
-- Task 5: Type `rm testfile.txt` to clean up
+- Task 1: Type `touch testfile.txt` to create an empty file (touch = create if doesn't exist, or update timestamp if it does)
+- Task 2: Type `ls` to see testfile.txt in the list - proof it exists
+- Task 3: Type `cp testfile.txt testcopy.txt` to copy it (cp = copy, now you have two files with the same content)
+- Task 4: Type `ls` again to see both files - testfile.txt and testcopy.txt both exist
+- Task 5: Type `mv testcopy.txt renamed.txt` to rename it (mv = move, but "moving" to the same folder with a different name = rename)
+- Task 6: Type `rm renamed.txt` to delete it (rm = remove - be careful, this is permanent, no undo or trash can!)
+- Task 7: Type `rm testfile.txt` to clean up - your folder is back to normal
 
 ### Lesson 7.4: Understanding Paths
-- Task 1: Type `pwd` - this is an "absolute path" (starts from the root `/`)
-- Task 2: Absolute = full address: `/Users/brady/Developer/projects/Claude Code 101`
-- Task 3: Relative = from where you are: `./hello.txt` means "hello.txt in THIS folder"
-- Task 4: `../` means "one folder up", `~/` means "home folder"
-- Task 5: Ask Claude "What's the absolute path to progress.json in this project?"
+- Task 1: Type `pwd` - this shows an "absolute path" (starts from the root `/` and gives the complete address from the top of your drive)
+- Task 2: Absolute path example: `/Users/brady/Developer/projects/Claude Code 101` - this works from anywhere on your computer (full address)
+- Task 3: Relative path = from where you are now: `./hello.txt` means "hello.txt in THIS folder", `subfolder/file.txt` means "go into subfolder, then find file.txt"
+- Task 4: Special shortcuts: `../` means "one folder up" (parent directory), `~/` means "my home folder" (shortcut to /Users/yourname)
+- Task 5: Ask Claude "What's the absolute path to progress.json in this project?" - Claude shows you the full address
+- Task 6: Understanding paths is crucial because most errors are "file not found" = wrong path (you're looking in the wrong place)
 
 ### Lesson 7.5: Terminal Power Moves
 - Task 1: Type `history` to see all your past commands (your terminal remembers everything)
@@ -253,11 +262,11 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: These shortcuts will save you hundreds of keystrokes over time
 
 ### Lesson 7.6: Reading Error Messages
-- Task 1: Type `cd nonexistentfolder` - read the error. "No such file or directory" = it doesn't exist
-- Task 2: Type `cat nonexistentfile.txt` - same error pattern. Terminal errors are usually clear if you read them.
-- Task 3: Type `npm install fake-package-that-doesnt-exist-12345` - read the error. "404 Not Found" = the package doesn't exist
-- Task 4: Ask Claude "What are the 5 most common terminal errors and what do they mean?"
-- Task 5: Errors aren't scary - they're the computer telling you exactly what went wrong
+- Task 1: Type `cd nonexistentfolder` - read the error message carefully: "No such file or directory" = the folder doesn't exist (you tried to go somewhere that isn't there)
+- Task 2: Type `cat nonexistentfile.txt` - same error pattern: "No such file" = you tried to read a file that doesn't exist (most errors are this clear if you actually read them)
+- Task 3: Type `npm install fake-package-that-doesnt-exist-12345` and wait for the error - "404 Not Found" = the package doesn't exist on npm's servers (404 is the internet's "not found" code)
+- Task 4: Ask Claude "What are the 5 most common terminal errors and what do they mean?" - learn to recognize these patterns
+- Task 5: Errors aren't scary - they're the computer telling you exactly what went wrong and often how to fix it (reading errors carefully saves hours of confusion)
 
 **Module 7 Complete: Tech Foundation 🏆 | +200 XP | +3 Speed | +10 Aura**
 
@@ -267,24 +276,26 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Accuracy** | **Badge: Version Controller 🏆**
 
 ### Lesson 8.1: What Is Version Control?
-- Task 1: Ask Claude "Explain version control like I'm saving a video game - what are save points?"
-- Task 2: Git = a tool that creates save points for your code. You can go back to any save point.
-- Task 3: Every professional developer uses Git. It's like unlimited undo for your entire project.
-- Task 4: Type `git --version` to confirm Git is installed (it comes with Mac)
+- Task 1: Ask Claude "Explain version control like I'm saving a video game - what are save points?" - Claude will explain Git in gaming terms
+- Task 2: Git = a tool that creates save points (called "commits") for your code - you can go back to any save point if something breaks (time travel for code)
+- Task 3: Every professional developer uses Git because projects get messy - files change, experiments fail, bugs appear - Git lets you undo anything (like unlimited save slots in a game)
+- Task 4: Type `git --version` to confirm Git is installed - you should see something like "git version 2.30.0" (comes pre-installed on Mac)
 
 ### Lesson 8.2: Your First Repository
-- Task 1: Make sure you're in your Claude Code 101 folder (`pwd` to check)
-- Task 2: Type `git init` - this turns your folder into a Git repository (tracked project)
-- Task 3: Type `git status` - it shows all your files as "untracked" (not yet saved)
-- Task 4: Type `git add .` - this stages ALL files (prepares them for saving)
-- Task 5: Type `git status` again - now they're green (ready to save)
+- Task 1: Make sure you're in your Claude Code 101 folder - type `pwd` to check the path
+- Task 2: Type `git init` - this turns your regular folder into a Git repository (Git starts watching for changes, like activating autosave in a game)
+- Task 3: You'll see "Initialized empty Git repository" - this means Git is now tracking this folder
+- Task 4: Type `git status` - it shows all your files as "untracked" in red (Git sees them but isn't saving them yet)
+- Task 5: Type `git add .` - this stages ALL files, preparing them for the first save (the dot means "everything in this folder")
+- Task 6: Type `git status` again - now the files are green under "Changes to be committed" (ready to save)
 
 ### Lesson 8.3: Your First Commit
-- Task 1: Type `git commit -m "Initial commit: Claude Code 101 project files"`
-- Task 2: The `-m` flag adds a message describing what you saved. Always write clear messages.
-- Task 3: Type `git log` to see your save point - it shows your commit with a timestamp
-- Task 4: You just created your first save point. Your project is now tracked.
-- Task 5: Press `q` to exit the log view if it's stuck
+- Task 1: Type `git commit -m "Initial commit: Claude Code 101 project files"` - this creates your first save point
+- Task 2: The `-m` flag adds a message describing what you saved (think of it like naming your save file in a game) - always write clear, descriptive messages so you remember what changed
+- Task 3: You'll see output like "3 files changed, 150 insertions" - this summarizes what was saved
+- Task 4: Type `git log` to see your save point history - it shows your commit with a unique ID, timestamp, and your message
+- Task 5: You just created your first save point - your project is now tracked and you can always come back to this exact moment
+- Task 6: Press `q` to exit the log view (it uses a pager if there are many commits)
 
 ### Lesson 8.4: Making Changes and Committing
 - Task 1: Ask Claude to "Add a comment at the top of hello.txt saying 'Updated on [today's date]'"
