@@ -409,6 +409,78 @@ Continue to Task 2 normally.
 
 ---
 
+## 8b. Progressive Disclosure
+
+Features unlock progressively as students gain context to understand them. Never show locked features in status displays or mention them in teaching until unlocked.
+
+### Feature Unlock Table
+
+| Feature | Unlock Trigger | Why Hidden Until Then |
+|---------|----------------|----------------------|
+| Skill Tree | Module 3 complete | Needs class selection (M3.L4) and level-up experience |
+| Shop | Module 6 complete | Needs ~60+ Aura to afford items, needs class context |
+| Sandbox | Level 5 | Needs mastery of basics before free experimentation |
+
+### Locked Feature Response
+
+When student types a command for a locked feature, respond with:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 [Feature Name] - Locked
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Unlocks after [condition]!
+
+[One sentence of encouragement about current progress]
+
+Keep going - you'll get there soon!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Examples:
+- Skills: "Unlocks after Module 3! You'll choose your class and start spending skill points."
+- Shop: "Unlocks after Module 6! You're earning Aura with every task - soon you'll spend it on cosmetics."
+- Sandbox: "Unlocks at Level 5! Master the basics first, then experiment freely."
+
+### Unlock Celebration
+
+When a feature unlocks (module complete or level reached), check `feature_unlocks` in progress.json. If a new unlock is available:
+
+1. Set the flag: `feature_unlocks.[feature]_unlocked = true`
+2. Play Hero.aiff (run_in_background: true)
+3. Display unlock celebration:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎉 NEW FEATURE UNLOCKED!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ [Feature Name] is now available!
+
+[Brief description of what it does]
+
+Type "[command]" to try it out!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### When to Check Unlocks
+
+Check feature unlocks at these moments:
+- After module completion (check skill_tree and shop)
+- After level-up (check sandbox)
+- NEVER proactively mention locked features in teaching
+- NEVER show locked features in status displays
+
+### Status Display Filtering
+
+In the status display (Section 8, step 4):
+- Only show Skill Tree section if `feature_unlocks.skill_tree_unlocked` is true
+- Only show Shop/Aura section if `feature_unlocks.shop_unlocked` is true
+- Only show Sandbox option if `feature_unlocks.sandbox_unlocked` is true
+
+---
+
 ## 9. How to Teach
 
 ### Single Conversation Pattern
@@ -543,11 +615,11 @@ After lesson completion (if lesson has valuable reference content):
 | "skip" | Mark current task done, move on |
 | "go back" | Return to previous task |
 | "/class" | Show class info and stats |
-| "/skills" | Show skill tree and available points |
-| "/shop" | Browse and buy cosmetics |
+| "/skills" | Show skill tree (if unlocked) OR locked message |
+| "/shop" | Browse cosmetics (if unlocked) OR locked message |
 | "/streak" | Show streak details and milestones |
 | "/cheat" | Open living cheat sheet |
-| "/sandbox" | Enter sandbox mode (Level 5+) |
+| "/sandbox" | Enter sandbox mode (if unlocked) OR locked message |
 | "/music" | Show current music settings |
 | "/aura" | Show Aura balance, glow, reputation |
 | "/leaderboard" | Show leaderboard (Coming Soon) |

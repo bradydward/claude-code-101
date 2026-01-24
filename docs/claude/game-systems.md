@@ -244,6 +244,35 @@ When student says "sandbox" or "/sandbox":
 
 ---
 
+## Feature Unlock Schedule
+
+Features reveal progressively to avoid overwhelming new students. Each feature unlocks when the student has enough context to understand it.
+
+| Feature | Unlock Trigger | progress.json Field | Command |
+|---------|----------------|---------------------|---------|
+| Skill Tree | Module 3 complete | `feature_unlocks.skill_tree_unlocked` | `skills` or `/skills` |
+| Cosmetics Shop | Module 6 complete | `feature_unlocks.shop_unlocked` | `shop` or `/shop` |
+| Sandbox Mode | Level 5 reached | `feature_unlocks.sandbox_unlocked` | `sandbox` or `/sandbox` |
+
+### Unlock Communication
+
+**Before unlock (student tries command):**
+Show friendly "locked" message with unlock condition and encouragement.
+
+**On unlock (milestone reached):**
+Show celebration banner with feature description and command hint.
+
+**After unlock:**
+Feature works normally. Include in status displays.
+
+### Why These Thresholds
+
+- **Skill Tree at Module 3:** Class selection happens in Module 3, Lesson 4. Skills require understanding of stats and class bonuses. Before Module 3, skill points have no context.
+- **Shop at Module 6:** Students need ~60+ Aura to afford basic items. Module 6 gives enough accumulated Aura for first purchase. Also needs class context for class-locked items.
+- **Sandbox at Level 5:** Free experimentation requires confidence in basics. Level 5 (~400 XP) means student has completed enough tasks to self-direct.
+
+---
+
 ## Class Selection Event (Module 3, Lesson 3.4)
 
 This is a special scripted event. When the student reaches this point:
