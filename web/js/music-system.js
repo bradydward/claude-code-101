@@ -51,6 +51,7 @@ class BackgroundMusicManager {
   constructor() {
     this.currentTrack = null;        // Current Howl instance
     this.isUnlocked = false;          // Audio context unlocked by user interaction
+    this.isUnlocking = false;         // Unlock in progress (prevents race conditions)
     this.preferences = this.loadPreferences();
     this.trackLibrary = null;         // Loaded from metadata.json
   }
@@ -135,6 +136,9 @@ class BackgroundMusicManager {
   unlockAudio() {
     if (this.isUnlocked) return;
 
+    // Mark as unlocking to prevent race conditions
+    this.isUnlocking = true;
+
     // Play silent sound to unlock Web Audio API context
     // Base64 is empty WAV file (44 bytes)
     const unlockSound = new Howl({
@@ -144,7 +148,9 @@ class BackgroundMusicManager {
 
     unlockSound.once('end', () => {
       this.isUnlocked = true;
+      this.isUnlocking = false;
       unlockSound.unload();
+      console.log('Audio context unlocked');
 
       // Now safe to play background music
       if (this.preferences.enabled && this.currentTrack) {
@@ -184,8 +190,25 @@ class BackgroundMusicManager {
    * @param {string} trackId - New track to play
    */
   switchTrack(trackId) {
+    // Ensure audio is unlocked on first user interaction with music controls
+    if (!this.isUnlocked) {
+      this.unlockAudio();
+      // Give unlock time to complete, then retry switch
+      setTimeout(() => this.switchTrack(trackId), 100);
+      return;
+    }
+
     if (!this.currentTrack) {
       this.loadTrack(trackId);
+      // Manually trigger play since track was loaded muted initially
+      if (this.preferences.enabled) {
+        setTimeout(() => {
+          if (this.currentTrack) {
+            this.currentTrack.volume(this.preferences.volume);
+            this.currentTrack.play();
+          }
+        }, 100);
+      }
       return;
     }
 
