@@ -12,28 +12,28 @@
 ## Current Position
 
 **Phase:** 1 of 5 - Core Experience Polish
-**Plan:** 01-03 completed (Visual Celebrations System)
+**Plan:** 01-04 completed (Cosmetics Shop Implementation)
 **Status:** In progress
-**Last activity:** 2026-01-24 - Completed 01-03-PLAN.md (Visual Celebrations System)
+**Last activity:** 2026-01-24 - Completed 01-04-PLAN.md (Cosmetics Shop Implementation)
 
-**Progress:** ███▱▱▱▱▱▱▱ ~15%
+**Progress:** ████▱▱▱▱▱▱ ~20%
 
 ### Phase Goal
 Existing curriculum, teaching, and celebrations feel professional and addictive.
 
 ### Next Steps
-1. Continue Phase 1 execution (visual celebrations, game mechanics)
-2. Implement visual celebration system
-3. Build cosmetics shop purchase flow
-4. Verify game mechanics calculations
+1. Continue Phase 1 execution (game mechanics verification)
+2. Verify game mechanics calculations (skill unlocks, class bonuses, streak freeze)
+3. Polish any remaining gaps in Phase 1
+4. Begin Phase 2 planning (onboarding)
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 3 (01-01, 01-02, 01-03)
-- Requirements completed: ~3/42 (~7%)
+- Plans completed: 4 (01-01, 01-02, 01-03, 01-04)
+- Requirements completed: ~4/42 (~10%)
 - Phases completed: 0/5
-- Average time per plan: 5.5 minutes
+- Average time per plan: 5.75 minutes
 - Days in current phase: 1
 
 **Quality:**
@@ -44,7 +44,7 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 **Health:**
 - On track: Yes
 - Risks: None identified
-- Momentum: High (3 plans complete, strong velocity)
+- Momentum: High (4 plans complete, strong velocity)
 
 ## Accumulated Context
 
@@ -111,19 +111,37 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 - Impact: No code path exists where completion produces no visual output
 - Context: Event-to-Template Mapping guarantees coverage
 
+**2026-01-24: Shop Auto-Equip on Purchase (from 01-04)**
+- Decision: Purchasing an item automatically equips it
+- Rationale: Simplifies flow - buying something means you want to use it
+- Impact: Single-step purchase+equip, reduces friction
+- Context: SHOP-PURCHASE-01 pattern in 01-04-SUMMARY.md
+
+**2026-01-24: Dynamic Owned Arrays (from 01-04)**
+- Decision: owned_skins, owned_themes, etc. arrays created on first purchase in category
+- Rationale: Reduces initial progress.json bloat, creates structure as needed
+- Impact: Shop code must check if array exists before appending
+- Context: Documented in CLAUDE.md purchase flow step 3
+
+**2026-01-24: Total Aura Unchanged by Spending (from 01-04)**
+- Decision: aura_system.total_earned stays constant when student spends Aura
+- Rationale: Glow and reputation based on lifetime earnings (spending doesn't reduce status)
+- Impact: Only current_balance decreases on purchase, total_earned untouched
+- Context: Explicitly noted in progress.json update pattern example
+
 ### Active Todos
 
 **Immediate:**
 - [x] Audit curriculum completion status (DONE - all 15 modules complete)
 - [x] Design visual celebration system (DONE - VIS-01 through VIS-06 complete)
+- [x] Implement cosmetics shop (DONE - complete implementation in CLAUDE.md)
 - [ ] Continue Phase 1 execution (game mechanics verification next)
 - [ ] Verify game mechanics calculations
-- [ ] Implement cosmetics shop CLI
 
 **Upcoming:**
 - [ ] Verify skill unlocks, class bonuses, streak freeze logic
-- [ ] Implement cosmetics shop purchase flow
 - [ ] Test celebration rendering across terminals
+- [ ] Complete any remaining Phase 1 polish
 - [ ] Write one-click installer script (Phase 2)
 
 **Deferred:**
@@ -145,10 +163,10 @@ None identified.
 ## Session Continuity
 
 **What Just Happened:**
-Completed plan 01-03 (Visual Celebrations System). Designed production-quality ASCII celebration templates for all 6 event types (VIS-01 through VIS-06), established celebration hierarchy to prevent fatigue, and wired templates into Session Flow with Event-to-Template Mapping. No silent completions possible.
+Completed plan 01-04 (Cosmetics Shop Implementation). Documented complete interactive CLI shop system in CLAUDE.md Section 10 with three-level navigation (shop entry → category view → item detail), purchase flow using Read-Calculate-Write pattern, and equip vs buy mechanics. Shop handles all error cases (insufficient Aura, class-locked items, already owned items).
 
 **What's Next:**
-Continue Phase 1 execution. Next plans will address game mechanics verification (skill unlocks, class bonuses, streak freeze), cosmetics shop implementation, and any remaining polish items.
+Continue Phase 1 execution. Next plans will address game mechanics verification (skill unlocks, class bonuses, streak freeze) and any remaining polish items before Phase 1 completion.
 
 **Context for Next Session:**
 - Teaching pattern stable (single conversation, collaborative)
@@ -157,6 +175,8 @@ Continue Phase 1 execution. Next plans will address game mechanics verification 
 - Celebration hierarchy established (task < lesson < module < level-up)
 - Event-to-Template Mapping guarantees no silent completions
 - All templates include music triggers (run_in_background: true)
+- Cosmetics shop complete (interactive CLI with purchase flow)
+- Shop auto-equips on purchase, creates owned arrays dynamically
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value and constraints
@@ -166,14 +186,15 @@ Continue Phase 1 execution. Next plans will address game mechanics verification 
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-01-SUMMARY.md` - Teaching pattern conversion summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-02-SUMMARY.md` - Curriculum audit summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-03-SUMMARY.md` - Visual celebrations system summary
-- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9) and session flow wiring (Section 16/17)
+- `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-04-SUMMARY.md` - Cosmetics shop implementation summary
+- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9), session flow wiring (Section 16/17), and complete shop implementation (Section 10)
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - Polished 15-module curriculum
 
-**Last session:** 2026-01-24 04:50 UTC
-**Stopped at:** Completed 01-03-PLAN.md (Visual Celebrations System)
+**Last session:** 2026-01-24 04:52 UTC
+**Stopped at:** Completed 01-04-PLAN.md (Cosmetics Shop Implementation)
 **Resume file:** None (ready for next plan)
 
 ---
 
 *State initialized: 2026-01-24*
-*Last updated: 2026-01-24 (Plan 01-03 complete)*
+*Last updated: 2026-01-24 (Plan 01-04 complete)*
