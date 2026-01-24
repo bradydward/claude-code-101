@@ -586,6 +586,252 @@ Badge Earned: Terminal Explorer 🏆
 
 ---
 
+#### VIS-04: Module Completion (Epic - full frame)
+
+Display after all lessons in a module are complete. This is the BIGGEST regular celebration.
+
+**Template:**
+```
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║              🏆 MODULE {N} COMPLETE! 🏆              ║
+║                                                      ║
+║   {Module Name}                                      ║
+║                                                      ║
+║   ┌────────────────────────────────────────┐        ║
+║   │  +200 XP        +10 ✨ Aura            │        ║
+║   │  +3 {stat_emoji} {Stat Name}           │        ║
+║   │                                         │        ║
+║   │  Badge Earned: {Badge Name} 🏆         │        ║
+║   │  "{badge_flavor_text}"                 │        ║
+║   └────────────────────────────────────────┘        ║
+║                                                      ║
+║   Level {N}: {Title}                                 ║
+║   XP: {current}/{next} {progress_bar} {pct}%        ║
+║                                                      ║
+║   Stats: ⚡{spd} 🎯{acc} 💡{cre} ⚙️{eff} ✨{aur}    ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
+```
+
+**Variables:**
+- `{N}` - Module number (1-15)
+- `{Module Name}` - Full module name from curriculum.md
+- `{stat_emoji}` and `{Stat Name}` - Module's primary stat (each module awards +3 to one stat)
+- `{Badge Name}` and `{badge_flavor_text}` - From VIS-05 badge list
+- `{Title}` - Current level title
+- `{current}/{next}` - XP progress toward next level
+- `{progress_bar}` - 10-character bar (▓ filled, ░ empty)
+- `{pct}` - Percentage toward next level
+- `{spd}{acc}{cre}{eff}{aur}` - All 5 current stat values
+
+**Music:** Random sequence from music_config.json "module_complete" events (5 variations)
+**Display:** Show sequence name: "🎵 {sequence_name}"
+**Duration:** Full epic celebration - pause for effect before moving on
+**Next Step:** Check if level-up triggered by the +200 XP
+
+**Example:**
+```
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║              🏆 MODULE 1 COMPLETE! 🏆                ║
+║                                                      ║
+║   Module 1: Terminal Basics                          ║
+║                                                      ║
+║   ┌────────────────────────────────────────┐        ║
+║   │  +200 XP        +10 ✨ Aura            │        ║
+║   │  +3 ⚡ Speed                            │        ║
+║   │                                         │        ║
+║   │  Badge Earned: Terminal Explorer 🏆    │        ║
+║   │  "You've conquered the command line!"  │        ║
+║   └────────────────────────────────────────┘        ║
+║                                                      ║
+║   Level 2: Terminal Traveler                         ║
+║   XP: 285/300 ▓▓▓▓▓▓▓▓▓░ 95%                       ║
+║                                                      ║
+║   Stats: ⚡12 🎯6 💡7 ⚙️6 ✨15                       ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
+
+🎵 Champion's Fanfare
+```
+
+---
+
+#### VIS-03: Level-Up (Extra Epic - INTERRUPTS flow)
+
+Display whenever XP crosses a level threshold. This STOPS everything for the celebration and skill choice.
+
+**Template:**
+```
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║                  ⚡ LEVEL UP! ⚡                      ║
+║                                                      ║
+║               ★ ★ ★  LEVEL {N}  ★ ★ ★                ║
+║                   {Title}                            ║
+║                                                      ║
+{evolution_line}
+║                                                      ║
+║            +1 Skill Point Available!                 ║
+║                                                      ║
+║   Stats: ⚡{spd} 🎯{acc} 💡{cre} ⚙️{eff} ✨{aur}    ║
+║                                                      ║
+║   XP: {current}/{next} {progress_bar} {pct}%        ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
+```
+
+**Evolution Line (conditional):**
+If this level triggers a class evolution (levels 4 and 7), insert:
+```
+║         {Old Evolution} → {New Evolution}            ║
+```
+
+Example: `║         Gigachad → Godmode Developer            ║`
+
+If no evolution this level, omit this line entirely.
+
+**After Template, Present Skill Choices:**
+```
+
+🎯 Choose a skill to unlock:
+
+1. {skill_emoji} {Skill Name}
+   {skill_description}
+   Bonus: +{value} {stat_emoji} {Stat Name}
+
+2. {skill_emoji} {Skill Name}
+   {skill_description}
+   Bonus: +{value} {stat_emoji} {Stat Name}
+
+3. {skill_emoji} {Skill Name}
+   {skill_description}
+   Bonus: +{value} {stat_emoji} {Stat Name}
+
+Type the number of your choice (1-3):
+```
+
+**Variables:**
+- `{N}` - New level number
+- `{Title}` - New level title
+- `{Old Evolution}` / `{New Evolution}` - Class evolution names (if applicable)
+- Stat values after level-up
+- Skill details from skill_trees.json for current class and level
+
+**Music:** Random sequence from music_config.json "level_up" events (4 variations)
+**Behavior:** INTERRUPT teaching flow. Stop everything. Wait for student choice.
+**After Choice:** Display VIS-06 (skill unlock), then resume teaching
+
+**Example (with evolution at level 4):**
+```
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║                  ⚡ LEVEL UP! ⚡                      ║
+║                                                      ║
+║               ★ ★ ★  LEVEL 4  ★ ★ ★                  ║
+║                 Code Companion                       ║
+║                                                      ║
+║            Gigachad → Godmode Developer              ║
+║                                                      ║
+║            +1 Skill Point Available!                 ║
+║                                                      ║
+║   Stats: ⚡15 🎯10 💡18 ⚙️12 ✨32                    ║
+║                                                      ║
+║   XP: 650/1000 ▓▓▓▓▓▓░░░░ 65%                      ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
+
+🎵 Power Up
+
+🎯 Choose a skill to unlock:
+
+1. 💪 Ship It Fast
+   Deploy features 20% faster
+   Bonus: +2 ⚡ Speed
+
+2. 🎨 Creative Vision
+   Unlock advanced design patterns
+   Bonus: +3 💡 Creativity
+
+3. ✨ Aura Multiplier
+   Earn 25% more Aura from all sources
+   Bonus: +2 ✨ Aura
+
+Type the number of your choice (1-3):
+```
+
+---
+
+#### VIS-06: Skill Unlock (Confirmation after choice)
+
+Display immediately after student chooses a skill during level-up flow.
+
+**Template:**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 SKILL UNLOCKED: {Skill Name}!
+{skill_description}
+
+Permanent Bonus: +{value} {stat_emoji} {Stat Name}
+{Stat Name}: {old_value} → {new_value}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Variables:**
+- `{Skill Name}` - The chosen skill's name
+- `{skill_description}` - One-line description of what it does
+- `{value}` - Stat bonus amount (e.g., +2, +3)
+- `{stat_emoji}` and `{Stat Name}` - The stat being increased
+- `{old_value}` - Stat value before unlock
+- `{new_value}` - Stat value after unlock
+
+**Music:** Glass.aiff (run_in_background: true)
+**Behavior:** Brief confirmation, then resume teaching from where level-up interrupted
+
+**Example:**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 SKILL UNLOCKED: Creative Vision!
+Unlock advanced design patterns
+
+Permanent Bonus: +3 💡 Creativity
+Creativity: 15 → 18
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+### Celebration Hierarchy
+
+The celebration system prevents fatigue by matching celebration intensity to achievement size:
+
+| Event | Visual Impact | Music | Interrupts Flow? |
+|-------|--------------|-------|------------------|
+| **Task Complete** | Single line + emoji | Ping.aiff | No - continue immediately |
+| **Lesson Complete** | Bordered box + progress | Glass.aiff | No - brief pause |
+| **Badge Earned** | Within module frame | Hero.aiff | No - part of module celebration |
+| **Module Complete** | Full epic frame | Sound sequence (5 variations) | Brief pause for effect |
+| **Level Up** | Extra epic + skill choice | Sound sequence (4 variations) | YES - wait for choice |
+| **Skill Unlock** | Bordered confirmation | Glass.aiff | No - resume after display |
+
+**Design Principles:**
+- **Small wins feel quick:** Tasks complete instantly with minimal visual noise
+- **Medium wins feel satisfying:** Lessons get a bordered celebration with context
+- **Big milestones feel earned:** Modules get full-frame epic treatment
+- **Level-ups demand attention:** Stop everything, make it interactive
+- **Escalation feels natural:** Each tier is noticeably more impressive than the last
+- **No celebration fatigue:** Quick events don't steal focus from learning
+
+**Critical Rules:**
+- NEVER skip a celebration (no silent completions)
+- ALWAYS trigger music with run_in_background: true
+- Level-up MUST interrupt and wait for skill choice
+- Module celebration includes badge (VIS-05 within VIS-04)
+- Progress bars always 10 characters (▓ filled, ░ empty)
+
+---
+
 ## 10. Customization
 
 All cosmetics purchased with Aura from the shop (see cosmetics.json).
