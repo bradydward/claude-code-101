@@ -1,38 +1,44 @@
 # Project State: Claude Code 101
 
-**Last Updated:** 2026-01-23
-**Status:** Phase 1 Complete ✓
+**Last Updated:** 2026-01-24
+**Status:** Phase 2 In Progress
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Phase 2 Planning - Onboarding & Flow (reducing time-to-first-win to under 5 minutes)
+**Current Focus:** Phase 2 - Onboarding & Flow (reducing time-to-first-win to under 5 minutes)
 
 ## Current Position
 
-**Phase:** 1 of 5 - COMPLETE ✓
-**Plan:** All 7 plans executed (01-01 through 01-07)
-**Status:** Phase 1 verified and complete
-**Progress:** ████████████████████ 100% (Phase 1)
+**Phase:** 2 of 5 - In Progress
+**Plan:** 2 of 3 executed (02-01, 02-02 COMPLETE)
+**Status:** Phase 2 executing
+**Last activity:** 2026-01-24 - Completed 02-02-PLAN.md
 
-### Phase 1 Summary
-Existing curriculum, teaching, and celebrations now feel professional and addictive. All 18 requirements verified in codebase.
+**Progress:** ██████████░░░░░░░░░░ 50% (Phase 2: 2/4 plans estimated)
+
+### Phase 2 Progress
+- ✅ 02-01: One-click installer (install.sh with idempotent checks, Apple Silicon PATH handling)
+- ✅ 02-02: First-session flow (name XP, orientation, first-win tutorial)
+- ⏳ 02-03: Progressive disclosure and web portal acknowledgment (upcoming)
+- ⏳ 02-XX: Additional plans TBD
 
 ### Next Steps
-1. Plan Phase 2 (Onboarding & Flow)
-2. Create one-click installer
+1. ✅ Create one-click installer
+2. ✅ Build first-session flow (name XP + first-win tutorial)
 3. Implement progressive disclosure
-4. Build first-win tutorial
+4. Acknowledge web portal progress
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 7/7 (Phase 1)
-- Requirements completed: 18/42 (43%)
-- Phases completed: 1/5 (20%)
-- Average time per plan: ~6 minutes
+- Plans completed: 9 total (7 Phase 1 + 2 Phase 2)
+- Requirements completed: 21/42 (50%)
+- Phases completed: 1/5 (20%), Phase 2: 2/4 plans
+- Average time per plan: ~3 minutes (Phase 2: 1.5min avg)
 - Phase 1 duration: 1 day
+- Phase 2 duration: In progress (started 2026-01-24)
 
 **Quality:**
 - Plans revised: 0
@@ -48,6 +54,42 @@ Existing curriculum, teaching, and celebrations now feel professional and addict
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-24: First-Win Tutorial Timing (from 02-02)**
+- Decision: Display tutorial AFTER first task completion (not during name flow)
+- Rationale: Tutorial explains progression after student has experienced it (do, then explain)
+- Impact: Orientation stays under 30 seconds, tutorial has context
+- Alternative: Explain everything during name flow - rejected as too much upfront
+
+**2026-01-24: Instant XP After Name (from 02-02)**
+- Decision: Award 10 XP immediately after student provides name
+- Rationale: Instant gratification before any technical learning begins
+- Impact: Student sees progression working before first command
+- Alternative: Award XP after M1.L1.T1 only - rejected as delays first win
+
+**2026-01-24: Web Portal Check as Optional Question (from 02-02)**
+- Decision: Ask about web portal as yes/no question (not automatic detection)
+- Rationale: Non-blocking, simple, sets flag for teaching adjustments
+- Impact: Section 14 (Web Onboarding Awareness) can reference portal progress
+- Alternative: Auto-detect via cookies/URL params - rejected as requires web integration
+
+**2026-01-24: Installer Progress Creation (from 02-01)**
+- Decision: Installer does NOT create progress.json (Claude handles on first session)
+- Rationale: Research Approach B - allows personalized first session with name collection
+- Impact: Simpler installer, Claude greets warmly and creates progress.json interactively
+- Alternative: Approach A (template in installer) - rejected as less personal
+
+**2026-01-24: Apple Silicon PATH Handling (from 02-01)**
+- Decision: Installer auto-configures Homebrew PATH for M1/M2 Macs
+- Rationale: Homebrew installs to /opt/homebrew on arm64, not /usr/local
+- Impact: Fixes "brew: command not found" after successful install on Apple Silicon
+- Pattern: Detect uname -m == arm64, append shellenv to ~/.zshrc, eval immediately
+
+**2026-01-24: Xcode CLT Graceful Handling (from 02-01)**
+- Decision: If CLT missing, trigger install and exit with re-run instructions (not blocking)
+- Rationale: CLT install requires GUI interaction, can't block script
+- Impact: Student runs installer twice in worst case (once for CLT, once for completion)
+- Pattern: Clear re-run instructions shown after exit
 
 **2026-01-23: Phase 1 Complete**
 - Decision: Mark Phase 1 complete with GAP-04 deferred
@@ -123,13 +165,12 @@ Existing curriculum, teaching, and celebrations now feel professional and addict
 - [x] UX friction removal
 - [x] Phase verification
 
-**Phase 2 (Upcoming):**
-- [ ] Plan Phase 2 (Onboarding & Flow)
-- [ ] Create one-click installer
-- [ ] Implement progressive disclosure
-- [ ] Build first-win tutorial
-- [ ] Acknowledge web portal progress
-- [ ] Address GAP-04 (teaching flow performance with background agents)
+**Phase 2 (In Progress):**
+- [x] Create one-click installer (02-01 COMPLETE)
+- [x] Build first-session flow (02-02 COMPLETE)
+- [ ] Implement progressive disclosure (02-03)
+- [ ] Acknowledge web portal progress (02-03)
+- [ ] Address GAP-04 (teaching flow performance with background agents - deferred)
 
 **Deferred:**
 - [ ] Music library curation (Phase 3)
@@ -142,26 +183,26 @@ None.
 
 ### Open Questions
 
-1. **One-click installer scope (Phase 2):** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?
+1. ~~**One-click installer scope (Phase 2):** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?~~ RESOLVED: Installer handles all prerequisites (02-01 implementation)
 2. **Progressive disclosure timing:** When exactly should shop unlock (Module 6 or Level 5)?
 3. **GAP-04 implementation:** What's the right pattern for background teaching agents? Spawn per-task or per-lesson?
 
 ## Session Continuity
 
 **What Just Happened:**
-Phase 1 COMPLETE! All 7 plans executed (01-01 through 01-07), verification passed 18/18 requirements. Teaching pattern stable, curriculum polished, celebrations wired, shop implemented, game mechanics verified, architecture optimized, UX friction removed. Modular documentation structure (CLAUDE.md 13.5k + 5 reference docs 50.8k) resolves performance issues.
+Completed 02-02-PLAN.md (First-session flow). Added Section 8a to CLAUDE.md with 7-step onboarding: name prompt with instant +10 XP, 30-second orientation, status display, web portal check, Module 1 start, and first-win tutorial after M1.L1.T1. Added name XP formula to game-mechanics.md. Students now see progression working before any technical learning.
 
 **What's Next:**
-Plan Phase 2 (Onboarding & Flow). Goal: Students go from "I want to learn" to first real win in under 5 minutes. Create one-click installer, progressive disclosure, first-win tutorial, web portal acknowledgment.
+Execute 02-03-PLAN.md (Progressive disclosure and web portal acknowledgment). Hide skill tree until Module 3, hide shop until Module 6. Add portal recognition to Section 14.
 
 **Context for Next Session:**
-- Phase 1 delivered all 18 requirements
-- Teaching is professional and addictive (verified)
+- Phase 1 delivered all 18 requirements (COMPLETE)
+- Phase 2 progress: 2 of 3 plans complete (02-01, 02-02)
+- Installer ready (install.sh with idempotent checks)
+- First-session flow ready (Section 8a with name XP and first-win tutorial)
+- Next: Progressive disclosure (hide features until unlocked) and web portal acknowledgment
 - Architecture is modular and performant
 - Commands work without GSD conflicts
-- Permissions setup documented
-- GAP-04 deferred to Phase 2 (background agents for teaching flow)
-- Ready to plan onboarding improvements
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value
@@ -172,8 +213,8 @@ Plan Phase 2 (Onboarding & Flow). Goal: Students go from "I want to learn" to fi
 - `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/*.md` - Reference documentation
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
-**Last session:** 2026-01-23 22:55 UTC
-**Stopped at:** Phase 1 complete, ready for Phase 2 planning
+**Last session:** 2026-01-24
+**Stopped at:** Completed 02-02-PLAN.md, ready for 02-03 (progressive disclosure)
 
 ---
 
