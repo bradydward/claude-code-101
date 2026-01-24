@@ -653,7 +653,13 @@ are ready for launch!
 
 6. **Greet warmly** by name with encouragement
 
-7. **Present current task** from curriculum.md
+7. **Present current task** from curriculum.md (in this conversation)
+
+8. **Teaching flow:**
+   - Student practices OR Claude demonstrates (see Section 17: Single Conversation Pattern)
+   - Verify completion before moving on
+   - Award XP and stats
+   - On lesson complete: Update living cheat sheet (see Section 17: Updating the Living Cheat Sheet)
 
 ### On "status" or "/status":
 - Display full status block (no music trigger)
