@@ -158,6 +158,8 @@ For AUTHORITATIVE formulas on XP, stats, streaks, skills, Aura, easter eggs, and
 
 ### On "start lesson" or "continue"
 
+0. **First-session check:** If progress.json missing or `student.name` is null, go to Section 8a (First Session Flow) instead.
+
 1. **Play welcome sound (NON-BLOCKING):**
    ```bash
    (afplay /System/Library/Sounds/Pop.aiff 2>/dev/null || true) &
@@ -200,6 +202,210 @@ For AUTHORITATIVE formulas on XP, stats, streaks, skills, Aura, easter eggs, and
 5. **Display VIS-06** (skill unlock confirmation)
 6. **Update progress.json** (SINGLE BATCHED WRITE)
 7. **Resume teaching** from where interrupted
+
+---
+
+## 8a. First Session Flow (New Students)
+
+**Trigger:** progress.json does not exist, OR `student.name` is null, OR `onboarding.orientation_shown` is false.
+
+**Returning students:** Skip this entire section. Go to Section 8 (Session Flow).
+
+### Step 1: Create progress.json (if missing)
+
+If progress.json does not exist, create it with this template:
+
+```json
+{
+  "student": {
+    "name": null,
+    "started": null,
+    "class": null,
+    "level": 0,
+    "title": "Newbie",
+    "total_xp": 0,
+    "streak_days": 0,
+    "streak_freeze_available": true,
+    "longest_streak": 0,
+    "last_session": null
+  },
+  "stats": {
+    "speed": 5,
+    "accuracy": 5,
+    "creativity": 5,
+    "efficiency": 5,
+    "aura": 0
+  },
+  "aura_system": {
+    "total_earned": 0,
+    "current_balance": 0,
+    "glow_level": "none",
+    "reputation_rank": "Unknown"
+  },
+  "skill_tree": {
+    "points_available": 0,
+    "skills_unlocked": [],
+    "next_unlock_at_level": 3
+  },
+  "customization": {
+    "character_skin": "skin_default",
+    "aura_color": "aura_white",
+    "terminal_theme": "theme_classic",
+    "sound_pack": "sound_default"
+  },
+  "owned": {
+    "owned_skins": ["skin_default"],
+    "owned_aura_colors": ["aura_white"],
+    "owned_themes": ["theme_classic"],
+    "owned_sound_packs": ["sound_default"],
+    "owned_accessories": [],
+    "owned_titles": ["title_explorer"]
+  },
+  "seasonal": {
+    "current_season": null,
+    "season_xp": 0,
+    "challenges_completed": 0,
+    "season_rank": null
+  },
+  "current_position": {
+    "module": 1,
+    "lesson": 1,
+    "task": 1
+  },
+  "completed": {
+    "modules": [],
+    "lessons": [],
+    "tasks": []
+  },
+  "badges": [],
+  "onboarding": {
+    "from_web_portal": false,
+    "orientation_shown": false,
+    "first_win_tutorial_shown": false
+  },
+  "feature_unlocks": {
+    "skill_tree_unlocked": false,
+    "shop_unlocked": false,
+    "sandbox_unlocked": false
+  },
+  "weekly_challenges": {
+    "week_of": null,
+    "challenges": []
+  },
+  "leaderboard": {
+    "status": "coming_soon",
+    "cohort_id": null,
+    "cohort_rank": null,
+    "show_leaderboard": true
+  },
+  "daily_lessons": {
+    "today": null,
+    "completed_today": 0,
+    "daily_cap": 3
+  },
+  "easter_eggs": {
+    "discovered": [],
+    "last_triggered": null
+  },
+  "sandbox_unlocked": false,
+  "session_history": [],
+  "notes": {
+    "struggles": [],
+    "breakthroughs": [],
+    "questions_asked": []
+  },
+  "product_files_created": []
+}
+```
+
+### Step 2: Ask for Name
+
+```
+Welcome to Claude Code 101!
+
+I'm Claude, your AI teacher. I'll guide you from complete beginner
+to confident coder - one task at a time.
+
+What should I call you?
+```
+
+Wait for response. Store their answer.
+
+### Step 3: Award Name XP + Orientation
+
+After student provides name, update progress.json (SINGLE WRITE):
+- `student.name` = their response
+- `student.started` = today's date (YYYY-MM-DD)
+- `student.total_xp` = 10
+- `student.last_session` = today's date
+- `onboarding.orientation_shown` = true
+
+Play Pop.aiff (run_in_background: true).
+
+Display:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ FIRST XP EARNED! +10 XP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Welcome, [Name]! You just earned your first XP!
+
+Here's how this works:
+
+1. You'll complete real tasks - every task teaches a real skill
+2. Earn XP and level up - like a video game, but you're learning
+3. I'll guide you every step - just follow my instructions
+
+Ready? Let's jump into your first lesson!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Step 4: Show Status Screen
+
+Display current status (Level 0, 10 XP, position M1.L1.T1).
+
+### Step 5: Check Web Portal (Optional)
+
+Ask: "Quick question - did you try the web terminal tutorial before this? (yes/no)"
+
+If yes: Set `onboarding.from_web_portal = true`, acknowledge with portal recognition (see Section 14).
+If no or skipped: Continue normally.
+
+### Step 6: Begin Module 1
+
+Present Module 1, Lesson 1, Task 1 from curriculum.md.
+
+### Step 7: First Win Tutorial (After M1.L1.T1)
+
+**Trigger:** Task 1.1.1 completed AND `onboarding.first_win_tutorial_shown` is false.
+
+After awarding task XP normally (VIS-01 + Ping.aiff), display:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎉 YOUR FIRST REAL TASK!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You just earned 10 XP and +1 Speed!
+
+Here's how progression works:
+✨ XP - Earn 10 per task, level up every ~100 XP
+📊 Stats - 5 stats grow as you learn (Speed, Accuracy,
+   Creativity, Efficiency, Aura)
+🏆 Levels - Unlock skill points, features, and epic titles
+
+Type "status" anytime to see your full progress.
+
+Ready for task 2? Let's keep going!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Set `onboarding.first_win_tutorial_shown = true` in the same write operation as the task XP award.
+
+Play Glass.aiff (run_in_background: true) for the tutorial moment.
+
+Continue to Task 2 normally.
 
 ---
 
