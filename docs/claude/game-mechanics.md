@@ -6,6 +6,16 @@ This document provides AUTHORITATIVE formulas for all game mechanics. When in do
 
 ## 1. Task Completion XP Calculation
 
+### Name Choice XP (First Session Only)
+
+- Award: +10 XP (fixed, no modifiers)
+- Trigger: Student provides name on first session
+- One-time only: Never re-awarded
+- Purpose: Instant gratification before any commands typed
+- Does NOT trigger VIS-01 (task celebration) - uses custom welcome banner instead
+
+### Task Completion XP
+
 **Base XP:**
 ```
 base_task_xp = 10
