@@ -124,13 +124,54 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (To be filled by roadmap) | | |
+| CURR-01 | Phase 1 | Pending |
+| CURR-02 | Phase 1 | Pending |
+| CURR-03 | Phase 1 | Pending |
+| CURR-04 | Phase 1 | Pending |
+| VIS-01 | Phase 1 | Pending |
+| VIS-02 | Phase 1 | Pending |
+| VIS-03 | Phase 1 | Pending |
+| VIS-04 | Phase 1 | Pending |
+| VIS-05 | Phase 1 | Pending |
+| VIS-06 | Phase 1 | Pending |
+| GAME-01 | Phase 1 | Pending |
+| GAME-02 | Phase 1 | Pending |
+| GAME-03 | Phase 1 | Pending |
+| GAME-04 | Phase 1 | Pending |
+| TEACH-01 | Phase 1 | Pending |
+| TEACH-02 | Phase 1 | Pending |
+| TEACH-03 | Phase 1 | Pending |
+| TEACH-04 | Phase 1 | Pending |
+| ONBD-01 | Phase 2 | Pending |
+| ONBD-02 | Phase 2 | Pending |
+| ONBD-03 | Phase 2 | Pending |
+| ONBD-04 | Phase 2 | Pending |
+| ONBD-05 | Phase 2 | Pending |
+| MUS-01 | Phase 3 | Pending |
+| MUS-02 | Phase 3 | Pending |
+| MUS-03 | Phase 3 | Pending |
+| MUS-04 | Phase 3 | Pending |
+| MUS-05 | Phase 3 | Pending |
+| MUS-06 | Phase 3 | Pending |
+| TEST-01 | Phase 4 | Pending |
+| TEST-02 | Phase 4 | Pending |
+| TEST-03 | Phase 4 | Pending |
+| TEST-04 | Phase 4 | Pending |
+| PROJ-01 | Phase 5 | Pending |
+| PROJ-02 | Phase 5 | Pending |
+| PROJ-03 | Phase 5 | Pending |
+| PROJ-04 | Phase 5 | Pending |
+| PROJ-05 | Phase 5 | Pending |
+| PROJ-06 | Phase 5 | Pending |
+| PROJ-07 | Phase 5 | Pending |
+| PROJ-08 | Phase 5 | Pending |
+| PROJ-09 | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 40 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 40 ⚠️
+- v1 requirements: 42 total
+- Mapped to phases: 42/42 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-24*
-*Last updated: 2026-01-24 after initial definition*
+*Last updated: 2026-01-24 after roadmap creation*
