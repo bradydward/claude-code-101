@@ -12,31 +12,31 @@
 ## Current Position
 
 **Phase:** 2 of 5 - In Progress
-**Plan:** 2 of 3 executed (02-01, 02-02 COMPLETE)
+**Plan:** 3 of 3 executed (02-01, 02-02, 02-03 COMPLETE)
 **Status:** Phase 2 executing
-**Last activity:** 2026-01-24 - Completed 02-02-PLAN.md
+**Last activity:** 2026-01-24 - Completed 02-03-PLAN.md
 
-**Progress:** ██████████░░░░░░░░░░ 50% (Phase 2: 2/4 plans estimated)
+**Progress:** ███████████████░░░░░ 75% (Phase 2: 3/4 plans estimated)
 
 ### Phase 2 Progress
 - ✅ 02-01: One-click installer (install.sh with idempotent checks, Apple Silicon PATH handling)
 - ✅ 02-02: First-session flow (name XP, orientation, first-win tutorial)
-- ⏳ 02-03: Progressive disclosure and web portal acknowledgment (upcoming)
+- ✅ 02-03: Progressive disclosure and web portal acknowledgment (skill tree/shop/sandbox unlock gates)
 - ⏳ 02-XX: Additional plans TBD
 
 ### Next Steps
 1. ✅ Create one-click installer
 2. ✅ Build first-session flow (name XP + first-win tutorial)
-3. Implement progressive disclosure
-4. Acknowledge web portal progress
+3. ✅ Implement progressive disclosure
+4. ✅ Acknowledge web portal progress
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 9 total (7 Phase 1 + 2 Phase 2)
-- Requirements completed: 21/42 (50%)
-- Phases completed: 1/5 (20%), Phase 2: 2/4 plans
-- Average time per plan: ~3 minutes (Phase 2: 1.5min avg)
+- Plans completed: 10 total (7 Phase 1 + 3 Phase 2)
+- Requirements completed: 23/42 (55%)
+- Phases completed: 1/5 (20%), Phase 2: 3/4 plans
+- Average time per plan: ~2.7 minutes (Phase 2: 1.7min avg)
 - Phase 1 duration: 1 day
 - Phase 2 duration: In progress (started 2026-01-24)
 
@@ -54,6 +54,18 @@
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-24: Progressive Disclosure Thresholds (from 02-03)**
+- Decision: Skill tree unlocks after Module 3, shop after Module 6, sandbox at Level 5
+- Rationale: Features unlock when students have context to understand them (class selection for skills, ~60+ Aura for shop, basics mastery for sandbox)
+- Impact: Status displays filtered, locked features show encouraging messages, unlock celebrations fire
+- Pattern: feature_unlocks flags in progress.json control visibility
+
+**2026-01-24: Web Portal XP Non-Transfer (from 02-03)**
+- Decision: Web portal practice XP (~120) does NOT transfer to real progress.json
+- Rationale: Portal is practice mode, real progress starts fresh for accurate tracking
+- Impact: Effort acknowledged verbally ("You conquered the portal!"), teaching adapted (faster Module 1, "remember from portal" phrasing)
+- Alternative: Transfer XP - rejected as skips onboarding milestones
 
 **2026-01-24: First-Win Tutorial Timing (from 02-02)**
 - Decision: Display tutorial AFTER first task completion (not during name flow)
@@ -168,8 +180,8 @@
 **Phase 2 (In Progress):**
 - [x] Create one-click installer (02-01 COMPLETE)
 - [x] Build first-session flow (02-02 COMPLETE)
-- [ ] Implement progressive disclosure (02-03)
-- [ ] Acknowledge web portal progress (02-03)
+- [x] Implement progressive disclosure (02-03 COMPLETE)
+- [x] Acknowledge web portal progress (02-03 COMPLETE)
 - [ ] Address GAP-04 (teaching flow performance with background agents - deferred)
 
 **Deferred:**
@@ -184,23 +196,24 @@ None.
 ### Open Questions
 
 1. ~~**One-click installer scope (Phase 2):** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?~~ RESOLVED: Installer handles all prerequisites (02-01 implementation)
-2. **Progressive disclosure timing:** When exactly should shop unlock (Module 6 or Level 5)?
+2. ~~**Progressive disclosure timing:** When exactly should shop unlock (Module 6 or Level 5)?~~ RESOLVED: Shop unlocks after Module 6 (~60+ Aura), skill tree after Module 3 (class selection), sandbox at Level 5 (basics mastery) - 02-03 implementation
 3. **GAP-04 implementation:** What's the right pattern for background teaching agents? Spawn per-task or per-lesson?
 
 ## Session Continuity
 
 **What Just Happened:**
-Completed 02-02-PLAN.md (First-session flow). Added Section 8a to CLAUDE.md with 7-step onboarding: name prompt with instant +10 XP, 30-second orientation, status display, web portal check, Module 1 start, and first-win tutorial after M1.L1.T1. Added name XP formula to game-mechanics.md. Students now see progression working before any technical learning.
+Completed 02-03-PLAN.md (Progressive disclosure and web portal acknowledgment). Added Section 8b to CLAUDE.md with feature unlock logic (skill tree after Module 3, shop after Module 6, sandbox at Level 5), locked feature messages, unlock celebrations, and status filtering. Expanded Section 14 with web portal acknowledgment template and teaching adjustments. Added Feature Unlock Schedule to game-systems.md and Locked State to shop-system.md. Features now reveal progressively, and web portal students get recognized for prior practice.
 
 **What's Next:**
-Execute 02-03-PLAN.md (Progressive disclosure and web portal acknowledgment). Hide skill tree until Module 3, hide shop until Module 6. Add portal recognition to Section 14.
+Phase 2 core plans complete (02-01, 02-02, 02-03). Evaluate if additional polish needed or ready to close Phase 2.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
-- Phase 2 progress: 2 of 3 plans complete (02-01, 02-02)
-- Installer ready (install.sh with idempotent checks)
+- Phase 2 progress: 3 of 3 core plans complete (02-01, 02-02, 02-03)
+- Installer ready (install.sh with idempotent checks, Apple Silicon PATH handling)
 - First-session flow ready (Section 8a with name XP and first-win tutorial)
-- Next: Progressive disclosure (hide features until unlocked) and web portal acknowledgment
+- Progressive disclosure ready (Section 8b with unlock gates and celebrations)
+- Web portal acknowledgment ready (Section 14 expanded)
 - Architecture is modular and performant
 - Commands work without GSD conflicts
 
@@ -214,7 +227,7 @@ Execute 02-03-PLAN.md (Progressive disclosure and web portal acknowledgment). Hi
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-24
-**Stopped at:** Completed 02-02-PLAN.md, ready for 02-03 (progressive disclosure)
+**Stopped at:** Completed 02-03-PLAN.md, Phase 2 core plans complete
 
 ---
 
