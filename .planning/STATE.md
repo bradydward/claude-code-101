@@ -12,9 +12,9 @@
 ## Current Position
 
 **Phase:** 1 of 5 - Core Experience Polish
-**Plan:** 01-04 completed (Cosmetics Shop Implementation)
-**Status:** In progress
-**Last activity:** 2026-01-24 - Completed 01-04-PLAN.md (Cosmetics Shop Implementation)
+**Plan:** 01-05 completed (Game Mechanics Verification - GAPS FOUND)
+**Status:** Verification complete - 4 critical gaps require closure
+**Last activity:** 2026-01-24 - Completed 01-05-PLAN.md (Game Mechanics Verification)
 
 **Progress:** ████▱▱▱▱▱▱ ~20%
 
@@ -22,29 +22,32 @@
 Existing curriculum, teaching, and celebrations feel professional and addictive.
 
 ### Next Steps
-1. Continue Phase 1 execution (game mechanics verification)
-2. Verify game mechanics calculations (skill unlocks, class bonuses, streak freeze)
-3. Polish any remaining gaps in Phase 1
-4. Begin Phase 2 planning (onboarding)
+1. **CRITICAL:** Close 4 verification gaps before Phase 1 complete
+   - GAP-01: CLAUDE.md size (71.8k > 40k threshold)
+   - GAP-02: Command namespace collision (`/shop` vs GSD)
+   - GAP-03: Permission friction (constant approvals)
+   - GAP-04: Teaching flow performance (verbose output)
+2. Re-verify end-to-end experience after gap closure
+3. Complete Phase 1 and begin Phase 2 planning (onboarding)
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 4 (01-01, 01-02, 01-03, 01-04)
-- Requirements completed: ~4/42 (~10%)
+- Plans completed: 5 (01-01, 01-02, 01-03, 01-04, 01-05)
+- Requirements completed: ~5/42 (~12%)
 - Phases completed: 0/5
-- Average time per plan: 5.75 minutes
+- Average time per plan: 6.2 minutes
 - Days in current phase: 1
 
 **Quality:**
 - Plans revised: 0
-- Blockers encountered: 0
-- Coverage gaps: 0 (100% mapped)
+- Blockers encountered: 4 (verification gaps identified)
+- Coverage gaps: 4 (CLAUDE.md size, command namespace, permissions, teaching flow)
 
 **Health:**
-- On track: Yes
-- Risks: None identified
-- Momentum: High (4 plans complete, strong velocity)
+- On track: Paused - gap closure required
+- Risks: 4 critical gaps blocking Phase 1 completion
+- Momentum: Paused for gap closure (verification successful, issues identified)
 
 ## Accumulated Context
 
@@ -129,19 +132,34 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 - Impact: Only current_balance decreases on purchase, total_earned untouched
 - Context: Explicitly noted in progress.json update pattern example
 
+**2026-01-24: Explicit Game Mechanics Formulas (from 01-05)**
+- Decision: Document all game calculations as step-by-step formulas with worked examples
+- Rationale: Eliminates interpretation errors - any Claude instance applies identical calculations
+- Impact: CLAUDE.md Section 21 becomes authoritative reference for all game math
+- Context: MECHANICS-DOC-01 in 01-05-SUMMARY.md
+
+**2026-01-24: Verification Gap Closure Required (from 01-05)**
+- Decision: Pause Phase 1 completion until 4 critical gaps are closed
+- Rationale: Performance and UX issues block production readiness
+- Impact: Gap closure plans required before Phase 1 marked complete
+- Context: VERIFICATION-GAP-01 in 01-05-SUMMARY.md (4 gaps: CLAUDE.md size, command namespace, permissions, teaching flow)
+
 ### Active Todos
 
 **Immediate:**
 - [x] Audit curriculum completion status (DONE - all 15 modules complete)
 - [x] Design visual celebration system (DONE - VIS-01 through VIS-06 complete)
 - [x] Implement cosmetics shop (DONE - complete implementation in CLAUDE.md)
-- [ ] Continue Phase 1 execution (game mechanics verification next)
-- [ ] Verify game mechanics calculations
+- [x] Verify game mechanics calculations (DONE - formulas documented, gaps found)
+- [ ] **CRITICAL:** Close GAP-01 (CLAUDE.md size - 71.8k > 40k)
+- [ ] **CRITICAL:** Close GAP-02 (command namespace collision)
+- [ ] **CRITICAL:** Close GAP-03 (permission friction)
+- [ ] **CRITICAL:** Close GAP-04 (teaching flow performance)
 
 **Upcoming:**
-- [ ] Verify skill unlocks, class bonuses, streak freeze logic
+- [ ] Re-verify end-to-end experience after gap closure
 - [ ] Test celebration rendering across terminals
-- [ ] Complete any remaining Phase 1 polish
+- [ ] Complete Phase 1 and mark ready
 - [ ] Write one-click installer script (Phase 2)
 
 **Deferred:**
@@ -151,7 +169,27 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 
 ### Blockers
 
-None identified.
+**CRITICAL - Phase 1 Completion Blocked:**
+
+1. **GAP-01: CLAUDE.md Performance (71.8k chars > 40k threshold)**
+   - Impact: File too large, slow loading, status display rendering delays
+   - Severity: Critical blocker
+   - Resolution: Split CLAUDE.md or restructure (move reference content out)
+
+2. **GAP-02: Command Namespace Collision (`/shop` vs GSD)**
+   - Impact: `/shop` triggers GSD skill system instead of game shop
+   - Severity: Critical blocker (breaks all slash commands)
+   - Resolution: Use different command structure (`shop` without slash, or `@shop` prefix)
+
+3. **GAP-03: Permission Friction**
+   - Impact: User must approve commands constantly, deters beginners
+   - Severity: Critical blocker (UX friction)
+   - Resolution: Document `dangerously-skip-permissions` flag for this project
+
+4. **GAP-04: Teaching Flow Performance**
+   - Impact: Main terminal bogged down with verbose output, slow flow
+   - Severity: Architecture issue (performance)
+   - Resolution: Use GSD-style background agents for tasks (keep main conversation light)
 
 ### Open Questions
 
@@ -159,14 +197,22 @@ None identified.
 2. ~~**Visual celebration complexity:**~~ RESOLVED - Production templates complete with celebration hierarchy
 3. **Terminal rendering compatibility:** ASCII box-drawing characters in celebrations - verify rendering across iTerm, Terminal.app, VS Code terminal
 4. **One-click installer scope:** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?
+5. **CLAUDE.md split strategy:** What content moves out? Reference docs to separate files? Skill trees? Cosmetics?
+6. **Command prefix:** If not `/`, what? No prefix (`shop`)? Different prefix (`@shop`, `!shop`, `game:shop`)?
 
 ## Session Continuity
 
 **What Just Happened:**
-Completed plan 01-04 (Cosmetics Shop Implementation). Documented complete interactive CLI shop system in CLAUDE.md Section 10 with three-level navigation (shop entry → category view → item detail), purchase flow using Read-Calculate-Write pattern, and equip vs buy mechanics. Shop handles all error cases (insufficient Aura, class-locked items, already owned items).
+Completed plan 01-05 (Game Mechanics Verification). Documented explicit calculation formulas for all game mechanics (XP, stats, streaks, skills, Aura) in CLAUDE.md Section 21. Validated progress.json against formulas. Human verification completed - identified 4 critical gaps blocking Phase 1 completion.
 
 **What's Next:**
-Continue Phase 1 execution. Next plans will address game mechanics verification (skill unlocks, class bonuses, streak freeze) and any remaining polish items before Phase 1 completion.
+Orchestrator will create gap closure plans to address:
+- GAP-01: CLAUDE.md size (split or restructure)
+- GAP-02: Command namespace collision (resolve `/shop` conflict)
+- GAP-03: Permission friction (document dangerously-skip-permissions)
+- GAP-04: Teaching flow performance (use background agents)
+
+After gap closure, re-verify end-to-end experience and complete Phase 1.
 
 **Context for Next Session:**
 - Teaching pattern stable (single conversation, collaborative)
@@ -177,6 +223,8 @@ Continue Phase 1 execution. Next plans will address game mechanics verification 
 - All templates include music triggers (run_in_background: true)
 - Cosmetics shop complete (interactive CLI with purchase flow)
 - Shop auto-equips on purchase, creates owned arrays dynamically
+- Game mechanics formulas documented (CLAUDE.md Section 21)
+- **4 CRITICAL GAPS IDENTIFIED - MUST CLOSE BEFORE PHASE 1 COMPLETE**
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value and constraints
@@ -187,14 +235,15 @@ Continue Phase 1 execution. Next plans will address game mechanics verification 
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-02-SUMMARY.md` - Curriculum audit summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-03-SUMMARY.md` - Visual celebrations system summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-04-SUMMARY.md` - Cosmetics shop implementation summary
-- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9), session flow wiring (Section 16/17), and complete shop implementation (Section 10)
+- `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-05-SUMMARY.md` - Game mechanics verification summary (GAPS IDENTIFIED)
+- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9), shop (Section 10), session flow (Section 16/17), game mechanics formulas (Section 21)
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - Polished 15-module curriculum
 
-**Last session:** 2026-01-24 04:52 UTC
-**Stopped at:** Completed 01-04-PLAN.md (Cosmetics Shop Implementation)
-**Resume file:** None (ready for next plan)
+**Last session:** 2026-01-24 05:23 UTC
+**Stopped at:** Completed 01-05-PLAN.md (Game Mechanics Verification - GAPS FOUND)
+**Resume file:** None (awaiting gap closure plans)
 
 ---
 
 *State initialized: 2026-01-24*
-*Last updated: 2026-01-24 (Plan 01-04 complete)*
+*Last updated: 2026-01-24 (Plan 01-05 complete - verification gaps found)*
