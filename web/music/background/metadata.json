@@ -34,6 +34,13 @@
       "bpm": 110,
       "file": "retro-synth.mp3",
       "description": "80s vibes, modern learning"
+    },
+    "test-stereo": {
+      "title": "Test Track (Stereo)",
+      "mood": "testing",
+      "bpm": 60,
+      "file": "test-stereo.mp3",
+      "description": "10-second stereo test"
     }
   }
 }
