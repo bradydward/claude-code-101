@@ -91,19 +91,25 @@ Plans:
 
 **Dependencies:** Phase 1 (celebration system must work before adding background music)
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Howler.js integration and BackgroundMusicManager engine (autoplay, fading, memory)
+- [ ] 03-02-PLAN.md — Music UI controls, track selection, custom MP3 upload
+
 **Requirements:**
 - MUS-01: Howler.js integrated for background music
 - MUS-02: Student chooses background track from library
 - MUS-03: Background music plays during active session
 - MUS-04: Event sounds (afplay) layer on background music
-- MUS-05: Music preferences saved to progress.json
+- MUS-05: Music preferences saved to localStorage
 - MUS-06: Student can add personal MP3s to library
 
 **Success Criteria:**
 1. Student can choose background music track from library (5+ tracks available)
 2. Background music plays during teaching sessions with fade in/out
 3. Event sounds (task complete, level-up) layer on top without interrupting background track
-4. Student can toggle music on/off and adjust volume (persists in progress.json)
+4. Student can toggle music on/off and adjust volume (persists in localStorage)
 5. Student can add their own MP3 files to custom music folder
 
 ---
@@ -161,7 +167,7 @@ Plans:
 |-------|--------|------------|----------|------------------------|
 | 1 - Core Experience Polish | Complete | 2026-01-23 | 2026-01-23 | 18/18 |
 | 2 - Onboarding & Flow | Complete | 2026-01-24 | 2026-01-24 | 5/5 |
-| 3 - Music System Upgrade | Pending | -- | -- | 0/6 |
+| 3 - Music System Upgrade | Planned | -- | -- | 0/6 |
 | 4 - Test-Out System | Pending | -- | -- | 0/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
 
