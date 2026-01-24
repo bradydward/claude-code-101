@@ -141,36 +141,49 @@ class BackgroundMusicManager {
    * Unlock audio on first user interaction
    * Required by browser autoplay policies
    */
-  unlockAudio() {
+  async unlockAudio() {
     // Already unlocked or unlock in progress - do nothing
     if (this.isUnlocked || this.isUnlocking) return;
 
     // Mark as unlocking to prevent race conditions
     this.isUnlocking = true;
 
-    // Play silent sound to unlock Web Audio API context
-    // Base64 is empty WAV file (44 bytes)
-    const unlockSound = new Howl({
-      src: ['data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAAABmYWN0BAAAAAAAAABkYXRhAAAAAA=='],
-      volume: 0
-    });
-
-    unlockSound.once('end', () => {
-      this.isUnlocked = true;
-      this.isUnlocking = false;
-      unlockSound.unload();
-      console.log('Audio context unlocked');
-
-      // Now safe to play background music
-      if (this.preferences.enabled && this.currentTrack) {
-        // Fade in from 0 to preferred volume over 2 seconds
-        this.currentTrack.volume(0);
-        this.currentTrack.play();
-        this.currentTrack.fade(0, this.preferences.volume, 2000);
+    try {
+      // Resume AudioContext directly from user gesture (required by modern browsers)
+      if (Howler.ctx && Howler.ctx.state === 'suspended') {
+        await Howler.ctx.resume();
+        console.log('AudioContext resumed from suspended state');
       }
-    });
 
-    unlockSound.play();
+      // Play silent sound to unlock Web Audio API context
+      // Base64 is minimal valid WAV file
+      const unlockSound = new Howl({
+        src: ['data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA='],
+        volume: 0,
+        onend: () => {
+          unlockSound.unload();
+          this.isUnlocked = true;
+          this.isUnlocking = false;
+          console.log('Audio context unlocked');
+
+          // Now safe to play background music
+          if (this.preferences.enabled && this.currentTrack) {
+            // Fade in from 0 to preferred volume over 2 seconds
+            this.currentTrack.volume(0);
+            this.currentTrack.play();
+            this.currentTrack.fade(0, this.preferences.volume, 2000);
+          }
+        }
+      });
+
+      unlockSound.play();
+    } catch (e) {
+      console.warn('Audio unlock failed:', e);
+      this.isUnlocking = false;
+      // Mark as unlocked anyway to prevent retry loops
+      // User can manually click track to trigger playback
+      this.isUnlocked = true;
+    }
   }
 
   /**
