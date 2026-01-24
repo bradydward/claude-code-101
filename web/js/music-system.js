@@ -474,7 +474,27 @@ function createTrackCard(trackId, title, mood, isCustom = false) {
  * Switch to a custom uploaded track
  */
 function switchToCustomTrack(trackId, trackData) {
-  // Cleanup current track
+  // Ensure audio is unlocked first
+  if (!musicManager.isUnlocked && !musicManager.isUnlocking) {
+    musicManager.unlockAudio();
+    // Wait for unlock to complete
+    setTimeout(() => {
+      if (musicManager.isUnlocked) {
+        switchToCustomTrack(trackId, trackData);
+      } else {
+        console.warn('Audio unlock failed, cannot play custom track');
+      }
+    }, 500);
+    return;
+  }
+
+  // If unlock is in progress, wait and retry once
+  if (musicManager.isUnlocking) {
+    setTimeout(() => switchToCustomTrack(trackId, trackData), 100);
+    return;
+  }
+
+  // Cleanup current track (prevent pool exhaustion)
   if (musicManager.currentTrack) {
     musicManager.currentTrack.unload();
     musicManager.currentTrack = null;
