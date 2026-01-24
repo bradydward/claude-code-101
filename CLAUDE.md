@@ -463,35 +463,125 @@ Example:
 ╚══════════════════════════════════════════╝
 ```
 
-### Task/Lesson/Module Celebrations
+### Celebration Templates
 
-**Task Complete (+10 XP):**
+Production-quality templates for all 6 celebration event types. Claude MUST display the appropriate template for each event. No silent completions allowed.
+
+#### VIS-01: Task Completion (Minimal - single line)
+
+Display immediately after task verification succeeds.
+
+**Template:**
+```
+✅ Task Complete! +10 XP | +1 [stat_emoji] [Stat Name] | +1 ✨ Aura
+```
+
+**Variables:**
+- `[stat_emoji]` - The emoji for the stat being increased (⚡🎯💡⚙️✨)
+- `[Stat Name]` - The stat name (Speed, Accuracy, Creativity, Efficiency, Aura)
+
+**Class Bonus Display:**
+If the student's class provides a bonus to this stat, show it:
+```
+✅ Task Complete! +10 XP | +1 [stat_emoji] [Stat Name] (+1 class bonus) | +1 ✨ Aura
+```
+
+**Music:** Ping.aiff (run_in_background: true)
+**Duration:** Instant (no pause in teaching)
+**Behavior:** Continue immediately to next task or lesson summary
+
+**Example:**
 ```
 ✅ Task Complete! +10 XP | +1 ⚡ Speed | +1 ✨ Aura
 ```
 
-**Lesson Complete (+50 XP bonus):**
+---
+
+#### VIS-02: Lesson Completion (Medium - bordered box)
+
+Display after all tasks in a lesson are complete, before updating cheat sheet.
+
+**Template:**
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎉 LESSON COMPLETE!
-Lesson 2.1: Getting Your API Key
-+50 XP Bonus | +2 ⚙️ Efficiency
-Total XP: [new_total]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Lesson {M.L}: {Lesson Name}
+
++50 XP Bonus | +2 {stat_emoji} {Stat Name}
+Total XP: {current_xp}/{next_level_xp} {progress_bar}
+Aura: {balance} ({glow_emoji} {glow_level})
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**Module Complete (+200 XP bonus + Badge):**
+**Variables:**
+- `{M.L}` - Module and lesson number (e.g., "2.1")
+- `{Lesson Name}` - Full lesson name from curriculum.md
+- `{stat_emoji}` and `{Stat Name}` - From lesson's stat_tag
+- `{current_xp}` - Student's XP after lesson bonus
+- `{next_level_xp}` - XP required for next level
+- `{progress_bar}` - 10-character bar using ▓ (filled) and ░ (empty)
+- `{balance}` - Current Aura balance
+- `{glow_emoji}` - Current glow emoji (✨💫🌟⭐🌞👑)
+- `{glow_level}` - Current glow level name (faint, soft, bright, radiant, blinding, transcendent)
+
+**Progress Bar Calculation:**
+```python
+filled_count = int((current_xp / next_level_xp) * 10)
+bar = "▓" * filled_count + "░" * (10 - filled_count)
 ```
-╔══════════════════════════════════════════╗
-║     🏆 MODULE COMPLETE! 🏆              ║
-║                                          ║
-║     Module 2: Installing Claude Code     ║
-║                                          ║
-║     +200 XP | +10 Aura                  ║
-║     Badge Earned: Setup Champion 🏆      ║
-║                                          ║
-║     Stats Boosted: ⚙️ Efficiency +3     ║
-╚══════════════════════════════════════════╝
+
+**Music:** Glass.aiff (run_in_background: true)
+**Duration:** Brief pause (present next content after ~1 second feel, but no actual sleep)
+**Next Step:** Trigger cheat sheet update (see Section 17)
+
+**Example:**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎉 LESSON COMPLETE!
+Lesson 1.3: Your First ls Command
+
++50 XP Bonus | +2 ⚡ Speed
+Total XP: 180/300 ▓▓▓▓▓▓░░░░
+Aura: 8 (✨ faint)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+#### VIS-05: Badge Earned (Medium - part of module celebration)
+
+Display within the module completion frame (VIS-04). Not standalone.
+
+**Template:**
+```
+Badge Earned: {Badge Name} 🏆
+"{badge_flavor_text}"
+```
+
+**Badge List with Flavor Text:**
+1. **Terminal Explorer** - "You've conquered the command line!"
+2. **Setup Champion** - "Claude Code is yours to command!"
+3. **First Contact** - "You and Claude are now collaborators!"
+4. **Model Master** - "You wield Sonnet and Opus with skill!"
+5. **Prompt Engineer** - "Your prompts shape reality!"
+6. **Plan Mode Pro** - "You orchestrate complex workflows!"
+7. **Tech Foundation** - "You understand the tools of creation!"
+8. **Version Controller** - "Git is your time machine!"
+9. **Web Builder** - "You craft interfaces that shine!"
+10. **Agent Commander** - "You direct autonomous agents!"
+11. **MCP Specialist** - "You extend Claude's capabilities!"
+12. **Advanced Practitioner** - "You've mastered the advanced arts!"
+13. **Product Shipper** - "You build and deploy with confidence!"
+14. **Autonomous Operator** - "You orchestrate complex systems!"
+15. **Claude Code Graduate** 🎓 - "You are a Claude Code master!"
+
+**Music:** Hero.aiff (run_in_background: true)
+**Context:** Always appears within VIS-04 (module completion frame)
+
+**Example (as part of module celebration):**
+```
+Badge Earned: Terminal Explorer 🏆
+"You've conquered the command line!"
 ```
 
 ---
