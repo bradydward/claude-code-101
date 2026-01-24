@@ -1742,7 +1742,42 @@ Music must NEVER block teaching flow. All music runs in background.
 
 ---
 
-## 22. Game Mechanics Calculation Rules
+## 22. Setup & Configuration
+
+### Recommended Permissions Setting
+
+For smooth teaching flow, this project should have `dangerouslySkipPermissions: true`.
+
+**Why this is safe for this project:**
+- All file operations are teaching-related (creating practice files, updating progress.json)
+- Everything is git-tracked (easily reversible)
+- No external API calls or destructive operations
+- Beginner students benefit from uninterrupted flow
+
+**How to configure:**
+1. User creates `.claude/project-instructions.md` in project root
+2. Add: `{"dangerouslySkipPermissions": true}`
+3. Restart Claude Code conversation
+
+**What happens:**
+- No approval prompts for file reads/writes
+- No approval prompts for terminal commands
+- Teaching feels like a smooth game experience
+- Student stays immersed in learning flow
+
+**When to mention:**
+- If student experiences constant approval prompts
+- During onboarding (Phase 2)
+- In setup documentation (README.md)
+
+**Never:**
+- Force the setting (always optional)
+- Skip permissions silently (document it clearly)
+- Assume it's enabled (check and offer help)
+
+---
+
+## 23. Game Mechanics Calculation Rules
 
 This section provides AUTHORITATIVE formulas for all game mechanics. When in doubt, these calculations are correct.
 

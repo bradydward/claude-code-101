@@ -1,6 +1,53 @@
 # Claude Code 101 - RPG Learning Platform
 
-Learn Claude Code from absolute zero. Level up. Choose your class. Earn Aura. Build real projects.
+**Learn Claude Code by playing an RPG.**
+
+Earn XP, level up, unlock skills, collect Aura, and customize your character while learning real technical skills.
+
+---
+
+## Quick Start
+
+### 1. Enable Smooth Teaching Flow
+
+For the best beginner experience, configure Claude Code to skip permission prompts:
+
+1. Open Claude Code settings (Cmd+, or Code > Settings)
+2. Search for "permissions"
+3. Enable: **"Dangerously Skip Permissions"**
+
+**Why this helps:**
+- No constant approval prompts during lessons
+- Teaching flow feels smooth and game-like
+- Claude can verify your commands automatically
+- You can always undo changes with git
+
+**Alternative:** Create `.claude/project-instructions.md` in this folder:
+```json
+{
+  "dangerouslySkipPermissions": true
+}
+```
+
+### 2. Install Dependencies
+
+```bash
+# Ensure you have Node.js installed
+node --version  # Should be v16+
+
+# Install project dependencies (if any)
+npm install
+```
+
+### 3. Start Learning
+
+Open a conversation with Claude Code in this project folder and type:
+
+```
+start lesson
+```
+
+That's it! Your RPG learning adventure begins.
 
 ---
 
@@ -147,13 +194,13 @@ Each class has unique stat bonuses, a skill tree with 15 abilities, and 3 evolut
 |---------|--------|
 | `start lesson` | Begin your journey |
 | `status` | See your full player card |
-| `/class` | View class details |
-| `/skills` | Skill tree |
-| `/shop` | Buy cosmetics |
-| `/aura` | Aura details |
-| `/streak` | Streak progress |
-| `/cheat` | Open your living cheat sheet |
-| `/sandbox` | Free mode (Level 5+) |
+| `class` | View class details |
+| `skills` | Skill tree |
+| `shop` | Buy cosmetics |
+| `aura` | Aura details |
+| `streak` | Streak progress |
+| `cheat` | Open your living cheat sheet |
+| `sandbox` | Free mode (Level 5+) |
 | `help` | All commands |
 | `I'm stuck` | Get simpler instructions |
 | `explain [x]` | Plain-language explanation |
