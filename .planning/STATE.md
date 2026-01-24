@@ -12,42 +12,42 @@
 ## Current Position
 
 **Phase:** 1 of 5 - Core Experience Polish
-**Plan:** 01-07 completed (UX Friction Removal - GAP-02 and GAP-03 CLOSED)
-**Status:** Gap closure in progress - 2 of 4 gaps closed
-**Last activity:** 2026-01-24 - Completed 01-07-PLAN.md (UX Friction Removal)
+**Plan:** 01-06 completed (Architecture Optimization - GAP-01 CLOSED)
+**Status:** Gap closure in progress - 3 of 4 gaps closed
+**Last activity:** 2026-01-24 - Completed 01-06-PLAN.md (Architecture Optimization)
 
-**Progress:** ████▱▱▱▱▱▱ ~22%
+**Progress:** █████▱▱▱▱▱ ~24%
 
 ### Phase Goal
 Existing curriculum, teaching, and celebrations feel professional and addictive.
 
 ### Next Steps
-1. **CRITICAL:** Close remaining 2 verification gaps before Phase 1 complete
+1. **CRITICAL:** Close remaining 1 verification gap before Phase 1 complete
+   - ✅ GAP-01: CLAUDE.md size CLOSED (79k → 13.5k, 83% reduction)
    - ✅ GAP-02: Command namespace collision CLOSED
    - ✅ GAP-03: Permission friction CLOSED
-   - GAP-01: CLAUDE.md size (71.8k > 40k threshold)
    - GAP-04: Teaching flow performance (verbose output)
-2. Re-verify end-to-end experience after gap closure
+2. Re-verify end-to-end experience after final gap closure
 3. Complete Phase 1 and begin Phase 2 planning (onboarding)
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 7 (01-01 through 01-07)
-- Requirements completed: ~7/42 (~17%)
+- Plans completed: 6 (01-01 through 01-06)
+- Requirements completed: ~6/42 (~14%)
 - Phases completed: 0/5
-- Average time per plan: 5.1 minutes
+- Average time per plan: 5.7 minutes
 - Days in current phase: 1
 
 **Quality:**
 - Plans revised: 0
 - Blockers encountered: 4 (verification gaps identified)
-- Coverage gaps: 2 remaining (CLAUDE.md size, teaching flow performance)
+- Coverage gaps: 1 remaining (teaching flow performance only)
 
 **Health:**
-- On track: Gap closure in progress (2 of 4 closed)
-- Risks: 2 critical gaps remaining
-- Momentum: Strong - gap closure accelerating
+- On track: Gap closure nearly complete (3 of 4 closed)
+- Risks: 1 critical gap remaining
+- Momentum: Strong - gap closure nearly complete
 
 ## Accumulated Context
 
@@ -156,6 +156,18 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 - Impact: Reduces friction while maintaining trust through transparency
 - Context: PERMISSIONS-DOC-01 in 01-07-SUMMARY.md
 
+**2026-01-24: Modular Documentation Architecture (from 01-06)**
+- Decision: Split CLAUDE.md into core teaching file + 5 reference docs
+- Rationale: Original file too large (79k > 40k threshold), teaching mixed with specs
+- Impact: 83% reduction in main file (79k → 13.5k), faster loading, better maintainability
+- Context: ARCH-OPT-01 in 01-06-SUMMARY.md
+
+**2026-01-24: @-Reference Pattern (from 01-06)**
+- Decision: Use @-reference syntax for external reference docs
+- Rationale: Clear visual indicator, works with Claude's tools, industry standard
+- Impact: Clean reference system, selective loading, modular updates
+- Context: REF-SYSTEM-01 in 01-06-SUMMARY.md
+
 ### Active Todos
 
 **Immediate:**
@@ -163,9 +175,9 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 - [x] Design visual celebration system (DONE - VIS-01 through VIS-06 complete)
 - [x] Implement cosmetics shop (DONE - complete implementation in CLAUDE.md)
 - [x] Verify game mechanics calculations (DONE - formulas documented, gaps found)
+- [x] **CRITICAL:** Close GAP-01 (CLAUDE.md size - 71.8k > 40k) - DONE 01-06
 - [x] **CRITICAL:** Close GAP-02 (command namespace collision) - DONE 01-07
 - [x] **CRITICAL:** Close GAP-03 (permission friction) - DONE 01-07
-- [ ] **CRITICAL:** Close GAP-01 (CLAUDE.md size - 71.8k > 40k)
 - [ ] **CRITICAL:** Close GAP-04 (teaching flow performance)
 
 **Upcoming:**
@@ -183,11 +195,11 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 
 **CRITICAL - Phase 1 Completion Blocked:**
 
-1. **GAP-01: CLAUDE.md Performance (71.8k chars > 40k threshold)**
-   - Impact: File too large, slow loading, status display rendering delays
-   - Severity: Critical blocker
-   - Resolution: Split CLAUDE.md or restructure (move reference content out)
-   - Status: OPEN
+1. ✅ **GAP-01: CLAUDE.md Performance CLOSED (01-06)**
+   - Resolution: Modular architecture - 79k → 13.5k main file (83% reduction)
+   - Impact: 5-6x faster loading, better maintainability, selective reference loading
+   - Pattern: ARCH-OPT-01, REF-SYSTEM-01
+   - Created: docs/claude/ with 5 reference docs (game-systems, music, visual, shop, mechanics)
 
 2. ✅ **GAP-02: Command Namespace Collision CLOSED (01-07)**
    - Resolution: Plain-word commands (shop, status, skills) instead of slash prefix
@@ -203,7 +215,7 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
    - Impact: Main terminal bogged down with verbose output, slow flow
    - Severity: Architecture issue (performance)
    - Resolution: Use GSD-style background agents for tasks (keep main conversation light)
-   - Status: OPEN
+   - Status: OPEN (final gap)
 
 ### Open Questions
 
@@ -211,22 +223,22 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 2. ~~**Visual celebration complexity:**~~ RESOLVED - Production templates complete with celebration hierarchy
 3. **Terminal rendering compatibility:** ASCII box-drawing characters in celebrations - verify rendering across iTerm, Terminal.app, VS Code terminal
 4. **One-click installer scope:** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?
-5. **CLAUDE.md split strategy:** What content moves out? Reference docs to separate files? Skill trees? Cosmetics?
-6. **Command prefix:** If not `/`, what? No prefix (`shop`)? Different prefix (`@shop`, `!shop`, `game:shop`)?
+5. ~~**CLAUDE.md split strategy:**~~ RESOLVED - Modular architecture with 5 reference docs in docs/claude/
+6. ~~**Command prefix:**~~ RESOLVED - Plain-word commands (no prefix)
 
 ## Session Continuity
 
 **What Just Happened:**
-Completed plan 01-07 (UX Friction Removal). Resolved command namespace collision by switching to plain-word commands (shop, status, skills). Documented permissions setup in README Quick Start, created .claude/project-instructions.md template, added Setup & Configuration section to CLAUDE.md. GAP-02 and GAP-03 CLOSED.
+Completed plan 01-06 (Architecture Optimization). Split CLAUDE.md into modular architecture: main file reduced 79k → 13.5k (83% smaller), created 5 reference docs in docs/claude/ (game-systems, music, visual, shop, mechanics totaling 50.8k). Implemented @-reference pattern. Verified all reference docs accessible. GAP-01 CLOSED.
 
 **What's Next:**
-Continue gap closure:
+Final gap closure:
+- ✅ GAP-01: CLAUDE.md size CLOSED (modular architecture)
 - ✅ GAP-02: Command namespace collision CLOSED
 - ✅ GAP-03: Permission friction CLOSED
-- GAP-01: CLAUDE.md size (split or restructure) - plan 01-06
 - GAP-04: Teaching flow performance (use background agents) - plan 01-08
 
-After remaining gap closure, re-verify end-to-end experience and complete Phase 1.
+After GAP-04 closure, re-verify end-to-end experience and complete Phase 1.
 
 **Context for Next Session:**
 - Teaching pattern stable (single conversation, collaborative)
@@ -240,7 +252,9 @@ After remaining gap closure, re-verify end-to-end experience and complete Phase 
 - Game mechanics formulas documented (CLAUDE.md Section 21)
 - Command namespace clean (plain-word commands, no GSD conflicts)
 - Permissions setup documented (README Quick Start + template + CLAUDE.md Section 22)
-- **2 CRITICAL GAPS REMAINING - MUST CLOSE BEFORE PHASE 1 COMPLETE**
+- Modular documentation architecture (CLAUDE.md 79k → 13.5k + 5 reference docs 50.8k)
+- @-reference pattern established (selective loading, better maintainability)
+- **1 CRITICAL GAP REMAINING (GAP-04) - MUST CLOSE BEFORE PHASE 1 COMPLETE**
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value and constraints
@@ -252,15 +266,21 @@ After remaining gap closure, re-verify end-to-end experience and complete Phase 
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-03-SUMMARY.md` - Visual celebrations system summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-04-SUMMARY.md` - Cosmetics shop implementation summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-05-SUMMARY.md` - Game mechanics verification summary (GAPS IDENTIFIED)
+- `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-06-SUMMARY.md` - Architecture optimization summary (GAP-01 CLOSED)
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-07-SUMMARY.md` - UX friction removal summary (GAP-02 and GAP-03 CLOSED)
-- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9), shop (Section 10), session flow (Section 16/17), game mechanics formulas (Section 21)
+- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Streamlined to 13.5k with @-references to docs/claude/
+- `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/game-systems.md` - Classes, stats, progression (10.5k)
+- `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/music-system.md` - DJ/afplay system (7.8k)
+- `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/visual-templates.md` - Celebration templates (15.2k)
+- `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/shop-system.md` - Cosmetics shop (8.9k)
+- `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/game-mechanics.md` - Calculation formulas (8.4k)
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - Polished 15-module curriculum
 
-**Last session:** 2026-01-24 05:45 UTC
-**Stopped at:** Completed 01-07-PLAN.md (UX Friction Removal - GAP-02 and GAP-03 CLOSED)
-**Resume file:** None (continue gap closure)
+**Last session:** 2026-01-24 05:50 UTC
+**Stopped at:** Completed 01-06-PLAN.md (Architecture Optimization - GAP-01 CLOSED)
+**Resume file:** None (final gap closure next)
 
 ---
 
 *State initialized: 2026-01-24*
-*Last updated: 2026-01-24 (Plan 01-07 complete - 2 gaps closed)*
+*Last updated: 2026-01-24 (Plan 01-06 complete - 3 gaps closed, 1 remaining)*
