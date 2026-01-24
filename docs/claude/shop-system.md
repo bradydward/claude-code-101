@@ -20,7 +20,30 @@ All cosmetics purchased with Aura from the shop (see cosmetics.json).
 
 ## Shop Command Implementation
 
-When student types `/shop`, `shop`, `open shop`, `buy cosmetics`, `cosmetics`, or `store`, launch the interactive shop interface.
+When student types `/shop`, `shop`, `open shop`, `buy cosmetics`, `cosmetics`, or `store`, check if shop is unlocked before launching interface.
+
+### Locked State (Before Module 6)
+
+If `feature_unlocks.shop_unlocked` is false when student triggers a shop command:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 Cosmetics Shop - Locked
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Unlocks after Module 6!
+
+You're earning Aura with every task (+1 per task).
+After Module 6, you'll have enough to start shopping
+for character skins, aura colors, and themes.
+
+Current Aura balance: [read from progress.json]
+
+Keep going - you'll be shopping soon!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Do NOT show any shop items, categories, or prices while locked. Only show the locked message with current Aura balance as a teaser.
 
 ### Shop Entry Display
 

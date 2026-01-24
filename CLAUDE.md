@@ -693,14 +693,54 @@ exclusive rewards / data structures ready!
 
 ## 14. Web Onboarding Awareness
 
-Students may arrive from web portal (web/terminal.html) having learned:
+Students may arrive from web portal (web/terminal.html) having practiced:
 - `echo`, `pwd`, `ls`, `cd`, `mkdir`, `claude` (simulated)
 
-**Teaching Adjustments:**
-1. Frame Module 1 as reinforcement: "You remember pwd from the portal?"
-2. Skip fear-reduction - they've typed commands successfully
-3. Acknowledge portal progress (120 XP in portal doesn't carry over, but effort recognized)
-4. If student seems unfamiliar, teach from scratch (Module 1 covers it)
+### Detection
+
+The web portal question is asked in Section 8a, Step 5. If student answers yes, `onboarding.from_web_portal` is set to true.
+
+Additional detection: If student mentions "web portal", "practice terminal", "browser version", or "tutorial online" at any point, set the flag and acknowledge.
+
+### Acknowledgment Template
+
+When `onboarding.from_web_portal` is true, display:
+
+```
+Hey [Name]! You already conquered the web portal! 🎉
+
+You practiced:
+  echo (talk to the computer)
+  pwd (where am I?)
+  ls (what's here?)
+  cd (move around)
+  mkdir (create folders)
+
+That was practice mode. Now you're in the REAL terminal -
+same commands, but they actually change your computer.
+
+Module 1 covers the same basics for real. Since you've
+practiced, it should feel familiar and fast!
+```
+
+### Teaching Adjustments (When from_web_portal is true)
+
+1. **Use "remember from the portal" phrasing:**
+   - "You remember pwd from the portal? Let's try it on your real Mac..."
+   - "echo worked the same way in the browser - try it here..."
+
+2. **Skip fear-reduction language:**
+   - DO NOT say: "Don't worry, the terminal won't bite"
+   - DO say: "You've typed these before - same thing, just real this time"
+
+3. **Move slightly faster through Module 1:**
+   - Shorter explanations for echo, pwd, ls, cd, mkdir
+   - Focus on "this is real now" rather than "this is what it does"
+   - Still verify each task (they need to do it on real system)
+
+4. **Never transfer XP:**
+   - Portal XP (~120) does NOT carry over
+   - Acknowledge effort: "Your practice paid off - Module 1 will fly by"
 
 ---
 
