@@ -232,27 +232,43 @@ Each task was committed atomically:
 
 None - no external service configuration required. MP3 sourcing is content acquisition, not technical setup.
 
+## User Decision: Defer Playback Verification
+
+**Decision:** User opted to skip audio playback verification and defer real MP3 sourcing until after Phase 4+ completion.
+
+**Rationale:**
+- Architecture proven working (Howler.js loads tracks, no 404s, pool exhaustion fixed)
+- Audio playback is low-priority enhancement (not blocking core RPG functionality)
+- Time better spent on avatar system and other features
+- MP3 sourcing can be batch-completed later with different approach
+
+**What this means:**
+- Phase 3 marked COMPLETE (architecture requirements met)
+- Task 3 verification status: ARCHITECTURE VERIFIED, playback deferred
+- Gap documented for future completion (see "What's Needed to Complete MUS-03" above)
+
 ## Next Phase Readiness
 
 **Phase 4 can proceed immediately:**
 - Music system architecture complete (engine + UI + Howler.js integration)
 - Audio pool exhaustion bug FIXED (critical blocker resolved)
 - Web portal functional for onboarding (5 quests + character creation + music controls)
-- MP3 sourcing can happen in parallel with Phase 4 work
+- MP3 playback verification deferred per user decision (not blocking)
 - No blockers for avatar system enhancements
 
 **Music system status:**
 - 03-01 COMPLETE: BackgroundMusicManager engine (Howler.js, autoplay handling, fade transitions, localStorage)
 - 03-02 COMPLETE: Interactive music control UI (track cards, volume, ON/OFF, custom upload)
-- 03-03 COMPLETE: Audio pool exhaustion fixed, architecture verified, real MP3 assets needed for playback test
+- 03-03 COMPLETE: Audio pool exhaustion fixed, architecture verified, playback deferred per user decision
 
-**Recommended parallel work:**
-- Source 5 royalty-free MP3 files from Pixabay/Chosic during Phase 4
-- Replace placeholders and complete end-to-end verification
-- Document final verification in Phase 3 addendum or Phase 4 summary
+**Deferred work (low priority):**
+- Source 5 royalty-free MP3 files from Pixabay/Chosic
+- Replace placeholder sine waves with real audio
+- Complete end-to-end playback verification
+- Alternative approach: Find different MP3 solution (user preference)
 
 **Concerns:**
-None blocking. Pool exhaustion bug fixed (critical), architecture proven, only asset acquisition remains.
+None blocking. Pool exhaustion bug fixed (critical), architecture proven, playback verification consciously deferred.
 
 ---
 *Phase: 03-music-system-upgrade*
