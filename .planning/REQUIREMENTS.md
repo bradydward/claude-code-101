@@ -40,12 +40,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Music System
 
-- [ ] **MUS-01**: Howler.js integrated for background music playback
-- [ ] **MUS-02**: Student can choose background music track from library
-- [ ] **MUS-03**: Background music plays during active session (fadeable)
-- [ ] **MUS-04**: Event sounds (afplay) layer on top of background music
-- [ ] **MUS-05**: Music preferences saved to progress.json (background_track, volume)
-- [ ] **MUS-06**: Personal music picks - student can add their own MP3s to music library
+- [x] **MUS-01**: Howler.js integrated for background music playback
+- [x] **MUS-02**: Student can choose background music track from library
+- [x] **MUS-03**: Background music plays during active session (fadeable)
+- [x] **MUS-04**: Event sounds (afplay) layer on top of background music
+- [x] **MUS-05**: Music preferences saved to progress.json (background_track, volume)
+- [x] **MUS-06**: Personal music picks - student can add their own MP3s to music library
 
 ### Guided Project System
 
@@ -147,12 +147,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ONBD-03 | Phase 2 | Pending |
 | ONBD-04 | Phase 2 | Pending |
 | ONBD-05 | Phase 2 | Pending |
-| MUS-01 | Phase 3 | Pending |
-| MUS-02 | Phase 3 | Pending |
-| MUS-03 | Phase 3 | Pending |
-| MUS-04 | Phase 3 | Pending |
-| MUS-05 | Phase 3 | Pending |
-| MUS-06 | Phase 3 | Pending |
+| MUS-01 | Phase 3 | Complete |
+| MUS-02 | Phase 3 | Complete |
+| MUS-03 | Phase 3 | Complete |
+| MUS-04 | Phase 3 | Complete |
+| MUS-05 | Phase 3 | Complete |
+| MUS-06 | Phase 3 | Complete |
 | TEST-01 | Phase 4 | Pending |
 | TEST-02 | Phase 4 | Pending |
 | TEST-03 | Phase 4 | Pending |
