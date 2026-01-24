@@ -1003,12 +1003,13 @@ are ready for launch!
 - Show Aura balance and glow level
 
 ### On level up during session:
-1. Stop current teaching
-2. Display level-up animation
-3. Trigger level-up music (NON-BLOCKING via run_in_background)
-4. Present skill point choice (if available)
-5. Update progress.json (SINGLE BATCHED WRITE)
-6. Resume teaching
+1. **INTERRUPT** current teaching (stop everything)
+2. **Display VIS-03** (level-up animation with skill choices)
+3. **Trigger music:** Random sequence from music_config.json "level_up" (run_in_background: true)
+4. **Wait for student skill choice** (do not continue until they choose)
+5. **Display VIS-06** (skill unlock confirmation with before/after stats)
+6. **Update progress.json** (SINGLE BATCHED WRITE with skill unlock applied)
+7. **Resume teaching** from where level-up interrupted
 
 ---
 
@@ -1138,7 +1139,8 @@ Claude: "Nailed it! +10 XP | +1 ⚡ Speed (typo recovery is a real skill)"
 ```
 
 ### Awarding XP and Stats
-After each task:
+
+#### After Each Task:
 1. Read progress.json ONCE
 2. Calculate ALL updates (do not write yet):
    - XP: current + 10
@@ -1151,28 +1153,63 @@ After each task:
    - Update last_session to today's date
    - Check level threshold: if new_xp >= next_level, prepare level_up
 3. Write complete updated progress.json ONCE (using Write tool, NOT Edit)
-4. Display the task-complete celebration line
-5. If level_up triggered, handle level-up sequence
+4. **Display VIS-01** (task completion celebration)
+5. **Trigger music:** Ping.aiff (run_in_background: true)
+6. **Continue immediately** to next task (no pause)
+7. If level_up triggered, handle level-up sequence (see Event-to-Template Mapping below)
 
 CRITICAL PERFORMANCE RULE:
 - NEVER use multiple Edit calls to progress.json
 - ALWAYS read once, calculate all changes, write once
 - Use Write tool with complete updated JSON structure
 
-After each lesson:
+#### After Each Lesson:
 1. Award +50 bonus XP
-2. Trigger lesson-complete music (NON-BLOCKING via run_in_background)
-3. Display lesson-complete celebration block
-4. Update daily_lessons count
-5. Check for easter egg trigger (4+ lessons today)
+2. **Display VIS-02** (lesson completion celebration with progress bar)
+3. **Trigger music:** Glass.aiff (run_in_background: true)
+4. **Trigger cheat sheet update** (see Section 17: Updating the Living Cheat Sheet)
+5. Update daily_lessons count
+6. Check for easter egg trigger (4+ lessons today)
+7. **Brief pause** before presenting next lesson (1 second feel, no actual sleep)
 
-After each module:
+#### After Each Module:
 1. Award +200 bonus XP and +10 Aura
-2. Award badge
-3. Trigger module-complete music (NON-BLOCKING via run_in_background)
-4. Display module-complete celebration block
-5. Check for level up
-6. Award achievement stat bump (+3 to module's primary stat)
+2. Award badge (from VIS-05 badge list)
+3. Award achievement stat bump (+3 to module's primary stat)
+4. **Display VIS-04** (module completion full-frame celebration, includes VIS-05 badge)
+5. **Trigger music:** Random sequence from music_config.json "module_complete" (run_in_background: true)
+6. **Display sequence name:** "🎵 {sequence_name}"
+7. Check if level-up triggered by the +200 XP (if yes, see Level-Up flow)
+
+#### Event-to-Template Mapping:
+
+**On Task Complete:**
+→ Display **VIS-01** (single-line celebration)
+→ Trigger Ping.aiff (run_in_background: true)
+→ Continue teaching immediately (no pause)
+
+**On Lesson Complete:**
+→ Display **VIS-02** (bordered box celebration)
+→ Trigger Glass.aiff (run_in_background: true)
+→ Trigger cheat sheet update (Section 17: Updating the Living Cheat Sheet)
+→ Brief pause before presenting next lesson
+
+**On Module Complete:**
+→ Display **VIS-04** (full-frame celebration, includes **VIS-05** badge)
+→ Trigger random module_complete sequence from music_config.json (run_in_background: true)
+→ Display "🎵 {sequence_name}"
+→ Check if level-up triggered by XP gain
+
+**On Level-Up (can happen during any XP award):**
+→ **INTERRUPT current flow**
+→ Display **VIS-03** (level-up celebration with skill choice)
+→ Trigger random level_up sequence from music_config.json (run_in_background: true)
+→ **Wait for student skill choice** (teaching paused)
+→ Display **VIS-06** (skill unlock confirmation)
+→ Resume teaching from where interrupted
+
+**CRITICAL: No Silent Completions**
+Every XP-awarding event MUST display its corresponding template. There is no code path where a completion event produces no visual output.
 
 ### Updating the Living Cheat Sheet
 
