@@ -98,19 +98,21 @@ Plans:
 - [ ] 03-02-PLAN.md — Music UI controls, track selection, custom MP3 upload
 
 **Requirements:**
-- MUS-01: Howler.js integrated for background music
+- MUS-01: Howler.js integrated for background music (web portal)
 - MUS-02: Student chooses background track from library
-- MUS-03: Background music plays during active session
-- MUS-04: Event sounds (afplay) layer on background music
+- MUS-03: Background music plays during web portal session
+- MUS-04: Architecture documented (web portal vs CLI contexts)
 - MUS-05: Music preferences saved to localStorage
 - MUS-06: Student can add personal MP3s to library
 
+**Note:** This phase adds music to the web portal onboarding experience only (5-20 minute practice session). CLI teaching sessions currently use afplay for event sounds. CLI background music is planned for Phase 5+ as part of the guided project track enhancements.
+
 **Success Criteria:**
-1. Student can choose background music track from library (5+ tracks available)
-2. Background music plays during teaching sessions with fade in/out
-3. Event sounds (task complete, level-up) layer on top without interrupting background track
-4. Student can toggle music on/off and adjust volume (persists in localStorage)
-5. Student can add their own MP3 files to custom music folder
+1. Student can choose background music track from library (5+ tracks available) during web portal onboarding
+2. Background music plays during web portal practice sessions with fade in/out
+3. Student can toggle music on/off and adjust volume (persists in localStorage)
+4. Student can add their own MP3 files (max 5MB, stored in localStorage)
+5. Architecture clearly documented: web portal music is onboarding-only, CLI background music is future work
 
 ---
 
@@ -158,6 +160,35 @@ Plans:
 3. Student ships static HTML version of their app in Week 1 (deployed to public URL)
 4. Lessons adapt to student's project type (CRUD lessons for recipe app, skip database for static site)
 5. Student demonstrates completed project via portfolio defense (demo video + written reflection)
+
+---
+
+## Future Phases (Phase 6+)
+
+**Potential enhancements beyond initial roadmap:**
+
+### CLI Background Music System
+**Goal:** Add continuous background music to CLI teaching sessions (matching web portal experience)
+
+**Challenges:**
+- CLI is terminal-based (no browser for Howler.js)
+- Must not block teaching flow or command execution
+- Options: Node.js audio libraries (node-speaker, play-sound), terminal multiplexer with audio daemon, or external audio player process
+
+**Requirements:**
+- MUS-CLI-01: Background music plays during `claude` teaching sessions
+- MUS-CLI-02: Music preferences sync between web portal and CLI (optional)
+- MUS-CLI-03: Track selection via `/music` command or interactive menu
+- MUS-CLI-04: Volume control and toggle (persists in progress.json or separate config)
+- MUS-CLI-05: Music pauses during student command execution, resumes after
+- MUS-CLI-06: afplay event sounds continue to layer on background music
+
+**Approach:**
+Research Phase 6 will evaluate:
+- Node.js audio playback libraries (cross-platform)
+- Background process management (spawn vs fork)
+- Audio ducking during afplay events
+- State management (play/pause/volume across sessions)
 
 ---
 
