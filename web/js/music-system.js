@@ -54,6 +54,7 @@ class BackgroundMusicManager {
     this.isUnlocking = false;         // Unlock in progress (prevents race conditions)
     this.preferences = this.loadPreferences();
     this.trackLibrary = null;         // Loaded from metadata.json
+    this.isInitialized = false;       // Prevents duplicate init() calls
   }
 
   /**
@@ -63,6 +64,13 @@ class BackgroundMusicManager {
    * - Prepare default track (muted for autoplay safety)
    */
   async init() {
+    // Prevent duplicate initialization (can cause pool exhaustion)
+    if (this.isInitialized) {
+      console.warn('Music system already initialized');
+      return;
+    }
+    this.isInitialized = true;
+
     try {
       // Load track library from metadata.json
       const response = await fetch('music/background/metadata.json');
@@ -134,7 +142,8 @@ class BackgroundMusicManager {
    * Required by browser autoplay policies
    */
   unlockAudio() {
-    if (this.isUnlocked) return;
+    // Already unlocked or unlock in progress - do nothing
+    if (this.isUnlocked || this.isUnlocking) return;
 
     // Mark as unlocking to prevent race conditions
     this.isUnlocking = true;
@@ -188,8 +197,15 @@ class BackgroundMusicManager {
   /**
    * Switch to a different track with crossfade
    * @param {string} trackId - New track to play
+   * @param {number} retryCount - Internal retry counter (prevents infinite recursion)
    */
-  switchTrack(trackId) {
+  switchTrack(trackId, retryCount = 0) {
+    // Prevent infinite recursion (max 3 retries)
+    if (retryCount > 3) {
+      console.error('switchTrack exceeded retry limit, aborting');
+      return;
+    }
+
     // Ensure audio is unlocked on first user interaction with music controls
     if (!this.isUnlocked && !this.isUnlocking) {
       this.unlockAudio();
@@ -197,7 +213,7 @@ class BackgroundMusicManager {
       // Single retry after unlock finishes
       setTimeout(() => {
         if (this.isUnlocked) {
-          this.switchTrack(trackId);
+          this.switchTrack(trackId, retryCount + 1);
         } else {
           console.warn('Audio unlock failed, cannot switch track');
         }
@@ -205,9 +221,9 @@ class BackgroundMusicManager {
       return;
     }
 
-    // If unlock is in progress, wait and retry once
+    // If unlock is in progress, wait and retry (with counter)
     if (this.isUnlocking) {
-      setTimeout(() => this.switchTrack(trackId), 100);
+      setTimeout(() => this.switchTrack(trackId, retryCount + 1), 100);
       return;
     }
 
@@ -472,15 +488,24 @@ function createTrackCard(trackId, title, mood, isCustom = false) {
 
 /**
  * Switch to a custom uploaded track
+ * @param {string} trackId - Custom track identifier
+ * @param {object} trackData - Track data with dataUrl
+ * @param {number} retryCount - Internal retry counter (prevents infinite recursion)
  */
-function switchToCustomTrack(trackId, trackData) {
+function switchToCustomTrack(trackId, trackData, retryCount = 0) {
+  // Prevent infinite recursion (max 3 retries)
+  if (retryCount > 3) {
+    console.error('switchToCustomTrack exceeded retry limit, aborting');
+    return;
+  }
+
   // Ensure audio is unlocked first
   if (!musicManager.isUnlocked && !musicManager.isUnlocking) {
     musicManager.unlockAudio();
     // Wait for unlock to complete
     setTimeout(() => {
       if (musicManager.isUnlocked) {
-        switchToCustomTrack(trackId, trackData);
+        switchToCustomTrack(trackId, trackData, retryCount + 1);
       } else {
         console.warn('Audio unlock failed, cannot play custom track');
       }
@@ -488,9 +513,9 @@ function switchToCustomTrack(trackId, trackData) {
     return;
   }
 
-  // If unlock is in progress, wait and retry once
+  // If unlock is in progress, wait and retry (with counter)
   if (musicManager.isUnlocking) {
-    setTimeout(() => switchToCustomTrack(trackId, trackData), 100);
+    setTimeout(() => switchToCustomTrack(trackId, trackData, retryCount + 1), 100);
     return;
   }
 
