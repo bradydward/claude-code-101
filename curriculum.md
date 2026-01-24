@@ -10,23 +10,23 @@ Every task teaches a real Claude Code or terminal skill. Zero filler. Each lesso
 This module gets you from "I have a laptop" to "I can use the terminal."
 
 ### Lesson 1.1: Opening Your Terminal
-- Task 1: On your Mac, press `Cmd + Space` to open Spotlight search
-- Task 2: Type "Terminal" and press Enter
-- Task 3: A window appears with a blinking cursor - this is your terminal (a way to talk to your computer by typing)
-- Task 4: Type `echo "hello"` and press Enter - your computer talks back
+- Task 1: On your Mac, press `Cmd + Space` to open Spotlight search (the fastest way to launch any app without clicking through menus)
+- Task 2: Type "Terminal" and press Enter (Spotlight finds it instantly, no need to know where it's installed)
+- Task 3: A window appears with a blinking cursor - this is your terminal, a way to talk to your computer by typing commands instead of clicking (every developer uses this because typing is faster and more powerful than clicking)
+- Task 4: Type `echo "hello"` and press Enter - your computer responds with "hello" (echo means "repeat what I say", this proves the terminal is listening and responding to your commands)
 
 ### Lesson 1.2: Understanding Where You Are
-- Task 1: Type `pwd` and press Enter (pwd = "print working directory" = "where am I?")
-- Task 2: Read the result - it's a path like `/Users/brady` - this is your home folder
-- Task 3: Type `ls` and press Enter (ls = "list" = "what's here?")
-- Task 4: You just learned two commands: `pwd` shows where you are, `ls` shows what's around you
+- Task 1: Type `pwd` and press Enter (pwd = "print working directory" = "where am I?" - because the terminal is always IN a folder, you need to know which one)
+- Task 2: Read the result - it's a path like `/Users/brady` - this is your home folder (every user has one, it's like the root of your personal file tree)
+- Task 3: Type `ls` and press Enter (ls = "list" = "what's here?" - shows all files and folders in your current location so you know what exists)
+- Task 4: You just learned the two most essential commands: `pwd` tells you where you are (location), `ls` tells you what's around you (contents) - you'll use these constantly
 
 ### Lesson 1.3: Moving Around
-- Task 1: Type `ls` - find a folder name in the list (like "Desktop" or "Documents")
-- Task 2: Type `cd Desktop` and press Enter (cd = "change directory" = "go to folder")
-- Task 3: Type `pwd` to confirm you moved - see how the path changed?
-- Task 4: Type `cd ..` to go back up one level (the `..` means "parent folder")
-- Task 5: Type `pwd` to confirm you're back home
+- Task 1: Type `ls` - find a folder name in the list like "Desktop" or "Documents" (these are folders inside your current location)
+- Task 2: Type `cd Desktop` and press Enter (cd = "change directory" = "go to folder" - like double-clicking a folder in Finder, but faster)
+- Task 3: Type `pwd` to confirm you moved - see how the path changed from `/Users/brady` to `/Users/brady/Desktop`? (pwd always shows your current location)
+- Task 4: Type `cd ..` to go back up one level (the `..` is shorthand for "parent folder" = one level up in the folder tree - every folder has a parent except the root)
+- Task 5: Type `pwd` to confirm you're back home (the path should match what you saw in Task 1 - navigation works both ways)
 
 ### Lesson 1.4: Creating Your Project Folder
 - Task 1: Type `cd ~/Developer` to go to your Developer folder (if you get an error "No such file or directory", that's okay - the folder doesn't exist yet)
@@ -38,11 +38,11 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 7: Type `cd "Claude Code 101"` - this is your home base for the entire course, you'll return here often
 
 ### Lesson 1.5: Terminal Survival Kit
-- Task 1: Press the Up Arrow key - your last command reappears (you can scroll through history)
-- Task 2: Start typing `pw` then press Tab - it autocompletes to `pwd` (Tab = autocomplete)
-- Task 3: Type `echo "test"` and while it's showing, press `Ctrl + C` - this stops things
-- Task 4: Type `clear` to clean the screen (or press `Ctrl + L`)
-- Task 5: Remember: `Ctrl + C` in terminal = STOP (not copy!). `Cmd + C` = copy on Mac.
+- Task 1: Press the Up Arrow key - your last command reappears like magic (the terminal remembers everything you typed, so you can recall and rerun commands without retyping)
+- Task 2: Start typing `pw` then press Tab - it autocompletes to `pwd` (Tab completion saves hundreds of keystrokes per day by finishing commands and filenames for you)
+- Task 3: Type `echo "test"` and while it's showing, press `Ctrl + C` - this stops/kills the current command (because some commands run forever until you stop them, Ctrl+C is your emergency exit)
+- Task 4: Type `clear` to clean the screen or press `Ctrl + L` (same result - clears visual clutter so you can see your next command clearly, doesn't delete history)
+- Task 5: Remember the critical difference: `Ctrl + C` in terminal = STOP/KILL command (not copy like in other apps!), `Cmd + C` = copy text on Mac (terminal keyboard shortcuts are different)
 
 **Module 1 Complete: Terminal Explorer 🏆 | +200 XP | +3 Speed | +10 Aura**
 
@@ -52,12 +52,12 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Efficiency** | **Badge: Setup Champion 🏆**
 
 ### Lesson 2.1: Getting Your API Key
-- Task 1: Open your browser and go to `console.anthropic.com`
-- Task 2: Create an account or sign in
-- Task 3: Find "API Keys" in the menu
-- Task 4: Click "Create Key" and give it a name like "claude-code"
-- Task 5: Copy the key and save it somewhere safe (you'll need it in 2 minutes)
-- Task 6: This key is like a password that lets Claude Code connect to Claude's brain
+- Task 1: Open your browser and go to `console.anthropic.com` (Anthropic's developer console where you manage API access)
+- Task 2: Create an account or sign in (free to create, you'll add payment later when you use credits - new accounts get free trial credits)
+- Task 3: Find "API Keys" in the menu (usually in the left sidebar or settings - this is where you create authentication keys)
+- Task 4: Click "Create Key" and give it a descriptive name like "claude-code" (naming helps when you have multiple keys for different projects)
+- Task 5: Copy the key immediately and save it somewhere safe like a password manager (you'll need it in 2 minutes, and it only shows ONCE - if you lose it, you have to create a new one)
+- Task 6: This key is like a password that lets Claude Code connect to Claude's AI brain (it authenticates your requests so Anthropic knows who's using their API and can bill appropriately)
 
 ### Lesson 2.2: Installing Claude Code
 - Task 1: Go back to your terminal (should be in your Claude Code 101 folder - check with `pwd` to verify)
@@ -97,17 +97,17 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 7: You just created a real file through conversation instead of using a text editor. This is the power of Claude Code.
 
 ### Lesson 3.3: Specific vs. Vague Prompts
-- Task 1: Start Claude Code again (`claude`) and type "Make a webpage" - notice the generic result
-- Task 2: Now type "Create a file called test.html with a blue background, white text, the title 'Hello World' in a big heading, and a paragraph saying 'I made this with Claude Code'"
-- Task 3: Compare the results - specific prompts = better output every time
-- Task 4: Type "Open test.html in my browser" (Claude will use the `open` command)
-- Task 5: You can see your webpage! Specific instructions create specific results.
+- Task 1: Start Claude Code again with `claude` and type "Make a webpage" - notice the generic result (Claude has to guess what you want, so you get a basic template)
+- Task 2: Now type "Create a file called test.html with a blue background, white text, the title 'Hello World' in a big heading, and a paragraph saying 'I made this with Claude Code'" - much more specific
+- Task 3: Compare the results - the second webpage matches your exact vision while the first is generic (specific prompts = better output every single time because Claude knows exactly what you want)
+- Task 4: Type "Open test.html in my browser" and Claude will run the `open` command for you (this is Claude controlling your computer through terminal commands)
+- Task 5: Your webpage opens in the browser looking exactly how you specified - specific instructions create specific results (this is the key to working effectively with AI)
 
 ### Lesson 3.4: CLASS SELECTION EVENT
-- Task 1: Read about the 6 character classes that will shape your learning journey
-- Task 2: Think about what excites you most: Building? Speed? Flex? Chaos? Fun? Mastery?
-- Task 3: Choose your class (your teacher will present the options)
-- Task 4: Celebrate! You now have a character class with unique bonuses and a skill tree to unlock
+- Task 1: Read about the 6 character classes that will shape your learning journey (each class has different stat bonuses and playstyle - this choice matters for your progression)
+- Task 2: Think about what excites you most: Building products? Moving fast? Collecting achievements? Finding secrets? Having fun? Technical mastery? (your honest preference determines which class fits you)
+- Task 3: Choose your class when your teacher presents the options (this is a permanent decision that gives you unique bonuses for every lesson going forward)
+- Task 4: Celebrate your class selection! You now have a character class with unique stat bonuses and a skill tree to unlock (this makes the learning journey feel like YOUR adventure, not a generic course)
 
 **Module 3 Complete: First Contact 🏆 | +200 XP | +3 Creativity | +10 Aura**
 
@@ -117,10 +117,10 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Efficiency** | **Badge: Model Master 🏆**
 
 ### Lesson 4.1: What Are Models?
-- Task 1: In Claude Code, type `/model` to see your current model
-- Task 2: Claude has different "brains" called models - think of them like difficulty levels in a game
-- Task 3: Type "What model are you using right now?" and note the answer
-- Task 4: The three main models: Haiku (fast/cheap), Sonnet (balanced), Opus (powerful/expensive)
+- Task 1: In Claude Code, type `/model` to see your current model (this shows which AI "brain" is currently responding to you)
+- Task 2: Claude has different "brains" called models - think of them like difficulty settings in a game, or gears on a bike (different power levels for different needs)
+- Task 3: Type "What model are you using right now?" and note the answer (Claude tells you which model is active - probably Sonnet by default)
+- Task 4: Know the three main models: Haiku (fast and cheap for simple tasks), Sonnet (balanced for most work), Opus (powerful and expensive for complex problems) - picking the right model saves time and money
 
 ### Lesson 4.2: Haiku - The Speed Demon
 - Task 1: Type `/model haiku` to switch to Haiku (the fastest model - prioritizes speed over depth)
@@ -171,18 +171,18 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Delete the test README when done: ask Claude to "remove README.md" - if it asks about YOUR project's README, say no (this is just a test file)
 
 ### Lesson 5.4: Prompt Templates
-- Task 1: Learn this pattern: "I want to [goal]. The context is [situation]. Please [specific action]."
-- Task 2: Practice: "I want to organize my project files. The context is I have a Claude Code 101 folder with learning files. Please suggest a file structure."
-- Task 3: Another pattern: "Look at [file] and [action]. Keep [constraint]."
-- Task 4: Practice: "Look at hello.txt and rewrite it to sound more professional. Keep it under 2 sentences."
-- Task 5: Templates save time - you'll develop your own patterns as you go
+- Task 1: Learn this universal pattern: "I want to [goal]. The context is [situation]. Please [specific action]." - this structure ensures Claude has goal + context + action (the three key ingredients)
+- Task 2: Practice it: "I want to organize my project files. The context is I have a Claude Code 101 folder with learning files. Please suggest a file structure." - see how it provides complete information?
+- Task 3: Another powerful pattern: "Look at [file] and [action]. Keep [constraint]." - gives Claude a target, an action, and a boundary (prevents scope creep)
+- Task 4: Practice it: "Look at hello.txt and rewrite it to sound more professional. Keep it under 2 sentences." - Claude knows what to change and what NOT to change
+- Task 5: Templates save cognitive energy - instead of composing from scratch every time, fill in the blanks (you'll develop your own winning patterns as you go)
 
 ### Lesson 5.5: Advanced Prompting Patterns
-- Task 1: The "show your work" pattern: "Create a simple HTML page. Explain each line as you write it."
-- Task 2: The "options" pattern: "Give me 3 different ways to structure a personal website. Pros and cons of each."
-- Task 3: The "constraints" pattern: "Write a CSS file for hello.html. Only use 3 colors. No frameworks."
-- Task 4: The "review" pattern: "Look at test.html and rate it 1-10 on code quality. Explain why and suggest improvements."
-- Task 5: You now have 4 power patterns. Use them anytime you're stuck on what to ask.
+- Task 1: The "show your work" pattern: "Create a simple HTML page. Explain each line as you write it." - forces Claude to teach while building (you learn the reasoning, not just the code)
+- Task 2: The "options" pattern: "Give me 3 different ways to structure a personal website. Pros and cons of each." - explores the solution space before committing (decision-making aid)
+- Task 3: The "constraints" pattern: "Write a CSS file for hello.html. Only use 3 colors. No frameworks." - boundaries force creativity and prevent over-engineering (simpler is often better)
+- Task 4: The "review" pattern: "Look at test.html and rate it 1-10 on code quality. Explain why and suggest improvements." - gets expert feedback before shipping (like a code review from a senior dev)
+- Task 5: You now have 4 power patterns that solve common problems - use them anytime you're stuck on what to ask (each pattern unlocks a different capability)
 
 **Module 5 Complete: Prompt Engineer 🏆 | +200 XP | +3 Creativity | +10 Aura**
 
@@ -231,11 +231,11 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: This is how most apps store settings, user data, game saves - JSON is everywhere in software development
 
 ### Lesson 7.2: File Types You'll See
-- Task 1: Ask Claude "What are the file types in this project and what does each extension mean?"
-- Task 2: `.md` = Markdown (formatted text), `.json` = data storage, `.html` = web pages, `.css` = styling, `.js` = behavior
-- Task 3: Create one of each: ask Claude to "Create example.html, example.css, and example.js - each with just one line of example code"
-- Task 4: Ask Claude to explain what each file does and how they connect
-- Task 5: Clean up: "Delete example.html, example.css, and example.js"
+- Task 1: Ask Claude "What are the file types in this project and what does each extension mean?" - Claude analyzes your files and explains the extensions
+- Task 2: Common types: `.md` = Markdown (formatted text, like Word but simpler), `.json` = data storage (structured information), `.html` = web pages (structure), `.css` = styling (appearance), `.js` = behavior (interactivity)
+- Task 3: Create one of each: ask Claude to "Create example.html, example.css, and example.js - each with just one line of example code" - hands-on practice recognizing file types
+- Task 4: Ask Claude to "Explain what each file does and how they connect to each other" - understanding relationships between file types is key (HTML links to CSS, CSS styles HTML, JS adds interactivity)
+- Task 5: Clean up: "Delete example.html, example.css, and example.js" - practice cleanup (don't leave test files littering your project)
 
 ### Lesson 7.3: File Management
 - Task 1: Type `touch testfile.txt` to create an empty file (touch = create if doesn't exist, or update timestamp if it does)
@@ -255,11 +255,11 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: Understanding paths is crucial because most errors are "file not found" = wrong path (you're looking in the wrong place)
 
 ### Lesson 7.5: Terminal Power Moves
-- Task 1: Type `history` to see all your past commands (your terminal remembers everything)
-- Task 2: Type `!!` and press Enter - it reruns your last command
-- Task 3: Type `Ctrl + R` then start typing "cd" - this searches your history (press Enter to run the match)
-- Task 4: Type `ls -la` - the `-la` flag shows hidden files AND details (size, date, permissions)
-- Task 5: These shortcuts will save you hundreds of keystrokes over time
+- Task 1: Type `history` to see all your past commands (your terminal remembers everything you've ever typed in this session - useful for finding that command you ran yesterday)
+- Task 2: Type `!!` and press Enter - it reruns your last command (saves typing when you need to repeat something, or when you forgot `sudo` before a command)
+- Task 3: Type `Ctrl + R` then start typing "cd" - this searches your command history backwards (fuzzy search through thousands of commands - press Enter to run the match, Ctrl+R again to find the next match)
+- Task 4: Type `ls -la` - the `-la` flags show hidden files (starting with `.`) AND details like size, date modified, permissions (the `l` = long format, `a` = all including hidden)
+- Task 5: These shortcuts will save you hundreds of keystrokes over time (experts type less, not more - they use shortcuts and history instead of retyping)
 
 ### Lesson 7.6: Reading Error Messages
 - Task 1: Type `cd nonexistentfolder` - read the error message carefully: "No such file or directory" = the folder doesn't exist (you tried to go somewhere that isn't there)
@@ -298,25 +298,25 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: Press `q` to exit the log view (it uses a pager if there are many commits)
 
 ### Lesson 8.4: Making Changes and Committing
-- Task 1: Ask Claude to "Add a comment at the top of hello.txt saying 'Updated on [today's date]'"
-- Task 2: Type `git status` - hello.txt shows as "modified" (changed since last save)
-- Task 3: Type `git diff` to see exactly what changed (red = removed, green = added)
-- Task 4: Type `git add hello.txt` then `git commit -m "Update hello.txt with date comment"`
-- Task 5: Type `git log` - now you have 2 save points. You can always go back to either one.
+- Task 1: Ask Claude to "Add a comment at the top of hello.txt saying 'Updated on [today's date]'" - Claude modifies the file for you
+- Task 2: Type `git status` - hello.txt shows as "modified" in red (changed since last commit - Git detected the difference)
+- Task 3: Type `git diff` to see exactly what changed - red lines show removals, green lines show additions (this diff view shows the precise modifications before you commit)
+- Task 4: Type `git add hello.txt` to stage the change, then `git commit -m "Update hello.txt with date comment"` to save it (staging lets you choose which changes to include in this commit)
+- Task 5: Type `git log` - now you have 2 save points, each with its own ID and timestamp (you can always go back to either version if needed - time travel for code)
 
 ### Lesson 8.5: GitHub - Your Code Online
-- Task 1: Go to github.com and create an account (or sign in)
-- Task 2: Click "New repository", name it "claude-code-101", keep it public, DON'T add a README
-- Task 3: GitHub shows you commands to run - copy the ones under "push an existing repository"
-- Task 4: Run those commands in your terminal (they connect your local project to GitHub)
-- Task 5: Refresh the GitHub page - your files are now online! Anyone can see them.
+- Task 1: Go to github.com and create an account or sign in (GitHub = the internet's code storage and collaboration platform, used by millions of developers)
+- Task 2: Click "New repository", name it "claude-code-101", keep it public, DON'T add a README (you already have files, adding a README would create a conflict)
+- Task 3: GitHub shows you commands to run - copy the ones under "push an existing repository from the command line" (these connect your local Git repo to GitHub's server)
+- Task 4: Run those commands in your terminal - they set up the connection and upload your commits (your code travels from your laptop to GitHub's servers)
+- Task 5: Refresh the GitHub page - your files are now online, backed up, and shareable! (Anyone can see them, clone them, or learn from them - your code is now part of the internet)
 
 ### Lesson 8.6: Branching Basics
-- Task 1: Type `git branch` - you're on "main" (the primary branch)
-- Task 2: Type `git checkout -b experiment` - creates a new branch called "experiment"
-- Task 3: Make any small change (ask Claude to edit hello.txt), commit it
-- Task 4: Type `git checkout main` - you're back on main, and hello.txt is unchanged!
-- Task 5: Branches let you experiment without risking your main work. Like a parallel save file.
+- Task 1: Type `git branch` - you're on "main" (the primary branch where your stable code lives - shown with a `*` asterisk)
+- Task 2: Type `git checkout -b experiment` - creates a new branch called "experiment" and switches to it (the `-b` flag means "create and switch")
+- Task 3: Make any small change - ask Claude to edit hello.txt, then commit it (this change exists ONLY on the experiment branch, not on main)
+- Task 4: Type `git checkout main` - you switch back to main, and hello.txt is unchanged! (branches are isolated timelines - changes on one branch don't affect others)
+- Task 5: Branches let you experiment without risking your main work (like parallel save files in a video game - test risky ideas on a branch, keep main stable, merge successful experiments later)
 
 **Module 8 Complete: Version Controller 🏆 | +200 XP | +3 Accuracy | +10 Aura**
 
@@ -589,17 +589,17 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Status: Placeholder - Weekly rotating content not yet implemented**
 
 This module will contain:
-- Weekly rotating challenges and tasks
-- New Claude Code features as they're released
-- Community challenges (when leaderboards launch)
-- Seasonal event lessons
-- Advanced topics on demand
+- Weekly rotating challenges and tasks (fresh content keeps skills sharp)
+- New Claude Code features as they're released (staying current with the tool)
+- Community challenges when leaderboards launch (competitive motivation)
+- Seasonal event lessons (themed content for variety)
+- Advanced topics on demand (deep dives based on interest)
 
 For now, students who reach this point should:
-1. Continue earning XP through sandbox mode
-2. Build personal projects
-3. Explore advanced features on their own
-4. Return when new content is added
+1. Continue earning XP through sandbox mode (free exploration reinforces skills)
+2. Build personal projects (real-world application is the best teacher)
+3. Explore advanced features on their own (curiosity-driven learning)
+4. Return when new content is added (this module evolves over time)
 
 ---
 
