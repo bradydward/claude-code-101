@@ -1,4 +1,42 @@
 /**
+ * BACKGROUND MUSIC SYSTEM - Web Portal Only
+ *
+ * PURPOSE:
+ *   Provides continuous background music during the web portal onboarding
+ *   experience (web/terminal.html). Students spend 5-20 minutes here
+ *   practicing basic terminal commands before entering the CLI platform.
+ *
+ * AUDIO SYSTEM:
+ *   - Engine: Howler.js (Web Audio API, browser-based)
+ *   - Context: Browser only (terminal.html)
+ *   - Scope: Background music loop (user-selectable track)
+ *   - Controls: Volume slider, on/off toggle, track selection
+ *   - Persistence: localStorage (music_preferences key)
+ *
+ * ARCHITECTURE CONTEXT:
+ *   Claude Code 101 has TWO separate learning contexts:
+ *
+ *   1. Web Portal (THIS FILE):
+ *      - Location: Browser (web/terminal.html)
+ *      - Audio: Howler.js background music
+ *      - Purpose: 5-quest onboarding (echo, pwd, ls, cd, mkdir)
+ *      - Duration: 5-20 minutes
+ *      - Event sounds: Not implemented (web portal has no task completion events)
+ *
+ *   2. CLI Teaching Platform (SEPARATE SYSTEM):
+ *      - Location: Terminal (student runs `claude` command)
+ *      - Audio: macOS afplay for event sounds (task complete, level-up, etc.)
+ *      - Purpose: 15-module curriculum with full progression
+ *      - Duration: Months
+ *      - Background music: Not yet implemented (future phase)
+ *
+ * IMPORTANT:
+ *   These two contexts do NOT run simultaneously. Students complete the
+ *   web portal, then transition to CLI. This music system enhances the
+ *   onboarding experience. CLI background music is future work (Phase 5+).
+ */
+
+/**
  * BackgroundMusicManager - Handles background music playback for web portal
  *
  * Features:
@@ -243,6 +281,28 @@ class BackgroundMusicManager {
       this.currentTrack.unload();
       this.currentTrack = null;
     }
+  }
+
+  /**
+   * Briefly lower background music for event emphasis
+   * Optional: For future use if web portal adds celebration events (quest complete, etc.)
+   * @param {number} durationMs - How long to duck (default 2000ms)
+   */
+  duckForEvent(durationMs = 2000) {
+    if (!this.currentTrack || !this.preferences.enabled) return;
+
+    const originalVolume = this.preferences.volume;
+    const duckedVolume = originalVolume * 0.3; // Drop to 30% of current
+
+    // Fade down quickly
+    this.currentTrack.fade(originalVolume, duckedVolume, 300);
+
+    // Fade back up after event duration
+    setTimeout(() => {
+      if (this.currentTrack) {
+        this.currentTrack.fade(duckedVolume, originalVolume, 500);
+      }
+    }, durationMs);
   }
 }
 
