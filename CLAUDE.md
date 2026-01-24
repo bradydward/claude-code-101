@@ -846,7 +846,7 @@ All cosmetics purchased with Aura from the shop (see cosmetics.json).
 
 ### Shop Command Implementation
 
-When student types `/shop`, `shop`, `open shop`, `buy cosmetics`, `cosmetics`, or `store`, launch the interactive shop interface.
+When student types `shop`, `open shop`, `buy cosmetics`, `cosmetics`, or `store`, launch the interactive shop interface.
 
 #### Shop Entry Display
 
@@ -1095,7 +1095,7 @@ Want to equip it? (y/n)
 #### Shop Command Recognition
 
 Claude should recognize these as shop triggers:
-- `/shop`
+- `shop`
 - `shop`
 - `open shop`
 - `buy cosmetics`
@@ -1174,7 +1174,7 @@ If streak breaks:
 - Good for creativity and experimentation
 
 ### Activation
-When student says "sandbox" or "/sandbox":
+When student says "sandbox":
 - Verify they're Level 5+
 - Enter free-form mode
 - Track time spent in sandbox
@@ -1249,7 +1249,7 @@ are ready for launch!
    - Award XP and stats
    - On lesson complete: Update living cheat sheet (see Section 17: Updating the Living Cheat Sheet)
 
-### On "status" or "/status":
+### On "status":
 - Display full status block (no music trigger)
 - Show skill tree progress
 - Show Aura balance and glow level
@@ -1553,23 +1553,59 @@ The cheat sheet grows organically as the student learns, creating a personalized
 | Command | Action |
 |---------|--------|
 | "start lesson" / "continue" | Begin/resume from current position |
-| "status" / "/status" | Show full status display |
-| "help" / "/help" | Explain available commands |
+| "status" | Show full status display |
+| "help" | Explain available commands |
 | "explain [concept]" | Deep dive in plain language |
 | "what did that do?" | Explain the last action |
 | "I'm stuck" | Break current step smaller |
 | "skip" | Mark current task done, move on |
 | "go back" | Return to previous task |
-| "/class" | Show class info and stats |
-| "/skills" | Show skill tree and available points |
-| "/shop" | Browse and buy cosmetics |
-| "/streak" | Show streak details and milestones |
-| "/cheat" | Open living cheat sheet (shows path to both .md and .html) |
-| "/sandbox" | Enter sandbox mode (Level 5+) |
-| "/music" | Show current music settings |
-| "/aura" | Show Aura balance, glow, reputation |
-| "/leaderboard" | Show leaderboard status (Coming Soon) |
-| "/season" | Show seasonal events (Coming Soon) |
+| "class" | Show class info and stats |
+| "skills" | Show skill tree and available points |
+| "shop" | Browse and buy cosmetics |
+| "streak" | Show streak details and milestones |
+| "cheat" | Open living cheat sheet (shows path to both .md and .html) |
+| "sandbox" | Enter sandbox mode (Level 5+) |
+| "music" | Show current music settings |
+| "aura" | Show Aura balance, glow, reputation |
+| "leaderboard" | Show leaderboard status (Coming Soon) |
+| "season" | Show seasonal events (Coming Soon) |
+
+### Command Detection
+
+Claude should recognize these game commands when student types them as plain words:
+
+**Primary commands:**
+- start lesson, continue, begin → Start/resume curriculum
+- status → Show player status
+- help → Show available commands
+
+**Game system commands:**
+- shop → Browse cosmetics shop
+- skills → Show skill tree
+- class → Show class details
+- streak → Show streak info
+- aura → Show Aura economy
+
+**Utility commands:**
+- cheat → Open MY_CHEAT_SHEET.html
+- sandbox → Enter free exploration mode
+- music → Show music settings
+
+**Detection logic:**
+If student input is a single word matching a game command, trigger that system.
+If student input contains the word in context, treat as conversation.
+
+Example:
+- "shop" → Trigger shop system
+- "Let's shop for cosmetics" → Trigger shop system
+- "The shop is cool" → Normal conversation (not a command)
+
+**Why no slash prefix:**
+- Avoids GSD slash command namespace (`/` is reserved for GSD skills)
+- Natural language feel ("help" not "/help")
+- Matches how students already type ("status" not "/status")
+- Still distinct from normal conversation (single-word triggers)
 
 ---
 
