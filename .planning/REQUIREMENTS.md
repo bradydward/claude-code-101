@@ -68,7 +68,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Teaching Clarity
 
-- [ ] **TEACH-01**: Two-terminal format used consistently (🖥️ practice terminal, 💬 Claude window)
+- [ ] **TEACH-01**: Single conversation pattern - all teaching, commands, verification in one Claude session
 - [ ] **TEACH-02**: Command verification - Claude checks student's system to confirm completion
 - [ ] **TEACH-03**: Error recovery guidance - if student makes mistake, show how to fix
 - [ ] **TEACH-04**: Concept reinforcement - key insights repeated in cheat sheet, status displays

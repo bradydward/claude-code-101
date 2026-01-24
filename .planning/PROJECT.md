@@ -23,7 +23,7 @@ Learning by doing through irresistible game progression. If the game feel breaks
 - ✓ Avatar sprite system with evolution stages — existing
 - ✓ Living cheat sheet (auto-updating reference document) — existing
 - ✓ Progress tracking (local progress.json file) — existing
-- ✓ Two-terminal teaching format (practice terminal + Claude conversation) — existing
+- ✓ Single-conversation teaching (all learning happens in one Claude session) — existing
 
 ### Active
 
