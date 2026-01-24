@@ -8,7 +8,34 @@ Earn XP, level up, unlock skills, collect Aura, and customize your character whi
 
 ## Quick Start
 
-### 1. Enable Smooth Teaching Flow
+### One-Click Install (macOS)
+
+Run this command in your terminal:
+
+```bash
+/bin/bash install.sh
+```
+
+This automatically installs Homebrew, Node.js, and Claude Code CLI (skipping anything already installed).
+
+**Installation time:**
+- First-time setup: 5-8 minutes
+- Re-run (updates only): 10-30 seconds
+
+**After installation:**
+1. Get your API key from [console.anthropic.com](https://console.anthropic.com)
+2. Open a new terminal window (to load the updated PATH)
+3. `cd ~/Developer/projects/"Claude Code 101"`
+4. Run `claude`
+5. Type: `start lesson`
+
+---
+
+### Manual Install (Alternative)
+
+If you prefer to install components manually or the script fails:
+
+**1. Enable Smooth Teaching Flow**
 
 For the best beginner experience, configure Claude Code to skip permission prompts:
 
@@ -29,17 +56,20 @@ For the best beginner experience, configure Claude Code to skip permission promp
 }
 ```
 
-### 2. Install Dependencies
+**2. Install Dependencies**
 
 ```bash
-# Ensure you have Node.js installed
-node --version  # Should be v16+
+# Install Homebrew (if not already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install project dependencies (if any)
-npm install
+# Install Node.js
+brew install node
+
+# Install Claude Code CLI
+npm install -g @anthropic-ai/claude-code
 ```
 
-### 3. Start Learning
+**3. Start Learning**
 
 Open a conversation with Claude Code in this project folder and type:
 
