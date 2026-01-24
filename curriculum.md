@@ -334,46 +334,47 @@ This module builds a REAL personal website. It will be live on the internet by t
 - Task 4: Navigate into it: `cd my-website`
 
 ### Lesson 9.2: HTML Basics Through Claude
-- Task 1: Tell Claude "Create index.html with a basic HTML5 structure. Include a header with my name 'Brady', a nav bar, and three sections: About, Projects, Contact"
-- Task 2: Ask Claude to explain the key HTML tags it used (h1, nav, section, etc.)
-- Task 3: Open it in your browser: `open index.html`
-- Task 4: It looks plain - that's because we haven't styled it yet
+- Task 1: Tell Claude "Create index.html with a basic HTML5 structure. Include a header with my name 'Brady', a nav bar, and three sections: About, Projects, Contact" - Claude writes the HTML for you
+- Task 2: Ask Claude to "Explain the key HTML tags you used - what does each one do?" - you'll learn h1 (big heading), nav (navigation menu), section (content blocks), p (paragraphs)
+- Task 3: Open it in your browser by typing `open index.html` - your default browser opens with your webpage
+- Task 4: It looks plain and unstyled (black text on white background) - that's expected because HTML is just structure, we haven't added design yet (that's CSS in the next lesson)
 
 ### Lesson 9.3: CSS Styling Through Claude
-- Task 1: Tell Claude "Create styles.css that makes my website look modern. Use a dark background, light text, nice fonts, and spacing. Link it to index.html"
-- Task 2: Refresh your browser - see the difference CSS makes!
-- Task 3: Don't like something? Tell Claude "Change the background to dark blue instead" or "Make the font bigger"
-- Task 4: Iterate until you like how it looks. This is how real web development works.
+- Task 1: Tell Claude "Create styles.css that makes my website look modern. Use a dark background, light text, nice fonts, and good spacing. Link it to index.html" - Claude creates the CSS file AND adds the link tag to your HTML
+- Task 2: Refresh your browser (Cmd+R) - see the transformation! The same content now has colors, fonts, layout (this is the power of CSS - design on top of structure)
+- Task 3: Don't like something? Tell Claude "Change the background to dark blue instead" or "Make the headings bigger" or "Add more space between sections" - Claude updates the CSS file
+- Task 4: Iterate until you like how it looks - change colors, fonts, spacing - this is how real web development works (build, review, tweak, repeat)
 
 ### Lesson 9.4: Adding Real Content
-- Task 1: Tell Claude "Update the About section with: [write 2-3 sentences about yourself]"
-- Task 2: Tell Claude "Update the Projects section with a card for 'Claude Code 101' - my first project learning to code with AI"
-- Task 3: Tell Claude "Update the Contact section with a way to reach me" (email, Twitter, whatever you want)
-- Task 4: Preview in browser again - you have a real personal site with real content
+- Task 1: Tell Claude "Update the About section with: [write 2-3 sentences about yourself - who you are, what you're learning, what you're interested in]"
+- Task 2: Tell Claude "Update the Projects section with a card for 'Claude Code 101' - my first project learning to code with AI, include a brief description" - Claude adds structured project content
+- Task 3: Tell Claude "Update the Contact section with a way to reach me" - provide email, Twitter, LinkedIn, GitHub, or whatever you're comfortable sharing
+- Task 4: Refresh your browser - you now have a real personal site with YOUR information (not placeholder text, actual content about you)
 
 ### Lesson 9.5: Making It Responsive
-- Task 1: Ask Claude "Make the website responsive so it looks good on phones too. Use CSS media queries."
-- Task 2: To test: resize your browser window to be narrow (simulates a phone screen)
-- Task 3: If anything looks broken on small screens, tell Claude what to fix
-- Task 4: Responsive design = your site works on any screen size. Professional.
+- Task 1: Ask Claude "Make the website responsive so it looks good on phones too. Use CSS media queries." - Claude adds rules that adapt the layout based on screen size
+- Task 2: To test responsiveness: resize your browser window to be very narrow (simulates a phone screen) - watch how the layout adjusts
+- Task 3: If anything looks broken on small screens (text overlapping, images too big, unreadable content), tell Claude specifically what to fix
+- Task 4: Responsive design = your site works on any screen size (desktop, tablet, phone) - this is professional standard, not optional (most web traffic is mobile now)
 
 ### Lesson 9.6: Deploying to the Internet
-- Task 1: Ask Claude "Help me deploy this website to GitHub Pages for free"
-- Task 2: Follow Claude's steps: create a repo, push your code, enable GitHub Pages in settings
-- Task 3: Wait a minute, then visit your live URL (usually `yourusername.github.io/repo-name`)
-- Task 4: Your website is LIVE. On the actual internet. Anyone can visit it.
+- Task 1: Ask Claude "Help me deploy this website to GitHub Pages for free" - Claude guides you through the GitHub deployment process
+- Task 2: Follow Claude's steps: create a new GitHub repository for your website, push your my-website folder code, enable GitHub Pages in the repository settings
+- Task 3: Wait 1-2 minutes for GitHub to build your site, then visit your live URL (usually `yourusername.github.io/repo-name`) - bookmark this!
+- Task 4: Your website is LIVE on the actual internet - share the link with friends, family, anyone (this is real deployment, not a local preview)
 
 ### Lesson 9.7: Custom Domain (Optional)
-- Task 1: If you have a domain name, ask Claude "How do I point my custom domain to GitHub Pages?"
-- Task 2: Follow the DNS setup instructions
-- Task 3: If you don't have a domain, skip this - the github.io URL works fine
-- Task 4: Either way, you have a live personal website
+- Task 1: If you have a domain name (like yourname.com), ask Claude "How do I point my custom domain to GitHub Pages?" - Claude explains DNS configuration
+- Task 2: Follow the DNS setup instructions from your domain registrar (Namecheap, GoDaddy, etc.) - this usually takes 24-48 hours to fully propagate
+- Task 3: If you don't have a domain, skip this lesson entirely - the free github.io URL works perfectly fine and looks professional
+- Task 4: Either way (custom domain or github.io), you have a live personal website on the internet
 
 ### Lesson 9.8: Polish and Ship
-- Task 1: Visit your live site and find 3 things to improve
-- Task 2: Tell Claude each fix, one at a time
-- Task 3: Commit your changes: `git add . && git commit -m "Polish website"` then `git push`
-- Task 4: You just shipped a product. A real website. Live on the internet. Built with Claude Code.
+- Task 1: Visit your live site and find 3 things to improve (typos, colors, layout, wording, anything you notice)
+- Task 2: Tell Claude each fix, one at a time - wait for each to complete before the next (iterate based on what you see in the browser)
+- Task 3: Commit your improvements: `git add . && git commit -m "Polish website design and content"` then `git push` to update the live site
+- Task 4: Wait a minute, refresh your live site - the changes appear (you just shipped updates to a real product on the internet)
+- Task 5: You built a website from scratch, deployed it live, and iterated based on feedback. This is the full product development cycle. Built with Claude Code.
 
 **Module 9 Complete: Web Builder 🏆 | +200 XP | +3 Creativity | +10 Aura**
 
@@ -383,34 +384,34 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Efficiency** | **Badge: Agent Commander 🏆**
 
 ### Lesson 10.1: What Are Agents?
-- Task 1: Ask Claude "What are agents in Claude Code? Explain like I'm new."
-- Task 2: Agents = specialized sub-processes Claude spawns for complex tasks. Like hiring specialists.
-- Task 3: When you give Claude a big task, it might break it into smaller pieces and send each to an agent
-- Task 4: Type a complex request: "Look at all files in this project, summarize what each one does, and suggest improvements" - watch if Claude uses agents
+- Task 1: Ask Claude "What are agents in Claude Code? Explain like I'm new." - Claude explains the agent system in simple terms
+- Task 2: Agents = specialized sub-processes Claude spawns for complex tasks (like hiring specialists for different parts of a big job instead of doing everything yourself)
+- Task 3: When you give Claude a big task, it might break it into smaller pieces and send each to a different agent (parallelization and specialization = faster, better results)
+- Task 4: Type a complex request: "Look at all files in this project, summarize what each one does, and suggest improvements" - watch the output to see if Claude mentions using agents or breaking down the task
 
 ### Lesson 10.2: When Claude Spawns Agents
-- Task 1: Simple tasks (1 file, 1 action) = Claude handles directly
-- Task 2: Complex tasks (multiple files, research + action) = Claude may spawn agents
-- Task 3: Try: "Search this project for any TODO comments or things that need fixing" - this often triggers agent use
-- Task 4: Notice in the output if you see "Agent" or task delegation happening
+- Task 1: Simple tasks (1 file, 1 action) = Claude handles directly without agents (faster for small work, no overhead)
+- Task 2: Complex tasks (multiple files, research + action, big analysis) = Claude may spawn agents to parallelize the work (each agent handles one piece)
+- Task 3: Try this complex task: "Search this entire project for any TODO comments, incomplete features, or things that need fixing" - this often triggers agent use because it requires analyzing many files
+- Task 4: Notice in the output if you see mentions of "Agent", "task delegation", or Claude explaining it's breaking down the work (behavior may vary by Claude version)
 
 ### Lesson 10.3: Reading Agent Output
-- Task 1: When agents run, you'll see their progress and results
-- Task 2: Ask Claude "Run a thorough review of my website files and list any issues" (this may use agents)
-- Task 3: Read the output - each agent focuses on one piece of the task
-- Task 4: The final answer combines all agent findings into one response for you
+- Task 1: When agents run, you might see their progress and intermediate results (depends on Claude version and verbosity settings)
+- Task 2: Ask Claude "Run a thorough review of my website files - check HTML structure, CSS quality, responsive design, and accessibility" - this multi-faceted analysis may use agents
+- Task 3: Read the output carefully - if agents were used, you might see each agent's findings organized by category (HTML issues, CSS issues, etc.)
+- Task 4: The final answer combines all agent findings into one coherent response - you don't have to piece it together yourself, Claude synthesizes the results
 
 ### Lesson 10.4: Controlling Agent Behavior
-- Task 1: You can tell Claude how to approach tasks: "Do this step by step, showing me each step" (less agent delegation)
-- Task 2: Or: "Handle this completely and just show me the final result" (more agent delegation)
-- Task 3: Practice both approaches on the same task and compare
-- Task 4: You control the balance between seeing every step vs. getting fast results
+- Task 1: You can guide Claude's approach: "Do this step by step, showing me each step" - this reduces agent delegation (Claude walks you through the process, more transparency)
+- Task 2: Or: "Handle this completely and just show me the final result" - this increases agent delegation (Claude optimizes for speed, less visibility into intermediate steps)
+- Task 3: Practice both approaches on the same task and compare: try "Analyze my website step by step" vs "Analyze my website and give me the summary" - notice the difference in output style
+- Task 4: You control the tradeoff: more detail and understanding (step-by-step) vs. faster results and less noise (final result only)
 
 ### Lesson 10.5: Multi-Agent Workflows
-- Task 1: Ask Claude "Create a complete landing page for a product called 'AI Study Buddy'. Research similar products, design the layout, write the copy, and create the HTML/CSS"
-- Task 2: This complex task may involve multiple agents working in parallel
-- Task 3: Review the result - notice how the different aspects (research, design, code) came together
-- Task 4: Clean up the test files after reviewing. Multi-agent = complex tasks made simple.
+- Task 1: Ask Claude "Create a complete landing page for a product called 'AI Study Buddy'. Research similar products, design the layout, write compelling copy, and create the HTML/CSS files" - this is a big, multi-faceted task
+- Task 2: This complex task may involve multiple agents working in parallel (research agent finds examples, design agent creates layout, code agent writes HTML/CSS) - parallelization speeds up completion
+- Task 3: Review the result - notice how the different aspects came together cohesively: research informed the design, design influenced the copy, everything works as one polished product
+- Task 4: Clean up the test files after reviewing: ask Claude to "delete the AI Study Buddy files" - multi-agent workflows = complex tasks made simple through specialization
 
 **Module 10 Complete: Agent Commander 🏆 | +200 XP | +3 Efficiency | +10 Aura**
 
@@ -420,34 +421,34 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Efficiency** | **Badge: MCP Specialist 🏆**
 
 ### Lesson 11.1: What Is MCP?
-- Task 1: MCP = Model Context Protocol. Think of it as "plugins" for Claude Code.
-- Task 2: Without MCP: Claude can read/write files and run terminal commands
-- Task 3: With MCP: Claude can talk to GitHub, databases, APIs, and more directly
-- Task 4: Ask Claude "What MCP servers do I currently have configured?"
+- Task 1: MCP = Model Context Protocol - think of it as a plugin system that expands Claude Code's abilities (like browser extensions add features to Chrome)
+- Task 2: Without MCP: Claude can read/write files and run terminal commands (powerful, but limited to your local computer)
+- Task 3: With MCP: Claude can talk to GitHub directly, query databases, call APIs, fetch web data, and more (bridges Claude to external services)
+- Task 4: Ask Claude "What MCP servers do I currently have configured?" - this shows which plugins are installed (might be none if you're on a fresh install)
 
 ### Lesson 11.2: Installing Your First MCP Server
-- Task 1: Ask Claude "Help me install the filesystem MCP server so you can better navigate my files"
-- Task 2: Follow the installation steps Claude provides
-- Task 3: Restart Claude Code to load the new MCP server
-- Task 4: Test it: ask Claude to do something that uses the new capability
+- Task 1: Ask Claude "Help me install the filesystem MCP server so you can better navigate my files" - Claude explains the installation process (this varies by version and system)
+- Task 2: Follow the installation steps Claude provides (usually involves npm install and updating a config file) - if you encounter errors, tell Claude what happened
+- Task 3: Restart Claude Code to load the new MCP server: exit (Ctrl+C twice or `/exit`) then run `claude` again
+- Task 4: Test it: ask Claude "Use your filesystem tools to show me a tree view of this project" - if the MCP server loaded, Claude has enhanced file navigation
 
 ### Lesson 11.3: GitHub MCP
-- Task 1: Ask Claude "Help me set up the GitHub MCP server so you can interact with my repos"
-- Task 2: This lets Claude create issues, review PRs, and manage repos directly
-- Task 3: After setup, test: "Create an issue on my claude-code-101 repo titled 'Add more lessons'"
-- Task 4: Check GitHub - the issue should be there. Claude can now manage your GitHub directly.
+- Task 1: Ask Claude "Help me set up the GitHub MCP server so you can interact with my repositories" - Claude guides you through GitHub authentication and MCP installation
+- Task 2: This lets Claude create issues, review pull requests, manage repos, check CI status - all without you leaving the terminal (GitHub API access through conversation)
+- Task 3: After setup and restart, test: "Create an issue on my claude-code-101 repo titled 'Add more lessons' with description 'Brainstorm ideas for Module 16'"
+- Task 4: Check GitHub in your browser - the issue should be there with your title and description. Claude can now manage your GitHub directly through MCP.
 
 ### Lesson 11.4: Using MCP Tools in Conversations
-- Task 1: With MCP servers installed, Claude has more tools available
-- Task 2: Ask Claude "What tools do you have available right now?" to see the full list
-- Task 3: Try using a tool: "Use your GitHub tool to list my repositories"
-- Task 4: MCP expands what Claude can do without you leaving the terminal
+- Task 1: With MCP servers installed, Claude has more tools available beyond file operations (check available tools to see what's possible now)
+- Task 2: Ask Claude "What tools do you have available right now?" - Claude lists all MCP tools it can use (GitHub, filesystem, database, etc.)
+- Task 3: Try using a tool directly: "Use your GitHub tool to list all my public repositories" - Claude calls the GitHub API through MCP and shows results
+- Task 4: MCP expands what Claude can do without you leaving the terminal (no browser switching, no API calls from your command line - Claude handles it all)
 
 ### Lesson 11.5: Finding and Adding New MCPs
-- Task 1: Ask Claude "What are the most useful MCP servers available for developers?"
-- Task 2: Pick one that sounds useful for your workflow
-- Task 3: Install it together with Claude's help
-- Task 4: MCP is how you customize Claude Code to YOUR specific needs. The more you add, the more powerful it becomes.
+- Task 1: Ask Claude "What are the most useful MCP servers available for developers?" - Claude recommends popular ones (Slack, databases, web search, etc.)
+- Task 2: Pick one that sounds useful for your workflow (if you use Slack, get the Slack MCP; if you work with databases, get the database MCP)
+- Task 3: Install it together with Claude's help - follow the same pattern: install, configure, restart Claude Code, test
+- Task 4: MCP is how you customize Claude Code to YOUR specific needs - the more relevant MCPs you add, the more powerful Claude becomes for your work (build your own custom AI toolkit)
 
 **Module 11 Complete: MCP Specialist 🏆 | +200 XP | +3 Efficiency | +10 Aura**
 
@@ -457,41 +458,41 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Accuracy** | **Badge: Advanced Practitioner 🏆**
 
 ### Lesson 12.1: Claude Code in Existing Projects
-- Task 1: Navigate to your website folder: `cd my-website`
-- Task 2: Start Claude Code there: `claude`
-- Task 3: Type "Analyze this project. What's the file structure, what technology is used, and what could be improved?"
-- Task 4: Claude understands existing projects - you can drop it into ANY folder and it figures out what's there
+- Task 1: Navigate to your website folder: `cd my-website` (or any project folder you've created)
+- Task 2: Start Claude Code there: `claude` - Claude opens in the context of that folder
+- Task 3: Type "Analyze this project. What's the file structure, what technology is used, and what could be improved?" - Claude reads all files and understands the project
+- Task 4: Claude understands existing projects automatically - you can drop it into ANY folder (your code, downloaded projects, work projects) and it figures out what's there by reading the files
 
 ### Lesson 12.2: Debugging with Claude
-- Task 1: Ask Claude to "Add a broken JavaScript function to my website that has a bug in it" (for practice)
-- Task 2: Then ask "I think there's a bug in my JavaScript. Can you find and fix it?"
-- Task 3: Watch how Claude reads the code, identifies the issue, and proposes a fix
-- Task 4: This is real debugging workflow - describe the problem, let Claude investigate
-- Task 5: Clean up: remove the test JavaScript
+- Task 1: Ask Claude to "Add a broken JavaScript function to my website that has a subtle bug in it" - Claude creates intentionally buggy code for practice (this is a safe way to learn debugging)
+- Task 2: Then ask "I think there's a bug in my JavaScript. The function isn't working as expected. Can you find and fix it?" - don't tell Claude what the bug is
+- Task 3: Watch how Claude reads the code, identifies the issue (maybe a typo, logic error, or wrong variable), and proposes a fix with explanation
+- Task 4: This is real debugging workflow in professional development - describe symptoms, let the AI (or colleague) investigate root cause, review proposed fix
+- Task 5: Clean up: ask Claude to "remove the test JavaScript" or undo the changes
 
 ### Lesson 12.3: Code Review with Claude
-- Task 1: Ask Claude "Review my index.html as if you were a senior developer. Be honest about what's good and what could be better."
-- Task 2: Read the feedback - Claude gives constructive criticism
-- Task 3: Pick one suggestion and implement it together
-- Task 4: Code review = getting feedback before shipping. Claude is an always-available reviewer.
+- Task 1: Ask Claude "Review my index.html as if you were a senior developer. Be honest about what's good and what could be better - check semantics, accessibility, best practices." - this gets a thorough review
+- Task 2: Read the feedback carefully - Claude gives constructive criticism (both praise for good choices and suggestions for improvement)
+- Task 3: Pick one suggestion and implement it: tell Claude "Let's implement your suggestion about [specific item]" - work through the improvement together
+- Task 4: Code review = getting expert feedback before shipping (catches bugs, improves quality, teaches better patterns) - Claude is an always-available, patient reviewer who never judges
 
 ### Lesson 12.4: Refactoring with Claude
-- Task 1: Ask Claude "Is there any repetitive or messy code in my website files? Show me."
-- Task 2: If found: "Refactor it to be cleaner while keeping the same functionality"
-- Task 3: Verify the website still works after refactoring (refresh browser)
-- Task 4: Refactoring = making code better without changing what it does. Important skill.
+- Task 1: Ask Claude "Is there any repetitive or messy code in my website files? Show me specific examples." - Claude analyzes for code smells (duplication, inconsistency, poor structure)
+- Task 2: If found, ask: "Refactor it to be cleaner while keeping the exact same functionality" - Claude improves code structure without changing behavior
+- Task 3: Verify the website still works after refactoring - refresh browser, test all features (this proves refactoring was safe, no breakage)
+- Task 4: Refactoring = making code better (more readable, maintainable, efficient) without changing what it does - crucial professional skill that prevents technical debt
 
 ### Lesson 12.5: Testing Strategies
-- Task 1: Ask Claude "How would I test that my website works correctly? What should I check?"
-- Task 2: Claude will suggest things: links work, responsive design, content is correct, etc.
-- Task 3: Go through the checklist together - check each item on your live site
-- Task 4: Testing = making sure things work before users see them. Professionals always test.
+- Task 1: Ask Claude "How would I test that my website works correctly? Give me a comprehensive testing checklist." - Claude creates a QA plan
+- Task 2: Claude suggests manual tests: all links work, responsive on different sizes, content has no typos, forms work, images load, accessibility passes, cross-browser compatibility
+- Task 3: Go through the checklist together - check each item on your live site (actually click links, resize window, check on phone if possible)
+- Task 4: Testing = making sure things work before users see them (professionals test everything, every time) - shipping broken code damages reputation and user trust
 
 ### Lesson 12.6: Performance Optimization
-- Task 1: Ask Claude "Analyze my website for performance. How fast does it load? What could be faster?"
-- Task 2: Implement one optimization Claude suggests (like image compression, minifying CSS, etc.)
-- Task 3: Compare before/after if possible
-- Task 4: Fast websites = happy users. Every millisecond matters.
+- Task 1: Ask Claude "Analyze my website for performance. How fast does it load? What could be faster? Suggest specific optimizations." - Claude reviews file sizes, rendering, resource loading
+- Task 2: Implement one optimization Claude suggests - common wins: compress images, minify CSS/JS, reduce HTTP requests, lazy load images, optimize fonts
+- Task 3: Compare before/after if possible - check file sizes (`ls -lh` shows file sizes) or use browser dev tools to measure load time
+- Task 4: Fast websites = happy users and better SEO rankings - every 100 milliseconds matters for user experience (slow sites lose visitors before content even loads)
 
 **Module 12 Complete: Advanced Practitioner 🏆 | +200 XP | +3 Accuracy | +10 Aura**
 
@@ -501,28 +502,28 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Creativity** | **Badge: Product Shipper 🏆**
 
 ### Lesson 13.1: From Idea to Plan
-- Task 1: Think of something you want to build (a tool, a website, an app idea)
-- Task 2: Tell Claude your idea and ask "Help me break this into small buildable pieces"
-- Task 3: Review the plan together - is it realistic? What's the smallest version that works?
-- Task 4: An MVP (Minimum Viable Product) = the simplest version that's actually useful
+- Task 1: Think of something YOU actually want to build - a tool for yourself, a website for a hobby, an app idea that solves a real problem you have (not a fake project - something you'd actually use)
+- Task 2: Tell Claude your idea and ask "Help me break this into small buildable pieces - prioritize by what's essential vs nice-to-have" - Claude creates a project roadmap
+- Task 3: Review the plan together - is it realistic for your skill level? What's the absolute smallest version that would still be useful? (cut features until you have the core)
+- Task 4: This smallest useful version is called an MVP (Minimum Viable Product) - if Instagram's MVP was just "share a photo", what's YOUR project's MVP?
 
 ### Lesson 13.2: Building Your MVP
-- Task 1: Take the first piece from your plan and build it with Claude
-- Task 2: Keep it simple - if you catch yourself adding "nice to have" features, stop
-- Task 3: Build just enough to demonstrate the core idea
-- Task 4: When the basic version works, commit it: `git add . && git commit -m "MVP: [your project name]"`
+- Task 1: Take the first piece from your plan and build it with Claude - start with the core feature (the ONE thing your project absolutely must do)
+- Task 2: Keep it brutally simple - if you catch yourself adding "nice to have" features, STOP (those come later, after the MVP works)
+- Task 3: Build just enough to demonstrate the core idea works - ugly is fine, basic is fine, as long as it functions (polish comes after validation)
+- Task 4: When the basic version works, commit it: `git add . && git commit -m "MVP: [your project name] - core functionality working"` - this is your first real product milestone
 
 ### Lesson 13.3: Iterating Based on Feedback
-- Task 1: Look at your MVP and list 3 things that could be better
-- Task 2: Prioritize: which improvement would make the biggest difference?
-- Task 3: Build that one improvement with Claude
-- Task 4: This is the build-measure-learn loop. Ship fast, improve based on what you notice.
+- Task 1: Actually USE your MVP yourself - find 3 things that are annoying, confusing, or could work better (real usage reveals real problems)
+- Task 2: Prioritize ruthlessly: which ONE improvement would make the biggest difference to actual users? (not the prettiest, not the easiest - the most impactful)
+- Task 3: Build that one improvement with Claude - implement, test, verify it actually made things better
+- Task 4: This is the build-measure-learn loop (Eric Ries, Lean Startup) - ship fast, get feedback, improve based on real data, repeat forever
 
 ### Lesson 13.4: Deployment and Maintenance
-- Task 1: Deploy your MVP (GitHub Pages, or ask Claude for other free options)
-- Task 2: Share the link with someone and ask for honest feedback
-- Task 3: Make one fix based on their feedback
-- Task 4: You've now gone through the entire product lifecycle: idea → plan → build → ship → feedback → improve. This is how real products are made.
+- Task 1: Deploy your MVP to the internet - use GitHub Pages, or ask Claude "What are free hosting options for [your project type]?" (Netlify, Vercel, Heroku free tier)
+- Task 2: Share the live link with someone who would actually use it - ask for HONEST feedback (not "it's great!" but "what's confusing? what's broken? what's missing?")
+- Task 3: Make one fix based on their most critical feedback - deploy the update, ask them to try again
+- Task 4: You've now completed the entire product lifecycle: idea → plan → build → deploy → get feedback → improve → deploy again. This is exactly how real products are made, from startups to big tech.
 
 **Module 13 Complete: Product Shipper 🏆 | +200 XP | +3 Creativity | +10 Aura**
 
@@ -532,28 +533,28 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Efficiency** | **Badge: Autonomous Operator 🏆**
 
 ### Lesson 14.1: What Is Autonomous Mode?
-- Task 1: Sometimes you want Claude to work on a big task without stopping to ask you permission for every step
-- Task 2: Autonomous mode = Claude runs multiple steps in a row, only stopping when done or stuck
-- Task 3: Ask Claude "How do I let you run autonomously without asking permission for each file change?"
-- Task 4: This is "Ralph Wiggum mode" - Claude goes on autopilot (for better or worse)
+- Task 1: Sometimes you want Claude to tackle a big task without stopping to ask permission for every single file change (faster results, less interruption)
+- Task 2: Autonomous mode = Claude runs multiple steps in a row, making decisions independently, only stopping when done or stuck (like delegating to a capable assistant)
+- Task 3: Ask Claude "How do I enable autonomous mode so you can work without asking permission for each file change?" - Claude explains the permission settings
+- Task 4: This is nicknamed "Ralph Wiggum mode" (after the Simpsons character) - Claude goes on autopilot and does its best (trust required, but powerful for big tasks)
 
 ### Lesson 14.2: Setting Up a Long-Running Task
-- Task 1: Give Claude a meaty task: "Refactor my entire website to use semantic HTML5 tags. Update all pages and the CSS to match."
-- Task 2: Grant permissions for Claude to run without stopping (follow the prompts)
-- Task 3: Watch Claude work through multiple files and steps automatically
-- Task 4: Review the results when done - did it do what you wanted?
+- Task 1: Give Claude a substantial task: "Refactor my entire website to use semantic HTML5 tags (header, nav, main, article, section, footer). Update all HTML files and adjust CSS to match." - this touches many files
+- Task 2: Grant permissions for Claude to run without stopping - when prompted, approve autonomous operation (you're giving Claude permission to make multiple changes without asking each time)
+- Task 3: Watch Claude work through multiple files and steps automatically - you'll see file changes happening rapidly without interruption (this is the speed benefit)
+- Task 4: Review the results when Claude reports completion - open files, check the browser, verify it did what you wanted (always review autonomous work)
 
 ### Lesson 14.3: Monitoring and Guiding
-- Task 1: Start another autonomous task: "Add 3 more project cards to my website with real descriptions"
-- Task 2: While Claude works, you can still type to redirect: "Actually, make them about open source projects I admire"
-- Task 3: You're not completely hands-off - you can guide the direction while Claude handles execution
-- Task 4: Think of it like being a director: you set the vision, Claude does the work
+- Task 1: Start another autonomous task: "Add 3 more project cards to my website's Projects section with descriptions and links" - Claude begins working
+- Task 2: While Claude works, you can still interrupt and redirect: type "Actually, make them about open source projects I admire instead of my own projects" - Claude adjusts mid-task
+- Task 3: You're not completely hands-off - autonomous doesn't mean uncontrollable (you can guide, correct, or stop at any time while Claude handles the implementation details)
+- Task 4: Think of it like being a director: you set the vision and make creative decisions, Claude handles the execution and technical work (collaboration at speed)
 
 ### Lesson 14.4: When to Use vs. Hands-On
-- Task 1: Autonomous is good for: repetitive tasks, big refactors, bulk file changes, research
-- Task 2: Hands-on is better for: learning new things, creative decisions, sensitive changes
-- Task 3: Practice: identify which of your past tasks would have been good for autonomous mode
-- Task 4: You now have both styles: careful step-by-step AND full-speed autonomous. Use the right tool for the job.
+- Task 1: Autonomous is good for: repetitive tasks (updating 20 files the same way), big refactors (restructuring entire codebase), bulk changes (renaming variables everywhere), research (analyzing many files)
+- Task 2: Hands-on is better for: learning new concepts (you need to see each step), creative decisions (design choices require your input), sensitive changes (security, data, critical features)
+- Task 3: Practice: look back at tasks you've done - which would have been faster autonomous? Which needed your direct involvement at each step?
+- Task 4: You now have both modes in your toolkit: careful step-by-step for learning and precision, full-speed autonomous for execution and scale. Use the right tool for the job.
 
 **Module 14 Complete: Autonomous Operator 🏆 | +200 XP | +3 Efficiency | +10 Aura**
 
@@ -563,22 +564,22 @@ This module builds a REAL personal website. It will be live on the internet by t
 **Stat Tag: Creativity** | **Badge: Claude Code Graduate 🎓**
 
 ### Lesson 15.1: Review of Your Journey
-- Task 1: Ask Claude "List every skill I've learned across all modules of Claude Code 101"
-- Task 2: Read through the list - you went from zero to all of this
-- Task 3: Pick the skill you're most proud of learning and tell Claude why
-- Task 4: You've gone from "what's a terminal?" to building, deploying, and managing real projects
+- Task 1: Ask Claude "List every skill I've learned across all 15 modules of Claude Code 101, organized by category" - Claude creates a comprehensive skill inventory
+- Task 2: Read through the entire list - terminal fluency, Git, web development, AI prompting, debugging, deployment - you went from complete beginner to all of this
+- Task 3: Pick the skill you're most proud of learning and tell Claude why it matters to you (what can you do now that you couldn't before?)
+- Task 4: Reflect on the distance traveled: you've gone from "what's a terminal?" to building, deploying, and autonomously managing real projects with an AI pair programmer
 
 ### Lesson 15.2: Building Your Next Project
-- Task 1: Think of your next project - something YOU want to build (not an exercise)
-- Task 2: Use everything you've learned: plan mode for design, good prompts, Git for saving, deployment for shipping
-- Task 3: Start building it right now with Claude
-- Task 4: You don't need a course anymore. You have the skills. Just build.
+- Task 1: Think of your next project - something YOU actually want to exist in the world (not a tutorial, not an exercise - a real thing you'll use or share)
+- Task 2: Use everything you've learned: plan mode for exploring approaches, specific prompts for better results, Git for version control, autonomous mode for speed, deployment for shipping
+- Task 3: Start building it RIGHT NOW with Claude - don't wait for perfect conditions or more knowledge - you know enough to build real things
+- Task 4: You don't need a course anymore. You don't need permission. You have the skills and the AI pair programmer. Just build.
 
 ### Lesson 15.3: The Endless Path
-- Task 1: After Level 8, levels keep going (every 1000 XP). Your skill tree keeps growing.
-- Task 2: Ask Claude "What advanced Claude Code features haven't I explored yet?"
-- Task 3: Pick one and try it right now
-- Task 4: The learning never stops, but now you know HOW to learn. That's the real graduation.
+- Task 1: After Level 8, endless levels continue (every 1000 XP = new level) - your skill tree keeps growing, your Aura keeps climbing, your capabilities keep expanding (there's always more to master)
+- Task 2: Ask Claude "What advanced Claude Code features or techniques haven't I explored yet? What's beyond the curriculum?" - Claude reveals the deep end
+- Task 3: Pick one advanced topic and try it right now - dive into something you're curious about (no tutorial required, just explore with Claude as your guide)
+- Task 4: The learning never stops, but now you know HOW to learn anything with Claude Code - research with Claude, experiment safely, iterate quickly, ship confidently. That's the real graduation: not knowledge, but the ability to acquire any knowledge.
 
 **Module 15 Complete: Claude Code Graduate 🎓 | +200 XP | +3 Creativity | +10 Aura**
 
