@@ -38,6 +38,8 @@ Learning by doing through irresistible game progression. If the game feel breaks
 - [ ] **Meaningful progression**: Skills feel powerful, unlocks feel valuable, stats matter
 - [ ] **Visual feedback**: ASCII art, animations, color, celebration sequences
 - [ ] **Personal completion**: Builder completes all 15 modules and feels transformed
+- [ ] **Guided project track**: Optional path where students learn by building THEIR idea (not sample projects)
+- [ ] **Weekly build highlights**: Showcase feature celebrating what students shipped
 
 ### Out of Scope
 
