@@ -19,13 +19,13 @@ Transform Claude Code 101 from solid foundation to irresistible learning experie
 **Plans:** 7 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Teaching pattern conversion (single conversation, error recovery, verification)
-- [ ] 01-02-PLAN.md — Curriculum audit and polish (15 modules, clarity, WHY explanations)
-- [ ] 01-03-PLAN.md — Visual celebrations system (6 event types, ASCII art, hierarchy)
-- [ ] 01-04-PLAN.md — Cosmetics shop implementation (browse, purchase, equip)
-- [ ] 01-05-PLAN.md — Game mechanics verification (class bonuses, streaks, skills, final validation)
-- [ ] 01-06-PLAN.md — Architecture optimization (split CLAUDE.md, extract reference docs)
-- [ ] 01-07-PLAN.md — UX friction removal (command namespace, permissions setup)
+- [x] 01-01-PLAN.md — Teaching pattern conversion (single conversation, error recovery, verification)
+- [x] 01-02-PLAN.md — Curriculum audit and polish (15 modules, clarity, WHY explanations)
+- [x] 01-03-PLAN.md — Visual celebrations system (6 event types, ASCII art, hierarchy)
+- [x] 01-04-PLAN.md — Cosmetics shop implementation (browse, purchase, equip)
+- [x] 01-05-PLAN.md — Game mechanics verification (class bonuses, streaks, skills, final validation)
+- [x] 01-06-PLAN.md — Architecture optimization (split CLAUDE.md, extract reference docs)
+- [x] 01-07-PLAN.md — UX friction removal (command namespace, permissions setup)
 
 **Requirements:**
 - CURR-01: All 15 modules content complete
@@ -152,13 +152,13 @@ Plans:
 
 | Phase | Status | Start Date | End Date | Requirements Completed |
 |-------|--------|------------|----------|------------------------|
-| 1 - Core Experience Polish | Planned | -- | -- | 0/18 |
+| 1 - Core Experience Polish | Complete ✓ | 2026-01-23 | 2026-01-23 | 18/18 |
 | 2 - Onboarding & Flow | Pending | -- | -- | 0/5 |
 | 3 - Music System Upgrade | Pending | -- | -- | 0/6 |
 | 4 - Test-Out System | Pending | -- | -- | 0/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
 
-**Overall Progress:** 0/42 requirements complete (0%)
+**Overall Progress:** 18/42 requirements complete (43%)
 
 ---
 

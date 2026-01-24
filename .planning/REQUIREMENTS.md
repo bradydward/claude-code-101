@@ -9,19 +9,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Curriculum Quality
 
-- [ ] **CURR-01**: All 15 modules content complete (no missing lessons)
-- [ ] **CURR-02**: Every task has crystal-clear instructions (no ambiguity about what to do)
-- [ ] **CURR-03**: Every task has explanation of WHY (not just what)
-- [ ] **CURR-04**: Living cheat sheet updates automatically after each lesson completion
+- [x] **CURR-01**: All 15 modules content complete (no missing lessons)
+- [x] **CURR-02**: Every task has crystal-clear instructions (no ambiguity about what to do)
+- [x] **CURR-03**: Every task has explanation of WHY (not just what)
+- [x] **CURR-04**: Living cheat sheet updates automatically after each lesson completion
 
 ### Visual Celebrations
 
-- [ ] **VIS-01**: Task completion shows animated celebration (ASCII art, particles, or color)
-- [ ] **VIS-02**: Lesson completion displays epic visual sequence matching sound quality
-- [ ] **VIS-03**: Level-up shows progression animation (old level → new level with visual flair)
-- [ ] **VIS-04**: Module completion displays full-screen celebration with stats gained
-- [ ] **VIS-05**: Badge earned shows badge visual with unlock animation
-- [ ] **VIS-06**: Skill unlock displays skill card with stat bonuses highlighted
+- [x] **VIS-01**: Task completion shows animated celebration (ASCII art, particles, or color)
+- [x] **VIS-02**: Lesson completion displays epic visual sequence matching sound quality
+- [x] **VIS-03**: Level-up shows progression animation (old level → new level with visual flair)
+- [x] **VIS-04**: Module completion displays full-screen celebration with stats gained
+- [x] **VIS-05**: Badge earned shows badge visual with unlock animation
+- [x] **VIS-06**: Skill unlock displays skill card with stat bonuses highlighted
 
 ### Onboarding Flow
 
@@ -61,17 +61,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Game Mechanics
 
-- [ ] **GAME-01**: Skill unlocks feel powerful (stat bonuses, new capabilities, visual impact)
-- [ ] **GAME-02**: Cosmetics shop browseable and items purchaseable (free Aura only in v1)
-- [ ] **GAME-03**: Streak freeze mechanic works as designed (auto-use on missed day)
-- [ ] **GAME-04**: Class bonus calculations correct (Gigachad +1 Creativity, Aura Farmer +2 Aura, etc.)
+- [x] **GAME-01**: Skill unlocks feel powerful (stat bonuses, new capabilities, visual impact)
+- [x] **GAME-02**: Cosmetics shop browseable and items purchaseable (free Aura only in v1)
+- [x] **GAME-03**: Streak freeze mechanic works as designed (auto-use on missed day)
+- [x] **GAME-04**: Class bonus calculations correct (Gigachad +1 Creativity, Aura Farmer +2 Aura, etc.)
 
 ### Teaching Clarity
 
-- [ ] **TEACH-01**: Single conversation pattern - all teaching, commands, verification in one Claude session
-- [ ] **TEACH-02**: Command verification - Claude checks student's system to confirm completion
-- [ ] **TEACH-03**: Error recovery guidance - if student makes mistake, show how to fix
-- [ ] **TEACH-04**: Concept reinforcement - key insights repeated in cheat sheet, status displays
+- [x] **TEACH-01**: Single conversation pattern - all teaching, commands, verification in one Claude session
+- [x] **TEACH-02**: Command verification - Claude checks student's system to confirm completion
+- [x] **TEACH-03**: Error recovery guidance - if student makes mistake, show how to fix
+- [x] **TEACH-04**: Concept reinforcement - key insights repeated in cheat sheet, status displays
 
 ## v2 Requirements
 
