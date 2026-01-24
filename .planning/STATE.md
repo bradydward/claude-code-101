@@ -12,11 +12,11 @@
 ## Current Position
 
 **Phase:** 1 of 5 - Core Experience Polish
-**Plan:** 01-02 completed (Curriculum Audit and Polish)
+**Plan:** 01-03 completed (Visual Celebrations System)
 **Status:** In progress
-**Last activity:** 2026-01-24 - Completed 01-02-PLAN.md (Curriculum Audit and Polish)
+**Last activity:** 2026-01-24 - Completed 01-03-PLAN.md (Visual Celebrations System)
 
-**Progress:** ██▱▱▱▱▱▱▱▱ ~10%
+**Progress:** ███▱▱▱▱▱▱▱ ~15%
 
 ### Phase Goal
 Existing curriculum, teaching, and celebrations feel professional and addictive.
@@ -30,10 +30,10 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 2 (01-01, 01-02)
-- Requirements completed: ~2/42 (~5%)
+- Plans completed: 3 (01-01, 01-02, 01-03)
+- Requirements completed: ~3/42 (~7%)
 - Phases completed: 0/5
-- Average time per plan: 7.5 minutes
+- Average time per plan: 5.5 minutes
 - Days in current phase: 1
 
 **Quality:**
@@ -44,7 +44,7 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 **Health:**
 - On track: Yes
 - Risks: None identified
-- Momentum: High (2 plans complete, strong progress)
+- Momentum: High (3 plans complete, strong velocity)
 
 ## Accumulated Context
 
@@ -93,18 +93,37 @@ Existing curriculum, teaching, and celebrations feel professional and addictive.
 - Impact: Learning objectives woven into task descriptions seamlessly
 - Context: Pattern established across all 286 tasks in curriculum
 
+**2026-01-24: VIS-XX Template System (from 01-03)**
+- Decision: Explicit template naming (VIS-01 through VIS-06) for all celebration types
+- Rationale: Makes Session Flow instructions unambiguous - Claude knows exactly what to display
+- Impact: Every completion event mapped to specific visual template
+- Context: Complete system in CLAUDE.md Section 9 with Event-to-Template Mapping
+
+**2026-01-24: Celebration Hierarchy (from 01-03)**
+- Decision: Escalating impact (task < lesson < module < level-up) to prevent fatigue
+- Rationale: Small wins feel quick, big milestones feel earned
+- Impact: Task = 1 line, Lesson = bordered box, Module = full frame, Level-up = interactive
+- Context: Only level-up interrupts flow (waits for skill choice)
+
+**2026-01-24: No Silent Completions Rule (from 01-03)**
+- Decision: Every XP-awarding event MUST trigger visible celebration
+- Rationale: Essential for RPG feel - achievements must be visible and satisfying
+- Impact: No code path exists where completion produces no visual output
+- Context: Event-to-Template Mapping guarantees coverage
+
 ### Active Todos
 
 **Immediate:**
 - [x] Audit curriculum completion status (DONE - all 15 modules complete)
-- [ ] Continue Phase 1 execution (visual celebrations next)
-- [ ] Design ASCII celebration animations
+- [x] Design visual celebration system (DONE - VIS-01 through VIS-06 complete)
+- [ ] Continue Phase 1 execution (game mechanics verification next)
+- [ ] Verify game mechanics calculations
 - [ ] Implement cosmetics shop CLI
 
 **Upcoming:**
-- [ ] Verify game mechanics calculations (skill unlocks, class bonuses, streak freeze)
-- [ ] Design visual celebration sequences (ASCII art library)
+- [ ] Verify skill unlocks, class bonuses, streak freeze logic
 - [ ] Implement cosmetics shop purchase flow
+- [ ] Test celebration rendering across terminals
 - [ ] Write one-click installer script (Phase 2)
 
 **Deferred:**
@@ -119,23 +138,25 @@ None identified.
 ### Open Questions
 
 1. ~~**Curriculum completion status:**~~ RESOLVED - All 15 modules complete with WHY coverage verified
-2. **Visual celebration complexity:** How elaborate should ASCII animations be? Balance between epic feel and terminal performance.
-3. **One-click installer scope:** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?
+2. ~~**Visual celebration complexity:**~~ RESOLVED - Production templates complete with celebration hierarchy
+3. **Terminal rendering compatibility:** ASCII box-drawing characters in celebrations - verify rendering across iTerm, Terminal.app, VS Code terminal
+4. **One-click installer scope:** Should installer handle brew, node, npm, AND Claude Code setup? Or assume some prerequisites?
 
 ## Session Continuity
 
 **What Just Happened:**
-Completed plan 01-02 (Curriculum Audit and Polish). Audited all 15 modules in curriculum.md, added comprehensive WHY explanations (learning objectives), enhanced beginner clarity, and verified single-conversation compatibility. All modules now meet graduated WHY thresholds (80%/60%/50%).
+Completed plan 01-03 (Visual Celebrations System). Designed production-quality ASCII celebration templates for all 6 event types (VIS-01 through VIS-06), established celebration hierarchy to prevent fatigue, and wired templates into Session Flow with Event-to-Template Mapping. No silent completions possible.
 
 **What's Next:**
-Continue Phase 1 execution. Next plans will address visual celebrations (ASCII art, color, animations), cosmetics shop implementation, and game mechanics verification.
+Continue Phase 1 execution. Next plans will address game mechanics verification (skill unlocks, class bonuses, streak freeze), cosmetics shop implementation, and any remaining polish items.
 
 **Context for Next Session:**
-- Teaching pattern documented and stable (single conversation, collaborative)
-- Curriculum audit complete (all 15 modules enhanced)
-- WHY coverage verified across all 286 tasks
-- Every task now explains learning objectives naturally
-- No jargon without explanation, beginner-followable
+- Teaching pattern stable (single conversation, collaborative)
+- Curriculum complete (all 15 modules with WHY coverage)
+- Visual celebrations documented (VIS-01 through VIS-06)
+- Celebration hierarchy established (task < lesson < module < level-up)
+- Event-to-Template Mapping guarantees no silent completions
+- All templates include music triggers (run_in_background: true)
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value and constraints
@@ -144,14 +165,15 @@ Continue Phase 1 execution. Next plans will address visual celebrations (ASCII a
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/research/SUMMARY.md` - Research context (guided project patterns)
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-01-SUMMARY.md` - Teaching pattern conversion summary
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-02-SUMMARY.md` - Curriculum audit summary
-- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated teaching instructions (Section 16, 17)
+- `/Users/bradyward/Developer/projects/Claude Code 101/.planning/phases/01-core-experience-polish/01-03-SUMMARY.md` - Visual celebrations system summary
+- `/Users/bradyward/Developer/projects/Claude Code 101/CLAUDE.md` - Updated with celebration templates (Section 9) and session flow wiring (Section 16/17)
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - Polished 15-module curriculum
 
-**Last session:** 2026-01-24 04:43 UTC
-**Stopped at:** Completed 01-02-PLAN.md (Curriculum Audit and Polish)
+**Last session:** 2026-01-24 04:50 UTC
+**Stopped at:** Completed 01-03-PLAN.md (Visual Celebrations System)
 **Resume file:** None (ready for next plan)
 
 ---
 
 *State initialized: 2026-01-24*
-*Last updated: 2026-01-24 (Plan 01-02 complete)*
+*Last updated: 2026-01-24 (Plan 01-03 complete)*
