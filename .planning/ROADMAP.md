@@ -62,6 +62,13 @@ Plans:
 
 **Dependencies:** Phase 1 (teaching clarity required for smooth flow)
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — One-click idempotent installer (Xcode CLT, Homebrew, Node, Claude CLI)
+- [ ] 02-02-PLAN.md — First-session flow (name XP, orientation, first-win tutorial)
+- [ ] 02-03-PLAN.md — Progressive disclosure and web portal acknowledgment
+
 **Requirements:**
 - ONBD-01: One-click installer reduces manual steps
 - ONBD-02: First Claude conversation within 5 minutes
@@ -152,8 +159,8 @@ Plans:
 
 | Phase | Status | Start Date | End Date | Requirements Completed |
 |-------|--------|------------|----------|------------------------|
-| 1 - Core Experience Polish | Complete ✓ | 2026-01-23 | 2026-01-23 | 18/18 |
-| 2 - Onboarding & Flow | Pending | -- | -- | 0/5 |
+| 1 - Core Experience Polish | Complete | 2026-01-23 | 2026-01-23 | 18/18 |
+| 2 - Onboarding & Flow | Planned | -- | -- | 0/5 |
 | 3 - Music System Upgrade | Pending | -- | -- | 0/6 |
 | 4 - Test-Out System | Pending | -- | -- | 0/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
@@ -162,4 +169,4 @@ Plans:
 
 ---
 
-*Last updated: 2026-01-24*
+*Last updated: 2026-01-23*
