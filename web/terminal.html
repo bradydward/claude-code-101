@@ -15,7 +15,7 @@
   <div class="instruction-banner">
     <div class="instruction-content">
       <span class="instruction-icon">👉</span>
-      <span class="instruction-text">Loading...</span>
+      <span class="instruction-text">Type: <code>echo "hello"</code> and press Enter</span>
     </div>
     <div class="instruction-actions">
       <button class="hint-btn" id="hint-btn" disabled>💡 Hint</button>
@@ -69,20 +69,35 @@
     </div>
   </div>
 
+  <!-- CHARACTER CREATION MODAL -->
+  <div class="character-creation-overlay" id="character-creation-overlay">
+    <div class="character-creation-box">
+      <h2>Create Your Companion</h2>
+      <p>Choose a color for your guide. They'll grow stronger as you progress!</p>
+      <div class="color-choices">
+        <button class="color-choice" data-color="cyan">
+          <div class="color-preview cyan"></div>
+          <span>🔵 Cyan Flow</span>
+        </button>
+        <button class="color-choice" data-color="gold">
+          <div class="color-preview gold"></div>
+          <span>🟡 Golden Aura</span>
+        </button>
+        <button class="color-choice" data-color="purple">
+          <div class="color-preview purple"></div>
+          <span>🟣 Purple Haze</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- WELCOME OVERLAY -->
   <div class="welcome-overlay active" id="welcome-overlay">
     <div class="welcome-box">
-      <h2>Welcome to Terminal Training!</h2>
-      <p>This is a <strong>safe practice space</strong>. Nothing you type here can hurt your computer. It's all simulated!</p>
-      <ul class="welcome-tips">
-        <li>✅ Follow the instructions at the top</li>
-        <li>💡 Click "Hint" if you get stuck</li>
-        <li>⏭️ Click "Skip" if you want to move on</li>
-        <li>📊 Watch your progress in the top-right</li>
-        <li>⌨️ Just type and press Enter - it's that simple!</li>
-      </ul>
-      <p style="color: var(--accent); font-weight: 600;">Ready to conquer the terminal?</p>
-      <button class="welcome-start-btn" id="welcome-start-btn">Let's Go! 🚀</button>
+      <h1 style="font-size: 3rem; margin-bottom: 1rem;">⚡</h1>
+      <h2 style="font-size: 2rem; margin-bottom: 2rem;">Ready to learn the terminal?</h2>
+      <button class="welcome-start-btn" id="welcome-start-btn" style="font-size: 1.5rem; padding: 1.5rem 3rem;">START 🚀</button>
+      <p style="color: #9e9e9e; margin-top: 1.5rem; font-size: 0.9rem;">Follow the instructions. Type the commands. That's it.</p>
     </div>
   </div>
 
@@ -185,6 +200,14 @@
     </div>
   </div>
 
-  <script src="js/terminal-sim.js"></script>
+  <!-- Howler.js - Web audio library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+
+  <!-- Music system - MUST load before terminal-sim.js for global access -->
+  <script src="js/music-system.js?v=999"></script>
+
+  <!-- Avatar and terminal scripts -->
+  <script src="js/avatar-system.js?v=999"></script>
+  <script src="js/terminal-sim.js?v=999"></script>
 </body>
 </html>

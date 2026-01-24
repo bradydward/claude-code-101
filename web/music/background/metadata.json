@@ -1,0 +1,39 @@
+{
+  "tracks": {
+    "chill-lofi": {
+      "title": "Chill Lofi Beats",
+      "mood": "relaxed",
+      "bpm": 80,
+      "file": "chill-lofi.mp3",
+      "description": "Mellow beats for easy learning"
+    },
+    "focus-beats": {
+      "title": "Deep Focus",
+      "mood": "concentrated",
+      "bpm": 95,
+      "file": "focus-beats.mp3",
+      "description": "Stay in the zone"
+    },
+    "epic-quest": {
+      "title": "Epic Quest",
+      "mood": "energetic",
+      "bpm": 130,
+      "file": "epic-quest.mp3",
+      "description": "Adventure awaits"
+    },
+    "ambient-space": {
+      "title": "Ambient Space",
+      "mood": "peaceful",
+      "bpm": 60,
+      "file": "ambient-space.mp3",
+      "description": "Calm and spacious"
+    },
+    "retro-synth": {
+      "title": "Retro Synthwave",
+      "mood": "nostalgic",
+      "bpm": 110,
+      "file": "retro-synth.mp3",
+      "description": "80s vibes, modern learning"
+    }
+  }
+}
