@@ -191,9 +191,22 @@ class BackgroundMusicManager {
    */
   switchTrack(trackId) {
     // Ensure audio is unlocked on first user interaction with music controls
-    if (!this.isUnlocked) {
+    if (!this.isUnlocked && !this.isUnlocking) {
       this.unlockAudio();
-      // Give unlock time to complete, then retry switch
+      // Wait for unlock to complete (unlockAudio sets isUnlocked on success)
+      // Single retry after unlock finishes
+      setTimeout(() => {
+        if (this.isUnlocked) {
+          this.switchTrack(trackId);
+        } else {
+          console.warn('Audio unlock failed, cannot switch track');
+        }
+      }, 500);
+      return;
+    }
+
+    // If unlock is in progress, wait and retry once
+    if (this.isUnlocking) {
       setTimeout(() => this.switchTrack(trackId), 100);
       return;
     }
