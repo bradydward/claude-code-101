@@ -16,14 +16,16 @@ Transform Claude Code 101 from solid foundation to irresistible learning experie
 
 **Dependencies:** None (foundation already exists)
 
-**Plans:** 5 plans
+**Plans:** 7 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Teaching pattern conversion (single conversation, error recovery, verification)
-- [ ] 01-02-PLAN.md -- Curriculum audit and polish (15 modules, clarity, WHY explanations)
-- [ ] 01-03-PLAN.md -- Visual celebrations system (6 event types, ASCII art, hierarchy)
-- [ ] 01-04-PLAN.md -- Cosmetics shop implementation (browse, purchase, equip)
-- [ ] 01-05-PLAN.md -- Game mechanics verification (class bonuses, streaks, skills, final validation)
+- [ ] 01-01-PLAN.md — Teaching pattern conversion (single conversation, error recovery, verification)
+- [ ] 01-02-PLAN.md — Curriculum audit and polish (15 modules, clarity, WHY explanations)
+- [ ] 01-03-PLAN.md — Visual celebrations system (6 event types, ASCII art, hierarchy)
+- [ ] 01-04-PLAN.md — Cosmetics shop implementation (browse, purchase, equip)
+- [ ] 01-05-PLAN.md — Game mechanics verification (class bonuses, streaks, skills, final validation)
+- [ ] 01-06-PLAN.md — Architecture optimization (split CLAUDE.md, extract reference docs)
+- [ ] 01-07-PLAN.md — UX friction removal (command namespace, permissions setup)
 
 **Requirements:**
 - CURR-01: All 15 modules content complete
