@@ -123,12 +123,13 @@ Plans:
 
 **Dependencies:** Phase 1 (curriculum must be complete and verified before challenges can test it)
 
-**Plans:** 3 plans
+**Plans:** 4 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Challenge content for Modules 2-4 (installation, conversations, models)
-- [ ] 04-02-PLAN.md — Challenge content for Modules 5-7 (prompting, plan mode, technical foundations)
-- [ ] 04-03-PLAN.md — Validation engine, progress tracking, pass/fail handling
+- [x] 04-01-PLAN.md — Challenge content for Modules 2-4 (installation, conversations, models)
+- [x] 04-02-PLAN.md — Challenge content for Modules 5-7 (prompting, plan mode, technical foundations)
+- [x] 04-03-PLAN.md — Validation engine, progress tracking, pass/fail handling
+- [ ] 04-04-PLAN.md — Integration of announcements and /challenge flow (gap closure)
 
 **Requirements:**
 - TEST-01: Module Challenge available for Modules 2-7
