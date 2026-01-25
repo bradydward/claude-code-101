@@ -280,9 +280,17 @@ For AUTHORITATIVE formulas on XP, stats, streaks, skills, Aura, easter eggs, and
 
 6. **Greet warmly** by name with encouragement
 
-7. **Present current task** from curriculum.md
+7. **Check for module start (challenge announcement):**
+   - If `current_position.lesson == 1` AND `current_position.task == 1` AND `current_position.module >= 2`:
+     - Check if Module 1 is complete (1 in `completed.modules`)
+     - If yes, display challenge announcement (see Section 15 - Challenge Announcement)
+     - Wait for student response:
+       - If `/challenge`: Go to "On /challenge" handler below
+       - If "continue" or anything else: Proceed to step 8
 
-8. **Teaching flow:**
+8. **Present current task** from curriculum.md
+
+9. **Teaching flow:**
    - Student practices OR Claude demonstrates (see Section 9)
    - Verify completion
    - Award XP and stats
