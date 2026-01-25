@@ -155,11 +155,11 @@ Plans:
 **Plans:** 5 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Discovery wizard and version contract (4-phase wizard, 3-feature lock, project.json)
-- [ ] 05-02-PLAN.md — Curriculum routing system (project_types, skip_if, contextualization)
-- [ ] 05-03-PLAN.md — Week 1 static mockup and GitHub Pages deployment
-- [ ] 05-04-PLAN.md — Weekly scope audit (creep prevention, park/swap options)
-- [ ] 05-05-PLAN.md — Portfolio defense and showcase (demo video, reflection, celebration)
+- [x] 05-01-PLAN.md — Discovery wizard and version contract (4-phase wizard, 3-feature lock, project.json)
+- [x] 05-02-PLAN.md — Curriculum routing system (project_types, skip_if, contextualization)
+- [x] 05-03-PLAN.md — Week 1 static mockup and GitHub Pages deployment
+- [x] 05-04-PLAN.md — Weekly scope audit (creep prevention, park/swap options)
+- [x] 05-05-PLAN.md — Portfolio defense and showcase (demo video, reflection, celebration)
 
 **Requirements:**
 - PROJ-01: Project discovery wizard (structured interview)
@@ -250,10 +250,10 @@ Research Phase 6 will evaluate:
 | 2 - Onboarding & Flow | Complete | 2026-01-24 | 2026-01-24 | 5/5 |
 | 3 - Music System Upgrade | Complete | 2026-01-24 | 2026-01-24 | 6/6 |
 | 4 - Test-Out System | Complete | 2026-01-25 | 2026-01-25 | 4/4 |
-| 5 - Guided Project Track | Planned | -- | -- | 0/9 |
+| 5 - Guided Project Track | Complete | 2026-01-25 | 2026-01-25 | 9/9 |
 | 6 - Global Learning Intelligence | Pending | -- | -- | 0/10 |
 
-**Overall Progress:** 33/52 requirements complete (63%)
+**Overall Progress:** 42/52 requirements complete (81%)
 
 ---
 

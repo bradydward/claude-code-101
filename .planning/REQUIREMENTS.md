@@ -157,15 +157,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-02 | Phase 4 | Complete |
 | TEST-03 | Phase 4 | Complete |
 | TEST-04 | Phase 4 | Complete |
-| PROJ-01 | Phase 5 | Pending |
-| PROJ-02 | Phase 5 | Pending |
-| PROJ-03 | Phase 5 | Pending |
-| PROJ-04 | Phase 5 | Pending |
-| PROJ-05 | Phase 5 | Pending |
-| PROJ-06 | Phase 5 | Pending |
-| PROJ-07 | Phase 5 | Pending |
-| PROJ-08 | Phase 5 | Pending |
-| PROJ-09 | Phase 5 | Pending |
+| PROJ-01 | Phase 5 | Complete |
+| PROJ-02 | Phase 5 | Complete |
+| PROJ-03 | Phase 5 | Complete |
+| PROJ-04 | Phase 5 | Complete |
+| PROJ-05 | Phase 5 | Complete |
+| PROJ-06 | Phase 5 | Complete |
+| PROJ-07 | Phase 5 | Complete |
+| PROJ-08 | Phase 5 | Complete |
+| PROJ-09 | Phase 5 | Complete |
 
 **Coverage:**
 - v1 requirements: 42 total
