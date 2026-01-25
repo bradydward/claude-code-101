@@ -406,6 +406,7 @@ If progress.json does not exist, create it with this template:
     "lessons": [],
     "tasks": []
   },
+  "challenges_passed": [],
   "badges": [],
   "onboarding": {
     "from_web_portal": false,
