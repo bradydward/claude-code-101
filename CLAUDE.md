@@ -1769,6 +1769,249 @@ When presenting lesson content in guided project mode:
 
 The student builds their REAL project during lessons, not throwaway examples.
 
+### Week 1: Static Mockup
+
+After version contract is signed, guide student through static HTML mockup of their V1.
+
+**Purpose:**
+- Instant gratification: Live URL in Week 1, not Week 8
+- Design validation: See if UI makes sense before coding
+- Low-risk iteration: HTML is cheap to redo
+- Shareable progress: "Look what I'm building!"
+
+**Day-by-Day Flow:**
+
+**Days 1-2: Design main screen**
+```
+Claude: "Let's make your [Project Name] real!
+
+Week 1 goal: A static HTML version of your app.
+It will LOOK like the app but won't DO anything yet.
+By Sunday, you'll have a live URL to share.
+
+Let's start with the main screen. Tell me:
+- What's the first thing users see?
+- What actions can they take?
+- What does the layout look like?"
+```
+
+Guide student through creating index.html:
+- Create project folder: `mkdir [YOUR_APP_FOLDER] && cd [YOUR_APP_FOLDER]`
+- Ask Claude to create index.html based on their description
+- Add CSS for professional appearance (modern, clean, mobile-friendly)
+- Use realistic placeholder content (not "Lorem ipsum")
+
+**Days 3-4: Add additional screens**
+
+Based on V1 features, identify needed screens:
+- If "save [data]": Need a form/input screen
+- If "search [data]": Need results display
+- If "organize by category": Need category view
+
+```
+Claude: "Your V1 has 3 features. Let's make screens for each:
+
+Feature 1: [Feature] -> [Screen needed]
+Feature 2: [Feature] -> [Screen needed]
+Feature 3: [Feature] -> [Screen needed]
+
+Let's create [first additional screen] next..."
+```
+
+Create each HTML file with navigation between screens.
+Use consistent styling across all pages.
+
+**Day 5: Polish and prepare for deployment**
+```
+Claude: "Your mockup has all the screens! Let's polish:
+
+1. Make it responsive (works on phones)
+2. Add a favicon (small icon in browser tab)
+3. Check all navigation links work
+4. Review: Does this LOOK like your vision?
+
+Then we'll deploy it live!"
+```
+
+**Mockup Quality Checklist:**
+- [ ] All V1 features have visual representation
+- [ ] Navigation works between all pages
+- [ ] Responsive (test at mobile width)
+- [ ] Realistic placeholder content
+- [ ] Consistent visual style
+- [ ] No broken links or images
+
+**Example File Structure:**
+```
+recipe-keeper/
+├── index.html          # Main recipe list view
+├── add-recipe.html     # Form to add new recipe
+├── recipe-detail.html  # Single recipe view
+├── styles.css          # Shared styling
+└── assets/
+    └── favicon.ico
+```
+
+### Deploying to GitHub Pages
+
+Free static site hosting - perfect for Week 1 mockup.
+
+**Prerequisites:**
+- GitHub account (if student doesn't have one, guide through creation)
+- Git basics from Module 8 (or quick crash course)
+
+**Deployment Flow:**
+
+**Step 1: Initialize Git repository**
+```
+Claude: "Let's put your mockup online! First, we need Git.
+
+I'll set up version control for your project..."
+```
+
+Commands Claude runs:
+```bash
+cd [PROJECT_FOLDER]
+git init
+git add .
+git commit -m "Initial mockup for [PROJECT_NAME] V1"
+```
+
+**Step 2: Create GitHub repository**
+```
+Claude: "Now we need a GitHub repository to host it.
+
+Do you have a GitHub account? (yes/no)"
+```
+
+If no: Guide through github.com account creation (2 minutes)
+If yes: Continue
+
+```
+Claude: "I'll create the repository using GitHub CLI..."
+```
+
+Commands:
+```bash
+# Check if gh is installed and authenticated
+gh auth status
+
+# If not authenticated, guide through: gh auth login
+# Create repo and push
+gh repo create [YOUR_APP_FOLDER] --public --source=. --push
+```
+
+**Step 3: Enable GitHub Pages**
+```
+Claude: "Repository created! Now enabling GitHub Pages..."
+```
+
+Command:
+```bash
+gh repo edit --enable-pages --branch main
+```
+
+Note: This may take 1-2 minutes for GitHub to build the site.
+
+**Step 4: Get live URL**
+```
+Claude: "Your site is deploying! Checking status..."
+```
+
+Wait and verify:
+```bash
+# Check pages status
+gh api repos/[USERNAME]/[YOUR_APP_FOLDER]/pages --jq '.html_url'
+```
+
+**Celebration on successful deployment:**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 YOUR APP IS LIVE!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[Project Name] is now on the internet!
+
+🌐 https://[username].github.io/[your-app-folder]/
+
+Share this URL with anyone - they can see YOUR app!
+
+This is a static mockup (doesn't "work" yet).
+But it shows your vision. In the coming weeks,
+we'll make it functional.
+
++100 XP | +10 Aura | Week 1 Milestone Complete!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Update project.json:
+```json
+"milestones": {
+  "week_1_mockup": {
+    "due": "[original due date]",
+    "completed": "[today's date]",
+    "url": "https://[username].github.io/[your-app-folder]/"
+  }
+}
+```
+
+Play module_complete music sequence (run_in_background: true).
+
+### Deployment Verification
+
+Claude verifies deployment automatically:
+
+**Verification Commands:**
+```bash
+# Check HTTP status (should be 200)
+curl -s -o /dev/null -w "%{http_code}" https://[username].github.io/[your-app-folder]/
+
+# Check index.html has content
+curl -s https://[username].github.io/[your-app-folder]/index.html | grep -q "<title>"
+
+# Check CSS loads
+curl -s https://[username].github.io/[your-app-folder]/styles.css | head -5
+```
+
+**If verification fails:**
+
+Wait 2 minutes and retry (GitHub Pages can take time to build).
+
+If still failing after 5 minutes:
+```
+Claude: "The deployment is taking longer than expected. Let's check:
+
+1. Go to github.com/[username]/[your-app-folder]
+2. Click 'Settings' -> 'Pages'
+3. Is there an error message?
+
+Common issues:
+- Repository might be private (needs to be public for free Pages)
+- Branch might need to be 'main' not 'master'
+- index.html might be in wrong folder
+
+Tell me what you see and we'll fix it."
+```
+
+**Common Troubleshooting:**
+
+| Issue | Solution |
+|-------|----------|
+| 404 Not Found | Wait 2-5 min for build, or check index.html exists in root |
+| Private repo warning | Change to public: `gh repo edit --visibility public` |
+| Wrong branch | `gh repo edit --enable-pages --branch main` |
+| Blank page | Check index.html has valid HTML structure |
+| CSS not loading | Check styles.css path in HTML (relative path ./styles.css) |
+
+**Manual Fallback:**
+
+If gh CLI fails, provide manual steps:
+1. Go to github.com -> New Repository
+2. Name it [your-app-folder], make it Public
+3. Upload files or use "Upload files" button
+4. Go to Settings -> Pages -> Source: main branch
+5. Wait 2 minutes, refresh to get URL
+
 ### Weekly Scope Audit
 
 5-minute check to prevent feature creep. Runs automatically at session start if 7+ days since last audit, or manually via `/project audit`.
