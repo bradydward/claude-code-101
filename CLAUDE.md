@@ -1008,6 +1008,125 @@ The test-out system provides an efficient path for students who already know mod
 
 **Badge on pass:** Model Master 🏆
 
+### Module 5 Challenge: Writing Prompts Like a Pro
+
+**Core competencies tested:**
+- Context-rich prompting (the "Context Is King" principle)
+- Multi-step instructions
+- Iterating on responses
+- Using prompt templates/patterns
+
+**Validation scenarios (4 total, ~8 min):**
+
+**Scenario 1 (Practical): Vague to specific prompt transformation**
+- Give: "Fix the bug"
+- Ask: "I'll give you a vague prompt. Rewrite it to be specific and actionable."
+- Expect response like: "Look at [file] and find the error causing [symptom]. Fix it while keeping [constraint]."
+- Pass criteria: Response includes context (file/location), specific action, and constraint
+- Why practical: Tests ability to apply prompt engineering principles in real-world scenario
+
+**Scenario 2 (Practical): Multi-step prompt creation**
+- Ask: "Give me a multi-step prompt that creates a folder, puts a file in it, and writes specific content."
+- Pass criteria: Student writes prompt with all three steps clearly specified
+- Claude executes to verify it works
+- Why practical: Tests ability to structure complex requests efficiently
+
+**Scenario 3 (Conversational): Show your work pattern**
+- Ask: "What's the 'show your work' prompting pattern and when would you use it?"
+- Pass criteria: Student explains asking Claude to explain reasoning while building
+- Accept paraphrasing: "Make Claude explain each step", "Ask for explanations with code", etc.
+- Why conversational: Understanding pattern purpose, not just mechanics
+
+**Scenario 4 (Conversational): Options vs single answer**
+- Ask: "What's the difference between asking for options vs asking for a single answer?"
+- Pass criteria: Student understands options pattern explores solution space before committing
+- Accept variations: "Options help compare approaches", "Single answer is faster but less exploratory"
+- Why conversational: Decision-making strategy, not memorizable fact
+
+**Pass criteria:** All 4 scenarios demonstrate understanding (not memorization)
+
+**Badge on pass:** Prompt Engineer 🏆
+
+### Module 6 Challenge: Plan Mode - Safe Exploration
+
+**Core competencies tested:**
+- Understanding what plan mode does (preview without execution)
+- Knowing when to use plan mode
+- Exiting plan mode to execute
+
+**Validation scenarios (3 total, ~6 min):**
+
+**Scenario 1 (Automated + Conversational): Plan mode demonstration**
+- Ask: "Enter plan mode and ask Claude to reorganize files. What do you see?"
+- Student types `/plan`
+- Student asks Claude to reorganize files
+- Pass criteria: Student explains they see a preview/plan without actual file changes
+- Why hybrid: Tests both mechanical skill (entering plan mode) and understanding (recognizing preview)
+
+**Scenario 2 (Conversational): When to use plan mode**
+- Ask: "When would you use plan mode vs just asking Claude to do something directly?"
+- Pass criteria: Student mentions big changes, irreversible operations, wanting to preview, or being unsure
+- Key insight: Plan mode is for "big changes you want to preview first"
+- Accept variations: Many valid ways to express this use case
+- Why conversational: Strategic decision-making based on context
+
+**Scenario 3 (Practical): Exiting plan mode**
+- Ask: "Exit plan mode and verify you're back in normal mode."
+- Student types `/plan` again (toggles off) or `/exit-plan`
+- Claude verifies plan mode is off
+- Pass criteria: Student demonstrates understanding of toggle/exit mechanism
+- Why practical: Must prove ability to control mode, not just describe it
+
+**Pass criteria:** All 3 scenarios pass
+
+**Badge on pass:** Plan Mode Pro 🏆
+
+### Module 7 Challenge: Technical Foundations
+
+**Core competencies tested:**
+- Understanding JSON structure
+- Recognizing common file types
+- File management (copy, move, delete)
+- Understanding paths (absolute vs relative)
+- Basic terminal power moves
+- Reading error messages
+
+**Validation scenarios (5 total, ~10 min):**
+
+**Scenario 1 (Practical): JSON creation**
+- Ask: "Create a valid JSON file with an object containing a name string and age number."
+- Claude verifies via Read tool: file created, JSON is valid, has correct structure
+- Pass criteria: Valid JSON with string and number properties
+- Why practical: JSON literacy is hands-on, not theoretical
+
+**Scenario 2 (Conversational): File type understanding**
+- Ask: "What's the difference between .md and .json files? When would you use each?"
+- Pass criteria: Student explains Markdown is for human-readable docs, JSON is for structured data
+- Accept paraphrasing: Many ways to express this distinction
+- Why conversational: Conceptual understanding of file purposes
+
+**Scenario 3 (Conversational): Path types**
+- Ask: "What's the difference between an absolute path and a relative path? Give an example of each?"
+- Pass criteria: Student explains absolute starts from root (/ or ~), relative starts from current location
+- Example: `/Users/name/Desktop` (absolute) vs `./Desktop` or `Desktop` (relative)
+- Why conversational: Fundamental concept, multiple valid explanations
+
+**Scenario 4 (Practical): File management command**
+- Ask: "Show me how you'd copy a file to a new location using the terminal."
+- Student demonstrates `cp source destination` pattern
+- Pass criteria: Student can execute or explain the cp command correctly
+- Why practical: Real command usage, not just theory
+
+**Scenario 5 (Conversational): Error interpretation**
+- Ask: "If you see 'Permission denied' error, what does it usually mean and what would you try?"
+- Pass criteria: Student mentions file permissions, ownership, or using sudo (with caution note)
+- Accept variations: Multiple valid troubleshooting approaches
+- Why conversational: Error handling is contextual problem-solving
+
+**Pass criteria:** At least 4 of 5 scenarios pass (this module is broader, slight leniency)
+
+**Badge on pass:** Tech Foundation 🏆
+
 ### Validation Approach
 
 **Three validation layers:**
@@ -1062,6 +1181,9 @@ Or type "continue" to go through the lessons step by step.
 - Module 2: "npm, API keys, and installing CLIs"
 - Module 3: "creating files through conversation and knowing Claude Code's capabilities"
 - Module 4: "Claude's different models and when to use each"
+- Module 5: "context-rich prompting, multi-step instructions, and prompt templates"
+- Module 6: "plan mode for previewing changes before execution"
+- Module 7: "JSON, file types, paths, file management, and reading error messages"
 
 **Announcement rules:**
 1. Show at EVERY module start (2-7) if Module 1 is complete
