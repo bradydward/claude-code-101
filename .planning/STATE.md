@@ -12,11 +12,11 @@
 ## Current Position
 
 **Phase:** 4 of 5 - In Progress
-**Plan:** 02 of 04 complete (04-02)
-**Status:** Module challenge designs complete for Modules 2-7 (all eligible modules)
-**Last activity:** 2026-01-25 - Completed 04-02-PLAN.md (challenge designs M5-M7)
+**Plan:** 03 of 04 complete (04-03)
+**Status:** Challenge validation engine complete with pass/fail handling and reward formulas
+**Last activity:** 2026-01-25 - Completed 04-03-PLAN.md (validation engine)
 
-**Progress:** ██████████░░░░░░░░░░ 50% (Phase 4 - 2/4 plans complete)
+**Progress:** ███████████████░░░░░ 75% (Phase 4 - 3/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -33,8 +33,12 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
 ### Phase 4 Summary (IN PROGRESS)
 Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validation (automated + conversational + practical). Module 2 tests npm/API keys/installation (3 scenarios, ~7 min). Module 3 tests file creation/capabilities/prompt quality (4 scenarios, ~8 min). Module 4 tests model differences/selection/switching (3 scenarios, ~6 min). Challenge announcement pattern defined for module-start discovery. /challenge command integrated into Key Commands. Full reward parity with lesson path (same XP/badges). 5-10 minute duration target per challenge.
 
+Plan 02 (04-02): Designed module challenges for Modules 5-7. Module 5 tests prompting competencies (4 scenarios, ~8 min). Module 6 tests plan mode understanding (3 scenarios, ~6 min). Module 7 tests technical foundations (5 scenarios, ~10 min, 4/5 pass threshold). All challenges use mixed validation. Duration varies by complexity (6-10 min). Announcement templates with topic summaries ready for module-start discovery.
+
+Plan 03 (04-03): Implemented challenge validation engine with pass/fail handling and reward formulas. Challenge pass awards 200 XP + 10 Aura + badge + 3 stat points (full reward parity). Two failure templates (close attempt with specific feedback, far from passing with gentle redirection). Unlimited retry policy with no penalties. Atomic progress update pattern (read once, write once). New challenges_passed array tracks test-outs separately for analytics. /hint command for concept refreshers during challenges.
+
 ### Next Steps
-1. Complete Phase 4 plans 02-04 (challenge designs M5-M7, validation engine, integration)
+1. Complete Phase 4 plan 04 (integration of announcements and /challenge flow)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
 3. (Deferred) Complete browser playback verification after MP3 replacement
 4. Student testing of complete web portal experience
@@ -42,10 +46,10 @@ Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validati
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 14 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 1 Phase 4)
+- Plans completed: 17 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4)
 - Requirements completed: 29/42 (69%)
-- Phases completed: 3/5 (60%), Phase 4: 1/4 plans (25%)
-- Average time per plan: ~5.8 minutes (Phase 4: 2m 15s for 04-01)
+- Phases completed: 3/5 (60%), Phase 4: 3/4 plans (75%)
+- Average time per plan: ~5.3 minutes (Phase 4: avg 2m per plan)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
@@ -65,6 +69,27 @@ Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validati
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Unlimited Retry Policy for Challenges (from 04-03)**
+- Decision: No retry limit, no XP penalty, no cooldown for challenge retries
+- Rationale: Test-out should feel like efficiency, not high-stakes exam. Pressure/penalties create anxiety which interferes with learning. Normalizing retries removes shame.
+- Impact: Students feel safe attempting test-out, lower anxiety, gentle nudge after 3+ retries guides to lesson path without forcing
+- Pattern: Soft guidance over hard limits - track attempts in session memory, suggest lesson path after 3rd retry while preserving student autonomy
+- Alternative: 3-retry hard limit - rejected as creates pressure and penalty mindset
+
+**2026-01-25: Reward Parity with Stat Advantage for Lesson Path (from 04-03)**
+- Decision: Challenge pass awards 200 XP + 10 Aura + badge (full parity), but only +3 stats vs lesson path's per-task stat growth
+- Rationale: XP parity respects existing knowledge and ensures challenge path doesn't feel like "missing out." Slight stat advantage for lesson path creates incentive for genuine learning while honoring test-out efficiency.
+- Impact: Students choosing challenge path get same XP/Aura/badges, students taking lessons get more total stats (per-task growth adds up)
+- Pattern: Full parity on progression metrics (XP/Aura/badges), slight advantage on secondary metrics (stats) to encourage comprehensive learning
+- Alternative: Full stat parity - rejected as removes any advantage to learning journey
+
+**2026-01-25: challenges_passed Array for Analytics (from 04-03)**
+- Decision: Track test-outs in dedicated challenges_passed array (module IDs as strings), separate from completed.modules
+- Rationale: Enables future analytics features ("You tested out of 3 modules!") without complicating current gameplay. Keeps analytics separate from core logic.
+- Impact: Both arrays updated on challenge pass, can distinguish lesson path from challenge path in future, ready for dashboard/insights
+- Pattern: Separate tracking for analytics vs gameplay - analytics data doesn't affect core systems
+- Alternative: Only use completed.modules - rejected as loses valuable analytics data
 
 **2026-01-25: Module 7 Challenge Leniency (from 04-02)**
 - Decision: Module 7 allows 4 of 5 scenarios to pass (80% threshold) vs 100% for other modules
@@ -271,8 +296,18 @@ Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validati
   - ✅ Module 4: models/selection/switching (3 scenarios, ~6 min)
   - ✅ Challenge announcement pattern (module-start discovery)
   - ✅ Mixed validation framework (automated + conversational + practical)
-- [ ] Design module challenges for Modules 5-7 (04-02)
-- [ ] Implement validation engine (04-03)
+- [x] Design module challenges for Modules 5-7 (04-02 COMPLETE)
+  - ✅ Module 5: prompting competencies (4 scenarios, ~8 min)
+  - ✅ Module 6: plan mode (3 scenarios, ~6 min)
+  - ✅ Module 7: technical foundations (5 scenarios, ~10 min, 4/5 pass)
+- [x] Implement validation engine (04-03 COMPLETE)
+  - ✅ Challenge pass celebration (VIS-04 variant)
+  - ✅ Challenge failure feedback (two templates: close attempt + far from passing)
+  - ✅ Atomic progress update pattern (read once, write once)
+  - ✅ Unlimited retry policy with no penalties
+  - ✅ Reward formulas in game-mechanics.md (200 XP + 10 Aura + badge + 3 stats)
+  - ✅ challenges_passed array for analytics
+  - ✅ /hint command for concept refreshers
 - [ ] Integrate announcements and /challenge flow (04-04)
 
 **Deferred:**
@@ -293,10 +328,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 03-03-PLAN.md (MP3 Sourcing & Playback Verification). Generated 5 placeholder MP3 files via ffmpeg fallback. Fixed critical audio pool exhaustion bug (infinite retry loop creating hundreds of Howl instances - user console feedback). Verified Howler.js architecture complete (loads tracks, no 404s, pool exhaustion fixed). User decision: Defer audio playback verification until after Phase 4+ with different MP3 approach. Phase 3 COMPLETE (architecture verified, critical bug fixed, playback deferred per user priority) - 3 plans, 50m total.
+Completed 04-03-PLAN.md (Challenge Validation Engine). Implemented challenge pass celebration with VIS-04 variant template and atomic progress update pattern. Created kind failure feedback templates (close attempt with specific feedback, far from passing with gentle redirection). Unlimited retry policy with no penalties. Added Section 8 to game-mechanics.md with authoritative reward formulas (200 XP + 10 Aura + badge + 3 stats). Created challenges_passed array for analytics tracking. 2 commits, 2 minutes, 207 lines added across CLAUDE.md and game-mechanics.md.
 
 **What's Next:**
-Begin Phase 4 - Avatar System Enhancements (READY TO START). Audio playback verification deferred to future sessions (user priority: focus on avatar system and core features first). Student testing of complete web portal onboarding experience (with or without audio playback).
+Complete Phase 4 plan 04 (Integration) - wire up challenge announcements at module start, implement /challenge command flow, connect validation scenarios to actual checks, integrate with progress.json updates.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -318,8 +353,8 @@ Begin Phase 4 - Avatar System Enhancements (READY TO START). Audio playback veri
 - `/Users/bradyward/Developer/projects/Claude Code 101/docs/claude/*.md` - Reference documentation
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
-**Last session:** 2026-01-24
-**Stopped at:** Completed 03-03-PLAN.md, Phase 3 complete (architecture verified, audio pool bug fixed, playback deferred per user decision)
+**Last session:** 2026-01-25
+**Stopped at:** Completed 04-03-PLAN.md (validation engine complete, Phase 4 is 3/4 plans done)
 
 ---
 
