@@ -1769,6 +1769,81 @@ When presenting lesson content in guided project mode:
 
 The student builds their REAL project during lessons, not throwaway examples.
 
+### Weekly Scope Audit
+
+5-minute check to prevent feature creep. Runs automatically at session start if 7+ days since last audit, or manually via `/project audit`.
+
+**Trigger Logic:**
+
+```
+On session start (if guided_project.active):
+  days_since_audit = today - guided_project.last_scope_audit
+  if days_since_audit >= 7:
+    -> Run scope audit before continuing lesson
+```
+
+**Audit Flow:**
+
+```
+Claude: "Time for your weekly scope audit!
+
+Let's check: Are you building ONLY what's in V1?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 SCOPE AUDIT: [Project Name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+V1 Commitment (signed [contract_date]):
+1. [Feature 1]
+2. [Feature 2]
+3. [Feature 3]
+
+Parked for V2:
+[List V2 parking lot items]
+
+Quick check:
+1. Have you added anything not on this list?
+2. Any 'just one small thing' temptations?
+3. Is anything from V2 creeping in?
+
+Be honest - scope creep happens to everyone!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+```
+
+**Clean Audit (no creep):**
+
+If student says "no" or confirms they're on track:
+
+```
+Claude: "Excellent! Staying focused is how things ship.
+
+Audit complete. Back to building!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Scope Audit: PASSED
+Last audit: [today]
+V1 on track: 3 features, no creep
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+```
+
+Update project.json:
+```json
+"version_contract": {
+  "last_audit": "[today's date]"
+}
+```
+
+Update progress.json:
+```json
+"guided_project": {
+  "last_scope_audit": "[today's date]"
+}
+```
+
+Continue to lesson.
+
+**Duration:** Entire audit should take under 5 minutes. If student has no creep to report, it's 30 seconds.
+
 ---
 
 ## Critical Reminders
