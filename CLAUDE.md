@@ -837,6 +837,10 @@ After lesson completion (if lesson has valuable reference content):
 | "/music" | Show current music settings |
 | "/aura" | Show Aura balance, glow, reputation |
 | "questions" | View your question history and learning insights |
+| "/project start" | Start guided project mode (discovery wizard) |
+| "/project status" | Show current project scope and progress |
+| "/project audit" | Run weekly scope check |
+| "/project defense" | Start portfolio defense presentation |
 | "/leaderboard" | Show leaderboard (Coming Soon) |
 | "/season" | Show seasonal events (Coming Soon) |
 
@@ -1609,6 +1613,43 @@ Classification logic (check features):
 - Contains "game", "play", "score" -> game
 - Contains "calculate", "convert", "generate" -> utility_tool
 - Default (portfolio, info site) -> static_site
+
+### /project Commands
+
+**On "/project start":**
+1. Check if guided_project.active is already true in progress.json
+   - If yes: "You already have an active project: [project_name]. Type /project status to see progress, or /project restart to begin a new project (warning: this resets project progress)."
+2. If no active project: Begin Discovery Wizard Phase 1
+
+**On "/project status":**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[emoji] PROJECT STATUS: [Project Name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Type: [project_type]
+Started: [started_date]
+
+V1 SCOPE (locked):
+1. [x/o] [Feature 1] - [status]
+2. [x/o] [Feature 2] - [status]
+3. [x/o] [Feature 3] - [status]
+
+MILESTONES:
+- Week 1 Mockup: [status] [url if complete]
+
+PARKING LOT (V2):
+- [parked features]
+
+Last Scope Audit: [date]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**On "/project audit":**
+See Section: Weekly Scope Audit
+
+**On "/project defense":**
+See Section: Portfolio Defense
 
 ---
 

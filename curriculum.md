@@ -10,18 +10,27 @@ Every task teaches a real Claude Code or terminal skill. Zero filler. Each lesso
 This module gets you from "I have a laptop" to "I can use the terminal."
 
 ### Lesson 1.1: Opening Your Terminal
+**project_types:** all
+**skip_if:** []
+
 - Task 1: On your Mac, press `Cmd + Space` to open Spotlight search (the fastest way to launch any app without clicking through menus)
 - Task 2: Type "Terminal" and press Enter (Spotlight finds it instantly, no need to know where it's installed)
 - Task 3: A window appears with a blinking cursor - this is your terminal, a way to talk to your computer by typing commands instead of clicking (every developer uses this because typing is faster and more powerful than clicking)
 - Task 4: Type `echo "hello"` and press Enter - your computer responds with "hello" (echo means "repeat what I say", this proves the terminal is listening and responding to your commands)
 
 ### Lesson 1.2: Understanding Where You Are
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `pwd` and press Enter (pwd = "print working directory" = "where am I?" - because the terminal is always IN a folder, you need to know which one)
 - Task 2: Read the result - it's a path like `/Users/brady` - this is your home folder (every user has one, it's like the root of your personal file tree)
 - Task 3: Type `ls` and press Enter (ls = "list" = "what's here?" - shows all files and folders in your current location so you know what exists)
 - Task 4: You just learned the two most essential commands: `pwd` tells you where you are (location), `ls` tells you what's around you (contents) - you'll use these constantly
 
 ### Lesson 1.3: Moving Around
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `ls` - find a folder name in the list like "Desktop" or "Documents" (these are folders inside your current location)
 - Task 2: Type `cd Desktop` and press Enter (cd = "change directory" = "go to folder" - like double-clicking a folder in Finder, but faster)
 - Task 3: Type `pwd` to confirm you moved - see how the path changed from `/Users/brady` to `/Users/brady/Desktop`? (pwd always shows your current location)
@@ -29,6 +38,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Type `pwd` to confirm you're back home (the path should match what you saw in Task 1 - navigation works both ways)
 
 ### Lesson 1.4: Creating Your Project Folder
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `cd ~/Developer` to go to your Developer folder (if you get an error "No such file or directory", that's okay - the folder doesn't exist yet)
 - Task 2: If you got an error, type `mkdir ~/Developer && cd ~/Developer` to create it and go there (mkdir = "make directory" = "create folder")
 - Task 3: Type `pwd` to confirm you're in Developer - organizing projects in folders prevents chaos later
@@ -38,6 +50,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 7: Type `cd "Claude Code 101"` - this is your home base for the entire course, you'll return here often
 
 ### Lesson 1.5: Terminal Survival Kit
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Press the Up Arrow key - your last command reappears like magic (the terminal remembers everything you typed, so you can recall and rerun commands without retyping)
 - Task 2: Start typing `pw` then press Tab - it autocompletes to `pwd` (Tab completion saves hundreds of keystrokes per day by finishing commands and filenames for you)
 - Task 3: Type `echo "test"` and while it's showing, press `Ctrl + C` - this stops/kills the current command (because some commands run forever until you stop them, Ctrl+C is your emergency exit)
@@ -52,6 +67,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Efficiency** | **Badge: Setup Champion 🏆**
 
 ### Lesson 2.1: Getting Your API Key
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Open your browser and go to `console.anthropic.com` (Anthropic's developer console where you manage API access)
 - Task 2: Create an account or sign in (free to create, you'll add payment later when you use credits - new accounts get free trial credits)
 - Task 3: Find "API Keys" in the menu (usually in the left sidebar or settings - this is where you create authentication keys)
@@ -60,6 +78,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: This key is like a password that lets Claude Code connect to Claude's AI brain (it authenticates your requests so Anthropic knows who's using their API and can bill appropriately)
 
 ### Lesson 2.2: Installing Claude Code
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Go back to your terminal (should be in your Claude Code 101 folder - check with `pwd` to verify)
 - Task 2: Type `npm install -g @anthropic-ai/claude-code` and press Enter (npm = package manager that installs software, -g = install globally so it works from any folder)
 - Task 3: Wait for it to finish - you'll see text scrolling as it downloads and installs (this is normal, takes 30-60 seconds)
@@ -67,6 +88,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: When done, type `claude --version` - if you see a version number like "1.2.3", it worked! If you see an error, the installation failed (ask for help)
 
 ### Lesson 2.3: First Launch
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Make sure you're in your project folder: type `cd ~/Developer/projects/"Claude Code 101"` (or `pwd` to check if you're already there)
 - Task 2: Type `claude` and press Enter - this starts Claude Code (the first launch is special, it needs setup)
 - Task 3: It will ask for your API key - paste it in using Cmd+V, then press Enter (you won't see the key as you paste for security, that's normal)
@@ -82,12 +106,18 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Creativity** | **Badge: First Contact 🏆**
 
 ### Lesson 3.1: Talking to Claude Code
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Start Claude Code (`claude` command if not already running), then type "What folder are we in right now?" - Claude can see your file system and will tell you the path
 - Task 2: Type "What files are in this folder?" - Claude checks using the same `ls` command you learned, shows you the results
 - Task 3: Type "What is the weather like?" - notice Claude says it can't check weather (Claude Code is about YOUR COMPUTER, not internet data or general chat)
 - Task 4: The key difference from ChatGPT/Claude.ai: Claude Code can actually DO things on your computer (read files, create files, run commands) instead of just talking about them
 
 ### Lesson 3.2: Creating Files Through Conversation
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type "Create a file called hello.txt with the text 'My first file created by AI' inside" - this is asking Claude to write a file for you
 - Task 2: Claude will ask permission to create the file (showing you exactly what it will do) - type 'y' to approve (this safety check prevents accidents)
 - Task 3: Type "Show me what's in hello.txt" to verify it worked - Claude reads the file and displays the contents
@@ -97,6 +127,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 7: You just created a real file through conversation instead of using a text editor. This is the power of Claude Code.
 
 ### Lesson 3.3: Specific vs. Vague Prompts
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Start Claude Code again with `claude` and type "Make a webpage" - notice the generic result (Claude has to guess what you want, so you get a basic template)
 - Task 2: Now type "Create a file called test.html with a blue background, white text, the title 'Hello World' in a big heading, and a paragraph saying 'I made this with Claude Code'" - much more specific
 - Task 3: Compare the results - the second webpage matches your exact vision while the first is generic (specific prompts = better output every single time because Claude knows exactly what you want)
@@ -104,6 +137,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Your webpage opens in the browser looking exactly how you specified - specific instructions create specific results (this is the key to working effectively with AI)
 
 ### Lesson 3.4: CLASS SELECTION EVENT
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Read about the 6 character classes that will shape your learning journey (each class has different stat bonuses and playstyle - this choice matters for your progression)
 - Task 2: Think about what excites you most: Building products? Moving fast? Collecting achievements? Finding secrets? Having fun? Technical mastery? (your honest preference determines which class fits you)
 - Task 3: Choose your class when your teacher presents the options (this is a permanent decision that gives you unique bonuses for every lesson going forward)
@@ -117,18 +153,27 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Efficiency** | **Badge: Model Master 🏆**
 
 ### Lesson 4.1: What Are Models?
+**project_types:** all
+**skip_if:** []
+
 - Task 1: In Claude Code, type `/model` to see your current model (this shows which AI "brain" is currently responding to you)
 - Task 2: Claude has different "brains" called models - think of them like difficulty settings in a game, or gears on a bike (different power levels for different needs)
 - Task 3: Type "What model are you using right now?" and note the answer (Claude tells you which model is active - probably Sonnet by default)
 - Task 4: Know the three main models: Haiku (fast and cheap for simple tasks), Sonnet (balanced for most work), Opus (powerful and expensive for complex problems) - picking the right model saves time and money
 
 ### Lesson 4.2: Haiku - The Speed Demon
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `/model haiku` to switch to Haiku (the fastest model - prioritizes speed over depth)
 - Task 2: Ask it "What is a terminal?" and notice how fast the response comes - usually under 2 seconds
 - Task 3: Ask it "Create a simple Python hello world script" - quick and simple tasks are Haiku's strength (fast execution, good enough quality)
 - Task 4: Haiku = fast answers, simple tasks, costs less API credits. Like asking a quick question to a friend who gives you the essentials without elaborating.
 
 ### Lesson 4.3: Sonnet - The All-Rounder
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `/model sonnet` to switch to Sonnet (the balanced model - good quality without being slow or expensive)
 - Task 2: Ask it "Explain what an API key is and why it matters, in simple terms" - notice Sonnet gives more context and examples
 - Task 3: Compare this response to what Haiku would have said - Sonnet is more detailed and thoughtful (better explanations, more nuance)
@@ -136,6 +181,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Sonnet = the default choice for most work. Good at most things without being overkill. This is your daily driver.
 
 ### Lesson 4.4: Opus - The Powerhouse
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `/model opus` to switch to Opus (the most powerful and expensive model - deepest reasoning)
 - Task 2: Ask it "Design a complete file structure for a blog website with categories, posts, and user accounts" - this is a complex architecture question
 - Task 3: Notice the depth and architecture-level thinking - Opus considers edge cases, scalability, best practices (things Haiku/Sonnet might skip)
@@ -150,6 +198,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Creativity** | **Badge: Prompt Engineer 🏆**
 
 ### Lesson 5.1: Context Is King
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type "Fix the bug" - Claude will say it needs more information because it has no context (which bug? which file? what project?)
 - Task 2: Now type "Look at hello.txt and tell me if there are any spelling mistakes" - Claude reads the file and checks (context provided = Claude can act)
 - Task 3: The difference: "Fix the bug" is vague, "Look at hello.txt and check spelling" is specific (Claude needs to know WHAT and WHERE)
@@ -157,6 +208,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Practice: Ask Claude to "look at the files in this folder and describe what this project is" - watch how it explores and summarizes
 
 ### Lesson 5.2: Multi-Step Instructions
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type "Create a folder called 'practice', put a file called 'notes.md' inside it with a heading 'My Notes' and three bullet points about what I've learned so far" - this is asking Claude to do three things at once
 - Task 2: Watch Claude handle all three steps in order - it creates the folder, creates the file inside, and writes the content (you don't have to break it down)
 - Task 3: Verify it worked: type `ls practice` to see the notes.md file, then `cat practice/notes.md` to read the contents (or ask Claude to show you)
@@ -164,6 +218,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Clean up: ask Claude to "delete the practice folder and everything in it" - approve the deletion when asked
 
 ### Lesson 5.3: Iterating on Responses
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Ask Claude "Create a README.md for a project called 'My First App'" - Claude generates a complete README file
 - Task 2: Read the result - find something you'd change (maybe too long? wrong tone? missing installation instructions? too technical?)
 - Task 3: Tell Claude what to fix: "Make the description shorter" or "Add a section about installation" or "Use simpler language" - Claude updates the file
@@ -171,6 +228,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Delete the test README when done: ask Claude to "remove README.md" - if it asks about YOUR project's README, say no (this is just a test file)
 
 ### Lesson 5.4: Prompt Templates
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Learn this universal pattern: "I want to [goal]. The context is [situation]. Please [specific action]." - this structure ensures Claude has goal + context + action (the three key ingredients)
 - Task 2: Practice it: "I want to organize my project files. The context is I have a Claude Code 101 folder with learning files. Please suggest a file structure." - see how it provides complete information?
 - Task 3: Another powerful pattern: "Look at [file] and [action]. Keep [constraint]." - gives Claude a target, an action, and a boundary (prevents scope creep)
@@ -178,6 +238,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Templates save cognitive energy - instead of composing from scratch every time, fill in the blanks (you'll develop your own winning patterns as you go)
 
 ### Lesson 5.5: Advanced Prompting Patterns
+**project_types:** all
+**skip_if:** []
+
 - Task 1: The "show your work" pattern: "Create a simple HTML page. Explain each line as you write it." - forces Claude to teach while building (you learn the reasoning, not just the code)
 - Task 2: The "options" pattern: "Give me 3 different ways to structure a personal website. Pros and cons of each." - explores the solution space before committing (decision-making aid)
 - Task 3: The "constraints" pattern: "Write a CSS file for hello.html. Only use 3 colors. No frameworks." - boundaries force creativity and prevent over-engineering (simpler is often better)
@@ -192,24 +255,36 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Accuracy** | **Badge: Plan Mode Pro 🏆**
 
 ### Lesson 6.1: What Is Plan Mode?
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `/plan` to enter plan mode (a special mode where Claude Code won't make changes - it only shows what it WOULD do)
 - Task 2: Type "Reorganize all files in this folder into subfolders by type" - normally this would move your files, but in plan mode it just describes the changes
 - Task 3: Read Claude's plan - it shows what files would move where, what folders would be created, all WITHOUT actually doing it (safe exploration)
 - Task 4: This is like a "preview" button before hitting save - you see the plan before executing it, which prevents mistakes on big changes
 
 ### Lesson 6.2: Using Plan Mode for Big Changes
+**project_types:** all
+**skip_if:** []
+
 - Task 1: While still in plan mode, type "If I wanted to add a website to this project, what files would I need?" - Claude thinks through the requirements
 - Task 2: Read the plan - Claude outlines what files to create (HTML, CSS, JS), what structure to use, and why each file matters (exploring ideas safely)
 - Task 3: Type "What about adding a game to this project instead?" - Claude gives a different plan with game-specific files and logic
 - Task 4: Compare the two plans side-by-side - plan mode lets you explore multiple approaches without committing to any (like sketching before painting, or trying on clothes before buying)
 
 ### Lesson 6.3: Exiting Plan Mode and Executing
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `/plan` again to exit plan mode (it toggles - on/off with the same command, or use your version's toggle command)
 - Task 2: Now you're back in normal mode - Claude CAN make real changes again (you'll see the mode indicator change)
 - Task 3: Take one small idea from your plan and ask Claude to do just that one thing - for example "Create index.html from the website plan" (start small, verify it works)
 - Task 4: Verify it worked by asking Claude "Show me index.html" - if you don't like it, ask Claude to remove the file or delete it yourself with `rm index.html`
 
 ### Lesson 6.4: When to Use Plan Mode
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Use plan mode when: you're about to change many files (risky), you're unsure about the best approach (exploring), or you want to compare multiple options (decision-making)
 - Task 2: Don't use plan mode when: the task is simple (like creating one file), you're confident in the approach (you know what you want), or you're just experimenting with throwaway code
 - Task 3: Practice: type `/plan` to enter, ask "What would it take to add a dark mode to test.html?", read the plan (CSS changes, color schemes, toggle logic), then `/plan` to exit
@@ -223,6 +298,10 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 **Stat Tag: Speed** | **Badge: Tech Foundation 🏆**
 
 ### Lesson 7.1: Understanding JSON
+**project_types:** crud_app, api_consumer
+**skip_if:** static_site, game, utility_tool
+**contextualize_as:** {"crud_app": "Storing YOUR_DATA_PLURAL as JSON - like your actual YOUR_APP_NAME data", "api_consumer": "Parsing API responses for YOUR_APP_NAME"}
+
 - Task 1: Ask Claude "Show me progress.json and explain what each field means" - you'll see your RPG progress stored as structured data
 - Task 2: JSON = a way to store organized data, like a form with labeled fields and their values (not random text, but structured information)
 - Task 3: The rules: curly braces `{}` contain objects (collections of fields), square brackets `[]` contain lists (ordered items), text needs quotes, commas separate items (strict format, no mistakes allowed)
@@ -231,6 +310,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: This is how most apps store settings, user data, game saves - JSON is everywhere in software development
 
 ### Lesson 7.2: File Types You'll See
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Ask Claude "What are the file types in this project and what does each extension mean?" - Claude analyzes your files and explains the extensions
 - Task 2: Common types: `.md` = Markdown (formatted text, like Word but simpler), `.json` = data storage (structured information), `.html` = web pages (structure), `.css` = styling (appearance), `.js` = behavior (interactivity)
 - Task 3: Create one of each: ask Claude to "Create example.html, example.css, and example.js - each with just one line of example code" - hands-on practice recognizing file types
@@ -238,6 +320,10 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: Clean up: "Delete example.html, example.css, and example.js" - practice cleanup (don't leave test files littering your project)
 
 ### Lesson 7.3: File Management
+**project_types:** all
+**skip_if:** []
+**contextualize_as:** {"crud_app": "Managing YOUR_DATA_TYPE files in YOUR_APP_FOLDER", "static_site": "Organizing pages for YOUR_APP_NAME"}
+
 - Task 1: Type `touch testfile.txt` to create an empty file (touch = create if doesn't exist, or update timestamp if it does)
 - Task 2: Type `ls` to see testfile.txt in the list - proof it exists
 - Task 3: Type `cp testfile.txt testcopy.txt` to copy it (cp = copy, now you have two files with the same content)
@@ -247,6 +333,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 7: Type `rm testfile.txt` to clean up - your folder is back to normal
 
 ### Lesson 7.4: Understanding Paths
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `pwd` - this shows an "absolute path" (starts from the root `/` and gives the complete address from the top of your drive)
 - Task 2: Absolute path example: `/Users/brady/Developer/projects/Claude Code 101` - this works from anywhere on your computer (full address)
 - Task 3: Relative path = from where you are now: `./hello.txt` means "hello.txt in THIS folder", `subfolder/file.txt` means "go into subfolder, then find file.txt"
@@ -255,6 +344,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 6: Understanding paths is crucial because most errors are "file not found" = wrong path (you're looking in the wrong place)
 
 ### Lesson 7.5: Terminal Power Moves
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `history` to see all your past commands (your terminal remembers everything you've ever typed in this session - useful for finding that command you ran yesterday)
 - Task 2: Type `!!` and press Enter - it reruns your last command (saves typing when you need to repeat something, or when you forgot `sudo` before a command)
 - Task 3: Type `Ctrl + R` then start typing "cd" - this searches your command history backwards (fuzzy search through thousands of commands - press Enter to run the match, Ctrl+R again to find the next match)
@@ -262,6 +354,9 @@ This module gets you from "I have a laptop" to "I can use the terminal."
 - Task 5: These shortcuts will save you hundreds of keystrokes over time (experts type less, not more - they use shortcuts and history instead of retyping)
 
 ### Lesson 7.6: Reading Error Messages
+**project_types:** all
+**skip_if:** []
+
 - Task 1: Type `cd nonexistentfolder` - read the error message carefully: "No such file or directory" = the folder doesn't exist (you tried to go somewhere that isn't there)
 - Task 2: Type `cat nonexistentfile.txt` - same error pattern: "No such file" = you tried to read a file that doesn't exist (most errors are this clear if you actually read them)
 - Task 3: Type `npm install fake-package-that-doesnt-exist-12345` and wait for the error - "404 Not Found" = the package doesn't exist on npm's servers (404 is the internet's "not found" code)
