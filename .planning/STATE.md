@@ -11,12 +11,12 @@
 
 ## Current Position
 
-**Phase:** 4 of 5 - In Progress
-**Plan:** 03 of 04 complete (04-03)
-**Status:** Challenge validation engine complete with pass/fail handling and reward formulas
-**Last activity:** 2026-01-25 - Completed 04-03-PLAN.md (validation engine)
+**Phase:** 4 of 5 - Complete
+**Plan:** 04 of 04 complete (04-04)
+**Status:** Test-out system fully integrated - announcements, /challenge handler, and progress.json schema wired
+**Last activity:** 2026-01-25 - Completed 04-04-PLAN.md (challenge integration)
 
-**Progress:** ███████████████░░░░░ 75% (Phase 4 - 3/4 plans complete)
+**Progress:** ████████████████████ 100% (Phase 4 - 4/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -30,30 +30,33 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
 
 **Phase 3 Status:** Architecture complete and verified. Audio pool exhaustion critical bug FIXED. Music engine + UI functional. Audio playback verification consciously deferred per user decision (non-blocking for Phase 4).
 
-### Phase 4 Summary (IN PROGRESS)
+### Phase 4 Summary (COMPLETE)
 Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validation (automated + conversational + practical). Module 2 tests npm/API keys/installation (3 scenarios, ~7 min). Module 3 tests file creation/capabilities/prompt quality (4 scenarios, ~8 min). Module 4 tests model differences/selection/switching (3 scenarios, ~6 min). Challenge announcement pattern defined for module-start discovery. /challenge command integrated into Key Commands. Full reward parity with lesson path (same XP/badges). 5-10 minute duration target per challenge.
 
 Plan 02 (04-02): Designed module challenges for Modules 5-7. Module 5 tests prompting competencies (4 scenarios, ~8 min). Module 6 tests plan mode understanding (3 scenarios, ~6 min). Module 7 tests technical foundations (5 scenarios, ~10 min, 4/5 pass threshold). All challenges use mixed validation. Duration varies by complexity (6-10 min). Announcement templates with topic summaries ready for module-start discovery.
 
 Plan 03 (04-03): Implemented challenge validation engine with pass/fail handling and reward formulas. Challenge pass awards 200 XP + 10 Aura + badge + 3 stat points (full reward parity). Two failure templates (close attempt with specific feedback, far from passing with gentle redirection). Unlimited retry policy with no penalties. Atomic progress update pattern (read once, write once). New challenges_passed array tracks test-outs separately for analytics. /hint command for concept refreshers during challenges.
 
+Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenges_passed array to progress.json schema (line 484). Modified session flow step 7 to check for module start and display challenge announcement before presenting first task. Added comprehensive /challenge command handler with prerequisites check, validation execution, pass/fail handling. All 4 verification gaps from 04-VERIFICATION.md closed. Section 8 ↔ Section 15 cross-references verified. Test-out system fully wired and ready for student use.
+
+**Phase 4 Status:** Test-out system complete and integrated. Students can type /challenge at modules 2-7 to prove existing knowledge and skip ahead with full rewards. Challenge announcements display at module start. Validation scenarios execute. Pass handling awards 200 XP + badge + stats. Fail handling offers retry/hint/continue options. Progress.json tracks both completion paths (lessons vs challenges).
+
 ### Next Steps
-1. Complete Phase 4 plan 04 (integration of announcements and /challenge flow)
+1. Begin Phase 5 (Live Student Testing)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
 3. (Deferred) Complete browser playback verification after MP3 replacement
-4. Student testing of complete web portal experience
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 17 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4)
-- Requirements completed: 29/42 (69%)
-- Phases completed: 3/5 (60%), Phase 4: 3/4 plans (75%)
-- Average time per plan: ~5.3 minutes (Phase 4: avg 2m per plan)
+- Plans completed: 18 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 1 Phase 5)
+- Requirements completed: 32/42 (76%)
+- Phases completed: 4/5 (80%), Phase 4: 4/4 plans (100%)
+- Average time per plan: ~4.7 minutes (Phase 4: avg 3m per plan)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
-- Phase 4 duration: In progress (started 2026-01-25)
+- Phase 4 duration: 12m (2026-01-25) - COMPLETE
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -62,13 +65,26 @@ Plan 03 (04-03): Implemented challenge validation engine with pass/fail handling
 - Verification score: Phase 1: 18/18, Phase 2: 17/17, Phase 3: 22/23 (96% - playback consciously deferred)
 
 **Health:**
-- On track: Yes (3/5 phases complete, 69% requirements complete)
+- On track: Yes (4/5 phases complete, 76% requirements complete)
 - Risks: None active (playback deferred per user decision, not blocking downstream work)
-- Momentum: Very high (Phase 3 complete, critical audio bug fixed, ready for Phase 4)
+- Momentum: Very high (Phase 4 complete in 12m, test-out system ready for student use)
 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Challenge Integration Location (from 04-04)**
+- Decision: Integrate announcement at session flow step 7, handler after level-up section
+- Rationale: Step 7 is where task presentation happens - perfect interception point for module start. Handler placement after level-up keeps all interrupt flows together.
+- Impact: Minimal disruption to existing flow, clear separation of concerns
+- Pattern: Check conditions at decision point (module start), branch to handler or continue
+- Alternative: Separate section for challenges - rejected as duplicates session logic
+
+**2026-01-25: Schema Placement for challenges_passed (from 04-04)**
+- Decision: Place challenges_passed immediately after completed object in progress.json
+- Rationale: Logically related to completion tracking, grouped with other completion data
+- Impact: Clear distinction between lesson completion and challenge completion, easy to find for analytics
+- Alternative: Top-level separate section - rejected as less cohesive structure
 
 **2026-01-25: Unlimited Retry Policy for Challenges (from 04-03)**
 - Decision: No retry limit, no XP penalty, no cooldown for challenge retries
@@ -308,7 +324,12 @@ Plan 03 (04-03): Implemented challenge validation engine with pass/fail handling
   - ✅ Reward formulas in game-mechanics.md (200 XP + 10 Aura + badge + 3 stats)
   - ✅ challenges_passed array for analytics
   - ✅ /hint command for concept refreshers
-- [ ] Integrate announcements and /challenge flow (04-04)
+- [x] Integrate announcements and /challenge flow (04-04 COMPLETE)
+  - ✅ challenges_passed added to progress.json schema (line 484)
+  - ✅ Session flow step 7 checks for module start and displays announcement
+  - ✅ /challenge handler with prerequisites, validation, pass/fail handling
+  - ✅ All 4 verification gaps from 04-VERIFICATION.md closed
+  - ✅ Section 8 ↔ Section 15 cross-references verified
 
 **Deferred:**
 - [ ] Audio playback verification (Phase 3 - user decision to defer until after Phase 4+)
@@ -328,10 +349,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 04-03-PLAN.md (Challenge Validation Engine). Implemented challenge pass celebration with VIS-04 variant template and atomic progress update pattern. Created kind failure feedback templates (close attempt with specific feedback, far from passing with gentle redirection). Unlimited retry policy with no penalties. Added Section 8 to game-mechanics.md with authoritative reward formulas (200 XP + 10 Aura + badge + 3 stats). Created challenges_passed array for analytics tracking. 2 commits, 2 minutes, 207 lines added across CLAUDE.md and game-mechanics.md.
+Completed 04-04-PLAN.md (Challenge Integration). Wired challenge system into teaching flow by adding challenges_passed to progress.json schema, integrating announcement check in session flow step 7, and implementing full /challenge command handler. All 4 verification gaps closed. Section 8 now references Section 15 at 5 integration points. Test-out system fully functional. 3 commits, 12 minutes, 78 lines added to CLAUDE.md. Phase 4 complete.
 
 **What's Next:**
-Complete Phase 4 plan 04 (Integration) - wire up challenge announcements at module start, implement /challenge command flow, connect validation scenarios to actual checks, integrate with progress.json updates.
+Begin Phase 5 (Live Student Testing) - validate complete student journey from web portal through module challenges to skill progression.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -354,7 +375,7 @@ Complete Phase 4 plan 04 (Integration) - wire up challenge announcements at modu
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 04-03-PLAN.md (validation engine complete, Phase 4 is 3/4 plans done)
+**Stopped at:** Completed 04-04-PLAN.md (challenge integration complete, Phase 4 finished)
 
 ---
 
