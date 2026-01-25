@@ -1651,6 +1651,124 @@ See Section: Weekly Scope Audit
 **On "/project defense":**
 See Section: Portfolio Defense
 
+### Curriculum Router
+
+When in guided project mode (guided_project.active = true), check lesson relevance before presenting.
+
+**Routing Logic:**
+
+1. Read lesson metadata from curriculum.md (project_types, skip_if, contextualize_as)
+2. Get student's project_type from progress.json.guided_project.project_type
+
+**Decision Flow:**
+
+```
+If lesson.project_types includes "all":
+  -> Show lesson (universal content)
+
+Else if lesson.skip_if includes student.project_type:
+  -> Auto-skip with efficiency bonus (see below)
+
+Else if lesson.project_types includes student.project_type:
+  -> Show lesson with contextualization (if available)
+
+Else:
+  -> Show lesson as-is (default: include)
+```
+
+**Auto-Skip Display (10 XP efficiency bonus):**
+
+When skipping an irrelevant lesson:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ LESSON SKIPPED: [Lesson Title]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This lesson covers [topic] which isn't needed
+for your [project_type] project ([project_name]).
+
+You earned the progression anyway:
++10 XP (efficiency bonus for focused learning)
+
+Moving to the next relevant lesson...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Update progress.json:
+- total_xp += 10
+- Append lesson to completed.lessons (mark as skipped)
+- DO NOT award stat points (skipped lessons don't build skills)
+
+Play Pop.aiff (run_in_background: true) for the skip.
+
+**Contextualization Display:**
+
+When showing a contextualized lesson:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 FOR YOUR PROJECT: [Project Name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[contextualize_as text with variables substituted]
+
+Let's learn this by building part of YOUR_APP_NAME...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Then proceed with lesson tasks, using project context throughout.
+
+### Variable Substitution in Lessons
+
+When teaching in guided project mode, substitute these variables with student's project data:
+
+| Variable | Source | Example |
+|----------|--------|---------|
+| YOUR_APP_NAME | project.json.project_name | "Recipe Keeper" |
+| YOUR_APP_FOLDER | derived (lowercase, hyphens) | "recipe-keeper" |
+| YOUR_DATA_TYPE | derived from project type | "recipe" |
+| YOUR_DATA_PLURAL | derived from project type | "recipes" |
+
+**Data Type Derivation:**
+
+| Project Type | YOUR_DATA_TYPE | YOUR_DATA_PLURAL |
+|--------------|----------------|------------------|
+| crud_app | "item" or first V1 feature noun | "items" or plural |
+| api_consumer | "result" | "results" |
+| game | "score" | "scores" |
+| utility_tool | "output" | "outputs" |
+| static_site | "page" | "pages" |
+
+For crud_app, attempt to extract noun from first V1 feature:
+- "Save recipes" -> recipe/recipes
+- "Track expenses" -> expense/expenses
+- "Manage tasks" -> task/tasks
+
+**Substitution Examples:**
+
+Generic lesson text:
+> "Create a file called example.json with your data"
+
+Contextualized for Recipe Keeper:
+> "Create a file called recipe.json with your recipe data"
+
+Generic:
+> "Open progress.json and add a new field"
+
+Contextualized:
+> "Open recipe-keeper/data.json and add a new recipe"
+
+**Teaching Pattern:**
+
+When presenting lesson content in guided project mode:
+1. Read lesson text
+2. Replace all YOUR_* variables with project values
+3. Present contextualized version
+4. Create ACTUAL project files (recipe.json, not example.json)
+
+The student builds their REAL project during lessons, not throwaway examples.
+
 ---
 
 ## Critical Reminders
