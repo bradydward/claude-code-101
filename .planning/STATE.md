@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
-**Last Updated:** 2026-01-24
-**Status:** Phase 3 Complete (Architecture Verified, Audio Playback Deferred)
+**Last Updated:** 2026-01-25
+**Status:** Phase 4 In Progress (Test-Out System)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Phase 4 - Avatar System Enhancements (ready to begin)
+**Current Focus:** Phase 4 - Test-Out System (challenge validation for experienced students)
 
 ## Current Position
 
-**Phase:** 3 of 5 - Complete
-**Plan:** 03 of 03 complete (03-03) - Phase 3 COMPLETE
-**Status:** Music system architecture verified (Howler.js integration + UI controls), audio playback deferred per user decision
-**Last activity:** 2026-01-24 - Completed 03-03-PLAN.md (playback verification deferred)
+**Phase:** 4 of 5 - In Progress
+**Plan:** 02 of 04 complete (04-02)
+**Status:** Module challenge designs complete for Modules 2-7 (all eligible modules)
+**Last activity:** 2026-01-25 - Completed 04-02-PLAN.md (challenge designs M5-M7)
 
-**Progress:** ████████████████████ 100% (Phase 3 complete)
+**Progress:** ██████████░░░░░░░░░░ 50% (Phase 4 - 2/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -30,8 +30,11 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
 
 **Phase 3 Status:** Architecture complete and verified. Audio pool exhaustion critical bug FIXED. Music engine + UI functional. Audio playback verification consciously deferred per user decision (non-blocking for Phase 4).
 
+### Phase 4 Summary (IN PROGRESS)
+Plan 01 (04-01): Designed module challenges for Modules 2-4 using mixed validation (automated + conversational + practical). Module 2 tests npm/API keys/installation (3 scenarios, ~7 min). Module 3 tests file creation/capabilities/prompt quality (4 scenarios, ~8 min). Module 4 tests model differences/selection/switching (3 scenarios, ~6 min). Challenge announcement pattern defined for module-start discovery. /challenge command integrated into Key Commands. Full reward parity with lesson path (same XP/badges). 5-10 minute duration target per challenge.
+
 ### Next Steps
-1. Begin Phase 4 - Avatar System Enhancements (READY TO START)
+1. Complete Phase 4 plans 02-04 (challenge designs M5-M7, validation engine, integration)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
 3. (Deferred) Complete browser playback verification after MP3 replacement
 4. Student testing of complete web portal experience
@@ -39,13 +42,14 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 13 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3)
+- Plans completed: 14 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 1 Phase 4)
 - Requirements completed: 29/42 (69%)
-- Phases completed: 3/5 (60%)
-- Average time per plan: ~6.5 minutes (Phase 3: 18min avg with troubleshooting)
+- Phases completed: 3/5 (60%), Phase 4: 1/4 plans (25%)
+- Average time per plan: ~5.8 minutes (Phase 4: 2m 15s for 04-01)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
+- Phase 4 duration: In progress (started 2026-01-25)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -61,6 +65,46 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Module 7 Challenge Leniency (from 04-02)**
+- Decision: Module 7 allows 4 of 5 scenarios to pass (80% threshold) vs 100% for other modules
+- Rationale: Module 7 covers broader technical foundations (JSON, file types, paths, commands, errors) compared to focused modules. Requiring perfect 5/5 may gatekeep students strong in most areas but weak in one. 80% validates competency while acknowledging breadth.
+- Impact: Student can miss one scenario (e.g., permission errors) and still earn Tech Foundation badge
+- Pattern: Pass criteria flexibility based on module scope - focused modules require all, broad modules allow slight leniency
+- Alternative: Require all 5 - rejected as overly strict for breadth assessment
+
+**2026-01-25: Module 5 Scenario Count (from 04-02)**
+- Decision: Module 5 uses 4 scenarios (~8 min) to test prompting competencies
+- Rationale: Prompting patterns are more nuanced than mechanical skills. Vague-to-specific transformation, multi-step creation, "show your work" pattern, and options vs single answer each test distinct competencies. 3 would be insufficient, 5 would exceed 10-minute target.
+- Impact: Module 5 challenge longer (8 min) than Module 6 (6 min) but justified by skill complexity
+- Pattern: Scenario count matches competency depth - mechanical skills fewer scenarios, conceptual skills more
+
+**2026-01-25: Challenge Duration Variation (from 04-02)**
+- Decision: Allow duration variation (6-10 min) based on complexity and scope rather than forcing uniformity
+- Rationale: Module 6 (plan mode) is focused single-feature = 6 min. Module 5 (prompting patterns) is pattern-heavy = 8 min. Module 7 (technical foundations) is broadest scope = 10 min. Duration reflects challenge content, not arbitrary standardization.
+- Impact: All challenges fit within 5-10 minute guideline while respecting natural complexity differences
+- Pattern: Duration follows complexity, not template conformity
+
+**2026-01-25: Mixed Validation for Challenge System (from 04-01)**
+- Decision: Use three-layer validation (automated + conversational + practical) for module challenges
+- Rationale: Automated checks verify objective facts (installation works), conversational validation tests understanding (why/when), practical demonstrations prove capability (not just knowledge)
+- Impact: Each challenge uses appropriate validation for each competency (e.g., Module 2: automated for `claude --version`, conversational for -g flag meaning, practical for checking global packages)
+- Pattern: Match validation type to skill being tested - automated for mechanics, conversational for concepts, practical for real-world usage
+- Alternative: Pure automated tests - rejected as can't validate "why" understanding
+
+**2026-01-25: Challenge Duration Target (from 04-01)**
+- Decision: Target 5-10 minutes per challenge, no hard time limit
+- Rationale: Quick proof of knowledge for experienced students, but avoid pressure/anxiety from countdown timers
+- Impact: Module 2 (3 scenarios, ~7 min), Module 3 (4 scenarios, ~8 min), Module 4 (3 scenarios, ~6 min). If taking >10 min, gently suggest lesson path may be better fit.
+- Pattern: Design challenges to naturally complete in 5-10 min, track actual time for feedback, soft guidance if taking too long
+- Alternative: Hard 10-minute limit - rejected as creates pressure, penalizes thoughtful students
+
+**2026-01-25: Challenge Announcement at Module Start (from 04-01)**
+- Decision: Announce /challenge option at EVERY module start (2-7) if Module 1 complete
+- Rationale: Progressive disclosure - students discover test-out when relevant. Framed as option not pressure. Prevents experienced students from discovering feature late and feeling frustrated.
+- Impact: Template shows at module start: "Already familiar with X? Type /challenge to test out in 5-10 minutes. Or type 'continue' for lessons." Added /challenge to Key Commands section.
+- Pattern: Surface at decision point (module start), frame as efficiency not skipping, wait for response, branch on choice
+- Alternative: Hidden feature in docs - rejected as low discovery rate
 
 **2026-01-24: Defer Audio Playback Verification (User Decision from 03-03)**
 - Decision: Skip audio playback verification and defer real MP3 sourcing until after Phase 4+
@@ -220,10 +264,20 @@ Plan 03: Generated placeholder MP3 files via ffmpeg fallback. Fixed audio pool e
   - ✅ Audio pool exhaustion bug FIXED (infinite retry loop)
   - ⚠️ Playback verification deferred per user decision (lower priority)
 
+**Phase 4:**
+- [x] Design module challenges for Modules 2-4 (04-01 COMPLETE)
+  - ✅ Module 2: npm/API keys/installation (3 scenarios, ~7 min)
+  - ✅ Module 3: file creation/capabilities/prompts (4 scenarios, ~8 min)
+  - ✅ Module 4: models/selection/switching (3 scenarios, ~6 min)
+  - ✅ Challenge announcement pattern (module-start discovery)
+  - ✅ Mixed validation framework (automated + conversational + practical)
+- [ ] Design module challenges for Modules 5-7 (04-02)
+- [ ] Implement validation engine (04-03)
+- [ ] Integrate announcements and /challenge flow (04-04)
+
 **Deferred:**
 - [ ] Audio playback verification (Phase 3 - user decision to defer until after Phase 4+)
 - [ ] Real MP3 files with different approach (Phase 3 - deferred per user priority)
-- [ ] Module challenges design (Phase 4+)
 - [ ] Project discovery wizard (Phase 5)
 
 ### Blockers
