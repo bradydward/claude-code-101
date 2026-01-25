@@ -123,6 +123,13 @@ Plans:
 
 **Dependencies:** Phase 1 (curriculum must be complete and verified before challenges can test it)
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Challenge content for Modules 2-4 (installation, conversations, models)
+- [ ] 04-02-PLAN.md — Challenge content for Modules 5-7 (prompting, plan mode, technical foundations)
+- [ ] 04-03-PLAN.md — Validation engine, progress tracking, pass/fail handling
+
 **Requirements:**
 - TEST-01: Module Challenge available for Modules 2-7
 - TEST-02: Successful challenge awards full module XP/stats
@@ -164,7 +171,39 @@ Plans:
 
 ---
 
-## Future Phases (Phase 6+)
+---
+
+### Phase 6: Global Learning Intelligence
+
+**Goal:** Platform learns from ALL students globally, self-improves curriculum based on real-world question patterns.
+
+**Dependencies:** Phase 1 (teaching system must work), Phase 2 (onboarding flow for first-time users)
+
+**Requirements:**
+- INTEL-01: Question logging in CLAUDE.md teaching loop
+- INTEL-02: Global MCP hook tracks questions across all Claude Code sessions (not just tutorial)
+- INTEL-03: Anonymous question data syncs to Supabase cloud database
+- INTEL-04: AI analysis categorizes questions nightly (topic, severity, type)
+- INTEL-05: Analytics dashboard shows top questions and confusion hotspots
+- INTEL-06: Auto-generated lesson suggestions for frequently asked questions
+- INTEL-07: Smart hints use question data in real-time teaching
+- INTEL-08: Graduate tracking (questions asked after completing tutorial)
+- INTEL-09: Technology trend detection (React, Next.js, etc. usage patterns)
+- INTEL-10: Privacy controls (opt-in consent, easy opt-out, data deletion)
+
+**Success Criteria:**
+1. Student questions are anonymously logged to cloud during teaching sessions (with consent)
+2. Global MCP hook captures questions from ANY Claude Code session (not just tutorial folder)
+3. Analytics dashboard shows "Top 10 questions this week" with module/lesson context
+4. System auto-suggests new lessons when 50+ students ask similar questions
+5. Graduates' real-world questions feed back into curriculum improvements
+6. Students see "Many students struggle here - here's a hint" based on global data
+7. Technology trends visible: "456 students building React apps - add React module?"
+8. Privacy: 100% anonymous, clear opt-out, no PII collected
+
+---
+
+## Future Phases (Phase 7+)
 
 **Potential enhancements beyond initial roadmap:**
 
@@ -200,10 +239,11 @@ Research Phase 6 will evaluate:
 | 1 - Core Experience Polish | Complete | 2026-01-23 | 2026-01-23 | 18/18 |
 | 2 - Onboarding & Flow | Complete | 2026-01-24 | 2026-01-24 | 5/5 |
 | 3 - Music System Upgrade | Complete | 2026-01-24 | 2026-01-24 | 6/6 |
-| 4 - Test-Out System | Pending | -- | -- | 0/4 |
+| 4 - Test-Out System | Planned | -- | -- | 0/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
+| 6 - Global Learning Intelligence | Pending | -- | -- | 0/10 |
 
-**Overall Progress:** 29/42 requirements complete (69%)
+**Overall Progress:** 29/52 requirements complete (56%)
 
 ---
 
