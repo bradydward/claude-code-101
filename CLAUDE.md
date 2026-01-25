@@ -32,6 +32,107 @@ Every lesson teaches a real Claude Code skill. The RPG elements make the journey
 
 ---
 
+## 2a. Question Tracking (Learning Intelligence MVP)
+
+**IMPORTANT: When a student asks a pedagogical question, log it to improve the curriculum.**
+
+### What to Track
+
+**Pedagogical questions** - Questions that reveal learning needs:
+- "What is X?" / "What does X mean?"
+- "How do I...?" / "How does X work?"
+- "Why...?" / "When should I...?"
+- "What's the difference between...?"
+- Error-related: "This isn't working", "Why does this error..."
+
+**Don't track:**
+- Imperative requests: "Write a function that..."
+- General chat: "How are you?"
+- Non-coding questions
+
+### How to Log
+
+**After answering a pedagogical question:**
+
+1. Read `/Users/bradyward/.claude-code-global-questions.json` (global log)
+2. Append new entry to `questions` array:
+   ```json
+   {
+     "question": "What's a file path?",
+     "asked_at": "2026-01-24T10:30:00Z",
+     "context": {
+       "module": 1,
+       "lesson": 2,
+       "task": 3,
+       "student_level": 0,
+       "working_directory": "/Users/bradyward/Developer/projects/Claude Code 101",
+       "project_type": "claude-code-101-tutorial",
+       "previous_command": "cd Desktop",
+       "error_occurred": false,
+       "topic_tags": ["paths", "navigation", "filesystem"]
+     }
+   }
+   ```
+3. Write updated global JSON
+
+**Note:** Using global log (`~/.claude-code-global-questions.json`) so questions from ALL Claude sessions get tracked, not just this project.
+
+**Example flow:**
+
+```
+Student: "What does ~ mean?"
+
+Claude: "Great question! ~ is a shortcut that means 'your home directory'..."
+[Answers thoroughly]
+
+[Behind the scenes - logs to questions_log.json]:
+{
+  "question": "What does ~ mean?",
+  "asked_at": "2026-01-24T15:22:10Z",
+  "context": {
+    "module": 1,
+    "lesson": 2,
+    "task": 4,
+    "student_level": 0,
+    "topic_tags": ["paths", "navigation", "shell-symbols"]
+  }
+}
+```
+
+### Viewing Questions
+
+Student can type: `/questions` to see their question history and insights.
+
+Display format:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 YOUR QUESTIONS (12 total)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Recent questions:
+• "What does ~ mean?" (Module 1)
+• "How does git work?" (Module 8)
+• "What's a path?" (Module 1)
+
+Your top topics:
+• Paths & Navigation: 4 questions
+• Git: 3 questions
+• Terminal basics: 2 questions
+
+💡 These questions are helping improve
+   the curriculum for future students!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Privacy
+
+- Questions logged locally (not cloud yet)
+- No personal code or file contents
+- Will ask for cloud sync permission later
+- Can disable: tracking_enabled: false
+
+---
+
 ## 3. Game Systems Overview
 
 For complete details on classes, stats, Aura, skills, progression, streaks, easter eggs, and sandbox mode:
@@ -192,6 +293,34 @@ For AUTHORITATIVE formulas on XP, stats, streaks, skills, Aura, easter eggs, and
 - Display full status block (no music)
 - Show skill tree progress
 - Show Aura balance and glow level
+
+### On "questions"
+
+Read and display contents from `questions_log.json`:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 YOUR QUESTIONS ([X] total)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Recent questions:
+• "[Question 1]" ([Context])
+• "[Question 2]" ([Context])
+• "[Question 3]" ([Context])
+
+Your top topics:
+[Analyze topic_tags and show top 3-5 topics with counts]
+
+💡 These questions are helping improve
+   the curriculum for future students!
+
+Tracking: [enabled/disabled]
+Total questions logged: [X]
+Started: [date from tracking_started]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+If no questions yet: "No questions logged yet. When you ask learning questions, I'll track them here to help improve the curriculum!"
 
 ### On level up during session
 
@@ -622,6 +751,7 @@ After lesson completion (if lesson has valuable reference content):
 | "/sandbox" | Enter sandbox mode (if unlocked) OR locked message |
 | "/music" | Show current music settings |
 | "/aura" | Show Aura balance, glow, reputation |
+| "questions" | View your question history and learning insights |
 | "/leaderboard" | Show leaderboard (Coming Soon) |
 | "/season" | Show seasonal events (Coming Soon) |
 
@@ -741,6 +871,168 @@ practiced, it should feel familiar and fast!
 4. **Never transfer XP:**
    - Portal XP (~120) does NOT carry over
    - Acknowledge effort: "Your practice paid off - Module 1 will fly by"
+
+---
+
+## 15. Module Challenges (Test-Out System)
+
+**Purpose:** Allow experienced students to skip modules by proving existing mastery through quick validation challenges.
+
+### Overview
+
+The test-out system provides an efficient path for students who already know module content from prior experience. Instead of repeating lessons, they can demonstrate competency through 5-10 minute challenges.
+
+**Key Features:**
+- Available for Modules 2-7 (Module 1 is prerequisite for all)
+- Triggered by `/challenge` command at module start
+- 5-10 minute validation proving existing knowledge
+- Full XP/badge parity with lesson path (same rewards, no penalties)
+- Unlimited retries with kind feedback
+
+**Philosophy:** Test-out feels like efficiency, not like missing out. Challenge path and lesson path both lead to the same destination with the same rewards.
+
+### Challenge Trigger Pattern
+
+**Command:** `/challenge`
+
+**When valid:** Only at module start (not mid-module). Student must have completed Module 1.
+
+**Response:** Begin challenge validation for current module.
+
+**Prerequisites:**
+- Module 1 must be complete (check `completed.modules` array)
+- Student must be at the start of a module (lesson 1, task 1)
+- Modules 2-7 only (Module 1 has no challenge option)
+
+### Module 2 Challenge: Installing Claude Code
+
+**Core competencies tested:**
+- Understanding API keys and authentication
+- npm global installation
+- First Claude Code launch
+
+**Validation scenarios (3 total, ~7 min):**
+
+**Scenario 1 (Automated): Verify Claude Code is installed**
+- Run: `claude --version` via Bash tool
+- Pass criteria: Command returns version number without error
+- Why automated: Objective check, no interpretation needed
+
+**Scenario 2 (Conversational): Understanding global installation**
+- Ask: "What does the -g flag mean in npm install -g? Why is it needed for Claude Code?"
+- Pass criteria: Student explains global installation (available from any folder, not project-specific)
+- Accept paraphrasing: Test understanding, not memorization
+- Why conversational: Validates "why" not just "how"
+
+**Scenario 3 (Practical): Package verification demonstration**
+- Ask: "Show me how you'd check if a global npm package is installed"
+- Student demonstrates (e.g., `npm list -g`, `which claude`, etc.)
+- Claude verifies command works and shows correct output
+- Pass criteria: Student uses valid method and interprets results correctly
+- Why practical: Proves real-world capability, not just theory
+
+**Pass criteria:** All 3 scenarios pass
+
+**Badge on pass:** Setup Champion 🏆
+
+### Module 3 Challenge: First Conversations + Class Selection
+
+**Core competencies tested:**
+- File creation via conversation
+- Specific vs vague prompts
+- Understanding Claude Code's capabilities (what it CAN and CAN'T do)
+
+**Validation scenarios (4 total, ~8 min):**
+
+**Scenario 1 (Practical): File creation through conversation**
+- Ask: "Create a file called challenge-test.txt with the content 'Claude Code validation test' inside"
+- Claude verifies file exists with correct content via Read tool
+- Pass criteria: File created correctly through conversational request
+- Why practical: Core skill of Module 3 - talking to Claude Code to create files
+
+**Scenario 2 (Conversational): Prompt specificity**
+- Ask: "What's the difference between asking Claude Code 'make a webpage' vs giving specific requirements like 'create index.html with blue background, white text, and a heading saying Hello World'?"
+- Pass criteria: Student explains specific prompts yield specific results, vague prompts require guessing
+- Accept paraphrasing: Various ways to express this concept
+- Why conversational: Understanding prompt quality is conceptual, not mechanical
+
+**Scenario 3 (Conversational): Capability boundaries**
+- Ask: "Can Claude Code check the weather? Why or why not?"
+- Pass criteria: Student explains Claude Code works with local files/computer, not internet data
+- Alternative phrasings accepted: "It can't access APIs", "It's not connected to weather services", etc.
+- Why conversational: Understanding scope prevents frustration later
+
+**Scenario 4 (Class Selection): Required if not already selected**
+- If `student.class` is null: Must select class (cannot skip this)
+- If already selected: Skip this scenario
+- Why required: Class selection is permanent decision affecting all future progression
+
+**Pass criteria:** Scenarios 1-3 pass, class selected (if needed)
+
+**Badge on pass:** First Contact 🏆
+
+### Module 4 Challenge: Claude Code Models
+
+**Core competencies tested:**
+- Understanding model differences (Haiku/Sonnet/Opus)
+- Knowing when to use each model
+- Switching models via /model command
+
+**Validation scenarios (3 total, ~6 min):**
+
+**Scenario 1 (Automated): Model switching capability**
+- Ask student to switch to Haiku: `/model haiku`
+- Verify via conversation (ask "what model am I?")
+- Ask student to switch to Sonnet: `/model sonnet`
+- Verify again
+- Pass criteria: Student successfully switches models using /model command
+- Why automated: Mechanical skill, objective verification
+
+**Scenario 2 (Conversational): Model selection reasoning**
+- Ask: "Describe when you'd use Haiku vs Opus. Give an example task for each."
+- Pass criteria: Student explains Haiku for simple/fast tasks, Opus for complex/quality tasks
+- Example answers accepted:
+  - "Haiku for quick questions, Opus for architecture design"
+  - "Haiku when speed matters, Opus when I need deep thinking"
+  - Any response showing understanding of speed/simplicity vs power/complexity tradeoff
+- Why conversational: Decision-making is conceptual, many correct ways to express it
+
+**Scenario 3 (Conversational): Default model understanding**
+- Ask: "Which model is the default and why is it a good default?"
+- Pass criteria: Student identifies Sonnet as default and explains it balances speed/quality
+- Accept paraphrasing: "middle ground", "all-rounder", "good enough for most work"
+- Why conversational: Understanding defaults helps students make informed choices
+
+**Pass criteria:** All 3 scenarios pass
+
+**Badge on pass:** Model Master 🏆
+
+### Validation Approach
+
+**Three validation layers:**
+
+1. **Automated checks** (files, commands, outputs)
+   - Use Bash tool to run commands
+   - Use Read tool to verify file contents
+   - Objective, fast, consistent
+   - Good for: Installation verification, command execution, file creation
+
+2. **Conversational validation** (understanding, reasoning)
+   - Ask conceptual questions
+   - Accept paraphrasing and alternative phrasings
+   - Test understanding, not memorization
+   - Good for: "Why" questions, decision-making, capability boundaries
+
+3. **Practical demonstrations** (capability, not just knowledge)
+   - Student performs task, Claude verifies
+   - Proves real-world skill, not just theory
+   - Good for: Command usage, troubleshooting, applying concepts
+
+**Timing guidance:**
+- Each challenge designed for 5-10 minutes
+- If taking longer than 10 minutes: Gently suggest lesson path may be better fit
+- No hard time limit (avoid creating pressure/anxiety)
+- Track actual completion time for feedback
 
 ---
 
