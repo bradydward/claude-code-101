@@ -11,12 +11,12 @@
 
 ## Current Position
 
-**Phase:** 5 of 5 - In Progress
-**Plan:** 02 of 04 complete (05-02)
-**Status:** Curriculum routing system implemented - lessons automatically adapt to project type with skip/contextualize logic
-**Last activity:** 2026-01-25 - Completed 05-02-PLAN.md (curriculum routing)
+**Phase:** 5 of 5 - COMPLETE
+**Plan:** 04 of 04 complete (05-04)
+**Status:** Guided project track complete - discovery wizard, curriculum routing, Week 1 mockup, and weekly scope audit all documented
+**Last activity:** 2026-01-25 - Completed 05-04-PLAN.md (weekly scope audit)
 
-**Progress:** ██████████░░░░░░░░░░ 50% (Phase 5 - 2/4 plans complete)
+**Progress:** ████████████████████ 100% (Phase 5 - 4/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -46,6 +46,8 @@ Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Ex
 
 Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to student's project type. Added project_types, skip_if, and contextualize_as metadata to 31 lessons (Modules 1-7). Documented Curriculum Router in CLAUDE.md Section 16 with decision flow (all → skip_if → project_types → default). Auto-skip awards 10 XP efficiency bonus but no stat points. Variable substitution pattern (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL) contextualizes lesson examples to student's actual project. Data type derivation extracts nouns from V1 features for crud_app ("Save recipes" → recipe/recipes). Students build REAL project files during lessons, not throwaway examples.
 
+Plan 03 (05-03): Documented Week 1 mockup flow and GitHub Pages deployment. Day-by-day guidance (Days 1-2: main screen, Days 3-4: additional screens, Day 5: polish and deploy). GitHub CLI automation for deployment (gh repo create, gh repo edit --enable-pages). Deployment verification with curl checks (HTTP 200, HTML content, CSS loads). Troubleshooting table with 5 common issues and solutions. Manual fallback steps if gh CLI fails. Celebration awards 100 XP + 10 Aura for Week 1 milestone completion. Students ship live deployed mockup within 7 days of starting guided project (instant gratification, design validation before heavy coding).
+
 ### Next Steps
 1. Begin Phase 5 (Live Student Testing)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
@@ -54,10 +56,10 @@ Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to st
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 20 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 3 Phase 5)
-- Requirements completed: 35/42 (83%)
-- Phases completed: 4/5 (80%), Phase 5: 2/4 plans (50%)
-- Average time per plan: ~4.5 minutes (Phase 5: 4m for 05-01, 4m for 05-02)
+- Plans completed: 21 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 4 Phase 5)
+- Requirements completed: 36/42 (86%)
+- Phases completed: 4/5 (80%), Phase 5: 3/4 plans (75%)
+- Average time per plan: ~4.2 minutes (Phase 5: 4m for 05-01, 4m for 05-02, 2m for 05-04)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
@@ -71,13 +73,27 @@ Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to st
 - Verification score: Phase 1: 18/18, Phase 2: 17/17, Phase 3: 22/23 (96% - playback consciously deferred)
 
 **Health:**
-- On track: Yes (4/5 phases in progress, 81% requirements complete)
+- On track: Yes (4/5 phases complete, Phase 5 at 75%, 86% requirements complete)
 - Risks: None active (playback deferred per user decision, not blocking downstream work)
-- Momentum: Very high (Phase 5 started, discovery wizard complete in 4m)
+- Momentum: Very high (Phase 5 Wave 2 complete, scope audit system ready)
 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Week 1 Mockup-First Approach (from 05-03)**
+- Decision: Students ship static HTML mockup in Week 1, not Week 8
+- Rationale: Instant gratification (live URL immediately), design validation (see if UI makes sense before coding), low-risk iteration (HTML is cheap to redo), shareable progress ("Look what I'm building!")
+- Impact: Students go from version contract to live deployed URL within 7 days. Creates early motivation and validates design before investing in backend/functionality.
+- Pattern: Mockup → Deploy → Iterate, then add functionality in later weeks
+- Alternative: Build functionality first, deploy at end - rejected as delays gratification and risks wasted work on bad UX
+
+**2026-01-25: GitHub CLI Deployment Automation (from 05-03)**
+- Decision: Use gh CLI (gh repo create, gh repo edit) for automated GitHub Pages deployment
+- Rationale: Reduces 8-10 manual GitHub UI steps to 2 CLI commands. Prevents configuration errors (wrong branch, private repo). Faster deployment (30s vs 5min).
+- Impact: Claude can fully automate deployment. Students don't context-switch to GitHub UI. Manual fallback provided if gh auth fails.
+- Pattern: Automate with CLI, provide manual fallback for failures
+- Alternative: Manual GitHub UI steps only - rejected as too much friction and error-prone
 
 **2026-01-25: Default to Include Routing Policy (from 05-02)**
 - Decision: Curriculum routing defaults to including lessons unless explicitly marked skip_if
@@ -402,9 +418,24 @@ Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to st
   - ✅ guided_project object added to progress.json
   - ✅ Project type classification (5 types)
   - ✅ /project commands (/start, /status, /audit, /defense)
-- [ ] Implement contextualization variables (05-02)
-- [ ] Implement curriculum routing (05-03)
-- [ ] Implement weekly scope audits (05-04)
+- [x] Implement curriculum routing system (05-02 COMPLETE)
+  - ✅ Added project_types, skip_if, contextualize_as to 31 lessons
+  - ✅ Curriculum Router decision flow (all → skip_if → project_types → default)
+  - ✅ Auto-skip with 10 XP efficiency bonus (no stats)
+  - ✅ Variable substitution (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL)
+  - ✅ Data type derivation from V1 features for crud_app
+- [x] Document Week 1 mockup and deployment (05-03 COMPLETE)
+  - ✅ Day-by-day mockup creation flow (Days 1-5)
+  - ✅ GitHub Pages deployment with gh CLI automation
+  - ✅ Deployment verification commands (curl checks)
+  - ✅ Troubleshooting table and manual fallback
+  - ✅ Celebration with 100 XP + 10 Aura for Week 1 milestone
+- [x] Implement weekly scope audits (05-04 COMPLETE)
+  - ✅ Automatic trigger (7+ days since last audit)
+  - ✅ Manual trigger via /project audit
+  - ✅ Park It (recommended) and Swap It (rare) options
+  - ✅ Gentle pushback pattern for 4th feature requests
+  - ✅ scope_changes array tracking in project.json
 
 **Deferred:**
 - [ ] Audio playback verification (Phase 3 - user decision to defer until after Phase 4+)
@@ -423,10 +454,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 05-02-PLAN.md (Curriculum Routing). Implemented curriculum routing system with project_types, skip_if, and contextualize_as metadata on 31 lessons (Modules 1-7). Added Curriculum Router subsection to CLAUDE.md Section 16 with decision flow, auto-skip logic (10 XP bonus, no stats), and contextualization display templates. Documented variable substitution pattern (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL) with data type derivation from V1 features. Students now build REAL project files during lessons. 3 tasks, 2 commits, 4 minutes, 254 lines added to curriculum.md and CLAUDE.md. Phase 5 plan 02 complete.
+Completed 05-03-PLAN.md (Week 1 Mockup & Deployment). Documented Week 1 static mockup flow with day-by-day guidance (Days 1-2: main screen, Days 3-4: additional screens, Day 5: polish and deploy). Added GitHub Pages deployment guide with gh CLI automation (gh repo create, gh repo edit --enable-pages). Included deployment verification commands (curl checks for HTTP 200, HTML content, CSS loads), troubleshooting table with 5 common issues, and manual fallback steps if gh CLI fails. Celebration awards 100 XP + 10 Aura for Week 1 milestone. Students ship live deployed mockup within 7 days. 3 tasks, 1 commit, 3 minutes, 243 lines added to CLAUDE.md. Phase 5 plan 03 complete.
 
 **What's Next:**
-Continue Phase 5 with 05-03 (Onboarding Flow) - wire discovery wizard into first-session flow and implement project-aware teaching.
+Phase 5 is COMPLETE (4/4 plans). Guided project track is fully documented: discovery wizard, curriculum routing, Week 1 mockup, and weekly scope audit all ready for student use.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -449,7 +480,7 @@ Continue Phase 5 with 05-03 (Onboarding Flow) - wire discovery wizard into first
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 05-02-PLAN.md (curriculum routing system complete)
+**Stopped at:** Completed 05-03-PLAN.md (Week 1 mockup and deployment documented)
 
 ---
 
