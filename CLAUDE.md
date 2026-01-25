@@ -483,6 +483,14 @@ If progress.json does not exist, create it with this template:
   },
   "challenges_passed": [],
   "badges": [],
+  "guided_project": {
+    "active": false,
+    "project_name": null,
+    "project_type": null,
+    "started": null,
+    "version_contract_signed": null,
+    "last_scope_audit": null
+  },
   "onboarding": {
     "from_web_portal": false,
     "orientation_shown": false,
@@ -1407,6 +1415,54 @@ No penalty either way - the goal is learning, not racing!
 - `/hint` during challenge shows a brief concept refresher (1-2 sentences per gap)
 - Not the full lesson content, just the key insight
 - Example for Module 2 npm question: "The -g flag installs packages globally, meaning you can use them from any folder on your computer."
+
+---
+
+## 16. Guided Project Mode
+
+Students can learn by building THEIR app instead of following generic curriculum.
+
+### Schema: project.json
+
+Created in student's project folder when they accept the version contract.
+
+```json
+{
+  "project_name": "Recipe Keeper",
+  "project_type": "crud_app",
+  "started": "2026-01-25",
+  "version_contract": {
+    "v1_features": [
+      "Save recipes (title, ingredients, steps)",
+      "Search recipes by name or ingredient",
+      "Organize recipes by category"
+    ],
+    "v2_parking_lot": [
+      "Photo uploads",
+      "Social sharing",
+      "Meal planning"
+    ],
+    "signed": "2026-01-25",
+    "last_audit": "2026-01-25",
+    "scope_changes": []
+  },
+  "milestones": {
+    "week_1_mockup": {
+      "due": null,
+      "completed": null,
+      "url": null
+    }
+  },
+  "contextualization_vars": {
+    "YOUR_APP_NAME": "Recipe Keeper",
+    "YOUR_APP_FOLDER": "recipe-keeper",
+    "YOUR_DATA_TYPE": "recipe",
+    "YOUR_DATA_PLURAL": "recipes"
+  }
+}
+```
+
+Note: project.json is SEPARATE from progress.json. progress.json tracks game state; project.json tracks project-specific state.
 
 ---
 
