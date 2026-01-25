@@ -1464,6 +1464,152 @@ Created in student's project folder when they accept the version contract.
 
 Note: project.json is SEPARATE from progress.json. progress.json tracks game state; project.json tracks project-specific state.
 
+### Discovery Wizard Flow
+
+Triggered by `/project start`. Four phases guide from vague idea to scoped V1.
+
+**Phase 1: Open-Ended Capture**
+
+Start open and welcoming - let ideas emerge naturally.
+
+```
+Claude: "Welcome to Guided Project Mode!
+
+Instead of following a fixed curriculum, you'll learn Claude Code
+by building YOUR app. Every skill connects to YOUR project.
+
+Tell me about your idea. What do you want to build?
+(No wrong answer - describe it in your own words)"
+```
+
+If student is vague, ask clarifying questions:
+- "What problem does this solve for you?"
+- "When would you use it?"
+- "What made you think of this idea?"
+
+Do NOT categorize yet. Let them talk. Extract understanding.
+
+**Phase 2: Dream Expansion**
+
+Validate the complete vision BEFORE narrowing.
+
+```
+Claude: "I love this! [Summarize their idea in your words]
+
+Before we narrow down, let's dream big:
+If this could do EVERYTHING you'd ever want, what features
+would the complete version have? List them all - no limits."
+```
+
+After they list features, reflect them back:
+```
+Claude: "That's a fantastic full vision! I can see:
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+...
+
+This would be powerful. Now let's be strategic about getting there..."
+```
+
+KEY: Acknowledge the dream before scoping. Don't deflate immediately.
+
+**Phase 3: Value Ranking**
+
+Ruthless prioritization to exactly 3 features. HARD LIMIT, no exceptions.
+
+```
+Claude: "Here's the secret to actually finishing:
+We start with V1 - a tiny version that's still useful.
+
+Looking at your list, which THREE features would make this
+useful even without the others?
+
+Think: 'Would this solve my problem with ONLY these 3?'"
+```
+
+If student lists more than 3:
+```
+Claude: "You listed [N] features. I need exactly 3.
+
+Which ONE of these can wait for V2? Remember - V2 features
+aren't lost, just parked for later."
+```
+
+Repeat until exactly 3 features confirmed.
+
+Test the V1:
+```
+Claude: "Your V1 would have:
+1. [Feature 1]
+2. [Feature 2]
+3. [Feature 3]
+
+With ONLY these 3 features (nothing else): Would this be useful to you?
+Would you actually use it?"
+```
+
+If yes, proceed. If no, revisit which 3 features.
+
+**Phase 4: Contract Review**
+
+Generate and present the Version Contract.
+
+```
+Claude: "I'm creating your Version Contract now...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[project_emoji] VERSION CONTRACT: [Project Name] V1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+V1 FEATURES (locked):
+1. [Feature 1]
+2. [Feature 2]
+3. [Feature 3]
+
+V2 PARKING LOT (not now):
+- [Remaining features from dream list]
+
+WEEK 1 GOAL:
+Static HTML mockup showing all 3 features
+(Looks like the app, doesn't work yet)
+Deployed to: [username].github.io/[project-folder]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Do you accept this Version Contract? (yes/no)"
+```
+
+On "yes":
+1. Create project.json with version contract
+2. Update progress.json: guided_project.active = true
+3. Set guided_project.project_name, project_type, started, version_contract_signed
+4. Play Hero.aiff (run_in_background: true)
+5. Display confirmation and proceed to Week 1 mockup phase
+
+On "no":
+1. Ask what they want to change
+2. Return to Phase 3 (Value Ranking) to adjust
+
+### Project Type Classification
+
+Classify projects during Phase 3 based on features:
+
+| Type | Indicators | Examples |
+|------|------------|----------|
+| static_site | No data storage, information display | Portfolio, landing page, docs |
+| crud_app | Save/store/keep data locally | Recipe keeper, todo, inventory |
+| api_consumer | Fetch external data | Weather app, news reader |
+| game | Interactive entertainment, score/play | Quiz, text adventure, arcade |
+| utility_tool | Calculate/convert/generate | Calculator, converter, generator |
+
+Classification logic (check features):
+- Contains "save", "store", "keep" without "api" -> crud_app
+- Contains "weather", "fetch", "api" -> api_consumer
+- Contains "game", "play", "score" -> game
+- Contains "calculate", "convert", "generate" -> utility_tool
+- Default (portfolio, info site) -> static_site
+
 ---
 
 ## Critical Reminders
