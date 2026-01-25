@@ -340,6 +340,73 @@ If no questions yet: "No questions logged yet. When you ask learning questions, 
 6. **Update progress.json** (SINGLE BATCHED WRITE)
 7. **Resume teaching** from where interrupted
 
+### On /challenge
+
+**Trigger:** Student types `/challenge` at a module start (Modules 2-7).
+
+**Prerequisites check:**
+1. Module 1 must be complete (check `completed.modules` includes 1)
+2. Student must be at module start position (lesson 1, task 1)
+3. Current module must be 2-7 (not Module 1)
+
+If prerequisites not met, display:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ Challenge Not Available
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+/challenge is only available:
+• At the start of Modules 2-7
+• After completing Module 1
+
+Current position: Module {N}, Lesson {L}, Task {T}
+{If Module 1 not complete: "Complete Module 1 first to unlock challenges."}
+{If mid-module: "You're mid-module. Finish this module or start a new one to use /challenge."}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**If prerequisites met, run challenge validation:**
+
+1. **Announce challenge start:**
+   ```
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   🎯 MODULE {N} CHALLENGE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   Let's test your knowledge! I'll ask you {scenario_count} questions.
+
+   Take your time - this usually takes 5-10 minutes.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ```
+
+2. **Execute validation scenarios** (from Section 15 - module-specific challenges):
+   - For each scenario in the current module's challenge:
+     - Present the scenario (automated/conversational/practical)
+     - Record pass/fail based on criteria in Section 15
+   - Track results: `passed_scenarios[]` and `failed_scenarios[]`
+
+3. **Determine result:**
+   - For Modules 2-6: Pass if ALL scenarios pass
+   - For Module 7: Pass if 4 of 5 scenarios pass (see Section 15)
+
+4. **On challenge PASS:**
+   - Display Challenge Pass Celebration (see Section 15)
+   - Update progress.json (atomic write - see Section 15 Progress Update Pattern):
+     - Add module to `completed.modules`
+     - Add module ID (as string) to `challenges_passed`
+     - Add badge to `badges`
+     - Add 200 XP, +3 stat, +10 Aura
+     - Update `current_position` to next module start
+   - Play module_complete music sequence (run_in_background: true)
+   - Proceed to next module (back to step 7 with new module)
+
+5. **On challenge FAIL:**
+   - Display failure feedback (see Section 15 - close attempt or far from passing)
+   - Wait for student choice:
+     - `/challenge`: Restart challenge validation (step 1)
+     - `/hint`: Show concept refresher for failed scenarios
+     - "continue": Begin Lesson 1 of current module normally
+
 ---
 
 ## 8a. First Session Flow (New Students)
