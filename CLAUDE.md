@@ -1209,6 +1209,129 @@ Or type "continue" to go through the lessons step by step.
 
 Student responds with either `/challenge` (start challenge) or "continue" (start lessons).
 
+### Challenge Pass Celebration
+
+**Celebration Template (VIS-04 variant):**
+
+When a student successfully passes a module challenge, display this epic celebration:
+
+```
+╔══════════════════════════════════════════╗
+║   🏆 CHALLENGE COMPLETE! 🏆              ║
+║                                          ║
+║   Module {N}: {Module Name}              ║
+║                                          ║
+║   You proved your mastery! ⚡            ║
+║                                          ║
+║   +200 XP | +10 Aura                     ║
+║   Badge Earned: {Badge Name} 🏆          ║
+║                                          ║
+║   Stats Boosted: {stat_emoji} {Stat} +3  ║
+║                                          ║
+║   Challenge time: {minutes} minutes      ║
+╚══════════════════════════════════════════╝
+
+🎵 {random module_complete sequence}
+
+You demonstrated existing knowledge and skipped ahead efficiently.
+Your stats and rewards match the lesson path - you didn't miss anything!
+
+Ready for Module {N+1}?
+```
+
+**Music:** Same as module completion - random module_complete sequence (run_in_background: true)
+
+**Progress Update Pattern (CRITICAL - single atomic write):**
+
+1. Read progress.json ONCE
+2. Calculate ALL updates:
+   - Add module number to `completed.modules` array
+   - Add module number (as string) to `challenges_passed` array (create if doesn't exist)
+   - Add badge to `badges` array
+   - Add +200 to `student.total_xp`
+   - Add +3 to the module's stat (efficiency for M2, creativity for M3, etc.)
+   - Add +10 to `aura_system.total_earned` AND `aura_system.current_balance`
+   - Update `current_position.module` to N+1, `current_position.lesson` to 1, `current_position.task` to 1
+   - Update `last_session` to today
+3. Write progress.json ONCE
+
+**Important notes:**
+- Challenge path does NOT add individual lessons/tasks to completed arrays (student skipped them)
+- The `challenges_passed` array tracks which modules were tested out (for analytics/display)
+- XP parity: 200 XP matches module completion bonus from lesson path
+- Stat parity: +3 matches module bonus (not per-task gains - this is the design decision from research)
+- Aura parity: +10 matches module completion Aura
+
+### Challenge Failure Feedback
+
+**Close Attempt Template (passed some scenarios):**
+
+When a student passes some scenarios but not all, provide specific encouraging feedback:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 CHALLENGE RESULT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You're close! You got:
+✅ {passed_scenario_1}
+✅ {passed_scenario_2}
+❌ {failed_scenario}
+
+{Specific feedback on what needs review - 1-2 sentences}
+
+Your options:
+1. Type /challenge to retry (no XP penalty)
+2. Type "continue" to take the lessons (comprehensive)
+3. Type /hint for a concept refresher before retrying
+
+Retrying after reviewing the concept is totally normal!
+Many students retry 1-2 times.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Far From Passing Template (most scenarios failed):**
+
+When a student fails most scenarios, gently guide them to the lesson path:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 CHALLENGE RESULT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This module covers several concepts you haven't
+encountered yet. That's totally okay!
+
+The challenge path is for students who've already
+learned this material elsewhere. If Module {N} is new
+to you, the lesson path is the best way to learn.
+
+Your options:
+1. Type "continue" to take the lessons (recommended)
+2. Type /challenge to retry if you want another attempt
+
+No penalty either way - the goal is learning, not racing!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Feedback guidelines:**
+- Be specific about what passed and what needs work
+- Never use shame or penalty language
+- Frame lessons as valuable alternative, not punishment
+- Normalize retrying ("many students retry 1-2 times")
+- No music on failure (keep it low-key)
+
+**Retry policy:**
+- Unlimited immediate retries (no cooldown)
+- No XP penalty for failing or retrying
+- No tracking of attempt count (keep it simple)
+- If student retries 3+ times, gently suggest lesson path might be better fit
+
+**Hint command:**
+- `/hint` during challenge shows a brief concept refresher (1-2 sentences per gap)
+- Not the full lesson content, just the key insight
+- Example for Module 2 npm question: "The -g flag installs packages globally, meaning you can use them from any folder on your computer."
+
 ---
 
 ## Critical Reminders
