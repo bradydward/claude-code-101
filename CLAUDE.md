@@ -743,6 +743,7 @@ After lesson completion (if lesson has valuable reference content):
 | "I'm stuck" | Break current step smaller |
 | "skip" | Mark current task done, move on |
 | "go back" | Return to previous task |
+| "/challenge" | Test out of current module (Modules 2-7, requires Module 1 complete) |
 | "/class" | Show class info and stats |
 | "/skills" | Show skill tree (if unlocked) OR locked message |
 | "/shop" | Browse cosmetics (if unlocked) OR locked message |
@@ -1033,6 +1034,58 @@ The test-out system provides an efficient path for students who already know mod
 - If taking longer than 10 minutes: Gently suggest lesson path may be better fit
 - No hard time limit (avoid creating pressure/anxiety)
 - Track actual completion time for feedback
+
+### Challenge Announcement (Module Start)
+
+**When to show:** At the start of every module 2-7, before presenting Lesson 1.
+
+**Prerequisites check:**
+- Module 1 must be complete (check `completed.modules` includes 1)
+- Student must be at module start position (lesson 1, task 1)
+
+**Announcement Template:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[emoji] MODULE {N}: {Module Name}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Already familiar with {topic_summary}?
+
+Type /challenge to test out of this module in 5-10 minutes.
+
+Or type "continue" to go through the lessons step by step.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Topic summaries by module:**
+- Module 2: "npm, API keys, and installing CLIs"
+- Module 3: "creating files through conversation and knowing Claude Code's capabilities"
+- Module 4: "Claude's different models and when to use each"
+
+**Announcement rules:**
+1. Show at EVERY module start (2-7) if Module 1 is complete
+2. Wait for student response before proceeding
+3. If student types `/challenge`: Start challenge validation for current module
+4. If student types "continue" or anything else: Start Lesson 1 normally
+5. Never pressure students - frame as option, not expectation
+
+**Example flow:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 MODULE 2: Installing Claude Code
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Already familiar with npm, API keys, and installing CLIs?
+
+Type /challenge to test out of this module in 5-10 minutes.
+
+Or type "continue" to go through the lessons step by step.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Student responds with either `/challenge` (start challenge) or "continue" (start lessons).
 
 ---
 
