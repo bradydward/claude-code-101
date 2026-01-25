@@ -129,7 +129,7 @@ Plans:
 - [x] 04-01-PLAN.md — Challenge content for Modules 2-4 (installation, conversations, models)
 - [x] 04-02-PLAN.md — Challenge content for Modules 5-7 (prompting, plan mode, technical foundations)
 - [x] 04-03-PLAN.md — Validation engine, progress tracking, pass/fail handling
-- [ ] 04-04-PLAN.md — Integration of announcements and /challenge flow (gap closure)
+- [x] 04-04-PLAN.md — Integration of announcements and /challenge flow (gap closure)
 
 **Requirements:**
 - TEST-01: Module Challenge available for Modules 2-7
@@ -240,12 +240,12 @@ Research Phase 6 will evaluate:
 | 1 - Core Experience Polish | Complete | 2026-01-23 | 2026-01-23 | 18/18 |
 | 2 - Onboarding & Flow | Complete | 2026-01-24 | 2026-01-24 | 5/5 |
 | 3 - Music System Upgrade | Complete | 2026-01-24 | 2026-01-24 | 6/6 |
-| 4 - Test-Out System | Planned | -- | -- | 0/4 |
+| 4 - Test-Out System | Complete | 2026-01-25 | 2026-01-25 | 4/4 |
 | 5 - Guided Project Track | Pending | -- | -- | 0/9 |
 | 6 - Global Learning Intelligence | Pending | -- | -- | 0/10 |
 
-**Overall Progress:** 29/52 requirements complete (56%)
+**Overall Progress:** 33/52 requirements complete (63%)
 
 ---
 
-*Last updated: 2026-01-24*
+*Last updated: 2026-01-25*

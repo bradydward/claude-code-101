@@ -153,10 +153,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MUS-04 | Phase 3 | Complete |
 | MUS-05 | Phase 3 | Complete |
 | MUS-06 | Phase 3 | Complete |
-| TEST-01 | Phase 4 | Pending |
-| TEST-02 | Phase 4 | Pending |
-| TEST-03 | Phase 4 | Pending |
-| TEST-04 | Phase 4 | Pending |
+| TEST-01 | Phase 4 | Complete |
+| TEST-02 | Phase 4 | Complete |
+| TEST-03 | Phase 4 | Complete |
+| TEST-04 | Phase 4 | Complete |
 | PROJ-01 | Phase 5 | Pending |
 | PROJ-02 | Phase 5 | Pending |
 | PROJ-03 | Phase 5 | Pending |
