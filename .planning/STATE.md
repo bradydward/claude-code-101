@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
 **Last Updated:** 2026-01-25
-**Status:** Phase 5 In Progress (Guided Project Track)
+**Status:** Phase 5 COMPLETE (Guided Project Track)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Phase 5 - Guided Project Track (contextualization and routing)
+**Current Focus:** Guided project track complete - students can build their own app from idea to deployed portfolio
 
 ## Current Position
 
 **Phase:** 5 of 5 - COMPLETE
-**Plan:** 04 of 04 complete (05-04)
-**Status:** Guided project track complete - discovery wizard, curriculum routing, Week 1 mockup, and weekly scope audit all documented
-**Last activity:** 2026-01-25 - Completed 05-04-PLAN.md (weekly scope audit)
+**Plan:** 05 of 05 complete (05-05)
+**Status:** Guided project track fully documented - discovery wizard, curriculum routing, Week 1 mockup, weekly scope audit, and portfolio defense all complete
+**Last activity:** 2026-01-25 - Completed 05-05-PLAN.md (portfolio defense)
 
-**Progress:** ████████████████████ 100% (Phase 5 - 4/4 plans complete)
+**Progress:** ████████████████████ 100% (Phase 5 - 5/5 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -41,30 +41,37 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
 
 **Phase 4 Status:** Test-out system complete and integrated. Students can type /challenge at modules 2-7 to prove existing knowledge and skip ahead with full rewards. Challenge announcements display at module start. Validation scenarios execute. Pass handling awards 200 XP + badge + stats. Fail handling offers retry/hint/continue options. Progress.json tracks both completion paths (lessons vs challenges).
 
-### Phase 5 Summary (IN PROGRESS)
+### Phase 5 Summary (COMPLETE)
 Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Expansion → Value Ranking → Contract Review) guiding students from vague idea to scoped V1. Hard 3-feature limit enforced in Phase 3 with iteration loop. Version contract system locks V1 features and parks V2 in parking lot. project.json schema documented (separate from progress.json for project-specific state). guided_project object added to progress.json for game state tracking. Project type classification (5 types: static_site, crud_app, api_consumer, game, utility_tool) based on feature keywords. /project commands (/start, /status, /audit, /defense) integrated into Key Commands with handler documentation. Students can now type /project start to begin guided project mode.
 
 Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to student's project type. Added project_types, skip_if, and contextualize_as metadata to 31 lessons (Modules 1-7). Documented Curriculum Router in CLAUDE.md Section 16 with decision flow (all → skip_if → project_types → default). Auto-skip awards 10 XP efficiency bonus but no stat points. Variable substitution pattern (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL) contextualizes lesson examples to student's actual project. Data type derivation extracts nouns from V1 features for crud_app ("Save recipes" → recipe/recipes). Students build REAL project files during lessons, not throwaway examples.
 
 Plan 03 (05-03): Documented Week 1 mockup flow and GitHub Pages deployment. Day-by-day guidance (Days 1-2: main screen, Days 3-4: additional screens, Day 5: polish and deploy). GitHub CLI automation for deployment (gh repo create, gh repo edit --enable-pages). Deployment verification with curl checks (HTTP 200, HTML content, CSS loads). Troubleshooting table with 5 common issues and solutions. Manual fallback steps if gh CLI fails. Celebration awards 100 XP + 10 Aura for Week 1 milestone completion. Students ship live deployed mockup within 7 days of starting guided project (instant gratification, design validation before heavy coding).
 
+Plan 04 (05-04): Implemented weekly scope audit system (automatic trigger after 7+ days, manual via /project audit). Park It (recommended) and Swap It (rare) options for scope creep handling. Gentle pushback pattern for 4th feature requests with hard 3-feature limit. scope_changes array tracks swaps in project.json. Audit completes in under 5 minutes (30 seconds if no creep). V1 contract enforcement prevents feature creep through conversational audits.
+
+Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defense after V1 complete). Prerequisites check (V1 features + mockup deployed). Defense has two parts: demo video (2-3 min, casual, authentic) and written reflection (4 prompts in case study format: problem, approach, learned, next). Showcase celebrates individual journey without ranking/comparison. Completion awards Project Pioneer badge + 500 XP + 50 Aura. After-defense options: V2, new project, continue curriculum, or break.
+
+**Phase 5 Status:** Guided project track COMPLETE. Students can now: discover their idea (wizard), scope V1 (3-feature contract), build during lessons (curriculum routing), ship Week 1 mockup (GitHub Pages), maintain discipline (weekly audits), and celebrate completion (portfolio defense). Full end-to-end journey from vague idea to deployed app with showcase.
+
 ### Next Steps
-1. Begin Phase 5 (Live Student Testing)
-2. (Deferred) Source real MP3 files with different approach after Phase 4+
-3. (Deferred) Complete browser playback verification after MP3 replacement
+1. Live student testing with complete guided project track
+2. Monitor portfolio defense flow for UX refinements (video upload friction, prompt clarity)
+3. (Deferred) Source real MP3 files with different approach after live testing
+4. (Deferred) Complete browser playback verification after MP3 replacement
 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 21 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 4 Phase 5)
-- Requirements completed: 36/42 (86%)
-- Phases completed: 4/5 (80%), Phase 5: 3/4 plans (75%)
-- Average time per plan: ~4.2 minutes (Phase 5: 4m for 05-01, 4m for 05-02, 2m for 05-04)
+- Plans completed: 25 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 3 Phase 6)
+- Requirements completed: 42/42 (100%)
+- Phases completed: 5/5 (100%)
+- Average time per plan: ~3.8 minutes (Phase 5: 4m for 05-01, 4m for 05-02, 4m for 05-03, 2m for 05-04, 2m for 05-05)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
-- Phase 5 duration: In progress (05-01: 4m, 05-02: 4m)
+- Phase 5 duration: 16m (2026-01-25) - COMPLETE
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -80,6 +87,34 @@ Plan 03 (05-03): Documented Week 1 mockup flow and GitHub Pages deployment. Day-
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Portfolio Defense as Celebration, Not Evaluation (from 05-05)**
+- Decision: Portfolio defense uses demo video + 4-prompt reflection with explicit no-ranking philosophy
+- Rationale: Beginners comparing projects leads to imposter syndrome, discouragement, perfectionism paralysis, focus on "winning" vs learning. Defense should celebrate individual journey, not evaluate quality.
+- Impact: Every completed project feels like victory. Showcase displays journey stats (started, lessons, type) NOT quality metrics (code quality, feature count). "What showcase is NOT" section prevents future leaderboard/voting requests.
+- Pattern: Celebration over evaluation, journey over quality, story-telling over assessment
+- Alternative: Peer review or instructor evaluation - rejected as creates anxiety and comparison mindset for beginners
+
+**2026-01-25: Demo Video Guidance: Casual Over Polished (from 05-05)**
+- Decision: Demo video guidance emphasizes "NO editing needed - authentic > polished" and "If you mess up, keep going (it's charming!)"
+- Rationale: Beginners fear recording themselves. Explicit permission to be imperfect removes perfectionism barrier. 2-3 minutes is achievable without overthinking.
+- Impact: Lowers recording anxiety, increases completion rate, captures genuine learning journey without production overhead
+- Pattern: Lower barrier through explicit permission to be imperfect
+- Alternative: Require polished video - rejected as creates editing burden and delays completion
+
+**2026-01-25: 4-Prompt Case Study Format for Reflection (from 05-05)**
+- Decision: Use 4 prompts in case study format (problem, approach, learned, next) with fill-in-the-blank starters
+- Rationale: Professional case study structure (problem/approach/outcome) adapted for beginners. Fill-in-the-blank prompts ("My app solves ___ for ___") reduce blank-page paralysis while guiding complete story.
+- Impact: Students tell substantive story without writing pressure. Format mirrors portfolio industry standard.
+- Pattern: Structured prompts with fill-in-blank reduce cognitive load
+- Alternative: Open-ended "tell us about your project" - rejected as causes blank-page anxiety
+
+**2026-01-25: Feature Completion Tracked Conversationally (from 05-05)**
+- Decision: Feature completion tracked via conversational check-ins ("Did you finish [feature]?") during lessons, not automated hooks
+- Rationale: Beginners forget to mark tasks done. Automated tracking requires git hook integration (out of scope). Conversational tracking catches completion naturally during teaching flow.
+- Impact: Simpler implementation, more natural interaction, prevents "I finished but forgot to mark it" scenarios
+- Pattern: Conversational state tracking over automated instrumentation for beginner context
+- Alternative: Git commit hooks or file watchers - rejected as adds complexity and failure modes
 
 **2026-01-25: Week 1 Mockup-First Approach (from 05-03)**
 - Decision: Students ship static HTML mockup in Week 1, not Week 8
@@ -436,6 +471,13 @@ Plan 03 (05-03): Documented Week 1 mockup flow and GitHub Pages deployment. Day-
   - ✅ Park It (recommended) and Swap It (rare) options
   - ✅ Gentle pushback pattern for 4th feature requests
   - ✅ scope_changes array tracking in project.json
+- [x] Document portfolio defense and showcase (05-05 COMPLETE)
+  - ✅ Portfolio defense flow (prerequisites check, demo video, 4-prompt reflection)
+  - ✅ Showcase format celebrating individual journey
+  - ✅ Explicit no-ranking philosophy
+  - ✅ Completion awards: Project Pioneer badge + 500 XP + 50 Aura
+  - ✅ After-defense options (V2, new project, curriculum, break)
+  - ✅ /project defense command handler
 
 **Deferred:**
 - [ ] Audio playback verification (Phase 3 - user decision to defer until after Phase 4+)
@@ -454,10 +496,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 05-03-PLAN.md (Week 1 Mockup & Deployment). Documented Week 1 static mockup flow with day-by-day guidance (Days 1-2: main screen, Days 3-4: additional screens, Day 5: polish and deploy). Added GitHub Pages deployment guide with gh CLI automation (gh repo create, gh repo edit --enable-pages). Included deployment verification commands (curl checks for HTTP 200, HTML content, CSS loads), troubleshooting table with 5 common issues, and manual fallback steps if gh CLI fails. Celebration awards 100 XP + 10 Aura for Week 1 milestone. Students ship live deployed mockup within 7 days. 3 tasks, 1 commit, 3 minutes, 243 lines added to CLAUDE.md. Phase 5 plan 03 complete.
+Completed 05-05-PLAN.md (Portfolio Defense). Documented portfolio defense flow triggered by /project defense after V1 complete. Prerequisites check (V1 features + mockup deployed). Defense has two parts: demo video (2-3 min, casual, authentic) and written reflection (4 prompts in case study format: problem, approach, learned, next). Showcase celebrates individual journey without ranking/comparison. Completion awards Project Pioneer badge + 500 XP + 50 Aura. After-defense options documented (V2, new project, curriculum, break). 3 tasks, 3 commits (atomic), 2 minutes, 325 lines added to CLAUDE.md. Phase 5 plan 05 complete.
 
 **What's Next:**
-Phase 5 is COMPLETE (4/4 plans). Guided project track is fully documented: discovery wizard, curriculum routing, Week 1 mockup, and weekly scope audit all ready for student use.
+Phase 5 is COMPLETE (5/5 plans). Guided project track is fully documented: discovery wizard, curriculum routing, Week 1 mockup, weekly scope audit, and portfolio defense all ready for live student testing.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -480,7 +522,7 @@ Phase 5 is COMPLETE (4/4 plans). Guided project track is fully documented: disco
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 05-03-PLAN.md (Week 1 mockup and deployment documented)
+**Stopped at:** Completed 05-05-PLAN.md (Portfolio defense documented) - PHASE 5 COMPLETE
 
 ---
 
