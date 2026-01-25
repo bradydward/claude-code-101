@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
 **Last Updated:** 2026-01-25
-**Status:** Phase 4 Complete (Test-Out System)
+**Status:** Phase 5 In Progress (Guided Project Track)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Ready for Phase 5 - Guided Project Track
+**Current Focus:** Phase 5 - Guided Project Track (contextualization and routing)
 
 ## Current Position
 
-**Phase:** 4 of 5 - Complete
-**Plan:** 04 of 04 complete (04-04)
-**Status:** Test-out system fully integrated - announcements, /challenge handler, and progress.json schema wired
-**Last activity:** 2026-01-25 - Completed 04-04-PLAN.md (challenge integration)
+**Phase:** 5 of 5 - In Progress
+**Plan:** 02 of 04 complete (05-02)
+**Status:** Curriculum routing system implemented - lessons automatically adapt to project type with skip/contextualize logic
+**Last activity:** 2026-01-25 - Completed 05-02-PLAN.md (curriculum routing)
 
-**Progress:** ████████████████████ 100% (Phase 4 - 4/4 plans complete)
+**Progress:** ██████████░░░░░░░░░░ 50% (Phase 5 - 2/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -41,6 +41,9 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
 
 **Phase 4 Status:** Test-out system complete and integrated. Students can type /challenge at modules 2-7 to prove existing knowledge and skip ahead with full rewards. Challenge announcements display at module start. Validation scenarios execute. Pass handling awards 200 XP + badge + stats. Fail handling offers retry/hint/continue options. Progress.json tracks both completion paths (lessons vs challenges).
 
+### Phase 5 Summary (IN PROGRESS)
+Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Expansion → Value Ranking → Contract Review) guiding students from vague idea to scoped V1. Hard 3-feature limit enforced in Phase 3 with iteration loop. Version contract system locks V1 features and parks V2 in parking lot. project.json schema documented (separate from progress.json for project-specific state). guided_project object added to progress.json for game state tracking. Project type classification (5 types: static_site, crud_app, api_consumer, game, utility_tool) based on feature keywords. /project commands (/start, /status, /audit, /defense) integrated into Key Commands with handler documentation. Students can now type /project start to begin guided project mode.
+
 ### Next Steps
 1. Begin Phase 5 (Live Student Testing)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
@@ -49,14 +52,15 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 18 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 1 Phase 5)
-- Requirements completed: 32/42 (76%)
-- Phases completed: 4/5 (80%), Phase 4: 4/4 plans (100%)
-- Average time per plan: ~4.7 minutes (Phase 4: avg 3m per plan)
+- Plans completed: 19 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 2 Phase 5)
+- Requirements completed: 34/42 (81%)
+- Phases completed: 4/5 (80%), Phase 5: 1/4 plans (25%)
+- Average time per plan: ~4.6 minutes (Phase 5: 4m for plan 01)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
+- Phase 5 duration: In progress (05-01: 4m)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -65,13 +69,41 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
 - Verification score: Phase 1: 18/18, Phase 2: 17/17, Phase 3: 22/23 (96% - playback consciously deferred)
 
 **Health:**
-- On track: Yes (4/5 phases complete, 76% requirements complete)
+- On track: Yes (4/5 phases in progress, 81% requirements complete)
 - Risks: None active (playback deferred per user decision, not blocking downstream work)
-- Momentum: Very high (Phase 4 complete in 12m, test-out system ready for student use)
+- Momentum: Very high (Phase 5 started, discovery wizard complete in 4m)
 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Hard 3-Feature V1 Limit (from 05-01)**
+- Decision: Ruthless 3-feature limit for V1 with no flexibility or exceptions
+- Rationale: Only way students actually finish projects. More features = scope creep = abandonment. 3 features forces "would this be useful with ONLY these?" test.
+- Impact: Phase 3 of discovery wizard has iteration loop ("You listed [N]. I need exactly 3. Which ONE can wait for V2?") until exactly 3 confirmed
+- Pattern: HARD LIMIT enforced conversationally with iteration, not negotiation
+- Alternative: Flexible 3-5 range - rejected as defeats the forcing function
+
+**2026-01-25: Acknowledge Dream Before Scoping (from 05-01)**
+- Decision: Phase 2 (Dream Expansion) explicitly validates complete vision before Phase 3 narrows
+- Rationale: Prevents deflation ("why are you killing my idea?") and creates buy-in ("I see your vision, now let's be strategic"). Students need to see their full idea reflected back before prioritization.
+- Impact: Wizard feels collaborative, not restrictive. Phase 2: "That's a fantastic full vision! I can see: [list ALL features]. This would be powerful. Now let's be strategic..."
+- Pattern: Acknowledge → Validate → Strategic narrowing (not immediate rejection)
+- Alternative: Jump straight to prioritization - rejected as creates resistance
+
+**2026-01-25: Separate project.json from progress.json (from 05-01)**
+- Decision: project.json for project-specific state (version contract, milestones), progress.json for game state (XP, stats)
+- Rationale: Mixing creates namespace pollution and coupling. project.json co-located with project code in student's project folder. progress.json stays in Claude Code 101 folder.
+- Impact: Clear separation of concerns. Game state and project state tracked independently.
+- Pattern: Game state = progress.json. Project state = project.json in project folder.
+- Alternative: Single progress.json with project fields - rejected as couples unrelated concerns
+
+**2026-01-25: Project Type Classification During Phase 3 (from 05-01)**
+- Decision: Classify project type (static_site, crud_app, api_consumer, game, utility_tool) during Phase 3 based on feature keywords
+- Rationale: Type affects curriculum routing (which lessons apply, how to contextualize examples). Classify early so Week 1 mockup phase knows what to teach.
+- Impact: Classification logic checks feature keywords ("save/store/keep" → crud_app, "weather/fetch/api" → api_consumer, etc.)
+- Pattern: Keyword-based classification from feature descriptions (student doesn't self-classify)
+- Alternative: Ask student to self-classify - rejected as they lack context to choose accurately
 
 **2026-01-25: Challenge Integration Location (from 04-04)**
 - Decision: Integrate announcement at session flow step 7, handler after level-up section
@@ -331,10 +363,22 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
   - ✅ All 4 verification gaps from 04-VERIFICATION.md closed
   - ✅ Section 8 ↔ Section 15 cross-references verified
 
+**Phase 5:**
+- [x] Implement discovery wizard and version contract (05-01 COMPLETE)
+  - ✅ 4-phase wizard (Open Capture → Dream Expansion → Value Ranking → Contract Review)
+  - ✅ Hard 3-feature V1 limit with iteration loop
+  - ✅ Version contract system (V1 locked, V2 parking lot)
+  - ✅ project.json schema documented
+  - ✅ guided_project object added to progress.json
+  - ✅ Project type classification (5 types)
+  - ✅ /project commands (/start, /status, /audit, /defense)
+- [ ] Implement contextualization variables (05-02)
+- [ ] Implement curriculum routing (05-03)
+- [ ] Implement weekly scope audits (05-04)
+
 **Deferred:**
 - [ ] Audio playback verification (Phase 3 - user decision to defer until after Phase 4+)
 - [ ] Real MP3 files with different approach (Phase 3 - deferred per user priority)
-- [ ] Project discovery wizard (Phase 5)
 
 ### Blockers
 
@@ -349,10 +393,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 04-04-PLAN.md (Challenge Integration). Wired challenge system into teaching flow by adding challenges_passed to progress.json schema, integrating announcement check in session flow step 7, and implementing full /challenge command handler. All 4 verification gaps closed. Section 8 now references Section 15 at 5 integration points. Test-out system fully functional. 3 commits, 12 minutes, 78 lines added to CLAUDE.md. Phase 4 complete.
+Completed 05-01-PLAN.md (Discovery Wizard and Version Contract). Implemented 4-phase conversational wizard guiding students from vague idea to scoped V1 with hard 3-feature limit. Added guided_project object to progress.json schema and documented project.json schema with version_contract, milestones, and contextualization_vars. Project type classification (5 types) based on feature keywords. Integrated /project commands into Key Commands with handler documentation. Students can now type /project start to begin guided project mode. 3 tasks, 3 commits (2 solo + 1 combined with 05-02), 4 minutes, 202 lines added to CLAUDE.md. Phase 5 plan 01 complete.
 
 **What's Next:**
-Begin Phase 5 (Live Student Testing) - validate complete student journey from web portal through module challenges to skill progression.
+Continue Phase 5 with 05-02 (Contextualization Variables) - implement variable extraction from version contract and lesson adaptation logic.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -375,7 +419,7 @@ Begin Phase 5 (Live Student Testing) - validate complete student journey from we
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 04-04-PLAN.md (challenge integration complete, Phase 4 finished)
+**Stopped at:** Completed 05-01-PLAN.md (discovery wizard and version contract complete)
 
 ---
 
