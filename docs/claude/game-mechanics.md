@@ -400,6 +400,90 @@ Award: +1 skill point (points_available: 2 → 3)
 
 ---
 
+## 8. Challenge Completion Rewards
+
+The test-out system awards rewards equivalent to module completion via lesson path.
+
+### Challenge Pass Rewards
+
+**XP Award:**
+```
+challenge_xp = 200  # Same as module completion bonus
+```
+
+Note: Challenge path does NOT award per-task XP (10 XP × N tasks). The 200 XP bonus is the total award. This is intentional - challenge proves mastery but doesn't replicate the learning journey's incremental rewards.
+
+**Stat Award:**
+```
+challenge_stat_bonus = +3 to module's primary stat
+
+Module stat tags:
+  Module 2: Efficiency
+  Module 3: Creativity
+  Module 4: Efficiency
+  Module 5: Creativity
+  Module 6: Accuracy
+  Module 7: Speed
+```
+
+Note: Challenge path does NOT award per-task stat growth (+1 per task). The +3 module bonus is the total stat award. This creates a slight stat advantage for lesson path (more total stats) while keeping XP parity. This encourages genuine learning while respecting existing knowledge.
+
+**Aura Award:**
+```
+challenge_aura = +10  # Same as module completion
+
+Updates both:
+  aura_system.total_earned += 10
+  aura_system.current_balance += 10
+```
+
+**Badge Award:**
+```
+Same badge as lesson path completion:
+  Module 2: "Setup Champion 🏆"
+  Module 3: "First Contact 🏆"
+  Module 4: "Model Master 🏆"
+  Module 5: "Prompt Engineer 🏆"
+  Module 6: "Plan Mode Pro 🏆"
+  Module 7: "Tech Foundation 🏆"
+```
+
+No badge variant for challenge path - same badge, same achievement.
+
+### Challenge Failure Rewards
+
+```
+failure_xp = 0
+failure_stats = 0
+failure_aura = 0
+failure_penalty = 0  # No negative consequences
+```
+
+Failure has no rewards but also no penalties. Student can retry immediately or take lesson path.
+
+### Progress Tracking
+
+**On challenge pass:**
+```json
+{
+  "completed": {
+    "modules": [1, 2],  // Add passed module
+    "lessons": [...],   // Do NOT add skipped lessons
+    "tasks": [...]      // Do NOT add skipped tasks
+  },
+  "challenges_passed": ["2"],  // Track separately (new field)
+  "badges": ["Terminal Explorer 🏆", "Setup Champion 🏆"]
+}
+```
+
+**challenges_passed array:**
+- New field in progress.json schema
+- Contains module IDs (as strings) that were completed via challenge
+- Used for analytics and display ("You tested out of 3 modules!")
+- Does not affect gameplay, purely tracking
+
+---
+
 ## Authoritative Reference
 
 These formulas are the source of truth. When implementing game mechanics:
