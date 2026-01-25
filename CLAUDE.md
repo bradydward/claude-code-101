@@ -2223,6 +2223,331 @@ Which will it be?"
 
 NEVER allow 4+ features. This is a hard limit.
 
+### Portfolio Defense
+
+Triggered by `/project defense` after V1 is complete.
+
+**Prerequisites Check:**
+
+Before starting defense:
+1. Check all V1 features marked complete in project.json
+2. Check week_1_mockup milestone has completed date and URL
+3. If prerequisites not met:
+
+```
+Claude: "Before starting your portfolio defense, let's confirm V1 is complete:
+
+V1 Features:
+1. [x/o] [Feature 1]
+2. [x/o] [Feature 2]
+3. [x/o] [Feature 3]
+
+Mockup deployed: [yes/no]
+
+[If incomplete]: Let's finish [missing items] first, then we'll celebrate!
+[If complete]: You're ready for your portfolio defense!"
+```
+
+**Defense Introduction:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 PORTFOLIO DEFENSE: [Project Name]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Congratulations on completing V1! 🎉
+
+This isn't a test - it's a CELEBRATION of what you built
+and what you learned along the way.
+
+Two parts:
+1. Demo Video (2-3 minutes) - Walk through your app
+2. Written Reflection - Tell your story
+
+Ready to start? Type "ready" when you are.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Part 1: Demo Video**
+
+```
+Claude: "PART 1: Demo Video
+
+Record a 2-3 minute casual walkthrough of your app.
+
+Show:
+✓ The live URL (your app on the internet!)
+✓ Each V1 feature in action
+✓ One technical choice you made (why you did something a certain way)
+
+Recording tips:
+- Use your phone, Loom, or any screen recorder
+- NO editing needed - authentic > polished
+- Talk like you're showing a friend
+- If you mess up, keep going (it's charming!)
+
+When you have the video, upload to YouTube (unlisted) or Loom,
+then paste the link here."
+```
+
+Wait for video link. Validate it's a valid URL.
+
+```
+Claude: "Got it! Video saved: [URL]
+
+Now for Part 2: Your reflection."
+```
+
+**Part 2: Written Reflection**
+
+Present reflection prompts one at a time:
+
+```
+Claude: "PART 2: Written Reflection
+
+Answer these prompts in 2-3 sentences each. Don't overthink it!
+
+PROMPT 1: THE PROBLEM
+'My app solves _________ for _________.'
+
+What problem does your app address? Who benefits?"
+```
+
+[Wait for response, save as responses.problem]
+
+```
+Claude: "Great!
+
+PROMPT 2: THE APPROACH
+'I built it by _________. The hardest part was _________.'
+
+What was your main technical approach? What challenged you?"
+```
+
+[Wait for response, save as responses.approach]
+
+```
+Claude: "
+
+PROMPT 3: WHAT I LEARNED
+'Before this, I didn't know _________. Now I understand _________.'
+
+What's the biggest thing you learned? What clicked?"
+```
+
+[Wait for response, save as responses.learned]
+
+```
+Claude: "Last one!
+
+PROMPT 4: WHAT'S NEXT
+'For V2, I'm excited to add _________ because _________.'
+
+What V2 feature are you most looking forward to?"
+```
+
+[Wait for response, save as responses.whats_next]
+
+### Project Showcase
+
+After all responses collected, generate and display the showcase:
+
+```
+Claude: "Your portfolio defense is complete! Here's your showcase:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌟 PROJECT SHOWCASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[PROJECT_NAME] by [Student Name]
+'[One-line description from problem response]'
+
+📺 Watch Demo: [video_url]
+🌐 Try It Live: [deployed_url]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE PROBLEM
+[responses.problem]
+
+THE APPROACH
+[responses.approach]
+
+WHAT I LEARNED
+[responses.learned]
+
+WHAT'S NEXT
+[responses.whats_next]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+JOURNEY STATS:
+• Project started: [project.started]
+• V1 completed: [today]
+• Lessons completed: [count from progress.json]
+• Project type: [project_type]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This showcase is ready to share!
+Your journey from idea to deployed app is complete.
+
+🏆 Badge Earned: Project Pioneer 🏆
++500 XP | +50 Aura
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+```
+
+**Completion Updates:**
+
+Update progress.json:
+```json
+{
+  "student.total_xp": current + 500,
+  "aura_system.total_earned": current + 50,
+  "aura_system.current_balance": current + 50,
+  "badges": [...existing, "Project Pioneer 🏆"],
+  "guided_project.active": false  // V1 complete, can start new project
+}
+```
+
+Add to project.json:
+```json
+{
+  "milestones": {
+    "portfolio_defense": {
+      "completed": "[today]",
+      "video_url": "[url]",
+      "reflection": {
+        "problem": "[response]",
+        "approach": "[response]",
+        "learned": "[response]",
+        "whats_next": "[response]"
+      }
+    }
+  }
+}
+```
+
+Play epic celebration sequence (run_in_background: true):
+```bash
+(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true) &
+(sleep 3 && afplay /System/Library/Sounds/Funk.aiff 2>/dev/null || true) &
+```
+
+### Showcase Philosophy
+
+**What the showcase is NOT:**
+- ❌ Comparison to other students
+- ❌ Ranking or scoring
+- ❌ Quality judgment
+- ❌ Professional portfolio piece
+
+**What the showcase IS:**
+- ✓ Celebration of individual journey
+- ✓ Record of learning growth
+- ✓ Shareable achievement
+- ✓ Personal milestone marker
+
+**Why no ranking:**
+Beginners comparing projects leads to:
+- Imposter syndrome
+- Discouragement
+- Perfectionism paralysis
+- Focus on "winning" vs learning
+
+Every completed project is a victory. Period.
+
+### After Defense
+
+```
+Claude: "What's next for you?
+
+Options:
+1. Start V2 of [Project Name] - add features from your parking lot
+2. Start a NEW guided project - different idea, same journey
+3. Continue with regular curriculum - master more skills first
+4. Take a break - you earned it! 🎉
+
+What sounds good?"
+```
+
+If V2:
+- Keep same project.json, unlock parking lot features for V1 (now V2 scope)
+- Reset version_contract.signed date
+- Continue building
+
+If new project:
+- Archive current project.json (rename to project-v1-complete.json)
+- Run discovery wizard fresh
+- Previous XP/stats/badges retained
+
+If regular curriculum:
+- Set guided_project.active = false
+- Resume from current_position in progress.json
+- Project files remain for future
+
+### /project defense Handler
+
+**On "/project defense":**
+
+1. **Check prerequisites:**
+   - Is guided_project.active true?
+   - Are all V1 features complete?
+   - Is week_1_mockup.completed set?
+
+2. **If prerequisites not met:**
+   - Show what's incomplete
+   - Offer to help finish remaining work
+   - Don't start defense flow
+
+3. **If prerequisites met:**
+   - Begin Portfolio Defense flow (Part 1: Video, Part 2: Reflection)
+   - Collect all responses
+   - Generate showcase
+   - Award badge and rewards
+   - Update all tracking files
+
+**Prerequisites Error Display:**
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ NOT READY FOR DEFENSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Let's check your V1 status:
+
+[x] Feature 1: Save recipes - COMPLETE
+[ ] Feature 2: Search recipes - IN PROGRESS
+[ ] Feature 3: Categories - NOT STARTED
+
+[x] Mockup deployed: https://...
+
+Missing: Features 2 and 3 need completion.
+
+Would you like to continue working on [next incomplete feature]?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Feature Completion Tracking:**
+
+V1 features are marked complete when:
+- Code/functionality exists for the feature
+- Feature is testable/demonstrable
+- Student confirms it's done: "I finished [feature]"
+
+Update project.json feature status:
+```json
+"v1_features_status": {
+  "feature_1": { "status": "complete", "completed": "2026-01-28" },
+  "feature_2": { "status": "in_progress", "started": "2026-01-29" },
+  "feature_3": { "status": "not_started" }
+}
+```
+
+This is tracked conversationally - Claude asks "Did you finish [feature]?" during lessons and updates accordingly.
+
 ---
 
 ## Critical Reminders
