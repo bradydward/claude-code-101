@@ -44,6 +44,8 @@ Plan 04 (04-04): Integrated challenge system into teaching flow. Added challenge
 ### Phase 5 Summary (IN PROGRESS)
 Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Expansion → Value Ranking → Contract Review) guiding students from vague idea to scoped V1. Hard 3-feature limit enforced in Phase 3 with iteration loop. Version contract system locks V1 features and parks V2 in parking lot. project.json schema documented (separate from progress.json for project-specific state). guided_project object added to progress.json for game state tracking. Project type classification (5 types: static_site, crud_app, api_consumer, game, utility_tool) based on feature keywords. /project commands (/start, /status, /audit, /defense) integrated into Key Commands with handler documentation. Students can now type /project start to begin guided project mode.
 
+Plan 02 (05-02): Implemented curriculum routing system that adapts lessons to student's project type. Added project_types, skip_if, and contextualize_as metadata to 31 lessons (Modules 1-7). Documented Curriculum Router in CLAUDE.md Section 16 with decision flow (all → skip_if → project_types → default). Auto-skip awards 10 XP efficiency bonus but no stat points. Variable substitution pattern (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL) contextualizes lesson examples to student's actual project. Data type derivation extracts nouns from V1 features for crud_app ("Save recipes" → recipe/recipes). Students build REAL project files during lessons, not throwaway examples.
+
 ### Next Steps
 1. Begin Phase 5 (Live Student Testing)
 2. (Deferred) Source real MP3 files with different approach after Phase 4+
@@ -52,15 +54,15 @@ Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Ex
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 19 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 2 Phase 5)
-- Requirements completed: 34/42 (81%)
-- Phases completed: 4/5 (80%), Phase 5: 1/4 plans (25%)
-- Average time per plan: ~4.6 minutes (Phase 5: 4m for plan 01)
+- Plans completed: 20 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 3 Phase 5)
+- Requirements completed: 35/42 (83%)
+- Phases completed: 4/5 (80%), Phase 5: 2/4 plans (50%)
+- Average time per plan: ~4.5 minutes (Phase 5: 4m for 05-01, 4m for 05-02)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
-- Phase 5 duration: In progress (05-01: 4m)
+- Phase 5 duration: In progress (05-01: 4m, 05-02: 4m)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -76,6 +78,34 @@ Plan 01 (05-01): Implemented 4-phase discovery wizard (Open Capture → Dream Ex
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: Default to Include Routing Policy (from 05-02)**
+- Decision: Curriculum routing defaults to including lessons unless explicitly marked skip_if
+- Rationale: Conservative routing prevents accidentally hiding valuable content. Only skip when deliberately marked as irrelevant for specific project types.
+- Impact: Incomplete routing metadata doesn't break curriculum flow. Students see lesson unless it's explicitly excluded.
+- Pattern: Explicit exclusion (skip_if: [types]) over implicit inclusion
+- Alternative: Default to exclude unless marked - rejected as too risky with incomplete metadata
+
+**2026-01-25: Auto-Skip Awards 10 XP But No Stats (from 05-02)**
+- Decision: Skipped lessons award 10 XP efficiency bonus but zero stat points
+- Rationale: Students should feel rewarded for focused learning (XP for progression), but skipped lessons don't actually build skills (no stats). Distinguishes "learned" from "skipped."
+- Impact: Static site students skip JSON lessons and save time (10 XP each) without gaining Accuracy stats they'd get from completing them
+- Pattern: XP for progression parity, stats for actual skill building
+- Alternative: Award full XP + stats - rejected as incentivizes skipping over learning
+
+**2026-01-25: Variable Substitution Over Static Examples (from 05-02)**
+- Decision: Use YOUR_* variables to substitute student's project context into lesson examples
+- Rationale: Students build their REAL project during lessons, not throwaway practice files. Creates immediate portfolio value and keeps motivation high ("I'm building Recipe Keeper, not example.json").
+- Impact: Generic "Create example.json" becomes "Create recipe.json for Recipe Keeper"
+- Pattern: Extract project variables (name, type, data noun) and substitute throughout lesson text
+- Alternative: Generic examples student deletes later - rejected as creates busywork
+
+**2026-01-25: Data Type Noun Extraction for CRUD Apps (from 05-02)**
+- Decision: Extract data type noun from first V1 feature for crud_app ("Save recipes" → recipe/recipes)
+- Rationale: "Save recipes" contains the data type the student cares about. Extracting it makes contextualization feel specific and natural.
+- Impact: Recipe app sees recipe/recipes throughout curriculum, expense tracker sees expense/expenses
+- Pattern: Parse first V1 feature for verb-noun pattern, extract noun, pluralize, fall back to item/items
+- Alternative: Always use generic item/items - rejected as misses contextualization opportunity
 
 **2026-01-25: Hard 3-Feature V1 Limit (from 05-01)**
 - Decision: Ruthless 3-feature limit for V1 with no flexibility or exceptions
@@ -393,10 +423,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 05-01-PLAN.md (Discovery Wizard and Version Contract). Implemented 4-phase conversational wizard guiding students from vague idea to scoped V1 with hard 3-feature limit. Added guided_project object to progress.json schema and documented project.json schema with version_contract, milestones, and contextualization_vars. Project type classification (5 types) based on feature keywords. Integrated /project commands into Key Commands with handler documentation. Students can now type /project start to begin guided project mode. 3 tasks, 3 commits (2 solo + 1 combined with 05-02), 4 minutes, 202 lines added to CLAUDE.md. Phase 5 plan 01 complete.
+Completed 05-02-PLAN.md (Curriculum Routing). Implemented curriculum routing system with project_types, skip_if, and contextualize_as metadata on 31 lessons (Modules 1-7). Added Curriculum Router subsection to CLAUDE.md Section 16 with decision flow, auto-skip logic (10 XP bonus, no stats), and contextualization display templates. Documented variable substitution pattern (YOUR_APP_NAME, YOUR_APP_FOLDER, YOUR_DATA_TYPE, YOUR_DATA_PLURAL) with data type derivation from V1 features. Students now build REAL project files during lessons. 3 tasks, 2 commits, 4 minutes, 254 lines added to curriculum.md and CLAUDE.md. Phase 5 plan 02 complete.
 
 **What's Next:**
-Continue Phase 5 with 05-02 (Contextualization Variables) - implement variable extraction from version contract and lesson adaptation logic.
+Continue Phase 5 with 05-03 (Onboarding Flow) - wire discovery wizard into first-session flow and implement project-aware teaching.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -419,7 +449,7 @@ Continue Phase 5 with 05-02 (Contextualization Variables) - implement variable e
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 05-01-PLAN.md (discovery wizard and version contract complete)
+**Stopped at:** Completed 05-02-PLAN.md (curriculum routing system complete)
 
 ---
 
