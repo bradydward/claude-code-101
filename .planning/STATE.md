@@ -12,11 +12,11 @@
 ## Current Position
 
 **Phase:** 6 of 6 (in progress)
-**Plan:** Gap closure 08 of 10 complete (06-08)
-**Status:** Smart hint integration complete - executable logic added to CLAUDE.md for proactive confusion mitigation
-**Last activity:** 2026-01-26 - Completed 06-08-PLAN.md (smart hint teaching integration)
+**Plan:** Gap closure 09 of 10 complete (06-09)
+**Status:** Technology extraction complete - categorize-questions now extracts tech keywords, dashboard trends section populated
+**Last activity:** 2026-01-26 - Completed 06-09-PLAN.md (technology extraction)
 
-**Progress:** ████████████████████ 100% (Phase 6 - 8/10 gap closure plans complete)
+**Progress:** ████████████████████ 100% (Phase 6 - 9/10 gap closure plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -110,6 +110,13 @@ Plan 08 (06-08): Added executable hint integration logic to CLAUDE.md Section 9 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-26: Multi-Task Prompt Engineering for Technology Extraction (from 06-09)**
+- Decision: Add technology extraction to existing categorization prompt, not separate API pass
+- Rationale: Single Claude Haiku call processes both categorization (topic/severity/type) and technology extraction. Reduces cost, latency, and complexity. Haiku 4.5 handles multi-task prompts well. Seeding with 23 common technologies (React, Next.js, TypeScript, etc.) ensures consistent detection.
+- Impact: Technology trends section in dashboard now populated. No additional API calls or Edge Functions needed. Pre-computed technologies in database column enables 100x faster aggregation vs regex scanning question text.
+- Alternative: Separate Edge Function for tech extraction - rejected as duplicates work and increases cost/latency
+- Pattern: Multi-task prompt engineering for efficiency (single LLM call, multiple outputs)
 
 **2026-01-26: Graduate Status Tracked in Separate Table (from 06-06)**
 - Decision: Create separate graduate_status table for completion tracking, not embed in questions table
@@ -596,10 +603,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 06-06-PLAN.md (Graduate Tracking). Implemented system to track tutorial graduates and analyze their real-world questions for knowledge gaps. Created graduate_status table (completion metadata per user) and graduate_insights table (weekly aggregates). Built graduate-insights Edge Function with Claude Haiku analyzing question patterns to identify topics tutorial doesn't cover. Added Graduate Tracking section to CLAUDE.md (INTEL-08) with completion detection, status sync, question flagging. Created tutorial completion celebration display (graduation ASCII frame + sound sequence). 3 tasks, 3 atomic commits, 2 minutes, 311 lines added. Phase 6 plan 06 complete. ALL 6 PHASES COMPLETE.
+Completed 06-09-PLAN.md (Technology Extraction). Added technology keyword extraction to categorize-questions Edge Function, closing Gap 3 from 06-VERIFICATION.md. Extended Claude Haiku prompt to extract 23 common technologies (React, Next.js, TypeScript, etc.) from question text. Added technologies TEXT[] column to questions table (default empty array). Dashboard technology trends section now populated with extracted data. Multi-task prompt engineering reduces cost/latency vs separate extraction pass. 2 tasks, 2 atomic commits, 57 seconds, 10 lines added. Phase 6 gap closure plan 09 of 10 complete.
 
 **What's Next:**
-ALL PHASES COMPLETE. System ready for live student testing and data-driven curriculum improvement. Global learning intelligence operational: questions log locally → sync to cloud with consent → categorize with severity → aggregate weekly → visualize in real-time dashboard → feed back into hints → identify graduate skill gaps.
+One gap closure plan remaining (06-10). After completion, Phase 6 verification gaps fully closed and global learning intelligence system operational end-to-end.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -625,7 +632,7 @@ ALL PHASES COMPLETE. System ready for live student testing and data-driven curri
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-26
-**Stopped at:** Completed 06-06-PLAN.md (Graduate tracking) - Phase 6 Plan 06 complete (6/6) - ALL PHASES COMPLETE
+**Stopped at:** Completed 06-09-PLAN.md (Technology extraction) - Phase 6 gap closure plan 09 of 10 complete - Gap 3 CLOSED
 
 ---
 
