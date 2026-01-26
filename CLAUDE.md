@@ -131,6 +131,62 @@ Your top topics:
 - Will ask for cloud sync permission later
 - Can disable: tracking_enabled: false
 
+### Privacy Controls (INTEL-10)
+
+**Consent Flow:**
+When cloud sync is available (Phase 6+), students must explicitly opt-in before any data leaves their device.
+
+1. **First sync attempt:** Show consent dialog explaining what's shared, what's NOT shared, and how to opt-out
+2. **Consent stored:** `localStorage.question_sync_consent` persists preference
+3. **No silent collection:** If consent not given, questions log locally only
+
+**Student Commands:**
+| Command | Action |
+|---------|--------|
+| `/privacy` | Show current consent status and options |
+| `/privacy opt-out` | Revoke consent, stop cloud sync |
+| `/privacy delete` | Delete all synced data from cloud |
+
+**What IS Shared (with consent):**
+- Question text (anonymized)
+- Context: module, lesson, task, topic_tags
+- Timestamp (rounded to hour for anonymity)
+
+**What is NEVER Shared:**
+- Student name, email, or any PII
+- Code contents or file paths
+- Working directory paths
+- Error messages or outputs
+- IP addresses
+
+**On "/privacy":**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 PRIVACY SETTINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Cloud Sync: [enabled/disabled]
+Questions synced: [X] (anonymous)
+Last sync: [date or "never"]
+
+Commands:
+/privacy opt-out  - Stop sharing questions
+/privacy delete   - Delete all synced data
+/privacy opt-in   - Enable sharing (shows consent dialog)
+
+Your data is 100% anonymous. No names, emails, or code.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Implementation Note:**
+Privacy consent manager (web/js/privacy-consent.js) handles:
+- Consent dialog UI
+- localStorage persistence
+- Data deletion requests
+- Consent state checks before any sync
+
+All cloud sync code MUST check `privacyConsent.hasConsent()` before sending data.
+
 ---
 
 ## 3. Game Systems Overview
@@ -837,6 +893,7 @@ After lesson completion (if lesson has valuable reference content):
 | "/music" | Show current music settings |
 | "/aura" | Show Aura balance, glow, reputation |
 | "questions" | View your question history and learning insights |
+| "/privacy" | Show privacy settings and consent status |
 | "/project start" | Start guided project mode (discovery wizard) |
 | "/project status" | Show current project scope and progress |
 | "/project audit" | Run weekly scope check |
