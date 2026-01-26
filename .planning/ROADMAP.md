@@ -189,9 +189,19 @@ Plans:
 
 **Dependencies:** Phase 1 (teaching system must work), Phase 2 (onboarding flow for first-time users)
 
+**Plans:** 6 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Privacy infrastructure and consent flow (INTEL-10)
+- [ ] 06-02-PLAN.md — Supabase backend setup (schema, Edge Functions, anonymous auth)
+- [ ] 06-03-PLAN.md — Question sync integration (INTEL-01 enhancement, INTEL-03)
+- [ ] 06-04-PLAN.md — Analytics dashboard with real-time updates (INTEL-05, INTEL-09)
+- [ ] 06-05-PLAN.md — Smart hints and lesson suggestions (INTEL-06, INTEL-07)
+- [ ] 06-06-PLAN.md — Graduate tracking and reporting (INTEL-08)
+
 **Requirements:**
 - INTEL-01: Question logging in CLAUDE.md teaching loop
-- INTEL-02: Global MCP hook tracks questions across all Claude Code sessions (not just tutorial)
+- INTEL-02: Global MCP hook tracks questions across all Claude Code sessions (DEFERRED to Phase 7+)
 - INTEL-03: Anonymous question data syncs to Supabase cloud database
 - INTEL-04: AI analysis categorizes questions nightly (topic, severity, type)
 - INTEL-05: Analytics dashboard shows top questions and confusion hotspots
@@ -201,9 +211,11 @@ Plans:
 - INTEL-09: Technology trend detection (React, Next.js, etc. usage patterns)
 - INTEL-10: Privacy controls (opt-in consent, easy opt-out, data deletion)
 
+**Note:** INTEL-02 (Global MCP hook) is deferred to Phase 7+ per research recommendation. MCP doesn't provide built-in global tracking hooks - a custom MCP server would be required, adding significant complexity. The progressive enhancement approach (local logging + opt-in Supabase sync) delivers 90% of value with 20% of complexity.
+
 **Success Criteria:**
 1. Student questions are anonymously logged to cloud during teaching sessions (with consent)
-2. Global MCP hook captures questions from ANY Claude Code session (not just tutorial folder)
+2. ~~Global MCP hook captures questions from ANY Claude Code session~~ (DEFERRED)
 3. Analytics dashboard shows "Top 10 questions this week" with module/lesson context
 4. System auto-suggests new lessons when 50+ students ask similar questions
 5. Graduates' real-world questions feed back into curriculum improvements
@@ -216,6 +228,21 @@ Plans:
 ## Future Phases (Phase 7+)
 
 **Potential enhancements beyond initial roadmap:**
+
+### Global MCP Hook (INTEL-02)
+**Goal:** Track questions across ALL Claude Code sessions, not just tutorial folder
+
+**Why Deferred:**
+- MCP doesn't provide built-in conversation interception hooks
+- Requires building custom MCP server as middleware
+- Users must explicitly install the custom server (friction)
+- 06-RESEARCH.md recommends: "Start simpler, MCP is Phase 7+ work"
+
+**Requirements:**
+- MCP-01: Custom MCP server intercepts conversational events
+- MCP-02: Question extraction from conversation stream
+- MCP-03: Integration with Supabase sync (same schema as Phase 6)
+- MCP-04: User opt-in installation flow
 
 ### CLI Background Music System
 **Goal:** Add continuous background music to CLI teaching sessions (matching web portal experience)
@@ -251,9 +278,11 @@ Research Phase 6 will evaluate:
 | 3 - Music System Upgrade | Complete | 2026-01-24 | 2026-01-24 | 6/6 |
 | 4 - Test-Out System | Complete | 2026-01-25 | 2026-01-25 | 4/4 |
 | 5 - Guided Project Track | Complete | 2026-01-25 | 2026-01-25 | 9/9 |
-| 6 - Global Learning Intelligence | Pending | -- | -- | 0/10 |
+| 6 - Global Learning Intelligence | Planned | -- | -- | 0/9 |
 
-**Overall Progress:** 42/52 requirements complete (81%)
+**Overall Progress:** 42/51 requirements complete (82%)
+
+**Note:** INTEL-02 deferred, reducing Phase 6 requirements from 10 to 9.
 
 ---
 
