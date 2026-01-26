@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
-**Last Updated:** 2026-01-25
-**Status:** Phase 6 IN PROGRESS (Global Learning Intelligence)
+**Last Updated:** 2026-01-26
+**Status:** Phase 6 COMPLETE (Global Learning Intelligence)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Building global learning intelligence - privacy infrastructure, question logging, cloud sync, analytics dashboard, and smart hints
+**Current Focus:** All phases complete - ready for live student testing and data-driven curriculum improvement
 
 ## Current Position
 
 **Phase:** 6 of 6 - COMPLETE
-**Plan:** 04 of 04 complete (06-04)
-**Status:** Analytics dashboard complete - real-time curriculum insights with Supabase Realtime showing top questions, confusion hotspots, tech trends, and severity distribution
-**Last activity:** 2026-01-25 - Completed 06-04-PLAN.md (analytics dashboard)
+**Plan:** 06 of 06 complete (06-06)
+**Status:** Graduate tracking complete - system captures real-world questions from tutorial completers to identify knowledge gaps
+**Last activity:** 2026-01-26 - Completed 06-06-PLAN.md (graduate tracking)
 
-**Progress:** ████████████████████ 100% (Phase 6 - 4/4 plans complete)
+**Progress:** ████████████████████ 100% (Phase 6 - 6/6 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -54,7 +54,7 @@ Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defens
 
 **Phase 5 Status:** Guided project track COMPLETE. Students can now: discover their idea (wizard), scope V1 (3-feature contract), build during lessons (curriculum routing), ship Week 1 mockup (GitHub Pages), maintain discipline (weekly audits), and celebrate completion (portfolio defense). Full end-to-end journey from vague idea to deployed app with showcase.
 
-### Phase 6 Summary (IN PROGRESS)
+### Phase 6 Summary (COMPLETE)
 
 Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question sync. Created PrivacyConsentManager class with modal dialog UI (terminal-themed, green accents), localStorage consent persistence, and data deletion capability. Documented Privacy Controls in CLAUDE.md Section 2a (consent flow, /privacy commands, what's shared/not shared). Integrated with web portal (terminal.html includes consent.css + privacy-consent.js). Consent dialog does NOT show on load - only triggers on first sync attempt (Plan 03). Added /privacy commands to Key Commands table. Supabase deletion placeholder added for Plan 03 integration. Duration: 2 minutes, 3 atomic commits, 311 lines added.
 
@@ -64,7 +64,11 @@ Plan 03 (06-03): Integrated question sync with Supabase. Created QuestionSyncMan
 
 Plan 04 (06-04): Built analytics dashboard for curriculum insights with real-time updates. Created update-aggregates Edge Function computing weekly rollups (top 10 questions, module confusion, tech trends, severity distribution). Dashboard HTML with 5 insight sections subscribes to Supabase Realtime for live updates. Terminal-themed CSS matches web portal aesthetic. Privacy-first design (aggregates only, no individual questions, no PII). Footer link in terminal.html points to analytics-dashboard.html. Documentation in CLAUDE.md Section 2a explains dashboard purpose and data flow. Dashboard requires Supabase configuration but shows error state when unconfigured. Duration: 2 minutes, 3 atomic commits, 712 lines added.
 
-**Phase 6 Status:** COMPLETE (4/4 plans). Global learning intelligence system operational: privacy infrastructure (06-01), Supabase backend (06-02), cloud sync (06-03), analytics dashboard (06-04). Questions log locally, sync to cloud with consent, categorize with severity, aggregate weekly, visualize in real-time dashboard. Ready for live student testing and data-driven curriculum improvement.
+Plan 05 (06-05): Implemented smart hints and lesson suggestions. Created comprehensive hint library (docs/claude/smart-hints.md) with module-specific hints for common confusion patterns (paths, npm, prompts, models, JSON, permissions). Integrated hints into teaching flow (CLAUDE.md Sections 2a and 9) with 10+ question threshold for display. Built suggest-lessons Edge Function using Claude Haiku 4.5 to auto-generate lesson proposals when 50+ students ask similar questions. Suggestions stored in lesson_suggestions table for curriculum designer review. Weekly scheduling via pg_cron documented. Privacy-first hint design (aggregate patterns, no individual students). INTEL-06 and INTEL-07 fulfillment. Duration: 2.5 minutes, 3 atomic commits, 392 lines added.
+
+Plan 06 (06-06): Implemented graduate tracking to capture real-world questions after tutorial completion. Created graduate_status table (completion metadata per user) and graduate_insights table (weekly aggregates). Built graduate-insights Edge Function analyzing question patterns with Claude Haiku identifying skill gaps. Added Graduate Tracking section to CLAUDE.md (INTEL-08) with completion detection, status sync, and question flagging. Created tutorial completion celebration display (graduation ASCII frame + sound sequence). Duration: 2 minutes, 3 atomic commits, 311 lines added.
+
+**Phase 6 Status:** COMPLETE (6/6 plans). Global learning intelligence system operational: privacy infrastructure (06-01), Supabase backend (06-02), cloud sync (06-03), analytics dashboard (06-04), smart hints (06-05), graduate tracking (06-06). Questions log locally, sync to cloud with consent, categorize with severity, aggregate weekly, visualize in real-time dashboard, feed back into hints, identify graduate skill gaps. Ready for live student testing and data-driven curriculum improvement.
 
 ### Next Steps
 1. Live student testing with complete guided project track
@@ -75,16 +79,16 @@ Plan 04 (06-04): Built analytics dashboard for curriculum insights with real-tim
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 29 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 7 Phase 6)
+- Plans completed: 31 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 9 Phase 6)
 - Requirements completed: 44/44 (100%)
 - Phases completed: 6/6 (100%)
-- Average time per plan: ~2.5 minutes (Phase 6: 2m average across 4 plans)
+- Average time per plan: ~2.5 minutes (Phase 6: 2m average across 6 plans)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
 - Phase 5 duration: 16m (2026-01-25) - COMPLETE
-- Phase 6 duration: 8m (2026-01-25) - COMPLETE (4 plans: 2m + 2m + 2m + 2m)
+- Phase 6 duration: 12m (2026-01-25 to 2026-01-26) - COMPLETE (6 plans: 2m + 2m + 2m + 2m + 2m + 2m)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -95,11 +99,25 @@ Plan 04 (06-04): Built analytics dashboard for curriculum insights with real-tim
 **Health:**
 - On track: Yes (6/6 phases complete, 100% requirements complete)
 - Risks: None active (all phases complete, ready for live testing)
-- Momentum: Very high (Phase 6 complete in 8 minutes, global learning intelligence operational)
+- Momentum: Very high (Phase 6 complete in 12 minutes, global learning intelligence operational)
 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-26: Graduate Status Tracked in Separate Table (from 06-06)**
+- Decision: Create separate graduate_status table for completion tracking, not embed in questions table
+- Rationale: Graduate status is distinct lifecycle event from questions. Separate table allows efficient graduate count queries without scanning questions table. Enables rich completion metadata (modules_completed, total_xp, class_selected, project_completed) without bloating question records.
+- Impact: Clean separation of concerns. graduate_status answers "Who completed tutorial?" and "When?" questions. is_user_graduate() function provides quick checks for question flagging.
+- Alternative: Embed is_graduate flag only - rejected as loses valuable completion metadata and makes graduate count queries expensive
+- Pattern: Separate tracking table for lifecycle events (completion, milestones)
+
+**2026-01-26: Claude-Powered Skill Gap Analysis (from 06-06)**
+- Decision: Use Claude Haiku to analyze graduate questions and identify topics tutorial doesn't cover
+- Rationale: Skill gaps are conceptual patterns ("graduates struggle with React hooks") not just keyword counts. Claude can synthesize patterns from question clusters that simple aggregation would miss. Haiku is cost-effective for weekly batch processing.
+- Impact: Graduate insights include structured skill_gaps array with topic, evidence, priority. 10+ question threshold prevents noise from small samples.
+- Alternative: Keyword-based topic extraction - rejected as misses conceptual patterns and context
+- Pattern: LLM-powered insight extraction from unstructured data (questions → conceptual themes)
 
 **2026-01-25: localStorage for Privacy Consent State (from 06-01)**
 - Decision: Store consent state in localStorage, not progress.json
