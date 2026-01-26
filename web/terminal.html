@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/terminal.css">
+  <link rel="stylesheet" href="css/consent.css">
 </head>
 <body>
 
@@ -162,69 +163,173 @@
 
       <div class="completion-next">
         <h3>Ready to do it for real?</h3>
-        <p style="color: #9e9e9e; margin-bottom: 1.5rem; font-size: 0.9rem;">Follow these steps to set up Claude Code on your computer:</p>
+
+        <!-- ONE-CLICK SETUP -->
+        <div style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(129, 199, 132, 0.2) 0%, rgba(79, 195, 247, 0.2) 100%); border-radius: 12px; border: 2px solid #81c784;">
+          <p style="margin: 0 0 0.75rem 0; color: #81c784; font-weight: bold; font-size: 1.1rem;">
+            🚀 One-Click Installer (4-5 minutes!)
+          </p>
+          <p style="margin: 0; color: #e0e0e0; font-size: 0.9rem; line-height: 1.6;">
+            We built a smart installer that does EVERYTHING automatically. Just paste ONE command and wait. It installs Homebrew, Node.js, Claude Code, and downloads the project - all in one go!
+          </p>
+        </div>
+
+        <h4 style="color: #ffa726; margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">
+          → 3 Simple Steps:
+        </h4>
 
         <div class="setup-steps">
+          <!-- STEP 1: Download -->
           <div class="setup-step">
             <div class="setup-step-num">1</div>
             <div class="setup-step-content">
-              <p>Install Homebrew (Mac package manager):</p>
+              <p style="font-weight: bold; margin-bottom: 0.5rem;">Download the project:</p>
               <div class="code-block">
-                <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                <code>git clone https://github.com/your-repo/claude-code-101.git && cd claude-code-101</code>
                 <button class="copy-btn">Copy</button>
               </div>
+              <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #9e9e9e;">
+                💾 Downloads the project to your Mac (takes ~10 seconds)
+              </p>
             </div>
           </div>
 
-          <div class="setup-step">
-            <div class="setup-step-num">2</div>
+          <!-- Visual flow connector -->
+          <div style="text-align: center; margin: 0.5rem 0; color: #81c784; font-size: 1.5rem;">↓</div>
+
+          <!-- STEP 2: One-click installer -->
+          <div class="setup-step" style="border: 2px solid #4fc3f7; background: rgba(79, 195, 247, 0.08);">
+            <div class="setup-step-num" style="background: #4fc3f7;">2</div>
             <div class="setup-step-content">
-              <p>Install Node.js:</p>
+              <p style="color: #4fc3f7; font-weight: bold; margin-bottom: 0.5rem;">🚀 Run the one-click installer:</p>
               <div class="code-block">
-                <code>brew install node</code>
+                <code>/bin/bash install.sh</code>
                 <button class="copy-btn">Copy</button>
               </div>
+
+              <!-- CRITICAL PASSWORD WARNING -->
+              <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 82, 82, 0.15); border: 2px solid #ff5252; border-radius: 8px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #ff5252; font-weight: bold;">
+                  🚨 DON'T PANIC WHEN THIS HAPPENS:
+                </p>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  The installer will ask: <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">Password:</code>
+                </p>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  When you type, <strong>NOTHING APPEARS</strong> - no dots, no asterisks, no cursor movement. <strong>This is NORMAL!</strong>
+                </p>
+                <p style="margin: 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  ✅ <strong>You ARE typing!</strong> Mac hides passwords for security. Just type your Mac password (the one you use to log in) and press Enter.
+                </p>
+              </div>
+
+              <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(129, 199, 132, 0.1); border-radius: 6px; border-left: 3px solid #81c784;">
+                <p style="margin: 0; font-size: 0.85rem; color: #81c784; line-height: 1.6;">
+                  ⏱️ <strong>Takes 4-5 minutes.</strong> The script installs Homebrew, Node.js, Claude Code, and sets everything up automatically. Just wait! If you see "Install Command Line Tools?", click Install.
+                </p>
+              </div>
+
+              <!-- What the installer does -->
+              <details style="margin-top: 1rem; cursor: pointer;">
+                <summary style="font-size: 0.85rem; color: #4fc3f7; font-weight: bold; user-select: none;">
+                  🔍 What does the installer do?
+                </summary>
+                <ul style="margin: 0.75rem 0 0 1.25rem; padding: 0; color: #9e9e9e; font-size: 0.8rem; line-height: 1.8;">
+                  <li>✅ Checks if Xcode Command Line Tools are installed (installs if needed)</li>
+                  <li>✅ Installs Homebrew (Mac package manager)</li>
+                  <li>✅ Installs Node.js (JavaScript runtime)</li>
+                  <li>✅ Installs Claude Code CLI</li>
+                  <li>✅ Skips anything already installed (smart!)</li>
+                </ul>
+              </details>
             </div>
           </div>
 
-          <div class="setup-step">
-            <div class="setup-step-num">3</div>
-            <div class="setup-step-content">
-              <p>Install Claude Code:</p>
-              <div class="code-block">
-                <code>npm install -g @anthropic-ai/claude-code</code>
-                <button class="copy-btn">Copy</button>
-              </div>
-            </div>
-          </div>
+          <!-- Visual flow connector -->
+          <div style="text-align: center; margin: 0.5rem 0; color: #81c784; font-size: 1.5rem;">↓</div>
 
-          <div class="setup-step">
-            <div class="setup-step-num">4</div>
+          <!-- STEP 3: Launch -->
+          <div class="setup-step" style="border: 2px solid #81c784; background: rgba(129, 199, 132, 0.08);">
+            <div class="setup-step-num" style="background: #81c784;">3</div>
             <div class="setup-step-content">
-              <p>Get your API key from <a href="https://console.anthropic.com" target="_blank" style="color: #4fc3f7;">console.anthropic.com</a></p>
-            </div>
-          </div>
+              <p style="color: #81c784; font-weight: bold; margin-bottom: 0.75rem;">🎮 Get your API key & launch!</p>
 
-          <div class="setup-step">
-            <div class="setup-step-num">5</div>
-            <div class="setup-step-content">
-              <p>Clone the project and start your adventure:</p>
-              <div class="code-block">
-                <code>git clone https://github.com/your-repo/claude-code-101.git && cd claude-code-101 && claude</code>
-                <button class="copy-btn">Copy</button>
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">a) Get FREE API key:</p>
+                <ol style="margin: 0 0 0 1.25rem; padding: 0; color: #9e9e9e; font-size: 0.8rem; line-height: 1.6;">
+                  <li>Visit <a href="https://console.anthropic.com" target="_blank" style="color: #4fc3f7; text-decoration: underline;">console.anthropic.com</a></li>
+                  <li>Sign up (free - includes $5 credit)</li>
+                  <li>Go to "API Keys" → "Create Key" → copy it</li>
+                </ol>
               </div>
-              <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #616161;">Then type "start lesson" to begin!</p>
+
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">b) Open a NEW Terminal window:</p>
+                <p style="margin: 0; color: #9e9e9e; font-size: 0.8rem; line-height: 1.6;">
+                  Press <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">Cmd + N</code> (new window loads updated PATH)
+                </p>
+              </div>
+
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">c) Navigate & launch:</p>
+                <div class="code-block" style="margin-bottom: 0.5rem;">
+                  <code>cd ~/Developer/projects/"Claude Code 101"</code>
+                  <button class="copy-btn">Copy</button>
+                </div>
+                <div class="code-block">
+                  <code>claude</code>
+                  <button class="copy-btn">Copy</button>
+                </div>
+              </div>
+
+              <p style="margin: 1rem 0 0 0; font-size: 0.9rem; color: #81c784; font-weight: bold; text-align: center; padding: 0.75rem; background: rgba(129, 199, 132, 0.15); border-radius: 6px;">
+                ✅ When Claude opens, type: <code style="background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.95rem;">start lesson</code>
+              </p>
             </div>
           </div>
         </div>
 
-        <div class="download-options">
-          <a href="#" class="download-btn" onclick="alert('Repository URL coming soon!'); return false;">
-            &#128229; Clone with Git
-          </a>
-          <a href="#" class="download-btn secondary" onclick="alert('ZIP download coming soon!'); return false;">
-            &#128230; Download ZIP
-          </a>
+        <!-- Alternative: ZIP download -->
+        <details style="margin-top: 1.5rem; cursor: pointer;">
+          <summary style="font-size: 0.85rem; color: #9e9e9e; font-weight: bold; user-select: none; padding: 0.5rem;">
+            🔧 Alternative: Don't have git? Download ZIP instead
+          </summary>
+          <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <p style="margin: 0 0 0.75rem 0; font-size: 0.8rem; color: #9e9e9e;">
+              If git isn't installed on your Mac, download the ZIP file:
+            </p>
+            <div class="download-options">
+              <a href="#" class="download-btn secondary" onclick="alert('ZIP download coming soon!'); return false;">
+                &#128230; Download ZIP
+              </a>
+            </div>
+            <p style="margin: 0.75rem 0 0 0; font-size: 0.8rem; color: #9e9e9e; line-height: 1.6;">
+              After downloading:<br>
+              1. Unzip it to your Desktop<br>
+              2. Open Terminal<br>
+              3. Type: <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">cd ~/Desktop/claude-code-101</code><br>
+              4. Continue with Step 2 above (run <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">install.sh</code>)
+            </p>
+          </div>
+        </details>
+
+        <div style="margin-top: 2rem; padding: 1rem; background: rgba(255, 167, 38, 0.1); border-radius: 8px; border-left: 3px solid #ffa726;">
+          <h4 style="margin: 0 0 0.75rem 0; color: #ffa726; font-size: 0.95rem;">🛠️ Troubleshooting</h4>
+
+          <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255, 82, 82, 0.1); border-radius: 6px; border-left: 3px solid #ff5252;">
+            <p style="margin: 0 0 0.5rem 0; color: #ff5252; font-weight: bold; font-size: 0.85rem;">🚨 #1 ISSUE: "It won't let me type my password!"</p>
+            <p style="margin: 0; color: #ffcdd2; font-size: 0.8rem; line-height: 1.6;">
+              <strong>You ARE typing - Mac just hides it!</strong> When Terminal asks for your password, it shows NOTHING when you type (no dots, no characters, cursor doesn't move). This freaks everyone out the first time. Type your password blind and press Enter. It works!
+            </p>
+          </div>
+
+          <ul style="color: #9e9e9e; font-size: 0.8rem; line-height: 1.6; margin: 0; padding-left: 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>"Command Line Tools" popup appears:</strong> Click "Install" and wait 10-15 minutes. This is normal for fresh Macs. Don't close it!</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Installation seems stuck:</strong> It's not stuck! Homebrew downloads ~100MB and compiles tools. Can take 10+ minutes on slow internet. Watch for progress messages.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Homebrew installation fails:</strong> Open Terminal and type: <code style="background: rgba(255,255,255,0.1); padding: 0.2rem 0.4rem; border-radius: 3px;">xcode-select --install</code> then retry Step 1.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Wrong password error:</strong> Make sure you're typing your <strong>Mac login password</strong>, not your iCloud/Apple ID password. They're often different!</li>
+            <li><strong>Still stuck?</strong> The project README has detailed troubleshooting for every possible issue!</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -235,6 +340,9 @@
 
   <!-- Music system - MUST load before terminal-sim.js for global access -->
   <script src="js/music-system.js?v=1001"></script>
+
+  <!-- Privacy consent - MUST load before terminal-sim.js for global access -->
+  <script src="js/privacy-consent.js"></script>
 
   <!-- Avatar and terminal scripts -->
   <script src="js/avatar-system.js?v=999"></script>
