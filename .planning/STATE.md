@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
 **Last Updated:** 2026-01-25
-**Status:** Phase 5 COMPLETE (Guided Project Track)
+**Status:** Phase 6 IN PROGRESS (Global Learning Intelligence)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** Guided project track complete - students can build their own app from idea to deployed portfolio
+**Current Focus:** Building global learning intelligence - privacy infrastructure, question logging, cloud sync, analytics dashboard, and smart hints
 
 ## Current Position
 
-**Phase:** 5 of 5 - COMPLETE
-**Plan:** 05 of 05 complete (05-05)
-**Status:** Guided project track fully documented - discovery wizard, curriculum routing, Week 1 mockup, weekly scope audit, and portfolio defense all complete
-**Last activity:** 2026-01-25 - Completed 05-05-PLAN.md (portfolio defense)
+**Phase:** 6 of 6 - IN PROGRESS
+**Plan:** 01 of 04 complete (06-01)
+**Status:** Privacy infrastructure complete - GDPR-compliant consent flow with localStorage persistence, modal dialog UI, and data deletion capability ready for cloud sync
+**Last activity:** 2026-01-25 - Completed 06-01-PLAN.md (privacy infrastructure)
 
-**Progress:** ████████████████████ 100% (Phase 5 - 5/5 plans complete)
+**Progress:** █████░░░░░░░░░░░░░░░ 25% (Phase 6 - 1/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -54,6 +54,12 @@ Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defens
 
 **Phase 5 Status:** Guided project track COMPLETE. Students can now: discover their idea (wizard), scope V1 (3-feature contract), build during lessons (curriculum routing), ship Week 1 mockup (GitHub Pages), maintain discipline (weekly audits), and celebrate completion (portfolio defense). Full end-to-end journey from vague idea to deployed app with showcase.
 
+### Phase 6 Summary (IN PROGRESS)
+
+Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question sync. Created PrivacyConsentManager class with modal dialog UI (terminal-themed, green accents), localStorage consent persistence, and data deletion capability. Documented Privacy Controls in CLAUDE.md Section 2a (consent flow, /privacy commands, what's shared/not shared). Integrated with web portal (terminal.html includes consent.css + privacy-consent.js). Consent dialog does NOT show on load - only triggers on first sync attempt (Plan 03). Added /privacy commands to Key Commands table. Supabase deletion placeholder added for Plan 03 integration. Duration: 2 minutes, 3 atomic commits, 311 lines added.
+
+**Phase 6 Status:** Privacy infrastructure COMPLETE (Plan 01/04). Consent flow ready for Supabase sync (Plan 03). Next: Question log schema with topic tags and anonymization (Plan 02).
+
 ### Next Steps
 1. Live student testing with complete guided project track
 2. Monitor portfolio defense flow for UX refinements (video upload friction, prompt clarity)
@@ -63,15 +69,16 @@ Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defens
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 25 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 3 Phase 6)
+- Plans completed: 26 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 4 Phase 6)
 - Requirements completed: 42/42 (100%)
-- Phases completed: 5/5 (100%)
-- Average time per plan: ~3.8 minutes (Phase 5: 4m for 05-01, 4m for 05-02, 4m for 05-03, 2m for 05-04, 2m for 05-05)
+- Phases completed: 5/6 (83%)
+- Average time per plan: ~3.5 minutes (Phase 6: 2m for 06-01)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
 - Phase 5 duration: 16m (2026-01-25) - COMPLETE
+- Phase 6 duration: 2m so far (2026-01-25) - IN PROGRESS (1/4 plans)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -80,13 +87,27 @@ Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defens
 - Verification score: Phase 1: 18/18, Phase 2: 17/17, Phase 3: 22/23 (96% - playback consciously deferred)
 
 **Health:**
-- On track: Yes (4/5 phases complete, Phase 5 at 75%, 86% requirements complete)
-- Risks: None active (playback deferred per user decision, not blocking downstream work)
-- Momentum: Very high (Phase 5 Wave 2 complete, scope audit system ready)
+- On track: Yes (5/6 phases complete, Phase 6 at 25%, 100% requirements complete)
+- Risks: None active (privacy infrastructure ready for cloud sync)
+- Momentum: Very high (Phase 6 Plan 01 complete in 2 minutes, privacy infrastructure ready)
 
 ## Accumulated Context
 
 ### Key Decisions
+
+**2026-01-25: localStorage for Privacy Consent State (from 06-01)**
+- Decision: Store consent state in localStorage, not progress.json
+- Rationale: Privacy consent is web-only feature (browser environment). No backend overhead needed. Instant synchronous access. Follows existing pattern (music preferences also use localStorage).
+- Impact: Simpler implementation, faster consent checks, no file I/O for purely frontend state. Pattern: `localStorage.setItem('question_sync_consent', 'true')`.
+- Alternative: progress.json - rejected as requires backend read/write for purely frontend features
+- Context: Privacy infrastructure for Phase 6 global learning intelligence. Consent dialog shows only on first sync attempt (Plan 03), not on page load.
+
+**2026-01-25: No Consent Dialog on Page Load (from 06-01)**
+- Decision: Consent dialog does NOT show when terminal.html loads - only appears on first sync attempt
+- Rationale: Avoid aggressive consent prompts (anti-pattern). Students see dialog only when cloud sync becomes relevant (Plan 03). Reduces friction for students never using cloud features.
+- Impact: Privacy manager instantiates silently on load. Dialog only triggers when `requestConsentIfNeeded()` is called (Plan 03 sync code).
+- Alternative: Show dialog on first page load - rejected as aggressive and interrupts onboarding flow
+- Pattern: Progressive disclosure - surface privacy controls when feature becomes active, not preemptively
 
 **2026-01-25: Portfolio Defense as Celebration, Not Evaluation (from 05-05)**
 - Decision: Portfolio defense uses demo video + 4-prompt reflection with explicit no-ranking philosophy
@@ -496,21 +517,22 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 05-05-PLAN.md (Portfolio Defense). Documented portfolio defense flow triggered by /project defense after V1 complete. Prerequisites check (V1 features + mockup deployed). Defense has two parts: demo video (2-3 min, casual, authentic) and written reflection (4 prompts in case study format: problem, approach, learned, next). Showcase celebrates individual journey without ranking/comparison. Completion awards Project Pioneer badge + 500 XP + 50 Aura. After-defense options documented (V2, new project, curriculum, break). 3 tasks, 3 commits (atomic), 2 minutes, 325 lines added to CLAUDE.md. Phase 5 plan 05 complete.
+Completed 06-01-PLAN.md (Privacy Infrastructure and Consent Flow). Built GDPR-compliant privacy consent system for cloud question sync. Created PrivacyConsentManager class with modal dialog UI (terminal-themed, showConsentDialog returns Promise), localStorage persistence (question_sync_consent), and data deletion (deleteMyData clears local, Supabase placeholder for Plan 03). Documented Privacy Controls in CLAUDE.md Section 2a (consent flow, /privacy commands, what's shared/not shared, implementation note). Added /privacy to Key Commands table. Integrated with web portal (terminal.html includes consent.css + privacy-consent.js). Consent dialog does NOT show on load - only triggers on first sync attempt (Plan 03). 3 tasks, 3 atomic commits, 2 minutes, 311 lines added (130 privacy-consent.js, 122 consent.css, 57 CLAUDE.md, 2 terminal.html). Phase 6 plan 01 complete.
 
 **What's Next:**
-Phase 5 is COMPLETE (5/5 plans). Guided project track is fully documented: discovery wizard, curriculum routing, Week 1 mockup, weekly scope audit, and portfolio defense all ready for live student testing.
+Plan 06-02: Question Log Schema - Design local question log schema with topic tags, context fields, and anonymization. Implement log writing when students ask pedagogical questions. Add consent check before logging to localStorage.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
 - Phase 2 delivered all 3 plans (COMPLETE) - installer, first-session flow, progressive disclosure
 - Phase 3 delivered all 3 plans (COMPLETE) - music engine + UI + pool exhaustion fix + playback deferred
-- Music system architecture complete: BackgroundMusicManager + Howler.js integration + interactive UI + localStorage persistence
-- Audio pool exhaustion FIXED: Critical bug (infinite retry loop) resolved via user console feedback
-- Music system status: Engine works, UI functional, Howler loads tracks (no 404s), playback verification deferred per user decision
-- Web portal onboarding: 5 quests + character creation + music controls (functional, architecture verified)
-- Deferred (user priority): Audio playback verification + real MP3 sourcing with different approach (after Phase 4+)
-- Architecture is modular, performant, and well-documented
+- Phase 4 delivered all 4 plans (COMPLETE) - test-out system for Modules 2-7
+- Phase 5 delivered all 5 plans (COMPLETE) - guided project track (discovery wizard → portfolio defense)
+- Phase 6 IN PROGRESS (1/4 plans): Privacy infrastructure COMPLETE
+- Privacy consent: PrivacyConsentManager ready, localStorage persistence, modal dialog UI, data deletion
+- Consent flow: Dialog shows only on first sync attempt (Plan 03), not on page load
+- Next: Question log schema with topic tags and anonymization (Plan 02)
+- Architecture is modular, performant, privacy-first, and well-documented
 
 **Key Files:**
 - `/Users/bradyward/Developer/projects/Claude Code 101/.planning/PROJECT.md` - Core value
@@ -522,7 +544,7 @@ Phase 5 is COMPLETE (5/5 plans). Guided project track is fully documented: disco
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-25
-**Stopped at:** Completed 05-05-PLAN.md (Portfolio defense documented) - PHASE 5 COMPLETE
+**Stopped at:** Completed 06-01-PLAN.md (Privacy infrastructure) - Phase 6 Plan 01 complete (1/4)
 
 ---
 
