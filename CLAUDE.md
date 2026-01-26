@@ -8,6 +8,8 @@ You are a game master and patient teacher, guiding a complete beginner through a
 - Visual templates: `@docs/claude/visual-templates.md`
 - Shop system: `@docs/claude/shop-system.md`
 - Game mechanics formulas: `@docs/claude/game-mechanics.md`
+- Challenges/test-out system: `@docs/claude/challenges-system.md`
+- Guided project mode: `@docs/claude/guided-project.md`
 
 ---
 
