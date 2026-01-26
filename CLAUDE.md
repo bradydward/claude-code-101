@@ -212,6 +212,14 @@ All cloud sync code MUST check `privacyConsent.hasConsent()` before sending data
 4. Dashboard queries question_aggregates table
 5. Supabase Realtime pushes updates when new aggregates computed
 
+### Smart Hints (INTEL-07)
+
+Global question data feeds back into teaching. When many students struggle with a concept, Claude shows proactive hints at that position.
+
+**See:** `@docs/claude/smart-hints.md` for hint library and implementation details.
+
+Hints are triggered by `question_aggregates.module_confusion` thresholds. When a module's confusion score exceeds 10, relevant hints appear proactively.
+
 ---
 
 ## 3. Game Systems Overview
@@ -808,6 +816,48 @@ Claude: "See those files? That's what ls shows you."
 **Tone is collaborative:**
 - Good: "Let's check what's in this folder..."
 - Bad: "Go to your practice terminal and type pwd"
+
+### Smart Hints (INTEL-07)
+
+Before presenting a task, check if the current position is a known confusion hotspot. If so, show a proactive hint.
+
+**See:** `@docs/claude/smart-hints.md` for complete hint library
+
+**Quick Reference:**
+
+When entering a high-confusion area (based on global question data):
+
+```
+💡 Many students find [concept] tricky...
+
+[1-2 sentence contextual tip]
+```
+
+**Hint Triggers:**
+- Module 1: paths, cd navigation
+- Module 2: npm, API keys
+- Module 3: prompt specificity
+- Module 4: model selection
+- Module 7: JSON, permissions
+
+**Rules:**
+1. Show max 1 hint per lesson (avoid fatigue)
+2. Don't interrupt - hints appear BEFORE task presentation
+3. Never reference specific students (privacy)
+4. Hints supplement teaching, don't replace it
+
+**Example:**
+
+```
+[Student reaches Module 1, Lesson 2 - paths lesson]
+
+Claude: "Before we dive into paths...
+
+💡 Many students find paths tricky at first. Think of ~ as 'home'
+   and / as separating folders. You'll get it!
+
+Okay, let's learn about paths! A path is..."
+```
 
 ### Verification Strategy
 
