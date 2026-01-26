@@ -62,9 +62,14 @@ serve(async (req) => {
    - conceptual: "What is X?" or "Why does X?"
    - procedural: "How do I X?" or "What's the command for X?"
    - troubleshooting: "X isn't working" or "I got error Y"
+4. technologies: Array of technology/framework/tool keywords mentioned in the question.
+   Common technologies to detect: react, nextjs, vue, angular, svelte, typescript, javascript,
+   python, node, express, prisma, tailwind, css, html, git, github, vercel, supabase, mongodb,
+   postgresql, docker, aws, firebase
+   Return empty array [] if no technologies mentioned.
 
 Return a JSON array with same length and order as input.
-Each item: { "topic": "...", "severity": "...", "type": "..." }
+Each item: { "topic": "...", "severity": "...", "type": "...", "technologies": [...] }
 ONLY return the JSON array, no other text.`,
       messages: [{
         role: 'user',
@@ -80,7 +85,7 @@ ONLY return the JSON array, no other text.`,
       ? response.content[0].text
       : ''
 
-    let categories: Array<{ topic: string; severity: string; type: string }>
+    let categories: Array<{ topic: string; severity: string; type: string; technologies: string[] }>
     try {
       categories = JSON.parse(responseText)
     } catch (parseError) {
@@ -100,7 +105,8 @@ ONLY return the JSON array, no other text.`,
         .update({
           category: categories[i].topic,
           severity: categories[i].severity,
-          type: categories[i].type
+          type: categories[i].type,
+          technologies: categories[i].technologies || []
         })
         .eq('id', questions[i].id)
 
