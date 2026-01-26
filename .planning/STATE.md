@@ -1,22 +1,22 @@
 # Project State: Claude Code 101
 
 **Last Updated:** 2026-01-26
-**Status:** Phase 6 COMPLETE (Global Learning Intelligence)
+**Status:** Phase 6 Gap Closure (Global Learning Intelligence)
 
 ## Project Reference
 
 **Core Value:** Learning by doing through irresistible game progression
 
-**Current Focus:** All phases complete - ready for live student testing and data-driven curriculum improvement
+**Current Focus:** Closing verification gaps from 06-VERIFICATION.md to ensure learning intelligence features are executable
 
 ## Current Position
 
-**Phase:** 6 of 6 - COMPLETE
-**Plan:** 06 of 06 complete (06-06)
-**Status:** Graduate tracking complete - system captures real-world questions from tutorial completers to identify knowledge gaps
-**Last activity:** 2026-01-26 - Completed 06-06-PLAN.md (graduate tracking)
+**Phase:** 6 of 6 (in progress)
+**Plan:** Gap closure 08 of 10 complete (06-08)
+**Status:** Smart hint integration complete - executable logic added to CLAUDE.md for proactive confusion mitigation
+**Last activity:** 2026-01-26 - Completed 06-08-PLAN.md (smart hint teaching integration)
 
-**Progress:** ████████████████████ 100% (Phase 6 - 6/6 plans complete)
+**Progress:** ████████████████████ 100% (Phase 6 - 8/10 gap closure plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -69,6 +69,12 @@ Plan 05 (06-05): Implemented smart hints and lesson suggestions. Created compreh
 Plan 06 (06-06): Implemented graduate tracking to capture real-world questions after tutorial completion. Created graduate_status table (completion metadata per user) and graduate_insights table (weekly aggregates). Built graduate-insights Edge Function analyzing question patterns with Claude Haiku identifying skill gaps. Added Graduate Tracking section to CLAUDE.md (INTEL-08) with completion detection, status sync, and question flagging. Created tutorial completion celebration display (graduation ASCII frame + sound sequence). Duration: 2 minutes, 3 atomic commits, 311 lines added.
 
 **Phase 6 Status:** COMPLETE (6/6 plans). Global learning intelligence system operational: privacy infrastructure (06-01), Supabase backend (06-02), cloud sync (06-03), analytics dashboard (06-04), smart hints (06-05), graduate tracking (06-06). Questions log locally, sync to cloud with consent, categorize with severity, aggregate weekly, visualize in real-time dashboard, feed back into hints, identify graduate skill gaps. Ready for live student testing and data-driven curriculum improvement.
+
+**Phase 6 Gap Closure (In Progress):**
+
+Plan 07 (06-07): Created categorize-questions Edge Function using Claude Haiku 4.5 to auto-tag questions with topics (paths, npm, git, JSON, etc.) and severity levels (minor-curiosity to critical-blocker). Function triggered on new question insert via Supabase database webhook. Severity scoring uses explicit criteria (5-level scale). Dedupe logic via content hash prevents duplicate analysis. Output stored in questions.topic_tags and questions.severity columns. Integration requires Supabase Edge Function deployment and webhook configuration. Duration: 2 minutes, 1 atomic commit, 1 file created.
+
+Plan 08 (06-08): Added executable hint integration logic to CLAUDE.md Section 9 (Smart Hints). Expanded from 22 to 50 lines with 3-step integration pattern (check if shown → check threshold → display). Position-based lookup table maps M.L.* to specific hint texts (8 positions covered). Session memory tracking pattern prevents hint fatigue (max 1 per lesson). Display pattern shows hints BEFORE task presentation. Closes Gap 2 from 06-VERIFICATION.md (smart-hints.md had no programmatic integration). Duration: 1 minute, 1 atomic commit.
 
 ### Next Steps
 1. Live student testing with complete guided project track
