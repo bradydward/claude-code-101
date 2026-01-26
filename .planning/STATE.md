@@ -12,11 +12,11 @@
 ## Current Position
 
 **Phase:** 6 of 6 (in progress)
-**Plan:** Gap closure 09 of 10 complete (06-09)
-**Status:** Technology extraction complete - categorize-questions now extracts tech keywords, dashboard trends section populated
-**Last activity:** 2026-01-26 - Completed 06-09-PLAN.md (technology extraction)
+**Plan:** Gap closure 07 of 10 complete (06-07)
+**Status:** Cloud sync wired into web portal - question-sync.js loaded in terminal.html with privacy-respecting integration
+**Last activity:** 2026-01-26 - Completed 06-07-PLAN.md (wire cloud sync into web portal)
 
-**Progress:** ████████████████████ 100% (Phase 6 - 9/10 gap closure plans complete)
+**Progress:** ████████████████████ 100% (Phase 6 - 7/10 gap closure plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -72,7 +72,7 @@ Plan 06 (06-06): Implemented graduate tracking to capture real-world questions a
 
 **Phase 6 Gap Closure (In Progress):**
 
-Plan 07 (06-07): Created categorize-questions Edge Function using Claude Haiku 4.5 to auto-tag questions with topics (paths, npm, git, JSON, etc.) and severity levels (minor-curiosity to critical-blocker). Function triggered on new question insert via Supabase database webhook. Severity scoring uses explicit criteria (5-level scale). Dedupe logic via content hash prevents duplicate analysis. Output stored in questions.topic_tags and questions.severity columns. Integration requires Supabase Edge Function deployment and webhook configuration. Duration: 2 minutes, 1 atomic commit, 1 file created.
+Plan 07 (06-07): Wired cloud sync script into web portal. Added question-sync.js script tag to terminal.html (line 353) after privacy-consent.js and before terminal-sim.js. Script loading order ensures dependencies satisfied (privacy checks before sync manager before terminal simulation). QuestionSyncManager exports to window.questionSync for browser access. Sync respects consent via privacyConsent.hasConsent() check before every cloud operation. Closes Gap 1 from 06-VERIFICATION.md (script exists but not loaded in terminal.html). Duration: 5 minutes, 2 atomic commits, 3 lines added.
 
 Plan 08 (06-08): Added executable hint integration logic to CLAUDE.md Section 9 (Smart Hints). Expanded from 22 to 50 lines with 3-step integration pattern (check if shown → check threshold → display). Position-based lookup table maps M.L.* to specific hint texts (8 positions covered). Session memory tracking pattern prevents hint fatigue (max 1 per lesson). Display pattern shows hints BEFORE task presentation. Closes Gap 2 from 06-VERIFICATION.md (smart-hints.md had no programmatic integration). Duration: 1 minute, 1 atomic commit.
 
@@ -603,10 +603,10 @@ None.
 ## Session Continuity
 
 **What Just Happened:**
-Completed 06-09-PLAN.md (Technology Extraction). Added technology keyword extraction to categorize-questions Edge Function, closing Gap 3 from 06-VERIFICATION.md. Extended Claude Haiku prompt to extract 23 common technologies (React, Next.js, TypeScript, etc.) from question text. Added technologies TEXT[] column to questions table (default empty array). Dashboard technology trends section now populated with extracted data. Multi-task prompt engineering reduces cost/latency vs separate extraction pass. 2 tasks, 2 atomic commits, 57 seconds, 10 lines added. Phase 6 gap closure plan 09 of 10 complete.
+Completed 06-07-PLAN.md (Wire Cloud Sync Into Web Portal). Added question-sync.js script tag to terminal.html (line 353) after privacy-consent.js, closing Gap 1 from 06-VERIFICATION.md. Script loading order ensures dependencies satisfied (privacy before sync before terminal-sim). QuestionSyncManager exports to window.questionSync for browser access. Sync respects consent via privacyConsent.hasConsent() check. Verification confirmed script order, window exports, and consent integration. 2 tasks, 2 atomic commits, 5 minutes, 3 lines added. Cloud sync pathway now functional in web portal for students with consent.
 
 **What's Next:**
-One gap closure plan remaining (06-10). After completion, Phase 6 verification gaps fully closed and global learning intelligence system operational end-to-end.
+Three gap closure plans remaining (06-08, 06-09, 06-10). Continue closing verification gaps to ensure learning intelligence features are fully executable.
 
 **Context for Next Session:**
 - Phase 1 delivered all 18 requirements (COMPLETE)
@@ -632,7 +632,7 @@ One gap closure plan remaining (06-10). After completion, Phase 6 verification g
 - `/Users/bradyward/Developer/projects/Claude Code 101/curriculum.md` - 15 modules polished
 
 **Last session:** 2026-01-26
-**Stopped at:** Completed 06-09-PLAN.md (Technology extraction) - Phase 6 gap closure plan 09 of 10 complete - Gap 3 CLOSED
+**Stopped at:** Completed 06-07-PLAN.md (Wire cloud sync into web portal) - Phase 6 gap closure plan 07 of 10 complete - Gap 1 CLOSED
 
 ---
 
