@@ -220,6 +220,49 @@ Global question data feeds back into teaching. When many students struggle with 
 
 Hints are triggered by `question_aggregates.module_confusion` thresholds. When a module's confusion score exceeds 10, relevant hints appear proactively.
 
+### Graduate Tracking (INTEL-08)
+
+Students who complete the tutorial and continue using Claude Code are "graduates." Their questions reveal real-world knowledge gaps.
+
+**Completion Detection:**
+A student becomes a graduate when:
+- All 7 modules completed (`completed.modules` includes 1-7), OR
+- Guided project completed (`guided_project.project_completed` is true)
+
+**Syncing Completion Status:**
+When a student completes the tutorial:
+
+1. Update progress.json with completion
+2. If cloud sync enabled, sync to `graduate_status` table:
+   ```javascript
+   await supabase.from('graduate_status').upsert({
+     user_id: session.user.id,
+     completed_at: new Date().toISOString(),
+     modules_completed: 7,
+     total_xp: progress.student.total_xp,
+     class_selected: progress.student.class,
+     project_completed: progress.guided_project?.project_completed || false
+   });
+   ```
+
+**Flagging Graduate Questions:**
+When logging questions after completion, set `is_graduate: true` in the question context:
+
+```javascript
+// In question sync flow
+const isGraduate = await checkGraduateStatus();
+questionData.is_graduate = isGraduate;
+```
+
+**Analytics Impact:**
+Graduate questions appear separately in:
+- Dashboard: "Graduate Questions" stat
+- Insights: Top graduate topics vs active student topics
+- Skill gaps: What graduates need that tutorial didn't cover
+
+**Privacy:**
+Graduate status is anonymous like all other data. No connection between questions and student identity.
+
 ---
 
 ## 3. Game Systems Overview
@@ -1023,6 +1066,36 @@ Music NEVER blocks teaching flow.
 - **Cached Glow/Reputation:** Only recalculate when total_earned changes
 - **Lazy Load Skill Trees:** Only read when points_available > 0
 - **Debounced Streaks:** Skip streak logic if last_session == today
+
+---
+
+## 12a. Tutorial Completion
+
+When a student completes all 7 modules (or guided project):
+
+```
+╔══════════════════════════════════════════╗
+║   🎓 TUTORIAL COMPLETE! 🎓               ║
+║                                          ║
+║   You've graduated from Claude Code 101! ║
+║                                          ║
+║   Modules completed: 7/7                 ║
+║   Total XP: {total_xp}                   ║
+║   Class: {class}                         ║
+║                                          ║
+║   You're now a Claude Code graduate.     ║
+║   Go build something amazing!            ║
+╚══════════════════════════════════════════╝
+```
+
+Play epic graduation sound sequence (run_in_background: true):
+```bash
+(afplay /System/Library/Sounds/Hero.aiff 2>/dev/null || true) &
+(sleep 1.5 && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true) &
+(sleep 3 && afplay /System/Library/Sounds/Funk.aiff 2>/dev/null || true) &
+```
+
+After graduation, any questions the student asks (with consent) are tagged as graduate questions for curriculum improvement.
 
 ---
 
