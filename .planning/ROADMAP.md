@@ -189,15 +189,19 @@ Plans:
 
 **Dependencies:** Phase 1 (teaching system must work), Phase 2 (onboarding flow for first-time users)
 
-**Plans:** 6 plans
+**Plans:** 10 plans (6 original + 4 gap closure)
 
 Plans:
-- [ ] 06-01-PLAN.md — Privacy infrastructure and consent flow (INTEL-10)
-- [ ] 06-02-PLAN.md — Supabase backend setup (schema, Edge Functions, anonymous auth)
-- [ ] 06-03-PLAN.md — Question sync integration (INTEL-01 enhancement, INTEL-03)
-- [ ] 06-04-PLAN.md — Analytics dashboard with real-time updates (INTEL-05, INTEL-09)
-- [ ] 06-05-PLAN.md — Smart hints and lesson suggestions (INTEL-06, INTEL-07)
-- [ ] 06-06-PLAN.md — Graduate tracking and reporting (INTEL-08)
+- [x] 06-01-PLAN.md — Privacy infrastructure and consent flow (INTEL-10)
+- [x] 06-02-PLAN.md — Supabase backend setup (schema, Edge Functions, anonymous auth)
+- [x] 06-03-PLAN.md — Question sync integration (INTEL-01 enhancement, INTEL-03)
+- [x] 06-04-PLAN.md — Analytics dashboard with real-time updates (INTEL-05, INTEL-09)
+- [x] 06-05-PLAN.md — Smart hints and lesson suggestions (INTEL-06, INTEL-07)
+- [x] 06-06-PLAN.md — Graduate tracking and reporting (INTEL-08)
+- [ ] 06-07-PLAN.md — Wire cloud sync script (Gap 1 closure)
+- [ ] 06-08-PLAN.md — Integrate smart hints into teaching flow (Gap 2 closure)
+- [ ] 06-09-PLAN.md — Add technology trend extraction (Gap 3 closure)
+- [ ] 06-10-PLAN.md — Reduce CLAUDE.md size below 40k (Gap 4 closure)
 
 **Requirements:**
 - INTEL-01: Question logging in CLAUDE.md teaching loop
@@ -212,6 +216,12 @@ Plans:
 - INTEL-10: Privacy controls (opt-in consent, easy opt-out, data deletion)
 
 **Note:** INTEL-02 (Global MCP hook) is deferred to Phase 7+ per research recommendation. MCP doesn't provide built-in global tracking hooks - a custom MCP server would be required, adding significant complexity. The progressive enhancement approach (local logging + opt-in Supabase sync) delivers 90% of value with 20% of complexity.
+
+**Gap Closure Plans (from 06-VERIFICATION.md):**
+- Gap 1: question-sync.js exists but not imported in terminal.html (06-07)
+- Gap 2: smart-hints.md is documentation only, no teaching flow integration (06-08)
+- Gap 3: Dashboard has tech trends UI but categorization doesn't extract tech mentions (06-09)
+- Gap 4: CLAUDE.md is 88k chars, exceeds 40k performance threshold (06-10)
 
 **Success Criteria:**
 1. Student questions are anonymously logged to cloud during teaching sessions (with consent)
@@ -278,12 +288,12 @@ Research Phase 6 will evaluate:
 | 3 - Music System Upgrade | Complete | 2026-01-24 | 2026-01-24 | 6/6 |
 | 4 - Test-Out System | Complete | 2026-01-25 | 2026-01-25 | 4/4 |
 | 5 - Guided Project Track | Complete | 2026-01-25 | 2026-01-25 | 9/9 |
-| 6 - Global Learning Intelligence | Planned | -- | -- | 0/9 |
+| 6 - Global Learning Intelligence | Gap Closure | 2026-01-25 | -- | 7/9 (gaps found) |
 
-**Overall Progress:** 42/51 requirements complete (82%)
+**Overall Progress:** 49/51 requirements complete (96%)
 
-**Note:** INTEL-02 deferred, reducing Phase 6 requirements from 10 to 9.
+**Note:** INTEL-02 deferred, reducing Phase 6 requirements from 10 to 9. Gap closure plans (06-07 through 06-10) address verification findings.
 
 ---
 
-*Last updated: 2026-01-25*
+*Last updated: 2026-01-26*
