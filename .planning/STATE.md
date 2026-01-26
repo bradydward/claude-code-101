@@ -12,11 +12,11 @@
 ## Current Position
 
 **Phase:** 6 of 6 - IN PROGRESS
-**Plan:** 01 of 04 complete (06-01)
-**Status:** Privacy infrastructure complete - GDPR-compliant consent flow with localStorage persistence, modal dialog UI, and data deletion capability ready for cloud sync
-**Last activity:** 2026-01-25 - Completed 06-01-PLAN.md (privacy infrastructure)
+**Plan:** 03 of 04 complete (06-03)
+**Status:** Question sync integration complete - privacy-compliant cloud sync with Supabase anonymous auth, timestamp rounding, PII stripping, and graceful failure handling
+**Last activity:** 2026-01-26 - Completed 06-03-PLAN.md (question sync integration)
 
-**Progress:** █████░░░░░░░░░░░░░░░ 25% (Phase 6 - 1/4 plans complete)
+**Progress:** ███████████████░░░░░ 75% (Phase 6 - 3/4 plans complete)
 
 ### Phase 2 Summary
 Students go from "I want to learn" to first real win in under 5 minutes. One-click installer handles all prerequisites (Xcode CLT, Homebrew, Node, Claude CLI) with Apple Silicon PATH handling. First-session flow awards instant XP from name choice, provides 30-second orientation, and delivers first-win tutorial after first task. Progressive disclosure unlocks features when students have context (skill tree at Module 3, shop at Module 6, sandbox at Level 5). Web portal students get acknowledged with practiced-command list and adapted teaching tone.
@@ -58,7 +58,11 @@ Plan 05 (05-05): Documented portfolio defense flow (triggered by /project defens
 
 Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question sync. Created PrivacyConsentManager class with modal dialog UI (terminal-themed, green accents), localStorage consent persistence, and data deletion capability. Documented Privacy Controls in CLAUDE.md Section 2a (consent flow, /privacy commands, what's shared/not shared). Integrated with web portal (terminal.html includes consent.css + privacy-consent.js). Consent dialog does NOT show on load - only triggers on first sync attempt (Plan 03). Added /privacy commands to Key Commands table. Supabase deletion placeholder added for Plan 03 integration. Duration: 2 minutes, 3 atomic commits, 311 lines added.
 
-**Phase 6 Status:** Privacy infrastructure COMPLETE (Plan 01/04). Consent flow ready for Supabase sync (Plan 03). Next: Question log schema with topic tags and anonymization (Plan 02).
+Plan 02 (06-02): Designed Supabase backend structure with questions table (question text, timestamp, context JSON, user_id, is_graduate). Row-level security enforces user isolation (users see only their questions). Anonymous authentication pattern documented (Supabase auth.signInAnonymously()). Placeholder credentials added to .env.example for setup. USER-SETUP guide created with Supabase project creation, table setup, RLS verification, and environment variable instructions. Duration: 2 minutes.
+
+Plan 03 (06-03): Integrated question sync with Supabase. Created QuestionSyncManager with CDN-loaded Supabase client, privacy-first sync (consent check → anonymize → sync), anonymous auth, and GDPR data deletion. Enhanced PrivacyConsentManager with showPrivacySettings() dialog displaying sync stats (synced count, last sync time). Updated CLAUDE.md Section 2a with cloud sync instructions. Timestamp rounding to hour for anonymity. PII stripping (working_directory, student_level) before sync. Sync failures never block teaching flow (graceful degradation to local log). Duration: 2 minutes, 3 atomic commits.
+
+**Phase 6 Status:** Cloud sync integration COMPLETE (Plans 01-03/04). Questions sync to Supabase with privacy protections. Next: Analytics dashboard to visualize question patterns (Plan 04).
 
 ### Next Steps
 1. Live student testing with complete guided project track
@@ -69,16 +73,16 @@ Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question 
 ## Performance Metrics
 
 **Velocity:**
-- Plans completed: 26 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 4 Phase 6)
-- Requirements completed: 42/42 (100%)
+- Plans completed: 28 total (7 Phase 1 + 3 Phase 2 + 3 Phase 3 + 4 Phase 4 + 5 Phase 5 + 6 Phase 6)
+- Requirements completed: 44/44 (100%)
 - Phases completed: 5/6 (83%)
-- Average time per plan: ~3.5 minutes (Phase 6: 2m for 06-01)
+- Average time per plan: ~2.5 minutes (Phase 6: 2m average across 3 plans)
 - Phase 1 duration: 1 day
 - Phase 2 duration: <1 hour (2026-01-24)
 - Phase 3 duration: 50m (2026-01-24) - COMPLETE
 - Phase 4 duration: 12m (2026-01-25) - COMPLETE
 - Phase 5 duration: 16m (2026-01-25) - COMPLETE
-- Phase 6 duration: 2m so far (2026-01-25) - IN PROGRESS (1/4 plans)
+- Phase 6 duration: 6m so far (2026-01-26) - IN PROGRESS (3/4 plans)
 
 **Quality:**
 - Plans revised: 1 (03-03 revised by checker before execution)
@@ -87,9 +91,9 @@ Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question 
 - Verification score: Phase 1: 18/18, Phase 2: 17/17, Phase 3: 22/23 (96% - playback consciously deferred)
 
 **Health:**
-- On track: Yes (5/6 phases complete, Phase 6 at 25%, 100% requirements complete)
-- Risks: None active (privacy infrastructure ready for cloud sync)
-- Momentum: Very high (Phase 6 Plan 01 complete in 2 minutes, privacy infrastructure ready)
+- On track: Yes (5/6 phases complete, Phase 6 at 75%, 100% requirements complete)
+- Risks: None active (cloud sync integration complete, ready for analytics dashboard)
+- Momentum: Very high (Phase 6 Plans 01-03 complete in 6 minutes total, one plan remaining)
 
 ## Accumulated Context
 
@@ -98,6 +102,22 @@ Plan 01 (06-01): Built GDPR-compliant privacy infrastructure for cloud question 
 **2026-01-25: localStorage for Privacy Consent State (from 06-01)**
 - Decision: Store consent state in localStorage, not progress.json
 - Rationale: Privacy consent is web-only feature (browser environment). No backend overhead needed. Instant synchronous access. Follows existing pattern (music preferences also use localStorage).
+
+**2026-01-26: CDN-loaded Supabase Client (from 06-03)**
+- Decision: Lazy-load @supabase/supabase-js from CDN, not bundled
+- Rationale: Avoids bundling overhead. Enables runtime configuration via window.SUPABASE_CONFIG or localStorage. Gracefully handles missing config (no crash, just local-only mode).
+
+**2026-01-26: Timestamp Rounding to Hour (from 06-03)**
+- Decision: Round all sync timestamps to nearest hour before sending to cloud
+- Rationale: Prevents time-based user identification. Preserves day/hour patterns for curriculum analysis. GDPR anonymization requirement.
+
+**2026-01-26: PII Stripping Before Sync (from 06-03)**
+- Decision: Remove working_directory, student_level, previous_command before cloud sync
+- Rationale: These fields reveal project structure, workflow patterns, and could identify individuals. Module/lesson/task/topic_tags provide curriculum insights without PII.
+
+**2026-01-26: Non-blocking Sync Failures (from 06-03)**
+- Decision: Sync errors logged (warn level) but never thrown or blocking
+- Rationale: Teaching flow is sacred - cloud availability must never interrupt learning. Failed syncs fall back to local log with synced_to_cloud: false flag.
 - Impact: Simpler implementation, faster consent checks, no file I/O for purely frontend state. Pattern: `localStorage.setItem('question_sync_consent', 'true')`.
 - Alternative: progress.json - rejected as requires backend read/write for purely frontend features
 - Context: Privacy infrastructure for Phase 6 global learning intelligence. Consent dialog shows only on first sync attempt (Plan 03), not on page load.
