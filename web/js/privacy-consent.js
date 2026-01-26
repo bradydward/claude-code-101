@@ -95,8 +95,8 @@ class PrivacyConsentManager {
 
   /**
    * GDPR: Right to be forgotten
-   * Deletes all local and cloud data (when cloud is connected)
-   * @returns {Promise<boolean>} - true when deletion complete
+   * Deletes all local and cloud data
+   * @returns {Promise<Object>} - deletion result with status
    */
   async deleteMyData() {
     // Clear local consent
@@ -106,11 +106,13 @@ class PrivacyConsentManager {
     // Clear local question log
     localStorage.removeItem('questions_log');
 
-    // TODO (Plan 06-03): Supabase deletion
-    // When Supabase is connected, this will call:
-    // await supabase.from('questions').delete().eq('session_id', sessionId);
+    // Delete from Supabase if available
+    if (window.questionSync) {
+      const result = await window.questionSync.deleteMyData();
+      return result;
+    }
 
-    return true;
+    return { deleted: true, local_only: true };
   }
 
   /**
@@ -127,6 +129,67 @@ class PrivacyConsentManager {
    */
   hasConsent() {
     return this.consentGiven;
+  }
+
+  /**
+   * Show privacy settings dialog with sync stats and controls
+   */
+  async showPrivacySettings() {
+    const stats = window.questionSync ? await window.questionSync.getSyncStats() : { synced: 0, pending: 0, lastSync: null };
+
+    const dialog = document.createElement('div');
+    dialog.className = 'consent-dialog-overlay';
+    dialog.innerHTML = `
+      <div class="consent-dialog">
+        <h2>Privacy Settings</h2>
+
+        <div class="privacy-status">
+          <p><strong>Cloud Sync:</strong> ${this.consentGiven ? 'Enabled' : 'Disabled'}</p>
+          <p><strong>Questions synced:</strong> ${stats.synced || 0}</p>
+          <p><strong>Last sync:</strong> ${stats.lastSync ? new Date(stats.lastSync).toLocaleDateString() : 'Never'}</p>
+        </div>
+
+        <div class="privacy-actions">
+          ${this.consentGiven ?
+            '<button class="privacy-opt-out">Opt Out (Stop Sharing)</button>' :
+            '<button class="privacy-opt-in">Opt In (Start Sharing)</button>'
+          }
+          <button class="privacy-delete">Delete All My Data</button>
+          <button class="privacy-close">Close</button>
+        </div>
+      </div>
+    `;
+
+    const optOutBtn = dialog.querySelector('.privacy-opt-out');
+    if (optOutBtn) {
+      optOutBtn.addEventListener('click', async () => {
+        this.revokeConsent();
+        dialog.remove();
+        alert('Cloud sync disabled. Your questions will only be logged locally.');
+      });
+    }
+
+    const optInBtn = dialog.querySelector('.privacy-opt-in');
+    if (optInBtn) {
+      optInBtn.addEventListener('click', async () => {
+        dialog.remove();
+        await this.showConsentDialog();
+      });
+    }
+
+    dialog.querySelector('.privacy-delete').addEventListener('click', async () => {
+      if (confirm('Delete all your synced questions? This cannot be undone.')) {
+        const result = await this.deleteMyData();
+        dialog.remove();
+        alert(result.deleted ? 'All your data has been deleted.' : `Deletion failed: ${result.reason}`);
+      }
+    });
+
+    dialog.querySelector('.privacy-close').addEventListener('click', () => {
+      dialog.remove();
+    });
+
+    document.body.appendChild(dialog);
   }
 }
 
