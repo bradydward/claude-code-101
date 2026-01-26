@@ -10,6 +10,7 @@ CREATE TABLE questions (
   category TEXT, -- Filled by nightly categorization (topic)
   severity TEXT, -- minor_confusion | moderate_gap | critical_blocker
   type TEXT, -- conceptual | procedural | troubleshooting
+  technologies TEXT[] DEFAULT '{}', -- Technology keywords extracted during categorization
   user_id UUID REFERENCES auth.users(id), -- Anonymous user
   synced_at TIMESTAMPTZ DEFAULT NOW(),
   is_graduate BOOLEAN DEFAULT FALSE -- True if asked after tutorial completion
