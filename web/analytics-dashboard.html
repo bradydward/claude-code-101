@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 101 - Curriculum Insights</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>Curriculum Insights</h1>
+      <p class="subtitle">Real-time learning intelligence from Claude Code 101</p>
+      <div class="last-updated">Last updated: <span id="last-updated">Loading...</span></div>
+    </header>
+
+    <div class="dashboard-grid">
+      <!-- Top Questions -->
+      <section class="dashboard-card questions-card">
+        <h2>Top 10 Questions This Week</h2>
+        <ol id="top-questions" class="question-list">
+          <li class="loading">Loading...</li>
+        </ol>
+      </section>
+
+      <!-- Module Confusion Heatmap -->
+      <section class="dashboard-card confusion-card">
+        <h2>Confusion Hotspots</h2>
+        <div id="module-confusion" class="heatmap">
+          <div class="loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Technology Trends -->
+      <section class="dashboard-card trends-card">
+        <h2>Technology Trends</h2>
+        <div id="tech-trends" class="trends-list">
+          <div class="loading">Loading...</div>
+        </div>
+        <p class="trends-insight">What students are building with</p>
+      </section>
+
+      <!-- Quick Stats -->
+      <section class="dashboard-card stats-card">
+        <h2>This Week</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-value" id="total-questions">--</span>
+            <span class="stat-label">Questions</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="total-students">--</span>
+            <span class="stat-label">Students</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="graduate-questions">--</span>
+            <span class="stat-label">Graduate Qs</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Severity Breakdown -->
+      <section class="dashboard-card severity-card">
+        <h2>Severity Distribution</h2>
+        <div id="severity-breakdown" class="severity-bars">
+          <div class="loading">Loading...</div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="dashboard-footer">
+      <p>100% anonymous data. No student names, emails, or code. <a href="#" id="privacy-link">Privacy policy</a></p>
+    </footer>
+  </div>
+
+  <script src="js/analytics-dashboard.js"></script>
+</body>
+</html>
