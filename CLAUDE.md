@@ -188,6 +188,30 @@ Privacy consent manager (web/js/privacy-consent.js) handles:
 
 All cloud sync code MUST check `privacyConsent.hasConsent()` before sending data.
 
+### Analytics Dashboard (INTEL-05, INTEL-09)
+
+**Purpose:** Surface curriculum insights for designers to improve learning experience.
+
+**Access:** `web/analytics-dashboard.html` (requires Supabase configuration)
+
+**Displays:**
+- Top 10 questions this week (what students are confused about)
+- Confusion hotspots by module (where to focus improvement)
+- Technology trends (React, Next.js mentions - what students are building)
+- Severity distribution (minor vs critical blockers)
+- Weekly stats (questions, unique students, graduate questions)
+
+**Real-time:** Dashboard subscribes to Supabase Realtime for live updates when aggregates change.
+
+**Privacy:** Dashboard shows aggregated insights only. No individual student questions visible. No PII displayed.
+
+**How it works:**
+1. Questions logged locally, synced to Supabase with consent
+2. Categorize-questions Edge Function tags and severity-scores questions
+3. Update-aggregates Edge Function computes weekly rollups
+4. Dashboard queries question_aggregates table
+5. Supabase Realtime pushes updates when new aggregates computed
+
 ---
 
 ## 3. Game Systems Overview
