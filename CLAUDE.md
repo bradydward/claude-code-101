@@ -866,41 +866,69 @@ Before presenting a task, check if the current position is a known confusion hot
 
 **See:** `@docs/claude/smart-hints.md` for complete hint library
 
-**Quick Reference:**
+**Hint Integration Logic:**
 
-When entering a high-confusion area (based on global question data):
+BEFORE presenting any task, execute this check:
+
+1. **Check if hint already shown this lesson:**
+   - Track shown hints in session memory (not persisted)
+   - If hint shown for this lesson, skip hint check
+   - Max 1 hint per lesson to avoid fatigue
+
+2. **Check confusion threshold for current position:**
+   - Module 1, Lesson 2+ (paths): Show if paths_confusion exists
+   - Module 1, Lesson 3+ (cd): Show if cd_confusion exists
+   - Module 2, Lesson 1+ (npm): Show if npm_confusion exists
+   - Module 2, Lesson 2+ (API keys): Show if api_key_confusion exists
+   - Module 3, Lesson 2+ (prompts): Show if prompt_confusion exists
+   - Module 4, Lesson 1+ (models): Show if model_confusion exists
+   - Module 7, Lesson 1+ (JSON): Show if json_confusion exists
+   - Module 7, Lesson 3+ (permissions): Show if permission_confusion exists
+
+3. **Display hint if threshold met:**
+   - Look up hint text from smart-hints.md for current position
+   - Display hint BEFORE task instruction (not interrupting)
+   - Mark hint as shown for this lesson in session memory
+
+**Quick Reference - Hint Texts:**
+
+| Position | Hint |
+|----------|------|
+| M1.L2.* | "Tip: Many students find paths tricky at first. Think of ~ as 'home' and / as separating folders." |
+| M1.L3.* | "Heads up: cd can be confusing. Remember: no slashes = folder in current location, leading / = absolute path." |
+| M2.L1.* | "Note: Many students ask about npm. Think of it as an 'app store' for code tools." |
+| M2.L2.* | "FYI: API keys confuse a lot of students. It's like a password that lets programs use services." |
+| M3.L2.* | "Pro tip: Many students struggle with prompts. Be specific! 'Create a blue button' works better than 'make something nice.'" |
+| M4.L1.* | "Insight: Students often ask which model to use. Haiku = fast/cheap, Sonnet = balanced, Opus = complex tasks." |
+| M7.L1.* | "Heads up: JSON trips up many students. Watch for missing commas and matching brackets!" |
+| M7.L3.* | "Note: Permission errors confuse many. 'Permission denied' usually means you need sudo or different ownership." |
+
+**Display Pattern:**
 
 ```
-💡 Many students find [concept] tricky...
+[Claude about to present Task 2.1.3]
 
-[1-2 sentence contextual tip]
+Claude: "Before we continue...
+
+💡 Many students ask about npm. Think of it as an
+   'app store' for code tools.
+
+Okay, let's install npm packages! Your task is..."
 ```
-
-**Hint Triggers:**
-- Module 1: paths, cd navigation
-- Module 2: npm, API keys
-- Module 3: prompt specificity
-- Module 4: model selection
-- Module 7: JSON, permissions
 
 **Rules:**
 1. Show max 1 hint per lesson (avoid fatigue)
 2. Don't interrupt - hints appear BEFORE task presentation
 3. Never reference specific students (privacy)
 4. Hints supplement teaching, don't replace it
+5. If no confusion data available, skip hints (new installations)
 
-**Example:**
+**Session Memory Pattern:**
 
-```
-[Student reaches Module 1, Lesson 2 - paths lesson]
-
-Claude: "Before we dive into paths...
-
-💡 Many students find paths tricky at first. Think of ~ as 'home'
-   and / as separating folders. You'll get it!
-
-Okay, let's learn about paths! A path is..."
-```
+Track hints shown in current session only (not persisted):
+- On lesson start: Reset hint shown flag for new lesson
+- After showing hint: Mark hint shown for this lesson
+- Check flag before showing any hint
 
 ### Verification Strategy
 
