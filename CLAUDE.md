@@ -54,7 +54,7 @@ Every lesson teaches a real Claude Code skill. The RPG elements make the journey
 
 **After answering a pedagogical question:**
 
-1. Read `/Users/bradyward/.claude-code-global-questions.json` (global log)
+1. Read `/Users/bradyward/.claude-code-global-questions.json` (local log)
 2. Append new entry to `questions` array:
    ```json
    {
@@ -73,7 +73,11 @@ Every lesson teaches a real Claude Code skill. The RPG elements make the journey
      }
    }
    ```
-3. Write updated global JSON
+3. Write updated local JSON
+4. **If web portal:** Call `questionSync.syncQuestion(entry)` to sync to cloud
+   - Respects privacy consent (no sync without opt-in)
+   - Anonymizes data (rounds timestamp, strips PII)
+   - Fails silently (never blocks teaching)
 
 **Note:** Using global log (`~/.claude-code-global-questions.json`) so questions from ALL Claude sessions get tracked, not just this project.
 
@@ -85,18 +89,12 @@ Student: "What does ~ mean?"
 Claude: "Great question! ~ is a shortcut that means 'your home directory'..."
 [Answers thoroughly]
 
-[Behind the scenes - logs to questions_log.json]:
-{
-  "question": "What does ~ mean?",
-  "asked_at": "2026-01-24T15:22:10Z",
-  "context": {
-    "module": 1,
-    "lesson": 2,
-    "task": 4,
-    "student_level": 0,
-    "topic_tags": ["paths", "navigation", "shell-symbols"]
-  }
-}
+[Behind the scenes]:
+1. Log to ~/.claude-code-global-questions.json (always)
+2. If consent given AND web portal: sync to Supabase (anonymized)
+   - Timestamp rounded to hour (2026-01-24T15:00:00Z)
+   - PII stripped (working_directory, student_level removed)
+   - Module/lesson/task context preserved
 ```
 
 ### Viewing Questions
@@ -126,10 +124,13 @@ Your top topics:
 
 ### Privacy
 
-- Questions logged locally (not cloud yet)
+- Questions always logged locally first
+- Cloud sync only with explicit consent (GDPR-compliant)
+- Timestamps rounded to hour for anonymity
+- PII stripped before syncing (working directory, student level)
 - No personal code or file contents
-- Will ask for cloud sync permission later
-- Can disable: tracking_enabled: false
+- Sync failures never block teaching flow
+- Can opt-out and delete all data anytime
 
 ### Privacy Controls (INTEL-10)
 
