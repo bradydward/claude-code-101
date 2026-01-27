@@ -207,6 +207,17 @@ class TerminalSimulator {
     this.isWaitingForInput = false;
     this.typewriterSpeed = 20;
 
+    // Player stats
+    this.playerClass = 'Gigachad Builder';
+    this.playerClassEmoji = '💪';
+    this.stats = {
+      speed: 5,
+      accuracy: 5,
+      creativity: 5,
+      efficiency: 5,
+      aura: 0
+    };
+
     this.terminalBody = document.getElementById('terminal-body');
     this.inputLine = document.querySelector('.input-line');
     this.inputField = document.getElementById('terminal-input');
@@ -686,9 +697,18 @@ class TerminalSimulator {
 
   completeQuest(quest) {
     this.totalXP += quest.xpReward;
+
+    // Increase stats randomly
+    const statKeys = Object.keys(this.stats);
+    const randomStat = statKeys[Math.floor(Math.random() * statKeys.length)];
+    this.stats[randomStat] += Math.floor(Math.random() * 3) + 1; // +1 to +3
+
     this.currentQuest++;
     this.currentStep = 0;
     this.saveProgress();
+
+    // Show inline terminal stats display (like landing page)
+    this.showStatsInTerminal(quest.xpReward);
 
     // Avatar celebrates quest complete
     if (this.avatar) {
@@ -705,6 +725,42 @@ class TerminalSimulator {
     setTimeout(() => {
       this.showCelebration(quest);
     }, 800);
+  }
+
+  showStatsInTerminal(xpGained) {
+    // Calculate level info
+    const level = Math.floor(this.totalXP / 100) + 1;
+    const nextLevelXP = level * 100;
+
+    // Add blank line
+    this.addOutputLine('', 'output');
+
+    // Add cyan divider
+    this.addOutputLine('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'accent');
+
+    // Add XP gain message
+    const xpLine = document.createElement('div');
+    xpLine.className = 'terminal-line xp-gain';
+    xpLine.innerHTML = `✨ TASK COMPLETE! +${xpGained} XP`;
+    this.terminalBody.insertBefore(xpLine, this.inputLine);
+
+    // Add cyan divider
+    this.addOutputLine('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'accent');
+
+    // Add blank line
+    this.addOutputLine('', 'output');
+
+    // Add stats display
+    const statsBox = document.createElement('div');
+    statsBox.className = 'terminal-line stats-display';
+    statsBox.innerHTML = `Your Stats:
+Level: ${level} | XP: ${this.totalXP}/${nextLevelXP}
+⚡ Speed: ${this.stats.speed} | 🎯 Accuracy: ${this.stats.accuracy} | 💡 Creativity: ${this.stats.creativity}
+Class: ${this.playerClassEmoji} <span class="class-badge">${this.playerClass}</span>`;
+    this.terminalBody.insertBefore(statsBox, this.inputLine);
+
+    // Add blank line
+    this.addOutputLine('', 'output');
   }
 
   showCelebration(quest) {

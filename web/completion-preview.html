@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Completion Screen Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+
+  <!-- COMPLETION SCREEN (ACTIVE) -->
+  <div class="completion-screen active" id="completion-screen">
+    <div class="completion-box">
+
+      <!-- Celebration Header Card -->
+      <div class="completion-celebration-header">
+        <div class="celebration-emoji" style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
+        <h2 class="completion-title">YOU COMPLETED THE PORTAL!</h2>
+
+        <div class="completion-stats">
+          <div class="completion-stat">
+            <div class="completion-stat-label">Total XP</div>
+            <div class="completion-stat-value">120</div>
+          </div>
+          <div class="completion-stat">
+            <div class="completion-stat-label">Quests</div>
+            <div class="completion-stat-value">5/5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="completion-skills">
+        <h3>You now know:</h3>
+        <ul>
+          <li><strong>echo</strong> &mdash; talk to the computer</li>
+          <li><strong>pwd</strong> &mdash; where am I?</li>
+          <li><strong>ls</strong> &mdash; what's here?</li>
+          <li><strong>cd</strong> &mdash; move around</li>
+          <li><strong>mkdir</strong> &mdash; create folders</li>
+          <li><strong>claude</strong> &mdash; launch your AI companion</li>
+        </ul>
+      </div>
+
+      <div class="completion-next">
+        <h3>Ready to do it for real?</h3>
+
+        <!-- ONE-CLICK SETUP -->
+        <div style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(129, 199, 132, 0.2) 0%, rgba(79, 195, 247, 0.2) 100%); border-radius: 12px; border: 2px solid #81c784;">
+          <p style="margin: 0 0 0.75rem 0; color: #81c784; font-weight: bold; font-size: 1.1rem;">
+            🚀 One-Click Installer (4-5 minutes!)
+          </p>
+          <p style="margin: 0; color: #e0e0e0; font-size: 0.9rem; line-height: 1.6;">
+            We built a smart installer that does EVERYTHING automatically. Just paste ONE command and wait. It installs Homebrew, Node.js, Claude Code, and downloads the project - all in one go!
+          </p>
+        </div>
+
+        <h4 style="color: #ffa726; margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">
+          → 3 Simple Steps:
+        </h4>
+
+        <div class="setup-steps">
+          <!-- STEP 1: Download -->
+          <div class="setup-step">
+            <div class="setup-step-num">1</div>
+            <div class="setup-step-content">
+              <p style="font-weight: bold; margin-bottom: 0.5rem;">Download the project:</p>
+              <div class="code-block">
+                <code>git clone https://github.com/bradydward/claude-code-101.git && cd claude-code-101</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #9e9e9e;">
+                💾 Downloads the project to your Mac (takes ~10 seconds)
+              </p>
+            </div>
+          </div>
+
+          <!-- Visual flow connector -->
+          <div style="text-align: center; margin: 0.5rem 0; color: #81c784; font-size: 1.5rem;">↓</div>
+
+          <!-- STEP 2: One-click installer -->
+          <div class="setup-step" style="border: 2px solid #4fc3f7; background: rgba(79, 195, 247, 0.08);">
+            <div class="setup-step-num" style="background: #4fc3f7;">2</div>
+            <div class="setup-step-content">
+              <p style="color: #4fc3f7; font-weight: bold; margin-bottom: 0.5rem;">🚀 Run the one-click installer:</p>
+              <div class="code-block">
+                <code>/bin/bash install.sh</code>
+                <button class="copy-btn">Copy</button>
+              </div>
+
+              <!-- CRITICAL PASSWORD WARNING -->
+              <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 82, 82, 0.15); border: 2px solid #ff5252; border-radius: 8px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #ff5252; font-weight: bold;">
+                  🚨 DON'T PANIC WHEN THIS HAPPENS:
+                </p>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  The installer will ask: <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">Password:</code>
+                </p>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  When you type, <strong>NOTHING APPEARS</strong> - no dots, no asterisks, no cursor movement. <strong>This is NORMAL!</strong>
+                </p>
+                <p style="margin: 0; font-size: 0.85rem; color: #ffcdd2; line-height: 1.6;">
+                  ✅ <strong>You ARE typing!</strong> Mac hides passwords for security. Just type your Mac password (the one you use to log in) and press Enter.
+                </p>
+              </div>
+
+              <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(129, 199, 132, 0.1); border-radius: 6px; border-left: 3px solid #81c784;">
+                <p style="margin: 0; font-size: 0.85rem; color: #81c784; line-height: 1.6;">
+                  ⏱️ <strong>Takes 4-5 minutes.</strong> The script installs Homebrew, Node.js, Claude Code, and sets everything up automatically. Just wait! If you see "Install Command Line Tools?", click Install.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual flow connector -->
+          <div style="text-align: center; margin: 0.5rem 0; color: #81c784; font-size: 1.5rem;">↓</div>
+
+          <!-- STEP 3: Launch -->
+          <div class="setup-step" style="border: 2px solid #81c784; background: rgba(129, 199, 132, 0.08);">
+            <div class="setup-step-num" style="background: #81c784;">3</div>
+            <div class="setup-step-content">
+              <p style="color: #81c784; font-weight: bold; margin-bottom: 0.75rem;">🎮 Get your API key & launch!</p>
+
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">a) Get FREE API key:</p>
+                <ol style="margin: 0 0 0 1.25rem; padding: 0; color: #9e9e9e; font-size: 0.8rem; line-height: 1.6;">
+                  <li>Visit <a href="https://console.anthropic.com" target="_blank" style="color: #4fc3f7; text-decoration: underline;">console.anthropic.com</a></li>
+                  <li>Sign up (free - includes $5 credit)</li>
+                  <li>Go to "API Keys" → "Create Key" → copy it</li>
+                </ol>
+              </div>
+
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">b) Open a NEW Terminal window:</p>
+                <p style="margin: 0; color: #9e9e9e; font-size: 0.8rem; line-height: 1.6;">
+                  Press <code style="background: rgba(0,0,0,0.3); padding: 0.2rem 0.4rem; border-radius: 3px;">Cmd + N</code> (new window loads updated PATH)
+                </p>
+              </div>
+
+              <div style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #e0e0e0; font-weight: bold;">c) Navigate & launch:</p>
+                <div class="code-block" style="margin-bottom: 0.5rem;">
+                  <code>cd ~/Developer/projects/"Claude Code 101"</code>
+                  <button class="copy-btn">Copy</button>
+                </div>
+                <div class="code-block">
+                  <code>claude</code>
+                  <button class="copy-btn">Copy</button>
+                </div>
+              </div>
+
+              <p style="margin: 1rem 0 0 0; font-size: 0.9rem; color: #81c784; font-weight: bold; text-align: center; padding: 0.75rem; background: rgba(129, 199, 132, 0.15); border-radius: 6px;">
+                ✅ When Claude opens, type: <code style="background: rgba(0,0,0,0.3); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.95rem;">start lesson</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
