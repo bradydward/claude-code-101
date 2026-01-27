@@ -764,9 +764,9 @@ body > * {
 }
 
 .completion-skills h3 {
-  color: var(--text-primary);
-  margin-bottom: 1.25rem;
-  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
 }
@@ -780,15 +780,16 @@ body > * {
 }
 
 .completion-skills li {
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 0;
   list-style: none;
   padding: 1rem 1.25rem 1rem 2.75rem;
   position: relative;
-  background: var(--bg-card-hover);
+  background: rgba(42, 42, 62, 0.4);
   border-radius: 12px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(79, 195, 247, 0.2);
   transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .completion-skills li:hover {
@@ -807,15 +808,20 @@ body > * {
   font-size: 1.3rem;
 }
 
+.completion-skills li strong {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
 .completion-next {
   margin-top: 3rem;
   text-align: left;
 }
 
 .completion-next h3 {
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
 }
@@ -869,10 +875,15 @@ body > * {
 }
 
 .setup-step-content p {
-  color: var(--text-secondary);
+  color: #b0b0b0;
   font-size: 0.95rem;
   margin-bottom: 0.75rem;
   line-height: 1.6;
+}
+
+.setup-step-content p[style*="font-weight: bold"],
+.setup-step-content p strong {
+  color: #ffffff;
 }
 
 .setup-step-content .code-block {
