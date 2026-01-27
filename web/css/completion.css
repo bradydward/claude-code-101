@@ -17,7 +17,7 @@
   display: block;
 }
 
-/* Moving Stars Background - Same as Landing Page */
+/* Moving Stars Background - Highly Visible */
 .completion-screen::before {
   content: '';
   position: fixed;
@@ -26,17 +26,27 @@
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(1px 1px at 20% 30%, white, transparent),
-    radial-gradient(1px 1px at 60% 70%, white, transparent),
-    radial-gradient(1px 1px at 50% 50%, white, transparent),
-    radial-gradient(1px 1px at 80% 10%, white, transparent),
-    radial-gradient(1px 1px at 90% 60%, white, transparent);
+    radial-gradient(3px 3px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 50% 50%, white, transparent),
+    radial-gradient(2px 2px at 80% 10%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 90% 60%, white, transparent),
+    radial-gradient(2px 2px at 15% 80%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 85% 20%, white, transparent),
+    radial-gradient(2px 2px at 40% 40%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 70% 90%, white, transparent),
+    radial-gradient(2px 2px at 30% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 10% 10%, white, transparent),
+    radial-gradient(2px 2px at 95% 85%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 25% 45%, white, transparent),
+    radial-gradient(2px 2px at 75% 25%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(3px 3px at 45% 75%, white, transparent);
   background-size: 200% 200%;
   background-position: 0% 0%;
   animation: stars-drift 60s ease-in-out infinite;
-  opacity: 0.15;
+  opacity: 0.6;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 @keyframes stars-drift {
@@ -46,13 +56,14 @@
 
 .completion-screen > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Main Container - Matches section structure */
 .completion-container {
   max-width: 1200px;
   margin: 0 auto;
+  background: transparent;
 }
 
 /* ===== CELEBRATION HERO ===== */
