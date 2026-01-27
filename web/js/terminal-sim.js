@@ -13,7 +13,7 @@ const QUESTS = [
         expected: 'echo "hello"',
         altExpected: ["echo 'hello'", 'echo hello'],
         response: 'hello',
-        explanation: "Your computer just talked back! 'echo' repeats whatever you type after it."
+        explanation: "Perfect! See how it repeated 'hello'? That's what echo does - it repeats whatever you give it. Simple, right?"
       },
       {
         prompt: 'user@mac ~ % ',
@@ -21,7 +21,7 @@ const QUESTS = [
         expected: 'echo "I am learning"',
         altExpected: ["echo 'I am learning'", 'echo I am learning'],
         response: 'I am learning',
-        explanation: "You're giving commands and the computer obeys. That's ALL a terminal is."
+        explanation: "Excellent! You're giving commands and the computer obeys. That's really all the terminal is - you type, it responds. Let's learn more..."
       }
     ]
   },
@@ -37,7 +37,7 @@ const QUESTS = [
         expected: 'pwd',
         altExpected: [],
         response: '/Users/you',
-        explanation: "This is your location in the computer. Like GPS for files."
+        explanation: "That's your current location - where you are in your computer's file system. Think of it like GPS coordinates for files!"
       },
       {
         prompt: 'user@mac ~ % ',
@@ -45,7 +45,7 @@ const QUESTS = [
         expected: 'ls',
         altExpected: [],
         response: 'Desktop  Documents  Downloads  projects',
-        explanation: "These are folders around you. Like rooms you can walk into."
+        explanation: "There we go! Those are all the folders in your current location. Let's move into one..."
       },
       {
         prompt: 'user@mac ~ % ',
@@ -163,7 +163,7 @@ const QUESTS = [
         altExpected: [],
         response: '\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  Welcome to Claude Code!           \u2551\n\u2551  Your AI-powered coding companion  \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n\nTip: Ask me anything or give me a task!\n',
         isClaudeMode: true,
-        explanation: "This is Claude Code - an AI that lives in your terminal. It can read, write, and understand code."
+        explanation: "This is what REAL Claude Code looks like! When you install it for real, this is exactly how it starts. Let me show you what I can do..."
       },
       {
         prompt: 'claude> ',
@@ -172,7 +172,7 @@ const QUESTS = [
         altExpected: ['what folder are we in', 'where are we', 'pwd', 'what folder are we in?'],
         response: "You're currently in /Users/you/my-project\n\nThis is an empty directory - ready for you to build something!",
         isClaudeMode: true,
-        explanation: "Claude can see your file system! It knows exactly where you are and what files exist."
+        explanation: "See? I can understand plain English AND I can see your file system. No need for technical commands - just ask me in normal language!"
       },
       {
         prompt: 'claude> ',
@@ -181,7 +181,7 @@ const QUESTS = [
         altExpected: ['create a file called hello.txt', 'make a file called hello.txt', 'create hello.txt'],
         response: "\u2713 Created hello.txt with content:\n  \"Hello! This is your first file.\"\n\nThe file has been saved to /Users/you/my-project/hello.txt",
         isClaudeMode: true,
-        explanation: "Claude just created a real file for you. No complicated commands needed - just plain English."
+        explanation: "Boom! File created. In the real Claude Code, I can build entire projects for you - websites, apps, games, anything. This is just a tiny preview!"
       },
       {
         prompt: 'claude> ',
@@ -190,7 +190,7 @@ const QUESTS = [
         altExpected: ['exit', 'quit', '/quit'],
         response: '\nGoodbye! Happy coding.\n',
         isClaudeMode: false,
-        explanation: "Now imagine doing this with REAL projects... websites, apps, games. That's what awaits you."
+        explanation: "That was just practice mode - but the REAL Claude Code works exactly like this. Ready to install it for real and start building?"
       }
     ]
   }
@@ -220,9 +220,13 @@ class TerminalSimulator {
     this.skipBtn = document.getElementById('skip-btn');
     this.welcomeOverlay = document.getElementById('welcome-overlay');
     this.welcomeStartBtn = document.getElementById('welcome-start-btn');
+    this.characterCreationOverlay = document.getElementById('character-creation-overlay');
 
     this.wrongAttempts = 0;
     this.autoContinueTimer = null;
+
+    // Initialize avatar system
+    this.avatar = new window.AvatarSystem();
 
     this.loadProgress();
     this.init();
@@ -252,17 +256,99 @@ class TerminalSimulator {
     // Welcome overlay
     this.welcomeStartBtn.addEventListener('click', () => {
       this.welcomeOverlay.classList.remove('active');
-      this.showWelcome();
+      this.showCharacterCreation();
     });
+
+    // Character creation
+    document.querySelectorAll('.color-choice').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const color = btn.dataset.color;
+        this.createCharacter(color);
+      });
+    });
+
+    // Initialize particle system
+    this.initParticles();
 
     // Check if first visit
     const hasVisited = localStorage.getItem('cc101_terminal_visited');
-    if (hasVisited) {
+    const hasAvatar = localStorage.getItem('cc101_avatar');
+
+    if (hasVisited && hasAvatar) {
+      // Returning user - skip welcome, init avatar
       this.welcomeOverlay.classList.remove('active');
-      this.showWelcome();
+      this.avatar.init('body');
+      this.startQuests();
+    } else if (hasVisited) {
+      // Visited but no avatar - show character creation
+      this.welcomeOverlay.classList.remove('active');
+      this.showCharacterCreation();
     } else {
+      // First time - show welcome modal
       localStorage.setItem('cc101_terminal_visited', 'true');
     }
+  }
+
+  initParticles() {
+    // Create particle container
+    const particleContainer = document.createElement('div');
+    particleContainer.className = 'hero-particles';
+    document.body.appendChild(particleContainer);
+
+    // Generate 40 particles
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+
+      // Random position
+      particle.style.left = Math.random() * 100 + '%';
+
+      // Random animation delay
+      particle.style.animationDelay = Math.random() * 6 + 's';
+
+      // Random animation duration (4-10s)
+      particle.style.animationDuration = (4 + Math.random() * 6) + 's';
+
+      particleContainer.appendChild(particle);
+    }
+  }
+
+  showCharacterCreation() {
+    this.characterCreationOverlay.classList.add('active');
+  }
+
+  createCharacter(color) {
+    // Hide character creation modal
+    this.characterCreationOverlay.classList.remove('active');
+
+    // Create avatar
+    this.avatar.createCharacter(color);
+    this.avatar.init('body');
+
+    // Show brief introduction then start
+    setTimeout(() => {
+      this.avatar.showSpeech('Ready for adventure!', 2000);
+    }, 500);
+
+    setTimeout(() => {
+      this.startQuests();
+    }, 2500);
+  }
+
+  startQuests() {
+    const lines = [
+      { text: 'Welcome, adventurer.', class: 'success' },
+      { text: '', class: 'output' },
+      { text: 'This terminal may look intimidating, but it\'s just a place', class: 'output' },
+      { text: 'where you type commands and your computer responds.', class: 'output' },
+      { text: '', class: 'output' },
+      { text: 'Let\'s begin your first quest...', class: 'success' },
+      { text: '', class: 'output' }
+    ];
+
+    this.typewriterLines(lines, () => {
+      this.startCurrentStep();
+    });
   }
 
   loadProgress() {
@@ -300,15 +386,46 @@ class TerminalSimulator {
   }
 
   showWelcome() {
+    const color = this.avatar ? this.avatar.currentColor : 'cyan';
+    const colorEmoji = color === 'cyan' ? '🔵' : color === 'gold' ? '🟡' : '🟣';
+    const colorName = color === 'cyan' ? 'Cyan' : color === 'gold' ? 'Gold' : 'Purple';
+
     const lines = [
-      { text: 'Welcome, adventurer.', class: 'success' },
+      { text: '╔══════════════════════════════════════════════════════════════════╗', class: 'success' },
+      { text: '║                   CLAUDE CODE (Practice Mode)                   ║', class: 'success' },
+      { text: '╚══════════════════════════════════════════════════════════════════╝', class: 'success' },
       { text: '', class: 'output' },
-      { text: 'This is a terminal. It looks scary, but it\'s just a place', class: 'output' },
-      { text: 'where you type commands and your computer responds.', class: 'output' },
+      { text: '┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓', class: 'success' },
+      { text: '┃                         YOUR ADVENTURE                          ┃', class: 'success' },
+      { text: '┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫', class: 'success' },
+      { text: '┃                                                                 ┃', class: 'dim' },
+      { text: `┃     ${colorEmoji}  RECRUIT                          XP: 0 / 100      ┃`, class: 'output' },
+      { text: '┃     Level 1: Curious Explorer                                   ┃', class: 'output' },
+      { text: '┃     Streak: 0 days 🔥                                           ┃', class: 'dim' },
+      { text: '┃                                                                 ┃', class: 'dim' },
+      { text: '┃ ┌───────────────────────┐  ┌────────────────────────────────┐  ┃', class: 'dim' },
+      { text: '┃ │   📊 STATS            │  │   🎯 ACTIVE QUEST              │  ┃', class: 'success' },
+      { text: '┃ ├───────────────────────┤  ├────────────────────────────────┤  ┃', class: 'dim' },
+      { text: '┃ │  ⚡ Speed: 5          │  │  Quest 1/5                     │  ┃', class: 'output' },
+      { text: '┃ │  🎯 Accuracy: 5       │  │  The Blinking Cursor           │  ┃', class: 'output' },
+      { text: '┃ │  💡 Creativity: 5     │  │                                │  ┃', class: 'output' },
+      { text: '┃ │  ⚙️  Efficiency: 5    │  │  Reward: +10 XP                │  ┃', class: 'dim' },
+      { text: '┃ │  ✨ Aura: 0           │  │                                │  ┃', class: 'dim' },
+      { text: '┃ └───────────────────────┘  └────────────────────────────────┘  ┃', class: 'dim' },
+      { text: '┃                                                                 ┃', class: 'dim' },
+      { text: '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛', class: 'success' },
       { text: '', class: 'output' },
-      { text: 'No clicking. No menus. Just you and the blinking cursor.', class: 'output' },
+      { text: '👋 Hi! I\'m Claude, your AI coding companion.', class: 'success' },
       { text: '', class: 'output' },
-      { text: 'Let\'s begin your first quest...', class: 'success' },
+      { text: '⚠️  This is PRACTICE MODE - not real Claude Code yet!', class: 'dim' },
+      { text: '   Nothing you type affects your computer. Totally safe!', class: 'dim' },
+      { text: '', class: 'output' },
+      { text: 'Let me teach you the terminal basics. First up: "echo"', class: 'output' },
+      { text: 'It makes your computer repeat whatever you tell it.', class: 'output' },
+      { text: '', class: 'output' },
+      { text: '👉 Type this command below and press Enter:', class: 'success' },
+      { text: '', class: 'output' },
+      { text: '   echo "hello"', class: 'command-example' },
       { text: '', class: 'output' }
     ];
 
@@ -365,8 +482,9 @@ class TerminalSimulator {
     // Update quest progress UI
     this.updateQuestUI(quest);
 
-    // Update instruction
-    this.instructionText.innerHTML = step.instruction;
+    // Update instruction with enhanced formatting
+    const enhancedInstruction = this.formatInstruction(step.instruction);
+    this.instructionText.innerHTML = enhancedInstruction;
 
     // Update prompt
     this.currentPrompt = step.prompt;
@@ -379,6 +497,13 @@ class TerminalSimulator {
     this.inputField.focus();
 
     this.saveProgress();
+  }
+
+  formatInstruction(instruction) {
+    // Claude-style format: "Type this → <code>command</code> ← then press ⏎ Enter"
+    return instruction
+      .replace(/Type:/gi, '👉 Type')
+      .replace(/and press Enter/gi, 'then press <span class="enter-key">⏎ Enter</span>');
   }
 
   updateQuestUI(quest) {
@@ -462,6 +587,17 @@ class TerminalSimulator {
   }
 
   handleCorrectCommand(step) {
+    // Success explosion effect!
+    this.createSuccessExplosion();
+
+    // Avatar celebrates!
+    if (this.avatar) {
+      this.avatar.onCorrectCommand();
+    }
+
+    // Show mini XP float (+1 XP per correct command)
+    this.showMiniXPFloat('+1 XP', this.inputLine);
+
     // Show response with typewriter effect
     if (step.response) {
       const responseLines = step.response.split('\n');
@@ -499,6 +635,11 @@ class TerminalSimulator {
 
   handleWrongCommand(input, step) {
     this.wrongAttempts++;
+
+    // Avatar shows confusion
+    if (this.avatar) {
+      this.avatar.onWrongCommand();
+    }
 
     // Enable hint button after 1 wrong attempt
     if (this.wrongAttempts >= 1) {
@@ -566,6 +707,14 @@ class TerminalSimulator {
     this.currentStep = 0;
     this.saveProgress();
 
+    // Avatar celebrates quest complete
+    if (this.avatar) {
+      this.avatar.onQuestComplete();
+
+      // Check for evolution
+      this.avatar.checkEvolution(this.totalXP, this.currentQuest);
+    }
+
     // Show XP float
     this.showXPFloat(quest.xpReward);
 
@@ -587,8 +736,18 @@ class TerminalSimulator {
     const btn = overlay.querySelector('.celebration-btn');
     const autoTimer = document.getElementById('auto-timer');
 
+    // Calculate level and show progression
+    const level = Math.floor(this.totalXP / 100) + 1;
+    const nextLevelXP = level * 100;
+    const progress = this.totalXP % 100;
+
     title.textContent = `QUEST ${quest.id} COMPLETE!`;
-    message.textContent = quest.name;
+    message.innerHTML = `
+      ${quest.name}<br>
+      <span style="font-size: 0.9rem; color: var(--term-dim); margin-top: 0.5rem; display: block;">
+        Level ${level} | ${this.totalXP}/${nextLevelXP} XP | Quest ${this.currentQuest}/5
+      </span>
+    `;
     xp.textContent = `+${quest.xpReward} XP`;
 
     overlay.classList.add('active');
@@ -634,6 +793,59 @@ class TerminalSimulator {
     float.style.transform = 'translate(-50%, -50%)';
     document.body.appendChild(float);
     setTimeout(() => float.remove(), 1500);
+  }
+
+  showMiniXPFloat(text, element) {
+    const rect = element.getBoundingClientRect();
+    const float = document.createElement('div');
+    float.className = 'mini-xp-float';
+    float.textContent = text;
+    float.style.left = rect.right + 20 + 'px';
+    float.style.top = rect.top + 'px';
+    document.body.appendChild(float);
+    setTimeout(() => float.remove(), 1000);
+  }
+
+  createSuccessExplosion() {
+    // Create particle burst from input line
+    const rect = this.inputLine.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Create 12 particles radiating outward
+    for (let i = 0; i < 12; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'success-particle';
+
+      // Random color (cyan, gold, or purple)
+      const colors = ['#4fc3f7', '#ffd700', '#bb86fc'];
+      const color = colors[i % 3];
+      particle.style.background = color;
+      particle.style.boxShadow = `0 0 10px ${color}`;
+
+      // Position at center
+      particle.style.left = centerX + 'px';
+      particle.style.top = centerY + 'px';
+
+      // Calculate angle for this particle
+      const angle = (i / 12) * Math.PI * 2;
+      const distance = 60 + Math.random() * 40;
+      const tx = Math.cos(angle) * distance;
+      const ty = Math.sin(angle) * distance;
+
+      particle.style.setProperty('--tx', tx + 'px');
+      particle.style.setProperty('--ty', ty + 'px');
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => particle.remove(), 600);
+    }
+
+    // Screen flash
+    const flash = document.createElement('div');
+    flash.className = 'success-flash';
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 200);
   }
 
   showCompletion() {

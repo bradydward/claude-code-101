@@ -1,6 +1,9 @@
 # Student Progress (Personal Save File)
 progress.json
 
+# Question Tracking (Learning Intelligence Data)
+questions_log.json
+
 # OS Files
 .DS_Store
 .DS_Store?
@@ -29,3 +32,4 @@ npm-debug.log*
 # Personal notes (optional)
 notes.md
 scratch.md
+.env

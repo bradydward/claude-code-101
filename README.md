@@ -81,6 +81,99 @@ That's it! Your RPG learning adventure begins.
 
 ---
 
+## Troubleshooting
+
+### Homebrew Installation Issues
+
+**"Password doesn't work / won't let me type"**
+
+When Homebrew asks for your password, macOS hides what you type (no dots, no asterisks, nothing). This is normal security behavior. Just type your Mac password and press Enter - it's working even though you can't see it!
+
+**"Install Command Line Tools" popup appears**
+
+Click "Install" and wait 10-15 minutes. This is totally normal for fresh Macs. Homebrew needs these development tools. If installation fails, try:
+
+```bash
+xcode-select --install
+```
+
+Then re-run the Homebrew installation command.
+
+**"zsh: command not found: brew" after installation**
+
+Homebrew installed successfully, but your terminal doesn't know where to find it yet. Close Terminal completely (Cmd+Q) and open a fresh window. Homebrew should work now.
+
+If still broken, add this to your shell config:
+
+```bash
+# For Apple Silicon Macs (M1/M2/M3):
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+
+# For Intel Macs:
+echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zshrc
+```
+
+Then restart Terminal.
+
+**"Permission denied" errors**
+
+Your user account needs admin privileges. If you're the only user on this Mac, you should have admin rights. Check: System Preferences → Users & Groups → your username should say "Admin" underneath.
+
+If you don't have admin rights, ask the admin to either:
+- Give you admin privileges (temporarily or permanently)
+- Run the installation for you
+
+**Other installation problems**
+
+Check Homebrew's official troubleshooting: https://docs.brew.sh/Troubleshooting
+
+### Claude Code Installation Issues
+
+**"npm: command not found"**
+
+Node.js didn't install properly. Try:
+
+```bash
+brew install node
+```
+
+If Homebrew itself isn't working, see Homebrew troubleshooting above.
+
+**"EACCES: permission denied" during npm install**
+
+Your npm doesn't have write permissions. Fix:
+
+```bash
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+```
+
+Then retry: `npm install -g @anthropic-ai/claude-code`
+
+**"claude: command not found" after installation**
+
+Close Terminal completely (Cmd+Q) and open a fresh window. If still broken, check your PATH:
+
+```bash
+echo $PATH
+```
+
+You should see npm's global bin directory. If not, add to `~/.zshrc`:
+
+```bash
+export PATH="/usr/local/bin:$PATH"
+```
+
+### Getting Help
+
+Still stuck? Common solutions:
+
+1. **Restart Terminal completely** (Cmd+Q, then reopen) - fixes 80% of PATH issues
+2. **Check you're logged in as admin** - System Preferences → Users & Groups
+3. **Try the one-click installer** - `bash install.sh` handles most edge cases
+4. **Ask Claude** - Once you get `claude` working, just ask "I'm stuck with [problem]"
+
+---
+
 ## What This Is
 
 An RPG-styled learning platform that teaches complete beginners how to use Claude Code. You start with zero technical knowledge and end up building real projects, deploying websites, and mastering AI-powered development.

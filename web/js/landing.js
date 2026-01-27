@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRevealAnimations();
   initSoundEffects();
   initInteractiveEffects();
+  initCTATransition();
 });
 
 // Create floating particles in hero section
@@ -166,4 +167,127 @@ function createXPFloat(element, text) {
   }, 10);
 
   setTimeout(() => float.remove(), 1000);
+}
+
+// Cinematic transition to terminal page
+function initCTATransition() {
+  const ctaButton = document.querySelector('.cta-button');
+  if (!ctaButton) return;
+
+  ctaButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetURL = ctaButton.getAttribute('href');
+
+    // Button glow effect
+    ctaButton.style.boxShadow = '0 0 40px rgba(79, 195, 247, 0.8), 0 0 80px rgba(79, 195, 247, 0.5)';
+    ctaButton.style.transform = 'scale(1.1)';
+
+    // Particle explosion from button
+    setTimeout(() => {
+      createCTAExplosion(ctaButton);
+    }, 200);
+
+    // Fade out with particles
+    setTimeout(() => {
+      createTransitionOverlay(targetURL);
+    }, 500);
+  });
+}
+
+function createCTAExplosion(button) {
+  const rect = button.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  // Create 30 particles exploding outward
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.style.position = 'fixed';
+    particle.style.width = '8px';
+    particle.style.height = '8px';
+    particle.style.borderRadius = '50%';
+    particle.style.pointerEvents = 'none';
+    particle.style.zIndex = '10000';
+
+    // Color variety
+    const colors = ['#4fc3f7', '#ffd700', '#bb86fc'];
+    const color = colors[i % 3];
+    particle.style.background = color;
+    particle.style.boxShadow = `0 0 10px ${color}`;
+
+    particle.style.left = centerX + 'px';
+    particle.style.top = centerY + 'px';
+
+    const angle = (i / 30) * Math.PI * 2;
+    const distance = 150 + Math.random() * 100;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
+
+    particle.style.transition = 'all 0.8s ease-out';
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+      particle.style.transform = `translate(${tx}px, ${ty}px) scale(0)`;
+      particle.style.opacity = '0';
+    }, 10);
+
+    setTimeout(() => particle.remove(), 800);
+  }
+}
+
+function createTransitionOverlay(targetURL) {
+  // Create full-screen overlay
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.right = '0';
+  overlay.style.bottom = '0';
+  overlay.style.background = '#0a0a0f';
+  overlay.style.zIndex = '9999';
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'opacity 0.5s ease-out';
+  overlay.style.display = 'flex';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.flexDirection = 'column';
+  overlay.style.gap = '1rem';
+
+  // Loading message
+  overlay.innerHTML = `
+    <div style="font-family: 'Press Start 2P', monospace; color: #4fc3f7; font-size: 1.2rem; text-shadow: 0 0 20px rgba(79, 195, 247, 0.5);">
+      Connecting to Terminal...
+    </div>
+    <div class="loading-spinner"></div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  // Add spinner styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(79, 195, 247, 0.2);
+      border-top: 4px solid #4fc3f7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Fade in overlay
+  setTimeout(() => {
+    overlay.style.opacity = '1';
+  }, 10);
+
+  // Navigate after animation
+  setTimeout(() => {
+    window.location.href = targetURL;
+  }, 1500);
 }

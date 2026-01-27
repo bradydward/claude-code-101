@@ -13,12 +13,7 @@ port = 54322
 enabled = true
 port = 54323
 
-[functions]
-verify_jwt = true
-
 [auth]
-# Enable anonymous sign-ins (research Pattern 2)
+# Enable anonymous sign-ins for question tracking
 enable_anonymous_sign_ins = true
-# Rate limit for anonymous auth (research Pitfall 5)
-# Default is 30/hour, we use 10/hour for security
-rate_limit_anonymous_users = 10
+enable_signup = true

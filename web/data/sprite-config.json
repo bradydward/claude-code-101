@@ -1,0 +1,105 @@
+{
+  "evolution_stages": {
+    "recruit": {
+      "size": 32,
+      "xp_threshold": 0,
+      "quest_unlock": 1,
+      "description": "Basic pixel art character"
+    },
+    "trainee": {
+      "size": 64,
+      "xp_threshold": 30,
+      "quest_unlock": 3,
+      "description": "More detailed pixel art"
+    },
+    "adventurer": {
+      "size": 128,
+      "xp_threshold": 70,
+      "quest_unlock": 5,
+      "description": "High-quality pixel art, ready for adventure"
+    }
+  },
+  "colors": {
+    "cyan": {
+      "name": "Cyan Flow",
+      "primary": "#4fc3f7",
+      "glow": "rgba(79, 195, 247, 0.6)"
+    },
+    "gold": {
+      "name": "Golden Aura",
+      "primary": "#ffd700",
+      "glow": "rgba(255, 215, 0, 0.6)"
+    },
+    "purple": {
+      "name": "Purple Haze",
+      "primary": "#bb86fc",
+      "glow": "rgba(187, 134, 252, 0.6)"
+    }
+  },
+  "emotions": {
+    "idle": {
+      "animation": "idle-bob",
+      "duration": "2s"
+    },
+    "happy": {
+      "animation": "success-jump",
+      "duration": "0.6s"
+    },
+    "confused": {
+      "animation": "head-shake",
+      "duration": "0.5s"
+    },
+    "victory": {
+      "animation": "victory-spin",
+      "duration": "1s"
+    }
+  },
+  "speech_bubbles": {
+    "quest_start": [
+      "Let's go!",
+      "Ready!",
+      "Adventure time!"
+    ],
+    "correct_command": [
+      "YES! 🎉",
+      "Perfect!",
+      "Nailed it!",
+      "You got this!"
+    ],
+    "wrong_command": [
+      "Hmm, try again!",
+      "Not quite...",
+      "Almost there!",
+      "Keep trying!"
+    ],
+    "quest_complete": [
+      "LEVEL UP!",
+      "Amazing!",
+      "Quest complete!",
+      "We did it!"
+    ],
+    "evolution": [
+      "I've grown stronger!",
+      "Power up!",
+      "New form unlocked!",
+      "Evolution complete!"
+    ]
+  },
+  "sprites": {
+    "recruit": {
+      "cyan": "recruit-cyan-{emotion}.png",
+      "gold": "recruit-gold-{emotion}.png",
+      "purple": "recruit-purple-{emotion}.png"
+    },
+    "trainee": {
+      "cyan": "trainee-cyan-{emotion}.png",
+      "gold": "trainee-gold-{emotion}.png",
+      "purple": "trainee-purple-{emotion}.png"
+    },
+    "adventurer": {
+      "cyan": "adventurer-cyan-{emotion}.png",
+      "gold": "adventurer-gold-{emotion}.png",
+      "purple": "adventurer-purple-{emotion}.png"
+    }
+  }
+}
