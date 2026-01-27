@@ -211,13 +211,6 @@ class TerminalSimulator {
     this.inputLine = document.querySelector('.input-line');
     this.inputField = document.getElementById('terminal-input');
     this.promptDisplay = document.getElementById('prompt-display');
-    this.instructionText = document.querySelector('.instruction-text');
-    this.questTitle = document.querySelector('.quest-name');
-    this.questStepInfo = document.querySelector('.quest-step-info');
-    this.questBar = document.querySelector('.quest-bar-fill');
-    this.questXP = document.querySelector('.quest-xp');
-    this.hintBtn = document.getElementById('hint-btn');
-    this.skipBtn = document.getElementById('skip-btn');
     this.welcomeOverlay = document.getElementById('welcome-overlay');
     this.welcomeStartBtn = document.getElementById('welcome-start-btn');
     this.characterCreationOverlay = document.getElementById('character-creation-overlay');
@@ -247,11 +240,7 @@ class TerminalSimulator {
       }
     });
 
-    // Hint button
-    this.hintBtn.addEventListener('click', () => this.showHint());
-
-    // Skip button
-    this.skipBtn.addEventListener('click', () => this.skipStep());
+    // Removed external hint/skip buttons - instructions now in terminal
 
     // Welcome overlay
     this.welcomeStartBtn.addEventListener('click', () => {
@@ -477,24 +466,25 @@ class TerminalSimulator {
 
     // Reset wrong attempts
     this.wrongAttempts = 0;
-    this.hintBtn.disabled = true;
 
-    // Update quest progress UI
-    this.updateQuestUI(quest);
+    // Show instruction in terminal as Claude speaking
+    const instructionLines = [
+      { text: '', class: 'output' },
+      { text: '👉 ' + step.instruction.replace(/<\/?code>/g, ''), class: 'success' },
+      { text: '', class: 'output' }
+    ];
 
-    // Update instruction with enhanced formatting
-    const enhancedInstruction = this.formatInstruction(step.instruction);
-    this.instructionText.innerHTML = enhancedInstruction;
+    this.typewriterLines(instructionLines, () => {
+      // Update prompt
+      this.currentPrompt = step.prompt;
+      this.promptDisplay.textContent = this.currentPrompt;
 
-    // Update prompt
-    this.currentPrompt = step.prompt;
-    this.promptDisplay.textContent = this.currentPrompt;
-
-    // Enable input
-    this.isWaitingForInput = true;
-    this.inputField.value = '';
-    this.inputLine.classList.remove('typing');
-    this.inputField.focus();
+      // Enable input
+      this.isWaitingForInput = true;
+      this.inputField.value = '';
+      this.inputLine.classList.remove('typing');
+      this.inputField.focus();
+    });
 
     this.saveProgress();
   }
@@ -507,14 +497,7 @@ class TerminalSimulator {
   }
 
   updateQuestUI(quest) {
-    const questProgress = document.querySelector('.quest-title');
-    questProgress.textContent = `QUEST ${quest.id}/5`;
-    this.questTitle.textContent = quest.name;
-    this.questStepInfo.textContent = `Step ${this.currentStep + 1} of ${quest.steps.length}`;
-
-    const stepProgress = this.currentStep / quest.steps.length;
-    this.questBar.style.width = (stepProgress * 100) + '%';
-    this.questXP.textContent = `${this.totalXP} XP`;
+    // Quest progress now shown in terminal output, not external UI
   }
 
   handleKeydown(e) {
@@ -643,7 +626,7 @@ class TerminalSimulator {
 
     // Enable hint button after 1 wrong attempt
     if (this.wrongAttempts >= 1) {
-      this.hintBtn.disabled = false;
+      // Hint button removed - instructions in terminal
     }
 
     // Friendly hint - more encouraging on multiple attempts
@@ -717,10 +700,6 @@ class TerminalSimulator {
 
     // Show XP float
     this.showXPFloat(quest.xpReward);
-
-    // Update quest bar to full
-    this.questBar.style.width = '100%';
-    this.questXP.textContent = `${this.totalXP} XP`;
 
     // Show celebration
     setTimeout(() => {
