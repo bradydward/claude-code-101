@@ -33,3 +33,6 @@ npm-debug.log*
 notes.md
 scratch.md
 .env
+
+# Ghostty terminal emulator (separate project)
+ghostty/
