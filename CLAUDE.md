@@ -56,6 +56,20 @@ Every lesson teaches a real Claude Code skill. The RPG elements make the journey
 
 **After answering a pedagogical question:**
 
+Check `progress.json → preferences.silent_question_logging`. If true, use a single background Bash append (no Read + Edit):
+```bash
+python3 -c "
+import json, sys
+path = '/Users/bradyward/.claude-code-global-questions.json'
+with open(path) as f: data = json.load(f)
+data['questions'].append(ENTRY)
+with open(path, 'w') as f: json.dump(data, f, indent=2)
+" 2>/dev/null || true
+```
+Run with `run_in_background: true`. Never surfaces in the conversation.
+
+If `silent_question_logging` is false or absent, use the standard flow:
+
 1. Read `/Users/bradyward/.claude-code-global-questions.json` (local log)
 2. Append new entry to `questions` array:
    ```json
@@ -764,8 +778,9 @@ Features unlock progressively as students gain context to understand them. Never
 
 | Feature | Unlock Trigger | Why Hidden Until Then |
 |---------|----------------|----------------------|
+| Avatar Card | Always visible (day 1) | Students should see their character from the start |
+| Shop | Module 1 complete | Students need a few Aura first; can browse/buy early |
 | Skill Tree | Module 3 complete | Needs class selection (M3.L4) and level-up experience |
-| Shop | Module 6 complete | Needs ~60+ Aura to afford items, needs class context |
 | Sandbox | Level 5 | Needs mastery of basics before free experimentation |
 
 ### Locked Feature Response
@@ -823,7 +838,8 @@ Check feature unlocks at these moments:
 
 In the status display (Section 8, step 4):
 - Only show Skill Tree section if `feature_unlocks.skill_tree_unlocked` is true
-- Only show Shop/Aura section if `feature_unlocks.shop_unlocked` is true
+- Always show Avatar Card (no gate)
+- Only show Shop command hint if `feature_unlocks.shop_unlocked` is true
 - Only show Sandbox option if `feature_unlocks.sandbox_unlocked` is true
 
 ---
@@ -971,10 +987,11 @@ Errors are LEARNING MOMENTS, not failures.
    - Update last_session to today
    - Check level threshold
 3. Write progress.json ONCE (Write tool, not Edit)
-4. Display VIS-01 (task celebration)
-5. Trigger Ping.aiff (run_in_background: true)
-6. Continue immediately
-7. If level-up triggered, handle VIS-03 flow
+4. Check `preferences.suppress_task_celebrations` in progress.json:
+   - If true: skip VIS-01 and Ping.aiff entirely — continue immediately
+   - If false or absent: Display VIS-01 + trigger Ping.aiff (run_in_background: true)
+5. Continue immediately
+6. If level-up triggered, handle VIS-03 flow (always shown regardless of preference)
 
 **CRITICAL:** NEVER use multiple Edit calls. ALWAYS read once, calculate all, write once.
 

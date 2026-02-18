@@ -6,27 +6,161 @@ Production-quality celebration templates and status displays.
 
 ## Status Display
 
-Display on "start lesson", "status", or "continue":
+Display on "start lesson", "status", or "continue".
+
+**Layout: Avatar on the left, stats on the right (side-by-side)**
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 PLAYER STATUS
+  [AVATAR_ART]   [student_name]  Lv.[N] "[title]"
+                 [class_emoji] [class_display_name]
+                 "[class_motto]"
+                 ✨ XP: [current]/[next] [bar] [pct]%
+                 🔥 Streak: [days] days
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Class: [class_name] [class_emoji]
-Level [N]: [title] ([evolution_name])
-XP: [current]/[next_level] ▓▓▓▓▓░░░░░ [percent]%
-Aura: [balance] ✨ | Glow: [glow_emoji] [glow_level]
-Reputation: [reputation_rank]
-Streak: [days] days 🔥 (Freeze: [available/used])
+📊 STATS
+⚡ Speed      [bar]  [val]
+🎯 Accuracy   [bar]  [val]
+💡 Creativity [bar]  [val]
+⚙️  Efficiency  [bar]  [val]
+✨ Aura       [bar]  [val]
 
-📍 Current: Module [M], Lesson [L], Task [T]
-Progress: ▓▓▓░░ [percent through curriculum]%
+💰 Aura: [balance] balance  |  Glow: [glow_level] [glow_emoji]
+🛠️  Skill Points: [points] available  (if points > 0)
 
+📍 Position: Module [M], Lesson [L], Task [T]
 🏆 Badges: [badge_list]
-📊 Stats: ⚡[speed] 🎯[accuracy] 💡[creativity] ⚙️[efficiency] ✨[aura]
-🎨 Skin: [skin_name] | Theme: [theme_name]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+---
+
+## Avatar Art (ASCII Pixel Art per Skin)
+
+Each skin has a unique ASCII art character. The aura color adds sparkle symbols around the character.
+
+**Render the avatar inline with the status display, left-aligned.**
+
+### skin_default
+
+```
+  ┌─────┐
+  │◉   ◉│
+  │  ▾  │
+  └──┬──┘
+  ┌──┴──┐
+  │     │
+  └─────┘
+```
+
+### skin_hoodie
+
+```
+      ⊕
+  ╭─────╮
+  │⊙   ⊙│
+  │  ≡  │
+  ╰──┬──╯
+╭──╱─┴─╲──╮
+│╱   | |   ╲│
+│    | |    │
+│  ╔═════╗  │
+│  ╚═════╝  │
+╰───────────╯
+```
+
+Notes: ⊕ = antenna, ⊙ = robot eyes, ≡ = grill/mouth, flared top = hood up, | | = drawstrings, ╔╗╚╝ = front kangaroo pocket
+
+### skin_ninja
+
+```
+  ┌─────┐
+  │  ◈  │
+  │▀▀▀▀▀│
+  └──┬──┘
+ ┌───┴───┐
+ │ ||||  │
+ └───────┘
+```
+
+### skin_wizard
+
+```
+    /\
+   /  \
+  ┌────┐
+  │◉  ◉│
+  │ ▾  │
+  └─┬──┘
+  ┌─┴──┐
+  │~~~~│
+  └────┘
+```
+
+### skin_robot
+
+```
+ ╔══════╗
+ ║[◉][◉]║
+ ║  --  ║
+ ╠══════╣
+ ║ [CC] ║
+ ╚══════╝
+```
+
+---
+
+## Aura Color Overlays
+
+Add sparkle characters around the avatar based on equipped aura color:
+
+| aura_color   | Overlay chars | Example wrap |
+|--------------|---------------|--------------|
+| aura_white   | (none)        | clean edges  |
+| aura_gold    | ✦ ✧           | ✦ left/right corners, ✧ top/bottom |
+| aura_blue    | ◈ ·           | ◈ corners, · sides |
+| aura_purple  | ✦ ✶           | ✶ corners, ✦ top |
+| aura_red     | ✸ ·           | ✸ corners |
+| aura_green   | ✿ ·           | ✿ corners |
+| aura_rainbow | ✦✧✸✶          | rotating chars, one per corner |
+
+**aura_gold render example (skin_hoodie + aura_gold):**
+
+```
+  ✦     ✦
+  ┌─────┐
+  │◉   ◉│
+  │  ▾  │
+  └──┬──┘
+ ┌───┴───┐
+ │ (H)   │
+ └───────┘
+  ✧     ✧
+```
+
+---
+
+**Avatar Card Variables:**
+- `[class_emoji]` - Class emoji (💪🐺👑🔥😎🧙) or ❓ if no class yet
+- `[student_name]` - From `progress.json → student.name`
+- `[class_display_name]` - Full class name or "Class not yet chosen" if null
+- `[class_motto]` - Short class flavor text (see below)
+- `[title]` - Current level title
+
+**Class Mottos:**
+- `gigachad_builder` → "Ship it. Build it. Break it."
+- `sigma_grinder` → "Efficiency is the way."
+- `aura_farmer` → "Vibes over everything."
+- `chaos_agent` → "Rules are suggestions."
+- `meme_lord` → "Cursed but effective."
+- `hackerman` → "There is no spoon."
+- No class yet → "Your class awaits in Module 3."
+
+**Avatar Card Notes:**
+- Show avatar art from day 1 (no unlock gate)
+- Before class selection: show ❓ emoji and "Class not yet chosen"
+- After class selection: show full class identity
+- `/shop` command available from Module 1 complete (students can browse and buy early)
 
 ---
 
