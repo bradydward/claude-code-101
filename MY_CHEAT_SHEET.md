@@ -1,6 +1,6 @@
 # My Claude Code 101 Cheat Sheet
 
-Last Updated: 2026-01-23 | Level: 4 (Code Companion) | Current Module: 2
+Last Updated: 2026-01-28 | Level: 5 (Rapid Learner) | Current Module: 3
 
 ---
 
@@ -80,6 +80,41 @@ Last Updated: 2026-01-23 | Level: 4 (Code Companion) | Current Module: 2
 
 ---
 
+## Key Insights from Module 3
+
+### Module 3: Your First Conversations
+**In Progress: 2026-01-28** | **Badge: First Contact 🏆 (coming soon)**
+
+#### Lesson 3.1: Talking to Claude Code
+**Completed: 2026-01-28**
+
+💡 **Claude Code vs ChatGPT/Claude.ai**
+- ChatGPT = talks ABOUT code, gives advice, shows examples
+- Claude Code = actually DOES the work, creates files, runs commands
+- Claude Code can see your file system and execute terminal commands
+- Ask in plain English: "What folder are we in?" → I run `pwd` for you
+- Ask "What files are in this folder?" → I run `ls` for you
+
+💡 **What Claude Code Can Do**
+- Read files on your computer
+- Create and modify files
+- Run terminal commands
+- Build projects with you
+- Access your local file system
+
+💡 **What Claude Code CANNOT Do**
+- Check weather or internet data
+- Browse websites (no internet access)
+- Answer general knowledge questions unrelated to coding
+- Claude Code = your LOCAL coding assistant, not general AI
+
+💡 **Key Difference: Action vs Explanation**
+- ChatGPT: "Here's how to create a file: use this command..."
+- Claude Code: "I created the file for you. Done!"
+- I don't just explain - I build alongside you
+
+---
+
 ## Copy-Paste Examples
 
 ### Navigate to Project Folder
@@ -142,20 +177,21 @@ From Lesson 1.5 - The shortcuts that matter most:
 ## My Progress Tracker
 
 - ✅ Module 1: Getting Into the Terminal (Terminal Explorer 🏆) - Completed 2026-01-23
-- ⏳ Module 2: Installing Claude Code (in progress...)
+- ✅ Module 2: Installing Claude Code (Setup Champion 🏆) - Completed 2026-01-28
+- ⏳ Module 3: Your First Conversations (in progress...)
 
 **Current Stats:**
-- Level: 4 (Code Companion)
-- Total XP: 620 / 1000 to Level 5
-- Aura: 35 ✨ (faint glow)
+- Level: 5 (Rapid Learner)
+- Total XP: 1210 / 1500 to Level 6
+- Aura: 67 ✨ (soft glow)
 - Streak: 1 day 🔥
 
 **Stats Growth:**
 - ⚡ Speed: 31 (grew from Module 1!)
 - 🎯 Accuracy: 5
-- 💡 Creativity: 5
-- ⚙️ Efficiency: 5
-- ✨ Aura: 35
+- 💡 Creativity: 8 (growing from Module 3!)
+- ⚙️ Efficiency: 26 (HUGE jump from Module 2!)
+- ✨ Aura: 67 (Aura Multiplier skill unlocked!)
 
 ---
 
@@ -177,10 +213,11 @@ A: Press `q` to quit most views, or Ctrl+C to stop most commands. When in doubt,
 
 ## Next Up
 
-📚 Module 2: Installing Claude Code
-- Getting API key from Anthropic
-- Installing `claude` command with npm
-- First launch and configuration
+📚 Module 3: Your First Conversations
+- ✅ Lesson 3.1: Talking to Claude Code (Completed!)
+- ⏭️ Lesson 3.2: Creating Files Through Conversation
+- Lesson 3.3: Specific vs. Vague Prompts
+- Lesson 3.4: CLASS SELECTION (Choose your character class!)
 
 ---
 

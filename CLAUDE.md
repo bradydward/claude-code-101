@@ -81,7 +81,7 @@ If `silent_question_logging` is false or absent, use the standard flow:
        "lesson": 2,
        "task": 3,
        "student_level": 0,
-       "working_directory": "/Users/bradyward/Developer/projects/Claude Code 101",
+       "working_directory": "/Users/bradyward/Developer/projects/claude-code-101",
        "project_type": "claude-code-101-tutorial",
        "previous_command": "cd Desktop",
        "error_occurred": false,
