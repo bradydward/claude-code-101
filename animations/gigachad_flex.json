@@ -1,0 +1,48 @@
+{
+  "name": "Gigachad Flex",
+  "class": "gigachad_builder",
+  "duration_ms": 2000,
+  "loop": false,
+  "frames": [
+    {
+      "art": [
+        "       💪",
+        "      (͠≖ ͜ʖ͠≖)",
+        "     /|_|\\",
+        "    _/ ‾ \\_",
+        "   GIGACHAD"
+      ],
+      "duration_ms": 200
+    },
+    {
+      "art": [
+        "     💪 💪",
+        "      (⌐■_■)",
+        "     /|_|\\",
+        "    _/ ‾ \\_",
+        "   BUILDING..."
+      ],
+      "duration_ms": 300
+    },
+    {
+      "art": [
+        "   💪 💪 💪",
+        "      ಠ_ಠ",
+        "     /|_|\\",
+        "    _/ ‾ \\_",
+        "    SHIPPING!"
+      ],
+      "duration_ms": 300
+    },
+    {
+      "art": [
+        " 💪 GIGACHAD 💪",
+        "      ᕦ(ò_óˇ)ᕤ",
+        "     /|_|\\",
+        "    _/ ‾ \\_",
+        "   BUILDER MODE"
+      ],
+      "duration_ms": 500
+    }
+  ]
+}
