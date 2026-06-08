@@ -36,3 +36,5 @@ scratch.md
 
 # Ghostty terminal emulator (separate project)
 ghostty/
+.run/
+.run/research/ad-hoc/
